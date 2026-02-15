@@ -1,83 +1,61 @@
 "use client"
 
-import { TrendingUp, Sparkles, ExternalLink } from "lucide-react"
-import { Button } from "@/components/ui/button"
-
 const trendingTopics = [
-  { topic: "Claude 4 Release", posts: "12.4K", growth: "+340%" },
-  { topic: "Axiom-7B Benchmarks", posts: "8.2K", growth: "+220%" },
-  { topic: "OpenAI GPT-5 Rumors", posts: "6.8K", growth: "+180%" },
-  { topic: "AI Regulation EU", posts: "4.1K", growth: "+95%" },
-  { topic: "Llama 4 Speculation", posts: "3.7K", growth: "+85%" },
+  { topic: "OpenAI IPO Valuation", predictions: 342 },
+  { topic: "GPT-5 Release Date", predictions: 218 },
+  { topic: "2026 Midterm Forecast", predictions: 194 },
+  { topic: "Bitcoin $100K Again", predictions: 167 },
+  { topic: "AI Regulation EU", predictions: 143 },
+  { topic: "GTA 6 Sales Week 1", predictions: 98 },
 ]
 
-const relatedPosts = [
-  { title: "Comparing Axiom-7B with Claude Sonnet on coding tasks", votes: "2.4K", comments: 342 },
-  { title: "How to fine-tune Axiom-7B for domain-specific reasoning", votes: "1.8K", comments: 156 },
-  { title: "Axiom-7B running on M3 Max - inference benchmarks", votes: "1.2K", comments: 89 },
+const recentlyResolved = [
+  { title: "GTA 6 delayed past 2025", result: "correct", resolvedAgo: "2mo" },
+  { title: "Fed rate cut in Jan 2026", result: "incorrect", resolvedAgo: "3w" },
+  { title: "Apple Vision Pro 2 in 2025", result: "correct", resolvedAgo: "1mo" },
 ]
 
 export function TrendingTopics() {
   return (
-    <div className="sticky top-20 space-y-4">
-      <div className="bg-card rounded-xl border border-border overflow-hidden">
-        <div className="p-4 border-b border-border">
-          <div className="flex items-center gap-2">
-            <TrendingUp className="w-4 h-4 text-primary" />
-            <h3 className="font-semibold text-sm">Trending in AI</h3>
-          </div>
-        </div>
-        <div className="p-2">
+    <div className="sticky top-16 space-y-6">
+      <div>
+        <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground/70 px-1 mb-2 block">
+          Trending Topics
+        </span>
+        <div className="space-y-0.5">
           {trendingTopics.map((item, index) => (
             <button
               key={item.topic}
-              className="w-full flex items-center gap-3 p-2 rounded-lg hover:bg-secondary/50 transition-colors text-left"
+              className="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-secondary/30 transition-colors text-left"
             >
-              <span className="text-muted-foreground text-xs font-medium w-4">{index + 1}</span>
-              <div className="flex-1 min-w-0">
-                <div className="font-medium text-sm truncate">{item.topic}</div>
-                <div className="text-xs text-muted-foreground">{item.posts} posts</div>
-              </div>
-              <span className="text-xs text-green-500 font-medium">{item.growth}</span>
+              <span className="text-[10px] text-muted-foreground/40 w-3 tabular-nums">{index + 1}</span>
+              <span className="text-xs text-foreground/70 flex-1 truncate">{item.topic}</span>
+              <span className="text-[10px] text-muted-foreground/40 tabular-nums">{item.predictions}</span>
             </button>
           ))}
         </div>
       </div>
 
-      <div className="bg-card rounded-xl border border-border overflow-hidden">
-        <div className="p-4 border-b border-border">
-          <div className="flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-primary" />
-            <h3 className="font-semibold text-sm">Related Posts</h3>
-          </div>
-        </div>
-        <div className="p-2">
-          {relatedPosts.map((post) => (
+      <div className="h-px bg-border/30" />
+
+      <div>
+        <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground/70 px-1 mb-2 block">
+          Recently Resolved
+        </span>
+        <div className="space-y-0.5">
+          {recentlyResolved.map((item) => (
             <button
-              key={post.title}
-              className="w-full flex flex-col gap-1 p-2 rounded-lg hover:bg-secondary/50 transition-colors text-left"
+              key={item.title}
+              className="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-secondary/30 transition-colors text-left"
             >
-              <div className="text-sm font-medium line-clamp-2">{post.title}</div>
-              <div className="text-xs text-muted-foreground">
-                {post.votes} votes • {post.comments} comments
-              </div>
+              <span className={`text-[10px] ${item.result === "correct" ? "text-emerald-500/50" : "text-red-400/50"}`}>
+                {item.result === "correct" ? "+" : "-"}
+              </span>
+              <span className="text-xs text-foreground/60 flex-1 truncate">{item.title}</span>
+              <span className="text-[10px] text-muted-foreground/40">{item.resolvedAgo}</span>
             </button>
           ))}
         </div>
-      </div>
-
-      <div className="bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl border border-primary/20 p-4">
-        <div className="flex items-center gap-2 mb-2">
-          <Sparkles className="w-4 h-4 text-primary" />
-          <h3 className="font-semibold text-sm">AI-Powered Features</h3>
-        </div>
-        <p className="text-xs text-muted-foreground mb-3">
-          Get AI summaries, fact-checking, and personalized recommendations.
-        </p>
-        <Button size="sm" className="w-full gap-2">
-          <ExternalLink className="w-3 h-3" />
-          Learn More
-        </Button>
       </div>
     </div>
   )

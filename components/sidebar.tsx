@@ -103,215 +103,121 @@ const topFigures = [
   },
 ]
 
-const tierColors: Record<string, { bg: string; text: string; border: string }> = {
-  diamond: { bg: "bg-cyan-500/10", text: "text-cyan-400", border: "border-cyan-500/30" },
-  platinum: { bg: "bg-slate-300/10", text: "text-slate-300", border: "border-slate-400/30" },
-  gold: { bg: "bg-yellow-500/10", text: "text-yellow-500", border: "border-yellow-500/30" },
+const tierColors: Record<string, { text: string }> = {
+  diamond: { text: "text-muted-foreground" },
+  platinum: { text: "text-muted-foreground" },
+  gold: { text: "text-muted-foreground" },
 }
 
-const typeColors: Record<string, { bg: string; text: string; border: string }> = {
-  "TV Personality": { bg: "bg-purple-500/10", text: "text-purple-400", border: "border-purple-500/30" },
-  Analyst: { bg: "bg-blue-500/10", text: "text-blue-400", border: "border-blue-500/30" },
-  Author: { bg: "bg-emerald-500/10", text: "text-emerald-400", border: "border-emerald-500/30" },
+const typeColors: Record<string, { text: string }> = {
+  "TV Personality": { text: "text-muted-foreground" },
+  Analyst: { text: "text-muted-foreground" },
+  Author: { text: "text-muted-foreground" },
 }
 
 export function Sidebar() {
   return (
     <aside className="hidden lg:block w-64 shrink-0">
       <div className="sticky top-20 space-y-6">
-        <div className="bg-card rounded-xl border border-border p-4">
-          <div className="flex items-center gap-2 mb-3">
-            <Target className="w-4 h-4 text-primary" />
-            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-              Top Predictions
-            </span>
-          </div>
-          <p className="text-xs text-muted-foreground mb-3">Best predictors on AI & Tech Stocks</p>
-          <div className="space-y-2">
+        <div>
+          <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground/70 px-1 mb-2 block">
+            Top Predictors
+          </span>
+          <div className="space-y-0.5">
             {topPredictors.map((predictor, index) => (
               <Link
                 key={predictor.username}
                 href={`/user/${predictor.username}`}
-                className={cn(
-                  "flex items-center gap-2 p-2 rounded-lg border transition-colors hover:bg-secondary/50 cursor-pointer",
-                  tierColors[predictor.tier].border,
-                  tierColors[predictor.tier].bg,
-                )}
+                className="flex items-center gap-2 px-2 py-1.5 rounded-md transition-colors hover:bg-secondary/40"
               >
-                <span className="text-xs font-bold text-muted-foreground w-4">#{index + 1}</span>
+                <span className="text-[10px] text-muted-foreground/50 w-3 tabular-nums">{index + 1}</span>
                 <img
                   src={predictor.avatar || "/placeholder.svg"}
                   alt={predictor.username}
-                  className="w-7 h-7 rounded-full object-cover"
+                  className="w-5 h-5 rounded-full object-cover"
                 />
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-1">
-                    <span className="text-xs font-medium text-foreground truncate">u/{predictor.username}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-[10px] text-muted-foreground">
-                    <span className={cn("font-semibold", tierColors[predictor.tier].text)}>
-                      {predictor.accuracy}% acc
-                    </span>
-                    <span>·</span>
-                    <span>{predictor.predictions} calls</span>
-                  </div>
-                </div>
-                <div className="flex flex-col items-end">
-                  <div className="flex items-center gap-0.5">
-                    <Flame className="w-3 h-3 text-orange-500" />
-                    <span className="text-[10px] font-medium text-orange-500">{predictor.streak}</span>
-                  </div>
-                </div>
+                <span className="text-xs text-foreground/80 truncate flex-1">{predictor.username}</span>
+                <span className="text-[10px] text-muted-foreground tabular-nums">{predictor.accuracy}%</span>
               </Link>
             ))}
           </div>
-          <Link href="/leaderboard" className="block w-full mt-3 text-xs text-primary hover:underline text-center">
-            View full leaderboard
+          <Link href="/leaderboard" className="block px-2 mt-2 text-[11px] text-muted-foreground hover:text-foreground transition-colors">
+            View leaderboard
           </Link>
         </div>
 
-        <div className="bg-card rounded-xl border border-border p-4">
-          <div className="flex items-center gap-2 mb-3">
-            <Mic className="w-4 h-4 text-primary" />
-            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Public Figures</span>
-          </div>
-          <p className="text-xs text-muted-foreground mb-3">Tracked pundits, analysts & celebrities</p>
-          <div className="space-y-2">
+        <div className="h-px bg-border/40" />
+
+        <div>
+          <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground/70 px-1 mb-2 block">
+            Public Figures
+          </span>
+          <div className="space-y-0.5">
             {topFigures.map((figure) => (
               <Link
                 key={figure.slug}
                 href={`/figure/${figure.slug}`}
-                className={cn(
-                  "flex items-center gap-2 p-2 rounded-lg border transition-colors hover:bg-secondary/50 cursor-pointer",
-                  typeColors[figure.type]?.border || "border-border",
-                  typeColors[figure.type]?.bg || "bg-secondary/20",
-                )}
+                className="flex items-center gap-2 px-2 py-1.5 rounded-md transition-colors hover:bg-secondary/40"
               >
                 <img
                   src={figure.avatar || "/placeholder.svg"}
                   alt={figure.name}
-                  className="w-8 h-8 rounded-full object-cover"
+                  className="w-5 h-5 rounded-full object-cover"
                 />
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-1">
-                    <span className="text-xs font-medium text-foreground truncate">{figure.name}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-[10px] text-muted-foreground">
-                    <span className={cn("font-semibold", typeColors[figure.type]?.text || "text-muted-foreground")}>
-                      {figure.accuracy}% acc
-                    </span>
-                    <span>·</span>
-                    <span>{figure.predictions} tracked</span>
-                  </div>
-                </div>
-                <span
-                  className={cn(
-                    "text-[9px] px-1.5 py-0.5 rounded-full font-medium",
-                    typeColors[figure.type]?.bg || "bg-secondary",
-                    typeColors[figure.type]?.text || "text-muted-foreground",
-                  )}
-                >
-                  {figure.type}
-                </span>
+                <span className="text-xs text-foreground/80 truncate flex-1">{figure.name}</span>
+                <span className="text-[10px] text-muted-foreground tabular-nums">{figure.accuracy}%</span>
               </Link>
             ))}
           </div>
-          <Link href="/figures" className="block w-full mt-3 text-xs text-primary hover:underline text-center">
-            View all public figures
+          <Link href="/figures" className="block px-2 mt-2 text-[11px] text-muted-foreground hover:text-foreground transition-colors">
+            View all figures
           </Link>
         </div>
 
-        <div className="bg-card rounded-xl border border-border p-4">
-          <div className="flex items-center gap-2 mb-3">
-            <Users className="w-4 h-4 text-primary" />
-            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Membership</span>
-          </div>
-          <div className="space-y-3">
-            <div>
-              <div className="flex justify-between text-sm mb-1">
-                <span className="text-muted-foreground">Active Members</span>
-                <span className="font-semibold text-foreground">87,429 / 100K</span>
-              </div>
-              <Progress value={87.4} className="h-2" />
+        <div className="h-px bg-border/40" />
+
+        <div>
+          <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground/70 px-1 mb-2 block">
+            Platform
+          </span>
+          <div className="px-2 space-y-2">
+            <div className="flex justify-between text-[11px]">
+              <span className="text-muted-foreground">Members</span>
+              <span className="text-foreground/70 tabular-nums">87,429 / 100K</span>
             </div>
-            <div className="flex items-center justify-between text-xs">
-              <span className="text-muted-foreground">Membership Value</span>
-              <span className="font-medium text-primary">$847</span>
+            <div className="h-1 bg-secondary rounded-full overflow-hidden">
+              <div className="h-full bg-primary/40 rounded-full" style={{ width: "87.4%" }} />
             </div>
-            <div className="flex items-center justify-between text-xs">
+            <div className="flex justify-between text-[11px]">
               <span className="text-muted-foreground">Your ELO</span>
-              <div className="flex items-center gap-1">
-                <Trophy className="w-3 h-3 text-yellow-500" />
-                <span className="font-medium text-yellow-500">1,542</span>
-              </div>
+              <span className="text-foreground/70 tabular-nums">1,542</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-card rounded-xl border border-border p-4">
-          <div className="flex items-center gap-2 mb-2">
-            <Shield className="w-4 h-4 text-emerald-500" />
-            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">AI Moderation</span>
-          </div>
-          <p className="text-xs text-muted-foreground">
-            Content moderated by community-trained LLM.{" "}
-            <span className="text-primary cursor-pointer hover:underline">View rules</span>
-          </p>
-          <div className="mt-2 flex items-center gap-2 text-xs">
-            <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-            <span className="text-emerald-500">Active</span>
-          </div>
-        </div>
+        <div className="h-px bg-border/40" />
 
-        <nav className="space-y-1">
+        <nav className="space-y-0.5">
           {navItems.map((item) => (
             <button
               key={item.label}
               className={cn(
-                "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
+                "w-full flex items-center gap-2.5 px-2 py-1.5 rounded-md text-xs transition-colors",
                 item.active
-                  ? "bg-secondary text-foreground"
-                  : "text-muted-foreground hover:bg-secondary/50 hover:text-foreground",
+                  ? "bg-secondary/60 text-foreground"
+                  : "text-muted-foreground hover:bg-secondary/30 hover:text-foreground/80",
               )}
             >
-              <item.icon className="w-5 h-5" />
+              <item.icon className="w-4 h-4" />
               {item.label}
             </button>
           ))}
-        </nav>
-
-        <div className="h-px bg-border" />
-
-        <div>
-          <div className="flex items-center gap-2 px-3 mb-3">
-            <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">AI Communities</span>
-          </div>
-          <div className="space-y-1">
-            {communities.map((community) => (
-              <button
-                key={community.name}
-                className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors text-muted-foreground hover:bg-secondary/50 hover:text-foreground"
-              >
-                <span className="text-lg">{community.icon}</span>
-                <div className="flex-1 text-left">
-                  <div className="font-medium text-foreground">{community.name}</div>
-                  <div className="text-xs text-muted-foreground">{community.members} members</div>
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="h-px bg-border" />
-
-        <nav className="space-y-1">
-          <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary/50 hover:text-foreground transition-colors">
-            <Bookmark className="w-5 h-5" />
+          <button className="w-full flex items-center gap-2.5 px-2 py-1.5 rounded-md text-xs text-muted-foreground hover:bg-secondary/30 hover:text-foreground/80 transition-colors">
+            <Bookmark className="w-4 h-4" />
             Saved
           </button>
-          <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-secondary/50 hover:text-foreground transition-colors">
-            <Settings className="w-5 h-5" />
+          <button className="w-full flex items-center gap-2.5 px-2 py-1.5 rounded-md text-xs text-muted-foreground hover:bg-secondary/30 hover:text-foreground/80 transition-colors">
+            <Settings className="w-4 h-4" />
             Settings
           </button>
         </nav>

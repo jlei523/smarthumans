@@ -90,24 +90,24 @@ interface Prediction {
 }
 
 const categoryConfig = {
-  tech: { icon: Cpu, color: "text-blue-500", bgColor: "bg-blue-500/10", label: "Tech" },
-  politics: { icon: Landmark, color: "text-purple-500", bgColor: "bg-purple-500/10", label: "Politics" },
-  sports: { icon: Trophy, color: "text-amber-500", bgColor: "bg-amber-500/10", label: "Sports" },
-  entertainment: { icon: Film, color: "text-pink-500", bgColor: "bg-pink-500/10", label: "Entertainment" },
-  gaming: { icon: Gamepad2, color: "text-green-500", bgColor: "bg-green-500/10", label: "Gaming" },
-  science: { icon: FlaskConical, color: "text-cyan-500", bgColor: "bg-cyan-500/10", label: "Science" },
-  finance: { icon: TrendingUp, color: "text-emerald-500", bgColor: "bg-emerald-500/10", label: "Finance" },
-  world: { icon: Globe, color: "text-orange-500", bgColor: "bg-orange-500/10", label: "World" },
+  tech: { icon: Cpu, color: "text-muted-foreground", bgColor: "bg-secondary", label: "Tech" },
+  politics: { icon: Landmark, color: "text-muted-foreground", bgColor: "bg-secondary", label: "Politics" },
+  sports: { icon: Trophy, color: "text-muted-foreground", bgColor: "bg-secondary", label: "Sports" },
+  entertainment: { icon: Film, color: "text-muted-foreground", bgColor: "bg-secondary", label: "Entertainment" },
+  gaming: { icon: Gamepad2, color: "text-muted-foreground", bgColor: "bg-secondary", label: "Gaming" },
+  science: { icon: FlaskConical, color: "text-muted-foreground", bgColor: "bg-secondary", label: "Science" },
+  finance: { icon: TrendingUp, color: "text-muted-foreground", bgColor: "bg-secondary", label: "Finance" },
+  world: { icon: Globe, color: "text-muted-foreground", bgColor: "bg-secondary", label: "World" },
 }
 
 const sourceTypeConfig: Record<string, { label: string; color: string }> = {
-  member: { label: "Member", color: "bg-primary/20 text-primary" },
-  pundit: { label: "Pundit", color: "bg-purple-500/20 text-purple-400" },
-  tv: { label: "TV", color: "bg-blue-500/20 text-blue-400" },
-  author: { label: "Author", color: "bg-amber-500/20 text-amber-400" },
-  politician: { label: "Politician", color: "bg-red-500/20 text-red-400" },
-  celebrity: { label: "Celebrity", color: "bg-pink-500/20 text-pink-400" },
-  analyst: { label: "Analyst", color: "bg-emerald-500/20 text-emerald-400" },
+  member: { label: "Member", color: "bg-secondary text-muted-foreground" },
+  pundit: { label: "Pundit", color: "bg-secondary text-muted-foreground" },
+  tv: { label: "TV", color: "bg-secondary text-muted-foreground" },
+  author: { label: "Author", color: "bg-secondary text-muted-foreground" },
+  politician: { label: "Politician", color: "bg-secondary text-muted-foreground" },
+  celebrity: { label: "Celebrity", color: "bg-secondary text-muted-foreground" },
+  analyst: { label: "Analyst", color: "bg-secondary text-muted-foreground" },
 }
 
 const feedPredictions: Prediction[] = [
@@ -349,19 +349,16 @@ function SourceBadge({ source }: { source: PredictionSource }) {
   const avatar = "avatar" in source ? source.avatar : undefined
 
   return (
-    <Link href={href} className="flex items-center gap-2 group">
+    <Link href={href} className="flex items-center gap-1.5 group">
       {avatar && (
         <img
           src={avatar || "/placeholder.svg"}
           alt={name}
-          className="w-6 h-6 rounded-full object-cover ring-1 ring-border"
+          className="w-5 h-5 rounded-full object-cover"
         />
       )}
-      <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{name}</span>
-      {detail && <span className="text-xs text-muted-foreground hidden sm:inline">{detail}</span>}
-      <Badge variant="outline" className={cn("text-[10px] px-1.5 py-0 h-4", config.color)}>
-        {config.label}
-      </Badge>
+      <span className="text-xs text-foreground/70 group-hover:text-foreground transition-colors">{name}</span>
+      {detail && <span className="text-[10px] text-muted-foreground/60 hidden sm:inline">{detail}</span>}
     </Link>
   )
 }
@@ -453,59 +450,51 @@ function PredictionCard({ prediction }: { prediction: Prediction }) {
   }
 
   return (
-    <div className="bg-card rounded-xl border border-border overflow-hidden transition-colors hover:border-border/80">
+    <div className="border-b border-border/40 transition-colors hover:bg-card/50">
       <div className="flex">
         {/* Left column - Follow */}
-        <div className="flex flex-col items-center py-4 px-3 gap-1">
+        <div className="flex flex-col items-center pt-4 pb-3 px-3">
           <button
             onClick={handleFollow}
             className={cn(
-              "flex flex-col items-center gap-0.5 p-1.5 rounded-lg transition-all",
+              "flex flex-col items-center gap-0.5 p-1 rounded transition-all",
               isFollowing
-                ? "bg-primary/20 text-primary"
-                : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                ? "text-primary/70"
+                : "text-muted-foreground/40 hover:text-muted-foreground"
             )}
             aria-label={isFollowing ? "Unfollow prediction" : "Follow prediction"}
           >
-            {isFollowing ? <BellOff className="w-5 h-5" /> : <Bell className="w-5 h-5" />}
-            <span className="text-[10px] font-semibold">{followerCount.toLocaleString()}</span>
+            {isFollowing ? <BellOff className="w-4 h-4" /> : <Bell className="w-4 h-4" />}
+            <span className="text-[9px] tabular-nums">{followerCount.toLocaleString()}</span>
           </button>
         </div>
 
         {/* Main content */}
         <div className="flex-1 py-4 pr-4">
           {/* Header row */}
-          <div className="flex items-center gap-2 flex-wrap mb-2">
-            <Badge variant="outline" className={cn("text-[10px] px-1.5 py-0 h-5 gap-1", catConfig.bgColor, catConfig.color)}>
-              <CatIcon className="w-3 h-3" />
-              {categoryConfig[prediction.category].label}
-            </Badge>
-            <Badge
-              variant="outline"
-              className={cn(
-                "text-[10px] px-1.5 py-0 h-5",
-                prediction.status === "correct" && "bg-emerald-500/10 text-emerald-500 border-emerald-500/30",
-                prediction.status === "incorrect" && "bg-red-500/10 text-red-500 border-red-500/30",
-                prediction.status === "pending" && "bg-yellow-500/10 text-yellow-500 border-yellow-500/30"
-              )}
-            >
-              {prediction.status === "correct" && <CheckCircle2 className="w-3 h-3 mr-0.5" />}
-              {prediction.status === "incorrect" && <XCircle className="w-3 h-3 mr-0.5" />}
-              {prediction.status === "pending" && <Clock className="w-3 h-3 mr-0.5" />}
+          <div className="flex items-center gap-2 flex-wrap mb-1.5">
+            <span className="text-[10px] text-muted-foreground/60">{categoryConfig[prediction.category].label}</span>
+            <span className="text-[10px] text-muted-foreground/30">{'/'}</span>
+            <span className={cn(
+              "text-[10px]",
+              prediction.status === "correct" && "text-emerald-500/70",
+              prediction.status === "incorrect" && "text-red-400/70",
+              prediction.status === "pending" && "text-muted-foreground/60"
+            )}>
               {prediction.status.charAt(0).toUpperCase() + prediction.status.slice(1)}
-            </Badge>
-            <span className="text-[10px] text-muted-foreground flex items-center gap-1">
-              <Calendar className="w-3 h-3" />
-              {prediction.date}
             </span>
-            <span className="text-[10px] text-muted-foreground flex items-center gap-1">
-              <Clock className="w-3 h-3" />
-              {prediction.timeframe}
-            </span>
+            <span className="text-[10px] text-muted-foreground/30">{'/'}</span>
+            <span className="text-[10px] text-muted-foreground/50">{prediction.date}</span>
+            {prediction.timeframe !== "Resolved" && (
+              <>
+                <span className="text-[10px] text-muted-foreground/30">{'/'}</span>
+                <span className="text-[10px] text-muted-foreground/50">{prediction.timeframe}</span>
+              </>
+            )}
           </div>
 
           {/* Title */}
-          <h3 className="text-base font-semibold text-foreground mb-2 text-balance leading-snug">
+          <h3 className="text-sm font-medium text-foreground/90 mb-2 text-balance leading-snug">
             {prediction.title}
           </h3>
 
@@ -534,37 +523,29 @@ function PredictionCard({ prediction }: { prediction: Prediction }) {
           </div>
 
           {/* Confidence bar */}
-          <div className="flex items-center gap-3 mb-3">
-            <span className="text-xs text-muted-foreground">Confidence</span>
-            <div className="flex-1 h-2 bg-secondary rounded-full overflow-hidden max-w-48">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-[10px] text-muted-foreground/50">Confidence</span>
+            <div className="flex-1 h-1 bg-secondary/60 rounded-full overflow-hidden max-w-32">
               <div
-                className={cn(
-                  "h-full rounded-full transition-all",
-                  prediction.confidence >= 70 ? "bg-emerald-500" :
-                  prediction.confidence >= 40 ? "bg-yellow-500" : "bg-red-500"
-                )}
+                className="h-full rounded-full bg-primary/30 transition-all"
                 style={{ width: `${prediction.confidence}%` }}
               />
             </div>
-            <span className={cn(
-              "text-xs font-semibold",
-              prediction.confidence >= 70 ? "text-emerald-500" :
-              prediction.confidence >= 40 ? "text-yellow-500" : "text-red-500"
-            )}>
+            <span className="text-[10px] text-muted-foreground/60 tabular-nums">
               {prediction.confidence}%
             </span>
           </div>
 
           {/* Prediction text */}
-          <p className="text-sm text-muted-foreground mb-2">{prediction.prediction}</p>
+          <p className="text-xs text-muted-foreground/70 mb-2 leading-relaxed">{prediction.prediction}</p>
 
           {prediction.outcome && (
-            <div className={cn(
-              "text-sm p-2 rounded-lg mb-2 border",
-              prediction.status === "correct" ? "bg-emerald-500/5 border-emerald-500/20 text-emerald-400" : "bg-red-500/5 border-red-500/20 text-red-400"
+            <p className={cn(
+              "text-xs mb-2",
+              prediction.status === "correct" ? "text-emerald-500/60" : "text-red-400/60"
             )}>
-              <span className="font-medium">Outcome:</span> {prediction.outcome}
-            </div>
+              Outcome: {prediction.outcome}
+            </p>
           )}
 
           {/* Action row */}
@@ -593,13 +574,13 @@ function PredictionCard({ prediction }: { prediction: Prediction }) {
 
           {/* Expanded section */}
           {isExpanded && (
-            <div className="mt-4 border-t border-border pt-4">
-              <div className="flex gap-1 mb-4">
+            <div className="mt-3 border-t border-border/30 pt-3">
+              <div className="flex gap-3 mb-3">
                 <button
                   onClick={() => setActiveTab("comments")}
                   className={cn(
-                    "px-3 py-1.5 rounded-md text-xs font-medium transition-colors",
-                    activeTab === "comments" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-secondary"
+                    "text-[11px] transition-colors",
+                    activeTab === "comments" ? "text-foreground/80" : "text-muted-foreground/50 hover:text-muted-foreground"
                   )}
                 >
                   Comments ({comments.length})
@@ -607,8 +588,8 @@ function PredictionCard({ prediction }: { prediction: Prediction }) {
                 <button
                   onClick={() => setActiveTab("outcomes")}
                   className={cn(
-                    "px-3 py-1.5 rounded-md text-xs font-medium transition-colors",
-                    activeTab === "outcomes" ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-secondary"
+                    "text-[11px] transition-colors",
+                    activeTab === "outcomes" ? "text-foreground/80" : "text-muted-foreground/50 hover:text-muted-foreground"
                   )}
                 >
                   Outcomes ({outcomes.length})
@@ -758,37 +739,31 @@ export function PredictionsFeed() {
   return (
     <div className="space-y-4">
       {/* Filters bar */}
-      <div className="bg-card rounded-xl border border-border p-4 space-y-3">
+      <div className="pb-3 mb-1 space-y-2.5">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Target className="w-4 h-4 text-primary" />
-            <h2 className="text-sm font-semibold">Predictions Feed</h2>
-          </div>
-          <div className="flex items-center gap-2">
-            <ArrowUpDown className="w-3 h-3 text-muted-foreground" />
-            <select
-              value={activeSort}
-              onChange={(e) => setActiveSort(e.target.value)}
-              className="text-xs bg-secondary border-0 rounded-md px-2 py-1 text-foreground focus:outline-none focus:ring-1 focus:ring-primary"
-            >
-              {sortOptions.map((opt) => (
-                <option key={opt.value} value={opt.value}>{opt.label}</option>
-              ))}
-            </select>
-          </div>
+          <h2 className="text-xs font-medium text-muted-foreground/70">Predictions</h2>
+          <select
+            value={activeSort}
+            onChange={(e) => setActiveSort(e.target.value)}
+            className="text-[11px] bg-transparent border-0 text-muted-foreground/60 focus:outline-none cursor-pointer"
+          >
+            {sortOptions.map((opt) => (
+              <option key={opt.value} value={opt.value}>{opt.label}</option>
+            ))}
+          </select>
         </div>
 
         {/* Category pills */}
-        <div className="flex gap-1.5 flex-wrap">
+        <div className="flex gap-1 flex-wrap">
           {categoryFilters.map((cat) => (
             <button
               key={cat.value}
               onClick={() => setActiveCategory(cat.value)}
               className={cn(
-                "px-2.5 py-1 rounded-full text-[11px] font-medium transition-colors",
+                "px-2 py-0.5 rounded text-[10px] transition-colors",
                 activeCategory === cat.value
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-muted-foreground hover:text-foreground"
+                  ? "bg-secondary text-foreground/80"
+                  : "text-muted-foreground/50 hover:text-muted-foreground"
               )}
             >
               {cat.label}
@@ -797,16 +772,16 @@ export function PredictionsFeed() {
         </div>
 
         {/* Status pills */}
-        <div className="flex gap-1.5">
+        <div className="flex gap-1">
           {statusFilters.map((s) => (
             <button
               key={s.value}
               onClick={() => setActiveStatus(s.value)}
               className={cn(
-                "px-2.5 py-1 rounded-full text-[11px] font-medium transition-colors",
+                "px-2 py-0.5 rounded text-[10px] transition-colors",
                 activeStatus === s.value
-                  ? "bg-foreground text-background"
-                  : "bg-secondary text-muted-foreground hover:text-foreground"
+                  ? "bg-secondary text-foreground/80"
+                  : "text-muted-foreground/50 hover:text-muted-foreground"
               )}
             >
               {s.label}
