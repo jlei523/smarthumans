@@ -13,7 +13,7 @@ export default function HomePage() {
           <main className="flex-1 min-w-0">
             <PredictionsFeed />
           </main>
-          <aside className="hidden xl:block w-56 shrink-0">
+          <aside className="hidden lg:block w-56 shrink-0">
             <TrendingTopics />
           </aside>
         </div>

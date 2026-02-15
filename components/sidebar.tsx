@@ -19,7 +19,7 @@ const navItems = [
 
 export function Sidebar() {
   return (
-    <aside className="hidden lg:block w-44 shrink-0">
+    <aside className="hidden md:block w-36 shrink-0">
       <div className="sticky top-16 space-y-0.5">
         <nav className="space-y-0.5">
           {navItems.map((item) => (
