@@ -357,8 +357,8 @@ function SourceBadge({ source }: { source: PredictionSource }) {
           className="w-5 h-5 rounded-full object-cover"
         />
       )}
-      <span className="text-xs text-foreground/70 group-hover:text-foreground transition-colors">{name}</span>
-      {detail && <span className="text-[10px] text-muted-foreground/60 hidden sm:inline">{detail}</span>}
+      <span className="text-xs text-foreground/90 group-hover:text-foreground transition-colors">{name}</span>
+      {detail && <span className="text-[10px] text-muted-foreground hidden sm:inline">{detail}</span>}
     </Link>
   )
 }
@@ -459,8 +459,8 @@ function PredictionCard({ prediction }: { prediction: Prediction }) {
             className={cn(
               "flex flex-col items-center gap-0.5 p-1 rounded transition-all",
               isFollowing
-                ? "text-primary/70"
-                : "text-muted-foreground/40 hover:text-muted-foreground"
+                ? "text-primary"
+                : "text-muted-foreground/60 hover:text-muted-foreground"
             )}
             aria-label={isFollowing ? "Unfollow prediction" : "Follow prediction"}
           >
@@ -473,28 +473,28 @@ function PredictionCard({ prediction }: { prediction: Prediction }) {
         <div className="flex-1 py-4 pr-4">
           {/* Header row */}
           <div className="flex items-center gap-2 flex-wrap mb-1.5">
-            <span className="text-[10px] text-muted-foreground/60">{categoryConfig[prediction.category].label}</span>
-            <span className="text-[10px] text-muted-foreground/30">{'/'}</span>
+            <span className="text-[10px] text-muted-foreground">{categoryConfig[prediction.category].label}</span>
+            <span className="text-[10px] text-muted-foreground/50">{'/'}</span>
             <span className={cn(
               "text-[10px]",
-              prediction.status === "correct" && "text-emerald-500/70",
-              prediction.status === "incorrect" && "text-red-400/70",
-              prediction.status === "pending" && "text-muted-foreground/60"
+              prediction.status === "correct" && "text-emerald-500/90",
+              prediction.status === "incorrect" && "text-red-400/90",
+              prediction.status === "pending" && "text-muted-foreground"
             )}>
               {prediction.status.charAt(0).toUpperCase() + prediction.status.slice(1)}
             </span>
-            <span className="text-[10px] text-muted-foreground/30">{'/'}</span>
-            <span className="text-[10px] text-muted-foreground/50">{prediction.date}</span>
+            <span className="text-[10px] text-muted-foreground/50">{'/'}</span>
+            <span className="text-[10px] text-muted-foreground">{prediction.date}</span>
             {prediction.timeframe !== "Resolved" && (
               <>
-                <span className="text-[10px] text-muted-foreground/30">{'/'}</span>
-                <span className="text-[10px] text-muted-foreground/50">{prediction.timeframe}</span>
+                <span className="text-[10px] text-muted-foreground/50">{'/'}</span>
+                <span className="text-[10px] text-muted-foreground">{prediction.timeframe}</span>
               </>
             )}
           </div>
 
           {/* Title */}
-          <h3 className="text-sm font-medium text-foreground/90 mb-2 text-balance leading-snug">
+          <h3 className="text-sm font-medium text-foreground mb-2 text-balance leading-snug">
             {prediction.title}
           </h3>
 
@@ -524,25 +524,25 @@ function PredictionCard({ prediction }: { prediction: Prediction }) {
 
           {/* Confidence bar */}
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-[10px] text-muted-foreground/50">Confidence</span>
-            <div className="flex-1 h-1 bg-secondary/60 rounded-full overflow-hidden max-w-32">
+            <span className="text-[10px] text-muted-foreground">Confidence</span>
+            <div className="flex-1 h-1 bg-secondary rounded-full overflow-hidden max-w-32">
               <div
-                className="h-full rounded-full bg-primary/30 transition-all"
+                className="h-full rounded-full bg-primary/40 transition-all"
                 style={{ width: `${prediction.confidence}%` }}
               />
             </div>
-            <span className="text-[10px] text-muted-foreground/60 tabular-nums">
+            <span className="text-[10px] text-muted-foreground tabular-nums">
               {prediction.confidence}%
             </span>
           </div>
 
           {/* Prediction text */}
-          <p className="text-xs text-muted-foreground/70 mb-2 leading-relaxed">{prediction.prediction}</p>
+          <p className="text-xs text-muted-foreground mb-2 leading-relaxed">{prediction.prediction}</p>
 
           {prediction.outcome && (
             <p className={cn(
               "text-xs mb-2",
-              prediction.status === "correct" ? "text-emerald-500/60" : "text-red-400/60"
+              prediction.status === "correct" ? "text-emerald-500/80" : "text-red-400/80"
             )}>
               Outcome: {prediction.outcome}
             </p>
@@ -580,7 +580,7 @@ function PredictionCard({ prediction }: { prediction: Prediction }) {
                   onClick={() => setActiveTab("comments")}
                   className={cn(
                     "text-[11px] transition-colors",
-                    activeTab === "comments" ? "text-foreground/80" : "text-muted-foreground/50 hover:text-muted-foreground"
+                    activeTab === "comments" ? "text-foreground" : "text-muted-foreground hover:text-foreground/80"
                   )}
                 >
                   Comments ({comments.length})
@@ -589,7 +589,7 @@ function PredictionCard({ prediction }: { prediction: Prediction }) {
                   onClick={() => setActiveTab("outcomes")}
                   className={cn(
                     "text-[11px] transition-colors",
-                    activeTab === "outcomes" ? "text-foreground/80" : "text-muted-foreground/50 hover:text-muted-foreground"
+                    activeTab === "outcomes" ? "text-foreground" : "text-muted-foreground hover:text-foreground/80"
                   )}
                 >
                   Outcomes ({outcomes.length})
@@ -741,11 +741,11 @@ export function PredictionsFeed() {
       {/* Filters bar */}
       <div className="pb-3 mb-1 space-y-2.5">
         <div className="flex items-center justify-between">
-          <h2 className="text-xs font-medium text-muted-foreground/70">Predictions</h2>
+          <h2 className="text-xs font-medium text-muted-foreground">Predictions</h2>
           <select
             value={activeSort}
             onChange={(e) => setActiveSort(e.target.value)}
-            className="text-[11px] bg-transparent border-0 text-muted-foreground/60 focus:outline-none cursor-pointer"
+            className="text-[11px] bg-transparent border-0 text-muted-foreground focus:outline-none cursor-pointer"
           >
             {sortOptions.map((opt) => (
               <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -762,8 +762,8 @@ export function PredictionsFeed() {
               className={cn(
                 "px-2 py-0.5 rounded text-[10px] transition-colors",
                 activeCategory === cat.value
-                  ? "bg-secondary text-foreground/80"
-                  : "text-muted-foreground/50 hover:text-muted-foreground"
+                  ? "bg-secondary text-foreground"
+                  : "text-muted-foreground hover:text-foreground/80"
               )}
             >
               {cat.label}
@@ -780,8 +780,8 @@ export function PredictionsFeed() {
               className={cn(
                 "px-2 py-0.5 rounded text-[10px] transition-colors",
                 activeStatus === s.value
-                  ? "bg-secondary text-foreground/80"
-                  : "text-muted-foreground/50 hover:text-muted-foreground"
+                  ? "bg-secondary text-foreground"
+                  : "text-muted-foreground hover:text-foreground/80"
               )}
             >
               {s.label}

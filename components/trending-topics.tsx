@@ -19,7 +19,7 @@ export function TrendingTopics() {
   return (
     <div className="sticky top-16 space-y-6">
       <div>
-        <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground/70 px-1 mb-2 block">
+        <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground px-1 mb-2 block">
           Trending Topics
         </span>
         <div className="space-y-0.5">
@@ -28,9 +28,9 @@ export function TrendingTopics() {
               key={item.topic}
               className="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-secondary/30 transition-colors text-left"
             >
-              <span className="text-[10px] text-muted-foreground/40 w-3 tabular-nums">{index + 1}</span>
-              <span className="text-xs text-foreground/70 flex-1 truncate">{item.topic}</span>
-              <span className="text-[10px] text-muted-foreground/40 tabular-nums">{item.predictions}</span>
+              <span className="text-[10px] text-muted-foreground w-3 tabular-nums">{index + 1}</span>
+              <span className="text-xs text-foreground flex-1 truncate">{item.topic}</span>
+              <span className="text-[10px] text-muted-foreground tabular-nums">{item.predictions}</span>
             </button>
           ))}
         </div>
@@ -39,7 +39,7 @@ export function TrendingTopics() {
       <div className="h-px bg-border/30" />
 
       <div>
-        <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground/70 px-1 mb-2 block">
+        <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground px-1 mb-2 block">
           Recently Resolved
         </span>
         <div className="space-y-0.5">
@@ -48,11 +48,11 @@ export function TrendingTopics() {
               key={item.title}
               className="w-full flex items-center gap-2 px-2 py-1.5 rounded-md hover:bg-secondary/30 transition-colors text-left"
             >
-              <span className={`text-[10px] ${item.result === "correct" ? "text-emerald-500/50" : "text-red-400/50"}`}>
+              <span className={`text-[10px] ${item.result === "correct" ? "text-emerald-500/80" : "text-red-400/80"}`}>
                 {item.result === "correct" ? "+" : "-"}
               </span>
-              <span className="text-xs text-foreground/60 flex-1 truncate">{item.title}</span>
-              <span className="text-[10px] text-muted-foreground/40">{item.resolvedAgo}</span>
+              <span className="text-xs text-foreground/80 flex-1 truncate">{item.title}</span>
+              <span className="text-[10px] text-muted-foreground">{item.resolvedAgo}</span>
             </button>
           ))}
         </div>

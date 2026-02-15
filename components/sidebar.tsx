@@ -120,7 +120,7 @@ export function Sidebar() {
     <aside className="hidden lg:block w-64 shrink-0">
       <div className="sticky top-20 space-y-6">
         <div>
-          <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground/70 px-1 mb-2 block">
+          <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground px-1 mb-2 block">
             Top Predictors
           </span>
           <div className="space-y-0.5">
@@ -130,13 +130,13 @@ export function Sidebar() {
                 href={`/user/${predictor.username}`}
                 className="flex items-center gap-2 px-2 py-1.5 rounded-md transition-colors hover:bg-secondary/40"
               >
-                <span className="text-[10px] text-muted-foreground/50 w-3 tabular-nums">{index + 1}</span>
+                <span className="text-[10px] text-muted-foreground w-3 tabular-nums">{index + 1}</span>
                 <img
                   src={predictor.avatar || "/placeholder.svg"}
                   alt={predictor.username}
                   className="w-5 h-5 rounded-full object-cover"
                 />
-                <span className="text-xs text-foreground/80 truncate flex-1">{predictor.username}</span>
+                <span className="text-xs text-foreground truncate flex-1">{predictor.username}</span>
                 <span className="text-[10px] text-muted-foreground tabular-nums">{predictor.accuracy}%</span>
               </Link>
             ))}
@@ -149,7 +149,7 @@ export function Sidebar() {
         <div className="h-px bg-border/40" />
 
         <div>
-          <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground/70 px-1 mb-2 block">
+          <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground px-1 mb-2 block">
             Public Figures
           </span>
           <div className="space-y-0.5">
@@ -164,7 +164,7 @@ export function Sidebar() {
                   alt={figure.name}
                   className="w-5 h-5 rounded-full object-cover"
                 />
-                <span className="text-xs text-foreground/80 truncate flex-1">{figure.name}</span>
+                <span className="text-xs text-foreground truncate flex-1">{figure.name}</span>
                 <span className="text-[10px] text-muted-foreground tabular-nums">{figure.accuracy}%</span>
               </Link>
             ))}
@@ -177,20 +177,20 @@ export function Sidebar() {
         <div className="h-px bg-border/40" />
 
         <div>
-          <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground/70 px-1 mb-2 block">
+          <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground px-1 mb-2 block">
             Platform
           </span>
           <div className="px-2 space-y-2">
             <div className="flex justify-between text-[11px]">
               <span className="text-muted-foreground">Members</span>
-              <span className="text-foreground/70 tabular-nums">87,429 / 100K</span>
+              <span className="text-foreground tabular-nums">87,429 / 100K</span>
             </div>
             <div className="h-1 bg-secondary rounded-full overflow-hidden">
               <div className="h-full bg-primary/40 rounded-full" style={{ width: "87.4%" }} />
             </div>
             <div className="flex justify-between text-[11px]">
               <span className="text-muted-foreground">Your ELO</span>
-              <span className="text-foreground/70 tabular-nums">1,542</span>
+              <span className="text-foreground tabular-nums">1,542</span>
             </div>
           </div>
         </div>
