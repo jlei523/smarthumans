@@ -21,7 +21,7 @@ const commentsData: CommentData[] = [
     replies: [
       {
         id: "1-1",
-        author: "auradragon1",
+        author: "signal_drift",
         avatar: "/dragon-avatar.jpg",
         content:
           'Exactly. The enterprise moat is underrated. Once you\'ve fine-tuned models on your proprietary data and integrated it into your stack, switching costs are massive. This is why I think the "Google will eat their lunch" narrative is overblown.',
@@ -57,7 +57,7 @@ const commentsData: CommentData[] = [
     replies: [
       {
         id: "2-1",
-        author: "auradragon1",
+        author: "signal_drift",
         avatar: "/dragon-avatar.jpg",
         content:
           "Fair pushback on the ad thesis - it's definitely speculative. But on burn rate: inference costs are dropping ~50% per year due to hardware improvements and optimization. Their cost structure in 2026 will look very different than today. The question is whether they can ride the curve.",
@@ -81,7 +81,7 @@ const commentsData: CommentData[] = [
     replies: [
       {
         id: "3-1",
-        author: "auradragon1",
+        author: "signal_drift",
         avatar: "/dragon-avatar.jpg",
         content:
           "MSFT gives you indirect exposure through their 49% stake. NVDA benefits regardless of who wins the AI race since everyone needs their chips. For pure OpenAI exposure, you'd have to wait for the IPO or buy secondary shares if you're accredited. I personally hold both MSFT and GOOGL.",

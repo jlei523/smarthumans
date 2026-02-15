@@ -7,13 +7,13 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <div className="max-w-7xl mx-auto px-4 py-6">
+      <div className="max-w-6xl mx-auto px-4 py-4">
         <div className="flex gap-6">
           <Sidebar />
           <main className="flex-1 min-w-0">
             <PredictionsFeed />
           </main>
-          <aside className="hidden xl:block w-80 shrink-0">
+          <aside className="hidden lg:block w-56 shrink-0">
             <TrendingTopics />
           </aside>
         </div>

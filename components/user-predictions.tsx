@@ -109,7 +109,7 @@ const sourceTypeConfig = {
 }
 
 const predictionsData: Record<string, Prediction[]> = {
-  auradragon1: [
+  signal_drift: [
     {
       id: "1",
       title: "OpenAI valuation will exceed $300B by end of 2025",
@@ -124,7 +124,7 @@ const predictionsData: Record<string, Prediction[]> = {
       postLink: "/",
       followers: 1247,
       isFollowing: false,
-      source: { type: "member", username: "auradragon1", avatar: "/dragon-avatar.jpg" },
+      source: { type: "member", username: "signal_drift", avatar: "/dragon-avatar.jpg" },
       comments: [
         {
           id: "c1",
@@ -316,7 +316,7 @@ const predictionsData: Record<string, Prediction[]> = {
       postLink: "/",
       followers: 3892,
       isFollowing: true,
-      source: { type: "member", username: "auradragon1", avatar: "/dragon-avatar.jpg" },
+      source: { type: "member", username: "signal_drift", avatar: "/dragon-avatar.jpg" },
       comments: [
         {
           id: "c1",
@@ -372,7 +372,7 @@ const predictionsData: Record<string, Prediction[]> = {
       postLink: "/",
       followers: 2156,
       isFollowing: false,
-      source: { type: "member", username: "auradragon1", avatar: "/dragon-avatar.jpg" },
+      source: { type: "member", username: "signal_drift", avatar: "/dragon-avatar.jpg" },
       comments: [
         {
           id: "c1",
@@ -400,7 +400,7 @@ const predictionsData: Record<string, Prediction[]> = {
       postLink: "/",
       followers: 892,
       isFollowing: false,
-      source: { type: "member", username: "auradragon1", avatar: "/dragon-avatar.jpg" },
+      source: { type: "member", username: "signal_drift", avatar: "/dragon-avatar.jpg" },
       comments: [
         {
           id: "c1",
@@ -443,7 +443,7 @@ const predictionsData: Record<string, Prediction[]> = {
       postLink: "/",
       followers: 5621,
       isFollowing: true,
-      source: { type: "member", username: "auradragon1", avatar: "/dragon-avatar.jpg" },
+      source: { type: "member", username: "signal_drift", avatar: "/dragon-avatar.jpg" },
       comments: [],
       outcomes: [
         {
@@ -475,7 +475,7 @@ const predictionsData: Record<string, Prediction[]> = {
       postLink: "/",
       followers: 1834,
       isFollowing: false,
-      source: { type: "member", username: "auradragon1", avatar: "/dragon-avatar.jpg" },
+      source: { type: "member", username: "signal_drift", avatar: "/dragon-avatar.jpg" },
       comments: [
         {
           id: "c1",
@@ -518,7 +518,7 @@ const predictionsData: Record<string, Prediction[]> = {
       postLink: "/",
       followers: 4521,
       isFollowing: true,
-      source: { type: "member", username: "auradragon1", avatar: "/dragon-avatar.jpg" },
+      source: { type: "member", username: "signal_drift", avatar: "/dragon-avatar.jpg" },
       comments: [],
       outcomes: [
         {
@@ -551,7 +551,7 @@ const predictionsData: Record<string, Prediction[]> = {
       postLink: "/",
       followers: 7234,
       isFollowing: false,
-      source: { type: "member", username: "auradragon1", avatar: "/dragon-avatar.jpg" },
+      source: { type: "member", username: "signal_drift", avatar: "/dragon-avatar.jpg" },
       comments: [
         {
           id: "c1",

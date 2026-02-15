@@ -68,7 +68,7 @@ const leaderboardData = [
   },
   {
     rank: 5,
-    username: "auradragon1",
+    username: "signal_drift",
     avatar: "/dragon-avatar.jpg",
     accuracy: 78.3,
     predictions: 46,

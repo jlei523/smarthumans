@@ -92,8 +92,8 @@ const usersData: Record<
     rank: 4,
     topicRank: 4,
   },
-  auradragon1: {
-    username: "auradragon1",
+  signal_drift: {
+    username: "signal_drift",
     avatar: "/dragon-avatar.jpg",
     bio: "Independent researcher focusing on AI company valuations and market dynamics. Deep dives with receipts.",
     joinDate: "Apr 2023",
@@ -230,7 +230,7 @@ const badgeConfig: Record<string, { label: string; color: string }> = {
 }
 
 export function UserProfile({ username }: { username: string }) {
-  const user = usersData[username] || usersData["auradragon1"]
+  const user = usersData[username] || usersData["signal_drift"]
   const tier = tierConfig[user.tier]
 
   return (

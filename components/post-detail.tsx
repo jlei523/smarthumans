@@ -76,7 +76,7 @@ export function PostDetail() {
                 r/stocks
               </Badge>
               <span className="text-muted-foreground text-xs">•</span>
-              <span className="text-muted-foreground text-xs">Posted by u/auradragon1</span>
+              <span className="text-muted-foreground text-xs">Posted by u/signal_drift</span>
               <Badge
                 variant="outline"
                 className="text-[10px] px-1.5 py-0 gap-0.5 bg-yellow-500/20 text-yellow-400 border-yellow-500/50"

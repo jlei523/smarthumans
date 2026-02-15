@@ -15,7 +15,7 @@ const usersStats: Record<
     monthlyPerformance: { month: string; accuracy: number }[]
   }
 > = {
-  auradragon1: {
+  signal_drift: {
     elo: 2156,
     tier: "platinum",
     accuracyByTopic: [
