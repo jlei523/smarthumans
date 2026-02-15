@@ -57,7 +57,7 @@ const categories = [
 ]
 
 const suggestedMembers = [
-  { username: "auradragon1", avatar: "/dragon-avatar.jpg", tier: "platinum" },
+  { username: "signal_drift", avatar: "/dragon-avatar.jpg", tier: "platinum" },
   { username: "quant_alpha", avatar: "/quant-avatar.jpg", tier: "diamond" },
   { username: "tech_oracle_23", avatar: "/analyst-avatar.png", tier: "platinum" },
 ]

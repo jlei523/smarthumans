@@ -17,8 +17,6 @@ import {
   Gamepad2,
   FlaskConical,
   Landmark,
-  Bell,
-  BellOff,
   MessageSquare,
   ThumbsUp,
   Link2,
@@ -123,7 +121,7 @@ const feedPredictions: Prediction[] = [
     reasoning: "Based on OpenAI's accelerating release cadence and recent statements from Sam Altman about the next frontier model being 'closer than people think.'",
     followers: 3842,
     isFollowing: false,
-    source: { type: "member", username: "auradragon1", avatar: "/dragon-avatar.jpg" },
+    source: { type: "member", username: "signal_drift", avatar: "/dragon-avatar.jpg" },
     comments: [
       { id: "c1", userId: "u1", username: "model_watcher", avatar: "/analyst-avatar.png", content: "The internal testing timeline suggests Q2 at earliest. July is tight but possible.", timestamp: "3h ago", likes: 45 },
       { id: "c2", userId: "u2", username: "ai_skeptic", avatar: "/bear-avatar.png", content: "They said the same thing about GPT-4.5 and look how that went.", timestamp: "2h ago", likes: 28 },
@@ -451,26 +449,7 @@ function PredictionCard({ prediction }: { prediction: Prediction }) {
 
   return (
     <div className="border-b border-border/40 transition-colors hover:bg-card/50">
-      <div className="flex">
-        {/* Left column - Follow */}
-        <div className="flex flex-col items-center pt-4 pb-3 px-3">
-          <button
-            onClick={handleFollow}
-            className={cn(
-              "flex flex-col items-center gap-0.5 p-1 rounded transition-all",
-              isFollowing
-                ? "text-primary"
-                : "text-muted-foreground/60 hover:text-muted-foreground"
-            )}
-            aria-label={isFollowing ? "Unfollow prediction" : "Follow prediction"}
-          >
-            {isFollowing ? <BellOff className="w-4 h-4" /> : <Bell className="w-4 h-4" />}
-            <span className="text-[9px] tabular-nums">{followerCount.toLocaleString()}</span>
-          </button>
-        </div>
-
-        {/* Main content */}
-        <div className="flex-1 py-4 pr-4">
+      <div className="px-4 py-4">
           {/* Header row */}
           <div className="flex items-center gap-2 flex-wrap mb-1.5">
             <span className="text-[10px] text-muted-foreground">{categoryConfig[prediction.category].label}</span>
@@ -549,26 +528,38 @@ function PredictionCard({ prediction }: { prediction: Prediction }) {
           )}
 
           {/* Action row */}
-          <div className="flex items-center gap-4 mt-3">
+          <div className="flex items-center gap-3 mt-3">
+            <button
+              onClick={handleFollow}
+              className={cn(
+                "flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs transition-colors border",
+                isFollowing
+                  ? "bg-primary/10 border-primary/30 text-primary"
+                  : "border-border hover:border-muted-foreground/40 text-muted-foreground hover:text-foreground"
+              )}
+            >
+              {isFollowing ? "Following" : "Follow"}
+              <span className="text-[10px] tabular-nums opacity-70">{followerCount.toLocaleString()}</span>
+            </button>
             <button
               onClick={() => setIsExpanded(!isExpanded)}
               className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
             >
-              <MessageSquare className="w-4 h-4" />
-              {comments.length} Comments
+              <MessageSquare className="w-3.5 h-3.5" />
+              {comments.length}
             </button>
             <button
               onClick={() => { setIsExpanded(true); setActiveTab("outcomes") }}
               className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
             >
-              <Target className="w-4 h-4" />
-              {outcomes.length} Outcomes
+              <Target className="w-3.5 h-3.5" />
+              {outcomes.length}
             </button>
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="ml-auto text-xs text-muted-foreground hover:text-foreground transition-colors"
+              className="ml-auto text-muted-foreground hover:text-foreground transition-colors"
             >
-              {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+              {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
             </button>
           </div>
 
@@ -719,7 +710,6 @@ function PredictionCard({ prediction }: { prediction: Prediction }) {
               )}
             </div>
           )}
-        </div>
       </div>
     </div>
   )

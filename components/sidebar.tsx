@@ -6,17 +6,10 @@ import {
   Clock,
   Bookmark,
   Settings,
-  Sparkles,
   TrendingUp,
-  Users,
-  Shield,
-  Trophy,
-  Target,
-  Mic,
 } from "lucide-react"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
-import { Progress } from "@/components/ui/progress"
 
 const navItems = [
   { icon: Home, label: "Home", active: false },
@@ -67,7 +60,7 @@ const topPredictors = [
     tier: "gold",
   },
   {
-    username: "auradragon1",
+    username: "signal_drift",
     avatar: "/dragon-avatar.jpg",
     accuracy: 74,
     predictions: 23,
@@ -172,27 +165,6 @@ export function Sidebar() {
           <Link href="/figures" className="block px-2 mt-2 text-[11px] text-muted-foreground hover:text-foreground transition-colors">
             View all figures
           </Link>
-        </div>
-
-        <div className="h-px bg-border/40" />
-
-        <div>
-          <span className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground px-1 mb-2 block">
-            Platform
-          </span>
-          <div className="px-2 space-y-2">
-            <div className="flex justify-between text-[11px]">
-              <span className="text-muted-foreground">Members</span>
-              <span className="text-foreground tabular-nums">87,429 / 100K</span>
-            </div>
-            <div className="h-1 bg-secondary rounded-full overflow-hidden">
-              <div className="h-full bg-primary/40 rounded-full" style={{ width: "87.4%" }} />
-            </div>
-            <div className="flex justify-between text-[11px]">
-              <span className="text-muted-foreground">Your ELO</span>
-              <span className="text-foreground tabular-nums">1,542</span>
-            </div>
-          </div>
         </div>
 
         <div className="h-px bg-border/40" />
