@@ -5,12 +5,13 @@ import { ArrowLeftRight, Share2, TrendingDown, TrendingUp } from "lucide-react";
 import { PersonAvatar } from "@/components/person-chip";
 import { FollowButton } from "@/components/follow-button";
 import { ScoreGauge, DistributionBar, Sparkline } from "@/components/charts";
-import { ClaimLedger } from "@/components/claim-ledger";
+import { LedgerSortBar } from "@/components/ledger-sort-bar";
 import { StatusBadge } from "@/components/status-badge";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import {
   getAllPeople,
+  getCommentCounts,
   getFollowedPersonIds,
   getFollowedPropositionIds,
   getHeadToHead,
@@ -43,17 +44,22 @@ export async function generateMetadata({
 
 export default async function PersonPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ sort?: string; window?: string; status?: string }>;
 }) {
   const { slug } = await params;
+  const { sort, window: windowScope, status } = await searchParams;
   const session = await auth.api.getSession({ headers: await headers() });
-  const [score, followedProps, followedPeople, stanceMap] = await Promise.all([
-    getPersonScore(slug),
-    getFollowedPropositionIds(session?.user?.id),
-    getFollowedPersonIds(session?.user?.id),
-    getUserStanceMap(session?.user?.id),
-  ]);
+  const [score, commentCounts, followedProps, followedPeople, stanceMap] =
+    await Promise.all([
+      getPersonScore(slug),
+      getCommentCounts(),
+      getFollowedPropositionIds(session?.user?.id),
+      getFollowedPersonIds(session?.user?.id),
+      getUserStanceMap(session?.user?.id),
+    ]);
   if (!score) notFound();
   const h2h = session?.user
     ? await getHeadToHead(session.user.id, score.person.id)
@@ -268,14 +274,19 @@ export default async function PersonPage({
       {/* Ledger */}
       <section className="py-6">
         <h2 className="mb-4 border-b pb-2 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">Claim ledger</h2>
-        <ClaimLedger
-          entries={ledger.map(({ proposition, stance }) => ({
+        <LedgerSortBar
+          items={ledger.map(({ proposition, stance }) => ({
             proposition,
             stance,
+            commentCount: commentCounts[proposition.id] ?? 0,
             following: followedProps.has(proposition.id),
             myStance: stanceMap[proposition.id] ?? null,
           }))}
-          person={person}
+          showPerson={false}
+          columns={2}
+          initialSort={sort}
+          initialWindow={windowScope}
+          initialStatus={status}
         />
       </section>
     </div>

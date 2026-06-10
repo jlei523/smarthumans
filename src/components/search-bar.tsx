@@ -26,8 +26,8 @@ export function SearchBar({
     >
       <Search
         className={cn(
-          "pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground",
-          size === "lg" ? "size-5" : "size-4",
+          "pointer-events-none absolute top-1/2 -translate-y-1/2 text-muted-foreground",
+          size === "lg" ? "left-3 size-5" : "left-3.5 size-[17px]",
         )}
       />
       <input
@@ -36,10 +36,10 @@ export function SearchBar({
         placeholder={placeholder}
         autoComplete="off"
         className={cn(
-          "w-full rounded-full border bg-background outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground",
+          "w-full rounded-full border outline-none transition-colors placeholder:text-muted-foreground focus:border-foreground",
           size === "lg"
-            ? "h-14 pl-11 pr-5 text-lg shadow-sm"
-            : "h-9 pl-9 pr-4 text-sm",
+            ? "h-14 bg-background pl-11 pr-5 text-lg shadow-sm"
+            : "h-10 bg-card pl-10 pr-4 text-[15px] shadow-xs",
         )}
       />
     </form>

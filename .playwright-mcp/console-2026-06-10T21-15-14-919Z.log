@@ -1,0 +1,145 @@
+[     391ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[     428ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[   58391ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[   58497ms] [LOG] [Fast Refresh] done in 97ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[   85431ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[   85452ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[   86220ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[   86231ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[   87013ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[   87027ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  331626ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  331672ms] [LOG] [Fast Refresh] done in 46ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  340565ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  340609ms] [LOG] [Fast Refresh] done in 33ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  370389ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  370411ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  371161ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  371176ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  446189ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  446238ms] [LOG] [Fast Refresh] done in 43ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  456406ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  456447ms] [LOG] [Fast Refresh] done in 30ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  471118ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  471169ms] [LOG] [Fast Refresh] done in 28ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  501700ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  501752ms] [LOG] [Fast Refresh] done in 34ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  520496ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  520567ms] [LOG] [Fast Refresh] done in 29ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  520706ms] ReferenceError: PersonAvatar is not defined
+    at eval (about://React/Server/file:///Users/joelei/Dropbox%2520(Maestral)/smarthumans.ai/.next/dev/server/chunks/ssr/%255Broot-of-the-server%255D__1jojnfx._.js?id=%255Bproject%255D%252FDropbox+%2528Maestral%2529%252Fsmarthumans.ai%252Fsrc%252Fapp%252Fclaims%252F%255Bslug%255D%252Fpage.tsx+%255Bapp-rsc%255D+%2528ecmascript%2529?456:893:349)
+    at Array.map (<anonymous>:1:18)
+    at PositionList (about://React/Server/file:///Users/joelei/Dropbox%2520(Maestral)/smarthumans.ai/.next/dev/server/chunks/ssr/%255Broot-of-the-server%255D__1jojnfx._.js?id=%255Bproject%255D%252FDropbox+%2528Maestral%2529%252Fsmarthumans.ai%252Fsrc%252Fapp%252Fclaims%252F%255Bslug%255D%252Fpage.tsx+%255Bapp-rsc%255D+%2528ecmascript%2529?457:881:29)
+    at resolveErrorDev (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:1919:150)
+    at processFullStringRow (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:2434:29)
+    at processFullBinaryRow (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:2393:9)
+    at processBinaryChunk (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:2502:221)
+    at progress (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:2689:13)
+[  532919ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  533288ms] [LOG] [Fast Refresh] done in 61ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  533507ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  533677ms] [LOG] [Fast Refresh] done in 271ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  534262ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  534279ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  534286ms] [WARNING] %c%s%c ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  534407ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  534536ms] [LOG] [Fast Refresh] done in 229ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  567670ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  567719ms] [LOG] [Fast Refresh] done in 34ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  594369ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  594387ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  757114ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  757520ms] [LOG] [Fast Refresh] done in 508ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  802678ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  802725ms] [LOG] [Fast Refresh] done in 112ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  891739ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  891778ms] [LOG] [Fast Refresh] done in 109ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  912855ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=_aIRSX0WR6BPXGqqBDOhK' failed:  @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_client_1mzxg_k._.js:13422
+[  913865ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=_aIRSX0WR6BPXGqqBDOhK' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_client_1mzxg_k._.js:13422
+[  914868ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=_aIRSX0WR6BPXGqqBDOhK' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_client_1mzxg_k._.js:13422
+[  915871ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=_aIRSX0WR6BPXGqqBDOhK' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_client_1mzxg_k._.js:13422
+[  916873ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=_aIRSX0WR6BPXGqqBDOhK' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_client_1mzxg_k._.js:13422
+[  917877ms] [ERROR] WebSocket connection to 'ws://localhost:3000/_next/webpack-hmr?id=_aIRSX0WR6BPXGqqBDOhK' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_client_1mzxg_k._.js:13422
+[  922884ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  925092ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  925104ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  925108ms] [WARNING] %c%s%c ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase background: #e6e6e6;background: light-dark(rgba(0,0,0,0.1), rgba(255,255,255,0.25));color: #000000;color: light-dark(#000000, #ffffff);border-radius: 2px  Server   @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  925294ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  926052ms] [LOG] [Fast Refresh] done in 858ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  942424ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  942443ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  943149ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  943501ms] [LOG] [Fast Refresh] done in 453ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  944081ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  944096ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  944869ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  944886ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  945651ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  945666ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1335513ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1335562ms] [LOG] [Fast Refresh] done in 57ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1335725ms] ReferenceError: NAV is not defined
+    at SiteHeader (about://React/Server/file:///Users/joelei/Dropbox%2520(Maestral)/smarthumans.ai/.next/dev/server/chunks/ssr/%255Broot-of-the-server%255D__0n8i8x8._.js?id=%255Bproject%255D%252FDropbox+%2528Maestral%2529%252Fsmarthumans.ai%252Fsrc%252Fcomponents%252Fsite-header.tsx+%255Bapp-rsc%255D+%2528ecmascript%2529?222:71:31)
+    at resolveErrorDev (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:1919:150)
+    at processFullStringRow (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:2434:29)
+    at processFullBinaryRow (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:2393:9)
+    at processBinaryChunk (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:2502:221)
+    at progress (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:2689:13)
+[ 1345376ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1345417ms] [LOG] [Fast Refresh] done in 35ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1345653ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1345674ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1352911ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1352941ms] [LOG] [Fast Refresh] done in 36ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1367049ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1367370ms] [WARNING] [HMR] Invalid message: {"isTrusted":true}
+TypeError: Cannot convert undefined or null to object
+    at Object.keys (<anonymous>)
+    at extractModulesFromTurbopackMessage (http://localhost:3000/_next/static/chunks/1l_l_next_dist_client_1mzxg_k._.js:13754:39)
+    at TurbopackHmr.onTurbopackMessage (http://localhost:3000/_next/static/chunks/1l_l_next_dist_client_1mzxg_k._.js:13701:32)
+    at processMessage (http://localhost:3000/_next/static/chunks/1l_l_next_dist_client_1mzxg_k._.js:14059:30)
+    at WebSocket.handleMessage (http://localhost:3000/_next/static/chunks/1l_l_next_dist_client_1mzxg_k._.js:13458:52) @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1367370ms] [LOG] [Fast Refresh] done in 364ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1367618ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1367796ms] [LOG] [Fast Refresh] done in 278ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1368149ms] ReferenceError: HeroSearch is not defined
+    at HomePage (/Users/joelei/Dropbox (about://React/Server/Maestral)/smarthumans.ai/.next/dev/server/chunks/ssr/%5Broot-of-the-server%5D__1qjf5ze._.js?279:1948:325)
+    at resolveErrorDev (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:1919:150)
+    at processFullStringRow (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:2434:29)
+    at processFullBinaryRow (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:2393:9)
+    at processBinaryChunk (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:2502:221)
+    at progress (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:2689:13)
+[ 1368092ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1368149ms] [LOG] [Fast Refresh] done in 169ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1387290ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1387518ms] [LOG] [Fast Refresh] done in 40ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1387672ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/:0
+[ 1387717ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1387731ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1387837ms] ReferenceError: HeroSearch is not defined
+    at HomePage (about://React/Server/file:///Users/joelei/Dropbox%2520(Maestral)/smarthumans.ai/.next/dev/server/chunks/ssr/%255Broot-of-the-server%255D__1qjf5ze._.js?id=%255Bproject%255D%252FDropbox+%2528Maestral%2529%252Fsmarthumans.ai%252Fsrc%252Fapp%252Fpage.tsx+%255Bapp-rsc%255D+%2528ecmascript%2529?0:131:325)
+    at resolveErrorDev (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:1919:105)
+    at processFullStringRow (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:2434:29)
+    at processFullBinaryRow (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:2393:9)
+    at processBinaryChunk (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:2502:221)
+    at progress (http://localhost:3000/_next/static/chunks/1l_l_next_dist_compiled_react-server-dom-turbopack_1pd5eef._.js:2689:13)
+[ 1387872ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1388001ms] [LOG] [Fast Refresh] done in 229ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1402913ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1402956ms] [LOG] [Fast Refresh] done in 33ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1403348ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1403371ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1440163ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1440187ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1501659ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1501709ms] [LOG] [Fast Refresh] done in 93ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1504034ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1504484ms] [LOG] [Fast Refresh] done in 551ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1515428ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1515463ms] [LOG] [Fast Refresh] done in 60ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1522647ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1522722ms] [LOG] [Fast Refresh] done in 177ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1539743ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1539759ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1736510ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[ 1736810ms] [LOG] [Fast Refresh] done in 400ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477

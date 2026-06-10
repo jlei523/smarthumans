@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Trophy, TrendingDown } from "lucide-react";
 import { PersonAvatar } from "@/components/person-chip";
 import { DistributionBar } from "@/components/charts";
+import { FilterBar, FilterPill, SegTabs } from "@/components/filters";
 import {
   getAllPersonScores,
   getSmartestUsers,
@@ -95,60 +96,44 @@ export default async function LeaderboardsPage({
         require one.
       </p>
 
-      {/* Figures | Users tabs */}
-      <div className="mt-5 inline-flex rounded-[9px] border bg-paper-2 p-[3px]">
-        {(
-          [
-            { k: "figures", label: "By accuracy", href: "/leaderboards" },
-            { k: "influence", label: "By influence", href: "/leaderboards?tab=influence" },
-            { k: "users", label: "Smartest users", href: "/leaderboards?tab=users" },
-          ] as const
-        ).map((t) => (
-          <Link
-            key={t.k}
-            href={t.href}
-            className={cn(
-              "rounded-md px-3 py-1.5 text-[12.5px] font-medium",
-              tab === t.k
-                ? "bg-card text-foreground shadow-xs"
-                : "text-ink-2 hover:text-foreground",
-            )}
-          >
-            {t.label}
-          </Link>
-        ))}
-      </div>
+      {/* Figures | Users view tabs */}
+      <SegTabs
+        className="mt-5"
+        tabs={[
+          { key: "figures", label: "By accuracy", href: "/leaderboards", active: tab === "figures" },
+          { key: "influence", label: "By influence", href: "/leaderboards?tab=influence", active: tab === "influence" },
+          { key: "users", label: "Smartest users", href: "/leaderboards?tab=users", active: tab === "users" },
+        ]}
+      />
 
       {tab === "users" ? (
         <SmartestUsersTable users={users} />
       ) : (
         <>
       {/* Topic filter */}
-      <div className="mt-5 flex flex-wrap gap-1.5">
-        <Link
+      <FilterBar className="mt-5">
+        <FilterPill
           href={isInfluence ? "/leaderboards?tab=influence" : "/leaderboards"}
-          className={
-            topic === "all"
-              ? "rounded-full bg-foreground px-3 py-1 text-xs font-medium text-background"
-              : "rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground hover:text-foreground"
-          }
-        >
-          All topics
-        </Link>
+          active={topic === "all"}
+          label="All topics"
+          count={topics.reduce((s, t) => s + t.scorecard.total, 0)}
+        />
         {topics.map((t) => (
-          <Link
+          <FilterPill
             key={t.category}
-            href={`/leaderboards?topic=${t.category}${isInfluence ? "&tab=influence" : ""}`}
-            className={
+            href={
               topic === t.category
-                ? "rounded-full bg-foreground px-3 py-1 text-xs font-medium text-background"
-                : "rounded-full border px-3 py-1 text-xs font-medium text-muted-foreground hover:text-foreground"
+                ? isInfluence
+                  ? "/leaderboards?tab=influence"
+                  : "/leaderboards"
+                : `/leaderboards?topic=${t.category}${isInfluence ? "&tab=influence" : ""}`
             }
-          >
-            {CATEGORY_LABEL[t.category as Category]}
-          </Link>
+            active={topic === t.category}
+            label={CATEGORY_LABEL[t.category as Category]}
+            count={t.scorecard.total}
+          />
         ))}
-      </div>
+      </FilterBar>
 
       {/* Ranked table */}
       <div className="mt-6 overflow-x-auto rounded-lg border">

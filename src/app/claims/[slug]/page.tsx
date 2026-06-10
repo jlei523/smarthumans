@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { StatusBadge } from "@/components/status-badge";
+import { PersonAvatar } from "@/components/person-chip";
 import { Section } from "@/components/section";
 import { FollowButton } from "@/components/follow-button";
 import { UserStanceWidget } from "@/components/user-stance-widget";
@@ -26,7 +27,7 @@ import {
 import type { ClaimStatus, Stance } from "@/db/schema";
 import { stanceOutcome, type StanceOutcome } from "@/lib/scoring";
 import { STATUS_META, TYPE_LABEL, CATEGORY_LABEL } from "@/lib/status";
-import { fmtCount, fmtDate, fmtDateLong, deadlineLabel } from "@/lib/format";
+import { fmtCount, fmtDate, deadlineLabel } from "@/lib/format";
 import { auth } from "@/lib/auth";
 import { cn } from "@/lib/utils";
 
@@ -165,7 +166,6 @@ export default async function ClaimPage({
     stakedFrom.map((p) => [p.sourceCommentId!, p]),
   );
 
-  const first = primaryStance(claim);
   const affirmers = claim.stances.filter((s) => s.position === "affirm");
   const deniers = claim.stances.filter((s) => s.position === "deny");
   const supports = claim.evidence.filter((e) => e.side === "supports");
@@ -300,53 +300,31 @@ export default async function ClaimPage({
 
   return (
     <div className="mx-auto max-w-6xl px-4">
-      {/* breadcrumb */}
-      <nav className="flex items-center gap-1.5 overflow-hidden py-4 text-xs whitespace-nowrap text-muted-foreground">
-        <Link href="/" className="shrink-0 hover:text-foreground">Home</Link>
-        <span className="shrink-0">/</span>
+      {/* breadcrumb — no leaf; the headline is right below */}
+      <nav className="flex items-center gap-1.5 py-4 text-xs whitespace-nowrap text-muted-foreground">
+        <Link href="/" className="hover:text-foreground">Home</Link>
+        <span>/</span>
         <Link
           href={`/browse/${claim.category}`}
-          className="shrink-0 hover:text-foreground"
+          className="hover:text-foreground"
         >
           {CATEGORY_LABEL[claim.category]}
         </Link>
-        <span className="shrink-0">/</span>
-        <span className="truncate">{claim.question || claim.statement}</span>
       </nav>
 
       <div className="grid gap-12 pb-16 pt-2 lg:grid-cols-[minmax(0,1fr)_300px]">
         <main className="min-w-0">
-          {/* ----- the one hero: headline + quote ----- */}
+          {/* ----- question → answer → receipt ----- */}
           <p className="text-xs uppercase tracking-[0.08em] text-muted-foreground">
-            {TYPE_LABEL[claim.claimType]} · {CATEGORY_LABEL[claim.category]}
+            {TYPE_LABEL[claim.claimType]}
             {claim.aiDrafted && <> · AI-drafted, human-verified</>}
           </p>
           <h1 className="mt-2 font-serif text-3xl font-bold leading-tight tracking-tight">
-            {claim.statement}
+            {claim.question || claim.statement}
           </h1>
 
-          {first && (
-            <figure className="mt-6 border-l-2 border-foreground pl-5">
-              <blockquote className="font-serif text-xl italic leading-relaxed">
-                “{first.quote}”
-              </blockquote>
-              <figcaption className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
-                <Link
-                  href={`/p/${first.person.slug}`}
-                  className="font-semibold text-foreground hover:underline underline-offset-2"
-                >
-                  {first.person.name}
-                </Link>
-                <span>· {fmtDateLong(first.dateStated)}</span>
-                <span>· {first.venue}</span>
-                <span>·</span>
-                <SrcLink stance={first} />
-              </figcaption>
-            </figure>
-          )}
-
-          {/* ----- verdict (the only pill on the page) ----- */}
-          <div className="mt-8 flex flex-wrap items-center gap-3">
+          {/* the answer block — verdict first, above the fold */}
+          <div className="mt-4 flex flex-wrap items-center gap-3">
             <StatusBadge status={claim.status} size="lg" />
             <span className="text-xs text-muted-foreground">
               {isResolved
@@ -362,12 +340,19 @@ export default async function ClaimPage({
           </p>
           <details className="mt-2 max-w-2xl">
             <summary className="cursor-pointer text-xs font-medium text-muted-foreground underline decoration-border underline-offset-2 hover:text-foreground">
-              Resolution criteria
+              {claim.question ? "Proposition & resolution criteria" : "Resolution criteria"}
             </summary>
+            {claim.question && (
+              <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                <span className="font-medium text-foreground">Proposition:</span>{" "}
+                {claim.statement}
+              </p>
+            )}
             <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
               {claim.resolutionCriteria}
             </p>
           </details>
+
 
           {/* action panel inline on small screens */}
           <div className="mt-8 lg:hidden">{actionPanel}</div>
@@ -561,12 +546,13 @@ function PositionList({
           const outcome = OUTCOME_TEXT[stanceOutcome(status, s.position)];
           return (
             <li key={s.id} className="py-3">
-              <div className="flex items-baseline justify-between gap-3">
+              <div className="flex items-center justify-between gap-3">
                 <Link
                   href={`/p/${s.person.slug}`}
-                  className="text-sm font-semibold hover:underline underline-offset-2"
+                  className="flex min-w-0 items-center gap-2 text-sm font-semibold hover:underline underline-offset-2"
                 >
-                  {s.person.name}
+                  <PersonAvatar person={s.person} size="md" />
+                  <span className="truncate">{s.person.name}</span>
                 </Link>
                 {isResolved && (
                   <span className={cn("text-xs font-semibold whitespace-nowrap", outcome.cls)}>

@@ -5,6 +5,7 @@ import { format } from "date-fns";
 import { getSmartestUsers, getUserScore } from "@/lib/queries";
 import { BADGES, currentSeason, topPercent } from "@/lib/gamification";
 import { ScoreGauge, DistributionBar } from "@/components/charts";
+import { FilterPill } from "@/components/filters";
 import { StatusBadge } from "@/components/status-badge";
 
 import { MIN_RESOLVED_FOR_SCORE } from "@/lib/scoring";
@@ -170,8 +171,8 @@ export default async function UserProfilePage({
             </p>
             <div className="mt-3 flex items-center justify-between gap-2.5">
               <span className="rounded-[5px] bg-st-true-bg px-2 py-0.5 text-xs font-semibold text-st-true-tx">
-                said it {calledIt.position === "affirm" ? "would" : "wouldn't"} —
-                and {calledIt.position === "affirm" ? "it did" : "it didn't"}
+                called {calledIt.position === "affirm" ? "Yes" : "No"} — and{" "}
+                {calledIt.position === "affirm" ? "it came true" : "it didn't happen"}
               </span>
               <Link
                 href={`/claims/${calledIt.proposition.slug}`}
@@ -194,27 +195,36 @@ export default async function UserProfilePage({
                 {score.entries.length} positions taken · scored on resolution
               </p>
             </div>
-            <div className="inline-flex rounded-[9px] border bg-paper-2 p-[3px]">
+            <div className="flex flex-wrap items-center gap-1.5">
               {(
                 [
-                  ["all", "All"],
-                  ["correct", "Correct"],
-                  ["wrong", "Wrong"],
-                  ["open", "Open"],
+                  ["all", "All", score.entries.length],
+                  [
+                    "correct",
+                    "Correct",
+                    score.entries.filter((e) => e.outcome === "correct").length,
+                  ],
+                  [
+                    "wrong",
+                    "Wrong",
+                    score.entries.filter((e) => e.outcome === "incorrect").length,
+                  ],
+                  [
+                    "open",
+                    "Open",
+                    score.entries.filter((e) =>
+                      ["pending", "disputed"].includes(e.outcome),
+                    ).length,
+                  ],
                 ] as const
-              ).map(([k, label]) => (
-                <Link
+              ).map(([k, label, count]) => (
+                <FilterPill
                   key={k}
-                  href={k === "all" ? `/u/${id}` : `/u/${id}?f=${k}`}
-                  className={cn(
-                    "rounded-md px-3 py-1.5 text-[12.5px] font-medium",
-                    f === k
-                      ? "bg-card text-foreground shadow-xs"
-                      : "text-ink-2 hover:text-foreground",
-                  )}
-                >
-                  {label}
-                </Link>
+                  href={k === "all" || f === k ? `/u/${id}` : `/u/${id}?f=${k}`}
+                  active={f === k}
+                  label={label}
+                  count={count}
+                />
               ))}
             </div>
           </div>
@@ -234,7 +244,7 @@ export default async function UserProfilePage({
                         : "bg-st-false-bg text-st-false-tx",
                     )}
                   >
-                    said it {e.position === "affirm" ? "would" : "wouldn't"}
+                    called {e.position === "affirm" ? "Yes" : "No"}
                   </span>
                   {["pending", "disputed"].includes(e.outcome) ? (
                     <StatusBadge status={e.proposition.status} size="sm" />

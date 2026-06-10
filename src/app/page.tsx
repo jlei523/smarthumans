@@ -1,11 +1,9 @@
 import Link from "next/link";
-import { ClaimCard } from "@/components/claim-card";
 import { PersonAvatar } from "@/components/person-chip";
 import { accuracyTextClass } from "@/components/charts";
-import { HeroSearch, type FigureHit } from "@/components/hero-search";
 import { Section } from "@/components/section";
 import { HomeSkin } from "@/components/home-hybrid";
-import { ClaimFeed, type FeedItem } from "@/components/claim-feed";
+import { LedgerSortBar, type LedgerItem } from "@/components/ledger-sort-bar";
 import { TopicGlyph } from "@/components/topic-glyph";
 import { fmtCount, deadlineLabel } from "@/lib/format";
 import { CATEGORY_LABEL, DOMAIN_LABEL } from "@/lib/status";
@@ -13,12 +11,10 @@ import { cn } from "@/lib/utils";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import {
+  getCommentCounts,
   getFollowedPropositionIds,
   getUserStanceMap,
-  getSiteStats,
-  getRecentlyResolved,
-  getTrending,
-  getMostFollowedPending,
+  getClaimWire,
   getResolvingSoon,
   getAllPersonScores,
   getTopicsIndex,
@@ -30,18 +26,23 @@ export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   const session = await auth.api.getSession({ headers: await headers() });
-  const [stats, recentlyResolved, trending, pending, resolvingSoon, scores, topics, followedIds, stanceMap] =
-    await Promise.all([
-      getSiteStats(),
-      getRecentlyResolved(6),
-      getTrending(6),
-      getMostFollowedPending(6),
-      getResolvingSoon(4),
-      getAllPersonScores(),
-      getTopicsIndex(),
-      getFollowedPropositionIds(session?.user?.id),
-      getUserStanceMap(session?.user?.id),
-    ]);
+  const [
+    wire,
+    commentCounts,
+    resolvingSoon,
+    scores,
+    topics,
+    followedIds,
+    stanceMap,
+  ] = await Promise.all([
+    getClaimWire(18),
+    getCommentCounts(),
+    getResolvingSoon(4),
+    getAllPersonScores(),
+    getTopicsIndex(),
+    getFollowedPropositionIds(session?.user?.id),
+    getUserStanceMap(session?.user?.id),
+  ]);
 
   const ranked = [...scores]
     .filter((s) => s.scorecard.hasEnoughData)
@@ -53,66 +54,16 @@ export default async function HomePage() {
     .filter((s) => !best.includes(s))
     .slice(0, 3);
 
-  const toFeed = (
-    list: Awaited<ReturnType<typeof getRecentlyResolved>>,
-  ): FeedItem[] =>
-    list.map((p) => ({
-      proposition: p,
-      stance: primaryStance(p),
-      following: followedIds.has(p.id),
-      myStance: stanceMap[p.id] ?? null,
-    }));
-
-  const figureHits: FigureHit[] = scores.map((s) => ({
-    slug: s.person.slug,
-    name: s.person.name,
-    domainLabel: DOMAIN_LABEL[s.person.domain],
-    claims: s.scorecard.total,
-    accuracy: s.scorecard.hasEnoughData ? s.scorecard.accuracy : null,
-    imageUrl: s.person.imageUrl,
+  const feedItems: LedgerItem[] = wire.map((p) => ({
+    proposition: p,
+    stance: primaryStance(p),
+    commentCount: commentCounts[p.id] ?? 0,
+    following: followedIds.has(p.id),
+    myStance: stanceMap[p.id] ?? null,
   }));
 
   return (
     <HomeSkin>
-      {/* Hero */}
-      <section className="border-b">
-        <div className="mx-auto max-w-3xl px-4 pt-16 pb-12 text-center sm:pt-20">
-          <p className="font-meta text-[11px] uppercase tracking-[0.22em] text-ink-3">
-            Crowdsourced accountability · Every verdict sourced
-          </p>
-          <h1 className="mt-4 font-serif text-5xl font-bold leading-[1.08] tracking-tight sm:text-6xl">
-            <span className="paper-only">
-              They said it.
-              <br />
-              We tracked it.
-            </span>
-            <span className="broadsheet-only">See who saw it coming.</span>
-          </h1>
-          <p className="mx-auto mt-5 max-w-md text-ink-2">
-            A permanent, sourced, community-verified record of what people
-            predicted and promised — presidents, pundits, and anyone willing
-            to go on the record — and whether it actually happened.
-          </p>
-          <HeroSearch figures={figureHits} className="mx-auto mt-8 max-w-xl" />
-          <dl className="term-stats mt-10 flex justify-center gap-10 sm:gap-16">
-            {[
-              { label: "claims tracked", value: stats.tracked },
-              { label: "claims resolved", value: stats.resolved },
-              { label: "follows", value: stats.followers },
-            ].map((s) => (
-              <div key={s.label}>
-                <dd className="font-mono text-3xl font-semibold tabular-nums">
-                  {s.value.toLocaleString("en-US")}
-                </dd>
-                <dt className="mt-1 font-meta text-[10px] uppercase tracking-[0.18em] text-ink-3">
-                  {s.label}
-                </dt>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
-
       <div className="mx-auto max-w-6xl px-4 pb-4">
         {/* Topics — the browse spine of the site */}
         <Section
@@ -201,30 +152,11 @@ export default async function HomePage() {
           </div>
         </Section>
 
-        {/* One claim feed, three filters + records sidebar */}
+        {/* The claim wire — same sort-led bar as every claim list + records sidebar */}
         <div className="grid gap-x-10 lg:grid-cols-[1fr_300px]">
-          <ClaimFeed
-            tabs={[
-              {
-                key: "resolved",
-                label: "Recently resolved",
-                sub: "Verified by community jury",
-                items: toFeed(recentlyResolved),
-              },
-              {
-                key: "followed",
-                label: "Most followed",
-                sub: "Open questions the community is watching",
-                items: toFeed(pending),
-              },
-              {
-                key: "trending",
-                label: "Trending",
-                sub: "Gaining the most follows this week",
-                items: toFeed(trending),
-              },
-            ]}
-          />
+          <section className="mt-12">
+            <LedgerSortBar items={feedItems} />
+          </section>
           <aside>
             <Section title="Best records" href="/leaderboards">
               <RecordsList entries={best} />

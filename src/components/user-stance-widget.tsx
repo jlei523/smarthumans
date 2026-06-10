@@ -95,7 +95,7 @@ export function UserStanceWidget({
               frozen && "cursor-not-allowed opacity-50",
             )}
           >
-            {confirmSwitch === "affirm" ? "Confirm switch?" : "Will happen"}
+            {confirmSwitch === "affirm" ? "Confirm switch?" : "Yes"}
           </button>
           <button
             disabled={pending || frozen}
@@ -108,7 +108,7 @@ export function UserStanceWidget({
               frozen && "cursor-not-allowed opacity-50",
             )}
           >
-            {confirmSwitch === "deny" ? "Confirm switch?" : "Won't happen"}
+            {confirmSwitch === "deny" ? "Confirm switch?" : "No"}
           </button>
         </div>
       )}
@@ -137,8 +137,7 @@ export function UserStanceWidget({
               <span className="font-mono text-xl font-semibold text-foreground tabular-nums">
                 {pct(affirmCount / total)}
               </span>{" "}
-              of {fmtCount(total)} users say{resolved ? " it would" : " it'll"}{" "}
-              happen
+              of {fmtCount(total)} users {resolved ? "said" : "say"} Yes
             </p>
           </div>
         ) : (

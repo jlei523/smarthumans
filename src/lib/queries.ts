@@ -1,5 +1,6 @@
 import { db } from "@/db";
 import {
+  comments,
   people,
   propositions,
   stances,
@@ -72,6 +73,27 @@ export async function getTrending(limit = 6) {
 export async function getMostFollowedPending(limit = 6) {
   return db.query.propositions.findMany({
     where: eq(propositions.status, "pending"),
+    orderBy: desc(propositions.followerCount),
+    limit,
+    with: { stances: { with: { person: true } } },
+  }) as Promise<PropositionWithStances[]>;
+}
+
+/** Discussion volume per proposition — the Trending sort's metric. */
+export async function getCommentCounts(): Promise<Record<number, number>> {
+  const rows = await db
+    .select({
+      propositionId: comments.propositionId,
+      n: sql<number>`count(*)::int`,
+    })
+    .from(comments)
+    .groupBy(comments.propositionId);
+  return Object.fromEntries(rows.map((r) => [r.propositionId, r.n]));
+}
+
+/** One pooled claim list for the homepage wire — filtered client-side. */
+export async function getClaimWire(limit = 18) {
+  return db.query.propositions.findMany({
     orderBy: desc(propositions.followerCount),
     limit,
     with: { stances: { with: { person: true } } },

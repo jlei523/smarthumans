@@ -6,7 +6,8 @@ import { cn } from "@/lib/utils";
 const KEY = "sh-home-skin";
 
 const SKINS = [
-  { key: "soft", label: "Soft", cls: "soft" },
+  // Soft is now the site-wide base theme — no class needed
+  { key: "soft", label: "Soft", cls: "" },
   { key: "broadsheet", label: "Broadsheet", cls: "broadsheet" },
   { key: "hybrid", label: "Hybrid", cls: "hybrid" },
   { key: "terminal", label: "Terminal", cls: "terminal" },

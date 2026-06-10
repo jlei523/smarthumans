@@ -5,13 +5,6 @@ import { AuthMenu } from "@/components/auth-menu";
 import { BrandMark } from "@/components/brand-mark";
 import { MobileNav } from "@/components/mobile-nav";
 
-const NAV = [
-  { href: "/leaderboards", label: "Leaderboards" },
-  { href: "/browse", label: "Topics" },
-  { href: "/resolving-soon", label: "Resolving Soon" },
-  { href: "/methodology", label: "Methodology" },
-];
-
 export function Logo({ size = "md" }: { size?: "md" | "lg" }) {
   return (
     <span className="inline-flex items-center gap-2">
@@ -36,22 +29,11 @@ export function SiteHeader() {
         <Link href="/" className="shrink-0">
           <Logo />
         </Link>
-        <nav className="hidden md:flex items-center gap-1 text-sm">
-          {NAV.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-md px-2.5 py-1.5 text-ink-2 transition-colors hover:bg-accent hover:text-foreground whitespace-nowrap"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        <div className="ml-auto flex flex-1 items-center justify-end gap-3">
-          <SearchBar
-            className="hidden sm:block w-full max-w-56"
-            placeholder="Search figures…"
-          />
+        <SearchBar
+          className="hidden sm:block w-full max-w-lg"
+          placeholder="Search anyone or any claim…"
+        />
+        <div className="ml-auto flex items-center gap-3">
           <Link
             href="/submit"
             className="hidden sm:inline-flex items-center gap-1 rounded-md bg-foreground px-3 py-1.5 text-sm font-medium text-background hover:opacity-90 whitespace-nowrap"

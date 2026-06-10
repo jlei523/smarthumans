@@ -1,11 +1,12 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { SearchBar } from "@/components/search-bar";
-import { ClaimCard } from "@/components/claim-card";
 import { PersonAvatar } from "@/components/person-chip";
+import { LedgerSortBar } from "@/components/ledger-sort-bar";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import {
+  getCommentCounts,
   getFollowedPropositionIds,
   getUserStanceMap,
   searchAll,
@@ -19,12 +20,18 @@ export const dynamic = "force-dynamic";
 export default async function SearchPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string }>;
+  searchParams: Promise<{
+    q?: string;
+    sort?: string;
+    window?: string;
+    status?: string;
+  }>;
 }) {
-  const { q = "" } = await searchParams;
+  const { q = "", sort, window: windowScope, status } = await searchParams;
   const session = await auth.api.getSession({ headers: await headers() });
-  const [results, followedIds, stanceMap] = await Promise.all([
+  const [results, commentCounts, followedIds, stanceMap] = await Promise.all([
     q.trim() ? searchAll(q.trim()) : Promise.resolve(null),
+    getCommentCounts(),
     getFollowedPropositionIds(session?.user?.id),
     getUserStanceMap(session?.user?.id),
   ]);
@@ -59,22 +66,26 @@ export default async function SearchPage({
             </section>
           )}
 
-          <section className="mt-8">
-            <h2 className="text-sm font-semibold text-muted-foreground">
-              Claims ({results.propositions.length})
-            </h2>
-            <div className="mt-2 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {results.propositions.map((p) => (
-                <ClaimCard
-                  key={p.id}
-                  proposition={p}
-                  stance={primaryStance(p)}
-                  following={followedIds.has(p.id)}
-                  myStance={stanceMap[p.id] ?? null}
-                />
-              ))}
-            </div>
-          </section>
+          {results.propositions.length > 0 && (
+            <section className="mt-8">
+              <h2 className="mb-3 text-sm font-semibold text-muted-foreground">
+                Claims ({results.propositions.length})
+              </h2>
+              <LedgerSortBar
+                items={results.propositions.map((p) => ({
+                  proposition: p,
+                  stance: primaryStance(p),
+                  commentCount: commentCounts[p.id] ?? 0,
+                  following: followedIds.has(p.id),
+                  myStance: stanceMap[p.id] ?? null,
+                }))}
+                columns={3}
+                initialSort={sort}
+                initialWindow={windowScope}
+                initialStatus={status}
+              />
+            </section>
+          )}
 
           {results.people.length === 0 && results.propositions.length === 0 && (
             <div className="mt-10 rounded-lg border border-dashed p-10 text-center">

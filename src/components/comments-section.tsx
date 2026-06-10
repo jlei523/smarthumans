@@ -4,6 +4,7 @@ import { useMemo, useState, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { ArrowBigUp, ArrowBigDown, MessageSquare, Minus, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { FilterPill, SortGroup, SortLink } from "@/components/filters";
 import { addComment, voteComment } from "@/app/actions";
 import { timeAgo, fmtCount } from "@/lib/format";
 
@@ -116,37 +117,32 @@ export function CommentsSection({
         <h2 className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
           Discussion ({comments.length})
         </h2>
-        <div className="flex items-center gap-2">
-          <div className="flex gap-3 text-xs">
-            {(["best", "record", "new"] as const).map((s) => (
-              <button
-                key={s}
-                onClick={() => setSort(s)}
-                className={cn(
-                  "capitalize",
-                  sort === s
-                    ? "font-semibold text-foreground"
-                    : "text-muted-foreground hover:text-foreground",
-                )}
-              >
-                {s}
-              </button>
-            ))}
-            <span className="text-border">|</span>
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+          <div className="flex flex-wrap items-center gap-1.5">
             {(["all", "affirm", "deny"] as const).map((f) => (
-              <button
+              <FilterPill
                 key={f}
-                onClick={() => setFilter(f)}
-                className={cn(
-                  filter === f
-                    ? "font-semibold text-foreground"
-                    : "text-muted-foreground hover:text-foreground",
-                )}
-              >
-                {f === "all" ? "All" : f === "affirm" ? "Will happen" : "Won't"}
-              </button>
+                onClick={() => setFilter(filter === f && f !== "all" ? "all" : f)}
+                active={filter === f}
+                label={f === "all" ? "All" : f === "affirm" ? "Said Yes" : "Said No"}
+                count={
+                  f === "all"
+                    ? comments.length
+                    : comments.filter((c) => c.stance === f).length
+                }
+              />
             ))}
           </div>
+          <SortGroup>
+            {(["best", "record", "new"] as const).map((s) => (
+              <SortLink
+                key={s}
+                onClick={() => setSort(s)}
+                active={sort === s}
+                label={s[0].toUpperCase() + s.slice(1)}
+              />
+            ))}
+          </SortGroup>
         </div>
       </div>
 
@@ -312,7 +308,7 @@ function CommentThread({
                 node.stance === "affirm" ? "text-st-true-tx" : "text-st-false-tx",
               )}
             >
-              {node.stance === "affirm" ? "said it'd happen" : "said it wouldn't"}
+              {node.stance === "affirm" ? "called Yes" : "called No"}
             </span>
           )}
           {resolved && node.calledIt && (

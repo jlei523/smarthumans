@@ -80,8 +80,11 @@ export function StanceButtons({
           "inline-flex items-center overflow-hidden rounded-full border bg-card text-xs font-medium shadow-xs",
           pending && "opacity-60",
         )}
-        title="Take a side — scored on resolution, feeds your track record"
+        title="Your call on this claim — scored on resolution, feeds your track record"
       >
+        <span className="pl-2 pr-0.5 text-[11px] text-ink-4 whitespace-nowrap">
+          Your call:
+        </span>
         <button
           onClick={(e) => take("affirm", e)}
           disabled={pending}
@@ -92,7 +95,7 @@ export function StanceButtons({
               : "text-ink-3 hover:text-st-true-tx",
           )}
         >
-          {confirmSwitch === "affirm" ? "Sure?" : "Will"}
+          {confirmSwitch === "affirm" ? "Sure?" : "Yes"}
         </button>
         <span className="h-3.5 w-px bg-border" />
         <button
@@ -105,7 +108,7 @@ export function StanceButtons({
               : "text-ink-3 hover:text-st-false-tx",
           )}
         >
-          {confirmSwitch === "deny" ? "Sure?" : "Won't"}
+          {confirmSwitch === "deny" ? "Sure?" : "No"}
         </button>
       </span>
     </span>

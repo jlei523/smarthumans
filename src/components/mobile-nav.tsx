@@ -12,11 +12,7 @@ import {
 
 const LINKS = [
   { href: "/", label: "Home" },
-  { href: "/leaderboards", label: "Leaderboards" },
-  { href: "/browse", label: "Topics" },
-  { href: "/resolving-soon", label: "Resolving Soon" },
   { href: "/notifications", label: "Notifications" },
-  { href: "/methodology", label: "Methodology" },
 ];
 
 export function MobileNav() {

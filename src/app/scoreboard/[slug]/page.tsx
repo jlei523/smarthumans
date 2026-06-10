@@ -181,7 +181,7 @@ export default async function ScoreboardPage({
                     {pct(pctYes)}
                   </span>
                   <span className="text-sm text-ink-2">
-                    of {total} said it would happen
+                    of {total} said Yes
                   </span>
                 </p>
                 <p className="mt-3 text-[11px] italic text-ink-3">

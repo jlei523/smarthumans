@@ -1,0 +1,410 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "SmartHumans" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]:
+          - img [ref=e6]
+          - generic [ref=e10]: SmartHumans
+      - navigation [ref=e11]:
+        - link "Leaderboards" [ref=e12] [cursor=pointer]:
+          - /url: /leaderboards
+        - link "Topics" [ref=e13] [cursor=pointer]:
+          - /url: /browse
+        - link "Resolving Soon" [ref=e14] [cursor=pointer]:
+          - /url: /resolving-soon
+        - link "Methodology" [ref=e15] [cursor=pointer]:
+          - /url: /methodology
+      - generic [ref=e16]:
+        - search [ref=e17]:
+          - img
+          - searchbox "Search figures…" [ref=e18]
+        - link "+ Submit" [ref=e19] [cursor=pointer]:
+          - /url: /submit
+          - generic [ref=e20]: +
+          - text: Submit
+        - link "Notifications" [ref=e21] [cursor=pointer]:
+          - /url: /notifications
+          - img [ref=e22]
+  - main [ref=e27]:
+    - generic [ref=e28]:
+      - navigation [ref=e29]:
+        - link "Home" [ref=e30] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e31]: /
+        - link "Economy" [ref=e32] [cursor=pointer]:
+          - /url: /browse/economy
+        - generic [ref=e33]: /
+        - generic [ref=e34]: Did grocery prices come down under Trump?
+      - generic [ref=e35]:
+        - main [ref=e36]:
+          - paragraph [ref=e37]: Promise · Economy
+          - heading "Grocery prices come down substantially during Trump's second term, starting immediately." [level=1] [ref=e38]
+          - figure "Donald Trump · August 15, 2024 · Campaign press conference, Bedminster, New Jersey · Source @18:27 ↗" [ref=e39]:
+            - blockquote [ref=e40]: “Prices will come down. You just watch — they'll come down, and they'll come down fast. Groceries, cars, everything. Starting on day one.”
+            - generic [ref=e41]:
+              - link "Donald Trump" [ref=e42] [cursor=pointer]:
+                - /url: /p/donald-trump
+              - generic [ref=e43]: · August 15, 2024
+              - generic [ref=e44]: · Campaign press conference, Bedminster, New Jersey
+              - generic [ref=e45]: ·
+              - link "Source @18:27 ↗" [ref=e46] [cursor=pointer]:
+                - /url: https://www.c-span.org/video/?537740-1/former-president-trump-news-conference-bedminster
+          - generic [ref=e47]:
+            - generic [ref=e48]:
+              - img [ref=e49]
+              - text: Didn't Come True
+            - generic [ref=e52]: resolved Jun 9, 2026
+          - paragraph [ref=e53]: BLS food-at-home CPI is up 1.9% since January 2025 with one month left before the 18-month deadline. The 'immediately' clause and the 5% decline threshold are both mathematically out of reach.
+          - group [ref=e54]:
+            - generic "Resolution criteria" [ref=e55] [cursor=pointer]
+          - generic [ref=e56]:
+            - heading "Who was right" [level=2] [ref=e58]
+            - generic [ref=e59]:
+              - generic [ref=e60]:
+                - generic [ref=e61]:
+                  - paragraph [ref=e62]: Said it would happen
+                  - list [ref=e63]:
+                    - listitem [ref=e64]:
+                      - generic [ref=e65]:
+                        - link "Donald Trump" [ref=e66] [cursor=pointer]:
+                          - /url: /p/donald-trump
+                        - generic [ref=e67]: ✗ Wrong
+                      - blockquote [ref=e68]: “Prices will come down. You just watch — they'll come down, and they'll come down fast. Groceries, cars, everything. Starting on day one.”
+                      - paragraph [ref=e69]:
+                        - generic [ref=e70]: Aug 15, 2024
+                        - generic [ref=e71]: · Campaign press conference, Bedminster, New Jersey
+                        - generic [ref=e72]: ·
+                        - link "Source @18:27 ↗" [ref=e73] [cursor=pointer]:
+                          - /url: https://www.c-span.org/video/?537740-1/former-president-trump-news-conference-bedminster
+                    - listitem [ref=e74]:
+                      - generic [ref=e75]:
+                        - paragraph [ref=e76]:
+                          - link "u/newhere" [ref=e77] [cursor=pointer]:
+                            - /url: /u/u_newhere
+                          - text: · rep 12 · staked Mar 12, 2025
+                        - generic [ref=e78]: ✗ Wrong
+                - generic [ref=e79]:
+                  - paragraph [ref=e80]: Said it wouldn't
+                  - list [ref=e81]:
+                    - listitem [ref=e82]:
+                      - generic [ref=e83]:
+                        - paragraph [ref=e84]:
+                          - link "u/factfinder" [ref=e85] [cursor=pointer]:
+                            - /url: /u/u_factfinder
+                          - text: · rep 1.8k · staked Feb 1, 2025
+                        - generic [ref=e86]: ✓ Right
+                      - paragraph [ref=e87]:
+                        - text: The 5% decline branch needs food-at-home CPI at ~290 by July 20. It's at 311. This is resolvable now — that's why I proposed early resolution.
+                        - link "— in discussion ↓" [ref=e88] [cursor=pointer]:
+                          - /url: "#discussion"
+                    - listitem [ref=e89]:
+                      - generic [ref=e90]:
+                        - paragraph [ref=e91]:
+                          - link "u/sourcehound" [ref=e92] [cursor=pointer]:
+                            - /url: /u/u_sourcehound
+                          - text: · rep 1.2k · staked Feb 3, 2025
+                        - generic [ref=e93]: ✓ Right
+                    - listitem [ref=e94]:
+                      - generic [ref=e95]:
+                        - paragraph [ref=e96]:
+                          - link "u/Joe" [ref=e97] [cursor=pointer]:
+                            - /url: /u/RhHbeHb0bbUXXCZ6ln0CsHMVbrtP26HP
+                          - text: · rep 0 · staked Jun 9, 2026
+                        - generic [ref=e98]: ✓ Right
+              - button "+ Add a position — on the record" [ref=e101]
+          - generic [ref=e102]:
+            - heading "Evidence" [level=2] [ref=e104]
+            - generic [ref=e105]:
+              - generic [ref=e106]:
+                - generic [ref=e107]:
+                  - paragraph [ref=e108]: That it came true
+                  - list [ref=e109]:
+                    - listitem [ref=e110]:
+                      - link "Egg and produce prices fell from early-2025 peaks ↗" [ref=e111] [cursor=pointer]:
+                        - /url: https://www.usda.gov/oce/commodity-markets
+                      - paragraph [ref=e112]: USDA
+                - generic [ref=e113]:
+                  - paragraph [ref=e114]: That it didn't
+                  - list [ref=e115]:
+                    - listitem [ref=e116]:
+                      - 'link "BLS: food-at-home CPI up 1.9% Jan 2025 – May 2026 ↗" [ref=e117] [cursor=pointer]':
+                        - /url: https://www.bls.gov/cpi/
+                      - paragraph [ref=e118]: Bureau of Labor Statistics
+              - button "+ Add evidence — a sourced citation" [ref=e121]
+          - generic [ref=e122]:
+            - heading "Audit trail" [level=2] [ref=e124]
+            - list [ref=e126]:
+              - listitem [ref=e127]:
+                - paragraph [ref=e128]: Nov 20, 2024 · system
+                - paragraph [ref=e129]:
+                  - text: Pending
+                  - generic [ref=e130]: — Published after community review (44 approvals).
+              - listitem [ref=e131]:
+                - paragraph [ref=e132]: "May 27, 2026 · resolution proposal #2204"
+                - paragraph [ref=e133]:
+                  - text: Pending → Disputed
+                  - generic [ref=e134]: — Early resolution proposed (Didn't Come True) on grounds the 'immediately' clause already failed; under weighted vote.
+              - listitem [ref=e135]:
+                - paragraph [ref=e136]: Jun 9, 2026 · community vote (6 voters, 38 weight)
+                - paragraph [ref=e137]:
+                  - text: Disputed → Didn't Come True
+                  - generic [ref=e138]: — BLS food-at-home CPI is up 1.9% since January 2025 with one month left before the 18-month deadline. The 'immediately' clause and the 5% decline threshold are both mathematically out of reach.
+          - generic [ref=e140]:
+            - generic [ref=e141]:
+              - heading "Discussion (5)" [level=2] [ref=e142]
+              - generic [ref=e143]:
+                - generic [ref=e144]:
+                  - button "All 5" [ref=e145]:
+                    - text: All
+                    - generic [ref=e146]: "5"
+                  - button "Said Yes 1" [ref=e147]:
+                    - text: Said Yes
+                    - generic [ref=e148]: "1"
+                  - button "Said No 2" [ref=e149]:
+                    - text: Said No
+                    - generic [ref=e150]: "2"
+                - generic [ref=e151]:
+                  - button "Best" [ref=e152]
+                  - button "Record" [ref=e153]
+                  - button "New" [ref=e154]
+            - generic [ref=e155]:
+              - textbox "Join the conversation — cite sources where you can…" [ref=e156]
+              - button "Comment" [disabled] [ref=e158]
+            - generic [ref=e159]:
+              - generic [ref=e160]:
+                - generic [ref=e161]:
+                  - link "FA" [ref=e162] [cursor=pointer]:
+                    - /url: /u/u_factfinder
+                  - button "Collapse thread" [ref=e163]
+                - generic [ref=e165]:
+                  - generic [ref=e166]:
+                    - link "u/factfinder" [ref=e167] [cursor=pointer]:
+                      - /url: /u/u_factfinder
+                    - generic [ref=e168]: rep 1.8k
+                    - generic "Economy track record — domain-specific, from resolved calls" [ref=e169]: "economy: top 20% · 2 resolved"
+                    - generic [ref=e170]: called No
+                    - generic [ref=e171]: ✓ called it
+                    - generic [ref=e172]: ·
+                    - link "13d ago" [ref=e173] [cursor=pointer]:
+                      - /url: /comments/18
+                  - paragraph [ref=e174]: The 5% decline branch needs food-at-home CPI at ~290 by July 20. It's at 311. This is resolvable now — that's why I proposed early resolution.
+                  - generic [ref=e175]:
+                    - generic [ref=e176]:
+                      - button "Upvote" [ref=e177]:
+                        - img [ref=e178]
+                      - generic [ref=e180]: "24"
+                      - button "Downvote" [ref=e181]:
+                        - img [ref=e182]
+                    - button "Reply" [ref=e184]:
+                      - img [ref=e185]
+                      - text: Reply
+                    - link "Stake it" [ref=e187] [cursor=pointer]:
+                      - /url: /submit?stake=18
+                    - button "Collapse" [ref=e188]:
+                      - img [ref=e189]
+                      - text: Collapse
+                  - generic [ref=e190]:
+                    - generic [ref=e191]:
+                      - generic [ref=e192]:
+                        - link "NE" [ref=e193] [cursor=pointer]:
+                          - /url: /u/u_newhere
+                        - button "Collapse thread" [ref=e194]
+                      - generic [ref=e196]:
+                        - generic [ref=e197]:
+                          - link "u/newhere" [ref=e198] [cursor=pointer]:
+                            - /url: /u/u_newhere
+                          - generic [ref=e199]: rep 12
+                          - generic "Economy track record — domain-specific, from resolved calls" [ref=e200]: "economy: top 80% · 1 resolved"
+                          - generic [ref=e201]: called Yes
+                          - generic [ref=e202]: ·
+                          - link "12d ago" [ref=e203] [cursor=pointer]:
+                            - /url: /comments/19
+                        - paragraph [ref=e204]: Partly True branch only requires *any* decline over the window though. If June prints negative MoM it gets close. I'd wait for the deadline.
+                        - generic [ref=e205]:
+                          - generic [ref=e206]:
+                            - button "Upvote" [ref=e207]:
+                              - img [ref=e208]
+                            - generic [ref=e210]: "9"
+                            - button "Downvote" [ref=e211]:
+                              - img [ref=e212]
+                          - button "Reply" [ref=e214]:
+                            - img [ref=e215]
+                            - text: Reply
+                          - link "Stake it" [ref=e217] [cursor=pointer]:
+                            - /url: /submit?stake=19
+                          - button "Collapse" [ref=e218]:
+                            - img [ref=e219]
+                            - text: Collapse
+                        - generic [ref=e221]:
+                          - generic [ref=e222]:
+                            - link "QU" [ref=e223] [cursor=pointer]:
+                              - /url: /u/u_quietdata
+                            - button "Collapse thread" [ref=e224]
+                          - generic [ref=e226]:
+                            - generic [ref=e227]:
+                              - link "u/quietdata" [ref=e228] [cursor=pointer]:
+                                - /url: /u/u_quietdata
+                              - generic [ref=e229]: rep 968
+                              - generic "Economy track record — domain-specific, from resolved calls" [ref=e230]: "economy: top 80% · 1 resolved"
+                              - generic [ref=e231]: ·
+                              - link "11d ago" [ref=e232] [cursor=pointer]:
+                                - /url: /comments/20
+                            - paragraph [ref=e233]: Agree with waiting — early resolutions on near-miss math have been overturned on appeal twice this year. The deadline is seven weeks out.
+                            - generic [ref=e234]:
+                              - generic [ref=e235]:
+                                - button "Upvote" [ref=e236]:
+                                  - img [ref=e237]
+                                - generic [ref=e239]: "6"
+                                - button "Downvote" [ref=e240]:
+                                  - img [ref=e241]
+                              - button "Reply" [ref=e243]:
+                                - img [ref=e244]
+                                - text: Reply
+                              - link "Stake it" [ref=e246] [cursor=pointer]:
+                                - /url: /submit?stake=20
+                    - generic [ref=e247]:
+                      - generic [ref=e248]:
+                        - link "SO" [ref=e249] [cursor=pointer]:
+                          - /url: /u/u_sourcehound
+                        - button "Collapse thread" [ref=e250]
+                      - generic [ref=e252]:
+                        - generic [ref=e253]:
+                          - link "u/sourcehound" [ref=e254] [cursor=pointer]:
+                            - /url: /u/u_sourcehound
+                          - generic [ref=e255]: rep 1.2k
+                          - generic "Economy track record — domain-specific, from resolved calls" [ref=e256]: "economy: top 20% · 1 resolved"
+                          - generic [ref=e257]: called No
+                          - generic [ref=e258]: ✓ called it
+                          - generic [ref=e259]: ·
+                          - link "10d ago" [ref=e260] [cursor=pointer]:
+                            - /url: /comments/21
+                        - paragraph [ref=e261]: "Sourcing note: the BLS series everyone should be citing is CUUR0000SAF11, not headline CPI. Linked it in the evidence panel."
+                        - generic [ref=e262]:
+                          - generic [ref=e263]:
+                            - button "Upvote" [ref=e264]:
+                              - img [ref=e265]
+                            - generic [ref=e267]: "3"
+                            - button "Downvote" [ref=e268]:
+                              - img [ref=e269]
+                          - button "Reply" [ref=e271]:
+                            - img [ref=e272]
+                            - text: Reply
+                          - link "Stake it" [ref=e274] [cursor=pointer]:
+                            - /url: /submit?stake=21
+              - generic [ref=e275]:
+                - generic [ref=e276]:
+                  - link "SK" [ref=e277] [cursor=pointer]:
+                    - /url: /u/u_skeptic22
+                  - button "Collapse thread" [ref=e278]
+                - generic [ref=e280]:
+                  - generic [ref=e281]:
+                    - link "u/skeptic22" [ref=e282] [cursor=pointer]:
+                      - /url: /u/u_skeptic22
+                    - generic [ref=e283]: rep 405
+                    - generic [ref=e284]: ·
+                    - link "10d ago" [ref=e285] [cursor=pointer]:
+                      - /url: /comments/22
+                  - paragraph [ref=e286]: This whole proposition is rigged — nobody promised a specific index.
+                  - generic [ref=e287]:
+                    - generic [ref=e288]:
+                      - button "Upvote" [ref=e289]:
+                        - img [ref=e290]
+                      - generic [ref=e292]: "-2"
+                      - button "Downvote" [ref=e293]:
+                        - img [ref=e294]
+                    - button "Reply" [ref=e296]:
+                      - img [ref=e297]
+                      - text: Reply
+                    - link "Stake it" [ref=e299] [cursor=pointer]:
+                      - /url: /submit?stake=22
+        - complementary [ref=e300]:
+          - generic [ref=e302]:
+            - button "Follow 22k" [ref=e303]:
+              - img [ref=e304]
+              - text: Follow
+              - generic [ref=e305]: 22k
+            - paragraph [ref=e306]: 22k following — get notified when this resolves
+            - separator [ref=e307]
+            - generic [ref=e308]:
+              - paragraph [ref=e309]: Where users stood
+              - paragraph [ref=e311]: 25% of 4 users said Yes
+            - separator [ref=e312]
+            - generic [ref=e313]:
+              - link "Shareable verdict card ↗" [ref=e314] [cursor=pointer]:
+                - /url: /api/og/claim/grocery-prices-come-down
+              - link "Resolution-day scoreboard →" [ref=e315] [cursor=pointer]:
+                - /url: /scoreboard/grocery-prices-come-down
+          - generic [ref=e316]:
+            - heading "Related claims" [level=2] [ref=e317]
+            - list [ref=e318]:
+              - listitem [ref=e319]:
+                - link "“I think we get a recession in 2023 — the Fed has made that decision for us. Brace yourself.” Didn't Come True · Jim Cramer" [ref=e320] [cursor=pointer]:
+                  - /url: /claims/us-recession-by-end-2023
+                  - paragraph [ref=e321]: “I think we get a recession in 2023 — the Fed has made that decision for us. Brace yourself.”
+                  - paragraph [ref=e322]: Didn't Come True · Jim Cramer
+              - listitem [ref=e323]:
+                - link "“Tariffs at this scale are a supply shock. I'd be surprised if we don't see headline inflation back above 4 percent by the middle of next year.” Pending · Paul Krugman" [ref=e324] [cursor=pointer]:
+                  - /url: /claims/tariffs-push-inflation-above-4pct-2026
+                  - paragraph [ref=e325]: “Tariffs at this scale are a supply shock. I'd be surprised if we don't see headline inflation back above 4 percent by the middle of next year.”
+                  - paragraph [ref=e326]: Pending · Paul Krugman
+              - listitem [ref=e327]:
+                - link "“Those of us on Team Transitory think this inflation is mainly bottlenecks and base effects — it will subside without the Fed having to engineer a recession.” Partly True · Paul Krugman" [ref=e328] [cursor=pointer]:
+                  - /url: /claims/inflation-transitory-2021
+                  - paragraph [ref=e329]: “Those of us on Team Transitory think this inflation is mainly bottlenecks and base effects — it will subside without the Fed having to engineer a recession.”
+                  - paragraph [ref=e330]: Partly True · Paul Krugman
+              - listitem [ref=e331]:
+                - link "“By 2005 or so, it will become clear that the Internet's impact on the economy has been no greater than the fax machine's.” Didn't Come True · Paul Krugman" [ref=e332] [cursor=pointer]:
+                  - /url: /claims/internet-no-greater-than-fax
+                  - paragraph [ref=e333]: “By 2005 or so, it will become clear that the Internet's impact on the economy has been no greater than the fax machine's.”
+                  - paragraph [ref=e334]: Didn't Come True · Paul Krugman
+  - contentinfo [ref=e335]:
+    - generic [ref=e336]:
+      - generic [ref=e337]:
+        - generic [ref=e338]:
+          - img [ref=e339]
+          - generic [ref=e343]: SmartHumans
+        - paragraph [ref=e344]: A permanent, sourced, community-verified record of what people predicted and promised — and whether it actually happened. Public figures garner the spotlight; everyone can build a record.
+        - paragraph [ref=e345]: AI proposes · humans verify
+      - generic [ref=e346]:
+        - paragraph [ref=e347]: Explore
+        - list [ref=e348]:
+          - listitem [ref=e349]:
+            - link "Browse by topic" [ref=e350] [cursor=pointer]:
+              - /url: /browse
+          - listitem [ref=e351]:
+            - link "Leaderboards" [ref=e352] [cursor=pointer]:
+              - /url: /leaderboards
+          - listitem [ref=e353]:
+            - link "Smartest users" [ref=e354] [cursor=pointer]:
+              - /url: /leaderboards?tab=users
+          - listitem [ref=e355]:
+            - link "Resolving soon" [ref=e356] [cursor=pointer]:
+              - /url: /resolving-soon
+          - listitem [ref=e357]:
+            - link "Notifications" [ref=e358] [cursor=pointer]:
+              - /url: /notifications
+          - listitem [ref=e359]:
+            - link "Submit a claim" [ref=e360] [cursor=pointer]:
+              - /url: /submit
+      - generic [ref=e361]:
+        - paragraph [ref=e362]: Trust
+        - list [ref=e363]:
+          - listitem [ref=e364]:
+            - link "Methodology" [ref=e365] [cursor=pointer]:
+              - /url: /methodology
+          - listitem [ref=e366]:
+            - link "Review queue" [ref=e367] [cursor=pointer]:
+              - /url: /review
+          - listitem [ref=e368]:
+            - link "How verdicts are reached" [ref=e369] [cursor=pointer]:
+              - /url: /methodology#resolution
+          - listitem [ref=e370]:
+            - link "Disputes & appeals" [ref=e371] [cursor=pointer]:
+              - /url: /methodology#appeals
+          - listitem [ref=e372]:
+            - link "AI & agent policy" [ref=e373] [cursor=pointer]:
+              - /url: /methodology#agents
+    - generic [ref=e375]: © 2026 SmartHumans — no primary source, no claim.
+  - button "Open Next.js Dev Tools" [ref=e381] [cursor=pointer]:
+    - img [ref=e382]

@@ -14,6 +14,7 @@ import {
 } from "@/lib/queries";
 import { topPercent, currentSeason } from "@/lib/gamification";
 import { StatusBadge } from "@/components/status-badge";
+import { FilterBar, FilterPill } from "@/components/filters";
 import { Clock } from "lucide-react";
 import { fmtDate, deadlineLabel } from "@/lib/format";
 import { STATUS_META } from "@/lib/status";
@@ -127,25 +128,20 @@ export default async function NotificationsPage({
         </div>
       )}
 
-      <div className="mt-5 inline-flex rounded-[9px] border bg-paper-2 p-[3px]">
-        {(
-          [
-            { k: "all", label: "All", href: "/notifications" },
-            { k: "following", label: "Claims I follow", href: "/notifications?tab=following" },
-          ] as const
-        ).map((t) => (
-          <Link
-            key={t.k}
-            href={t.href}
-            className={cn(
-              "rounded-md px-3 py-1.5 text-[12.5px] font-medium",
-              tab === t.k ? "bg-card text-foreground shadow-xs" : "text-ink-2 hover:text-foreground",
-            )}
-          >
-            {t.label}
-          </Link>
-        ))}
-      </div>
+      <FilterBar className="mt-5">
+        <FilterPill
+          href="/notifications"
+          active={tab === "all"}
+          label="All"
+          count={notifs.length}
+        />
+        <FilterPill
+          href="/notifications?tab=following"
+          active={tab === "following"}
+          label="Claims I follow"
+          count={notifs.filter((n) => n.followed).length}
+        />
+      </FilterBar>
 
       <div className="mt-5 overflow-hidden rounded-[14px] border bg-card">
         {shown.map((n, i) => (

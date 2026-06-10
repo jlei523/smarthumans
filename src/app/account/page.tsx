@@ -89,7 +89,7 @@ export default async function AccountPage() {
                   : "border-st-false/40 bg-st-false-bg text-st-false",
               )}
             >
-              {e.position === "affirm" ? "Will happen" : "Won't happen"}
+              {e.position === "affirm" ? "Called Yes" : "Called No"}
             </span>
             <Link
               href={`/claims/${e.proposition.slug}`}

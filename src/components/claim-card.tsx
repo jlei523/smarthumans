@@ -57,21 +57,27 @@ export function ClaimCard({
   stance,
   person,
   showPerson = true,
+  showCategory = true,
   accent = false,
   following = false,
   myStance = null,
+  metric,
   className,
 }: {
   proposition: Proposition;
   stance: (Stance & { person?: Person }) | null;
   person?: Person | null;
   showPerson?: boolean;
+  /** hide the topic link when the surrounding page already is that topic */
+  showCategory?: boolean;
   /** left status-colored accent border (used in pending/most-followed lists) */
   accent?: boolean;
   /** signed-in user already follows this proposition */
   following?: boolean;
   /** signed-in user's one-tap stance on this proposition */
   myStance?: "affirm" | "deny" | null;
+  /** trailing metric set by the active sort (comments, year, following…) */
+  metric?: string;
   className?: string;
 }) {
   const speaker = person ?? stance?.person ?? null;
@@ -137,25 +143,34 @@ export function ClaimCard({
             calls closed
           </span>
         )}
-        <span className="text-ink-4">·</span>
-        {showPerson && speaker && (
+        {((showPerson && speaker) || showCategory || stance) && (
+          <span className="text-ink-4">·</span>
+        )}
+        {showPerson && speaker && <TypeChip type={proposition.claimType} />}
+        {showCategory && (
           <>
-            <TypeChip type={proposition.claimType} />
-            <span className="text-ink-4">·</span>
+            {showPerson && speaker && <span className="text-ink-4">·</span>}
+            <CategoryChip category={proposition.category} />
           </>
         )}
-        <CategoryChip category={proposition.category} />
         {stance && (
           <>
-            <span className="text-ink-4">·</span>
+            {((showPerson && speaker) || showCategory) && (
+              <span className="text-ink-4">·</span>
+            )}
             <span className="whitespace-nowrap">{fmtDate(stance.dateStated)}</span>
-            <SourceTag stance={stance} />
           </>
         )}
-        {isOpen && (
-          <span className="ml-auto font-medium text-st-pending-tx whitespace-nowrap">
-            {deadlineLabel(proposition.deadline)}
+        {metric !== undefined ? (
+          <span className="ml-auto font-meta text-[11.5px] text-ink-3 whitespace-nowrap tabular-nums">
+            {metric}
           </span>
+        ) : (
+          isOpen && (
+            <span className="ml-auto font-medium text-st-pending-tx whitespace-nowrap">
+              {deadlineLabel(proposition.deadline)}
+            </span>
+          )
         )}
       </div>
     </article>
@@ -164,34 +179,6 @@ export function ClaimCard({
 
 function truncate(s: string, n: number) {
   return s.length > n ? s.slice(0, n - 1).trimEnd() + "…" : s;
-}
-
-function SourceTag({ stance }: { stance: Stance }) {
-  const SourceIcon = SOURCE_ICONS[stance.sourceType] ?? FileText;
-  return (
-    <>
-      <span className="text-ink-4">·</span>
-      <span className="inline-flex items-center gap-1 font-meta text-[11px] text-ink-3 whitespace-nowrap">
-        <SourceIcon className="size-3" />
-        {stance.sourceType === "video"
-          ? "Video source"
-          : stance.sourceType === "broadcast"
-            ? "Broadcast"
-            : "Source"}
-        {stance.videoTimestamp && (
-          <span className="text-st-pending-tx">@{stance.videoTimestamp}</span>
-        )}
-      </span>
-      {stance.quoteReported && (
-        <span
-          className="text-[11px] italic text-st-partly-tx whitespace-nowrap"
-          title="No recording exists — quote corroborated by 2+ independent contemporaneous news reports"
-        >
-          · quote reported, not primary-sourced
-        </span>
-      )}
-    </>
-  );
 }
 
 export function SourceLink({

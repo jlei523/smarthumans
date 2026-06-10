@@ -95,27 +95,27 @@
   --ink-2: #56524b;
   --ink-3: #8b8579;
   --ink-4: #b4aea0;
-  --st-pending: #3d6294;
-  --st-pending-bg: #e7ecf4;
-  --st-pending-tx: #2f4d75;
-  --st-true: #1c7a4c;
-  --st-true-bg: #e6f1ea;
-  --st-true-tx: #155c39;
-  --st-partly: #9c6a11;
-  --st-partly-bg: #f6eed8;
-  --st-partly-tx: #7a520c;
-  --st-false: #b23a30;
-  --st-false-bg: #f7e4e1;
-  --st-false-tx: #8c2c24;
-  --st-walked: #6a548f;
-  --st-walked-bg: #ece6f3;
-  --st-walked-tx: #523f73;
+  --st-pending: #2563eb;
+  --st-pending-bg: #e9effd;
+  --st-pending-tx: #1d4ed8;
+  --st-true: #16a34a;
+  --st-true-bg: #e7f6ec;
+  --st-true-tx: #15803d;
+  --st-partly: #d97706;
+  --st-partly-bg: #fcf0df;
+  --st-partly-tx: #b45309;
+  --st-false: #dc2626;
+  --st-false-bg: #fdeaea;
+  --st-false-tx: #b91c1c;
+  --st-walked: #7c3aed;
+  --st-walked-bg: #f2ebfd;
+  --st-walked-tx: #6d28d9;
   --st-unverifiable: #79746a;
   --st-unverifiable-bg: #eceae3;
   --st-unverifiable-tx: #5e594f;
-  --st-disputed: #8a6a1f;
-  --st-disputed-bg: #f4eed9;
-  --st-disputed-tx: #6d531a;
+  --st-disputed: #6b6455;
+  --st-disputed-bg: #ffffff;
+  --st-disputed-tx: #56524b;
   --background: #faf9f6;
   --foreground: #201e1b;
   --card: #ffffff;
@@ -131,7 +131,7 @@
   --accent: #efece4;
   --accent-foreground: #201e1b;
   --destructive: #b23a30;
-  --border: #e6e2d8;
+  --border: #e8e4da;
   --input: #d6d1c4;
   --ring: #b4aea0;
   --chart-1: oklch(0.87 0 0);
@@ -450,8 +450,7 @@
 .clean .term-rows a { padding-top: 12px; padding-bottom: 12px; }
 .clean img.person-photo { border-radius: 9999px; filter: none; }
 /* the indigo accent carries the primary actions */
-.clean .bg-foreground { background-color: var(--primary); }
-.clean [data-status="disputed"] {
+.clean .clean [data-status="disputed"] {
   background-image: none !important;
   border-style: solid !important;
 }
@@ -617,54 +616,42 @@
    padding, round avatars, and one indigo accent. Verdicts
    saturated.
    ============================================================ */
-.soft {
-  --font-meta-active: var(--font-sans);
-  --background: #faf9f6;
-  --foreground: #201e1b;
-  --card: #ffffff;
-  --card-foreground: #201e1b;
-  --popover: #ffffff;
-  --popover-foreground: #201e1b;
-  --primary: #4f46e5; /* the one indigo accent */
-  --primary-foreground: #ffffff;
-  --secondary: #f4f2ec;
-  --secondary-foreground: #201e1b;
-  --muted: #f4f2ec;
-  --muted-foreground: #8b8579;
-  --accent: #eef0fb;
-  --accent-foreground: #3730a3;
-  --border: #e8e4da;
-  --input: #d6d1c4;
-  --ring: #4f46e5;
-  --paper-2: #f4f2ec;
-  --paper-3: #efece4;
-  --ink-2: #56524b;
-  --ink-3: #8b8579;
-  --ink-4: #b4aea0;
-
-  /* saturated verdicts on warm paper */
-  --st-true: #16a34a;  --st-true-bg: #e7f6ec;  --st-true-tx: #15803d;
-  --st-false: #dc2626; --st-false-bg: #fdeaea; --st-false-tx: #b91c1c;
-  --st-pending: #2563eb; --st-pending-bg: #e9effd; --st-pending-tx: #1d4ed8;
-  --st-partly: #d97706; --st-partly-bg: #fcf0df; --st-partly-tx: #b45309;
-  --st-walked: #7c3aed; --st-walked-bg: #f2ebfd; --st-walked-tx: #6d28d9;
-  --st-unverifiable: #79746a; --st-unverifiable-bg: #eceae3; --st-unverifiable-tx: #5e594f;
-  --st-disputed: #6b6455; --st-disputed-bg: #ffffff; --st-disputed-tx: #56524b;
-
-  background-color: var(--background);
-  color: var(--foreground);
-}
-.soft :is(article, .rounded-lg, .rounded-\[11px\], .rounded-\[14px\], .rounded-xl) {
+/* ---- The base theme (formerly the "Soft" skin), site-wide:
+       rounded cards, soft shadows, one indigo accent, round portraits.
+       Homepage preview skins override all of this with higher specificity. ---- */
+:is(article, .rounded-lg, .rounded-\[11px\], .rounded-\[14px\], .rounded-xl) {
   border-radius: 14px;
 }
-.soft article {
+article {
   padding: 20px;
   box-shadow: 0 1px 2px rgba(40, 35, 25, 0.04), 0 2px 6px rgba(40, 35, 25, 0.05);
 }
-.soft .term-rows a { padding-top: 10px; padding-bottom: 10px; }
-.soft img.person-photo { border-radius: 9999px; filter: none; }
-.soft .bg-foreground { background-color: var(--primary); }
-.soft [data-status="disputed"] {
+.term-rows a { padding-top: 10px; padding-bottom: 10px; }
+img.person-photo { border-radius: 9999px; filter: none; }
+.bg-foreground { background-color: var(--primary); }
+[data-status="disputed"] {
   background-image: none !important;
   border-style: solid !important;
+}
+/* the dense preview skins keep their tighter cards */
+.broadsheet article, .hybrid article, .brutal article { padding: 16px; }
+
+/* LedgerSortBar menus — fade + drop, respecting reduced motion */
+@keyframes menu-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.menu-pop {
+  animation: menu-pop 140ms ease both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .menu-pop {
+    animation: none;
+  }
 }

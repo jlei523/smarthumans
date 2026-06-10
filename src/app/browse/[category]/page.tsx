@@ -1,27 +1,28 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { ClaimCard } from "@/components/claim-card";
 import { PersonChip, PersonAvatar } from "@/components/person-chip";
 import {
   DistributionBar,
   ScoreGauge,
   accuracyTextClass,
 } from "@/components/charts";
-import { StatusBadge, StatusDot } from "@/components/status-badge";
+import { StatusBadge } from "@/components/status-badge";
+import { LedgerSortBar } from "@/components/ledger-sort-bar";
 import { FollowButton } from "@/components/follow-button";
 import { TopicGlyph } from "@/components/topic-glyph";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import {
+  getCommentCounts,
   getFollowedPropositionIds,
   getTopicData,
   getUserStanceMap,
   primaryStance,
 } from "@/lib/queries";
 import { TOPIC_BLURBS } from "@/lib/topics";
-import { CATEGORY_LABEL, DOMAIN_LABEL, STATUS_META, STATUS_ORDER } from "@/lib/status";
-import { categoryEnum, type Category, type ClaimStatus } from "@/db/schema";
+import { CATEGORY_LABEL, DOMAIN_LABEL } from "@/lib/status";
+import { categoryEnum, type Category } from "@/db/schema";
 import { cn } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
@@ -39,58 +40,29 @@ export async function generateMetadata({
   };
 }
 
-const SORTS = [
-  { key: "followers", label: "Most followed" },
-  { key: "newest", label: "Newest" },
-  { key: "deadline", label: "Deadline" },
-] as const;
-
 export default async function TopicPage({
   params,
   searchParams,
 }: {
   params: Promise<{ category: string }>;
-  searchParams: Promise<{ status?: string; sort?: string }>;
+  searchParams: Promise<{ sort?: string; window?: string; status?: string }>;
 }) {
   const { category } = await params;
-  const { status: statusFilter, sort = "followers" } = await searchParams;
+  const { sort, window: windowScope, status } = await searchParams;
   if (!categoryEnum.enumValues.includes(category as Category)) notFound();
   const cat = category as Category;
   const session = await auth.api.getSession({ headers: await headers() });
-  const [{ claims, scorecard, topForecasters, mostFollowed }, followedIds, stanceMap] =
-    await Promise.all([
-      getTopicData(cat),
-      getFollowedPropositionIds(session?.user?.id),
-      getUserStanceMap(session?.user?.id),
-    ]);
-
-  const statusCounts = new Map<ClaimStatus, number>();
-  for (const c of claims) {
-    statusCounts.set(c.status, (statusCounts.get(c.status) ?? 0) + 1);
-  }
-  const shown = (
-    statusFilter ? claims.filter((c) => c.status === statusFilter) : claims
-  ).sort((a, b) => {
-    if (sort === "newest") {
-      const da = primaryStance(a)?.dateStated ?? "0000";
-      const db = primaryStance(b)?.dateStated ?? "0000";
-      return db.localeCompare(da);
-    }
-    if (sort === "deadline") {
-      return (a.deadline ?? "9999-12-31").localeCompare(b.deadline ?? "9999-12-31");
-    }
-    return b.followerCount - a.followerCount;
-  });
-
-  const qs = (next: { status?: string | null; sort?: string | null }) => {
-    const p = new URLSearchParams();
-    const st = next.status === undefined ? statusFilter : next.status;
-    const so = next.sort === undefined ? sort : next.sort;
-    if (st) p.set("status", st);
-    if (so && so !== "followers") p.set("sort", so);
-    const str = p.toString();
-    return `/browse/${cat}${str ? `?${str}` : ""}`;
-  };
+  const [
+    { claims, scorecard, topForecasters, mostFollowed },
+    commentCounts,
+    followedIds,
+    stanceMap,
+  ] = await Promise.all([
+    getTopicData(cat),
+    getCommentCounts(),
+    getFollowedPropositionIds(session?.user?.id),
+    getUserStanceMap(session?.user?.id),
+  ]);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-7 pb-20">
@@ -106,62 +78,21 @@ export default async function TopicPage({
       </h1>
 
       <div className="mt-6 grid gap-x-10 gap-y-8 lg:grid-cols-[minmax(0,1fr)_300px]">
-        {/* ----- main: the claims, with sort + filter ----- */}
+        {/* ----- main: the claims behind the sort-led bar ----- */}
         <main className="min-w-0">
-          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b pb-2">
-            <div className="flex flex-wrap items-center gap-2">
-              <FilterPill
-                href={qs({ status: null })}
-                active={!statusFilter}
-                label="All"
-                count={claims.length}
-              />
-              {STATUS_ORDER.filter((st) => (statusCounts.get(st) ?? 0) > 0).map(
-                (st) => (
-                  <FilterPill
-                    key={st}
-                    href={qs({ status: statusFilter === st ? null : st })}
-                    active={statusFilter === st}
-                    label={STATUS_META[st].shortLabel}
-                    count={statusCounts.get(st)!}
-                    dot={st}
-                  />
-                ),
-              )}
-            </div>
-            <div className="flex gap-3 text-xs">
-              {SORTS.map((so) => (
-                <Link
-                  key={so.key}
-                  href={qs({ sort: so.key })}
-                  className={cn(
-                    sort === so.key
-                      ? "font-semibold text-foreground"
-                      : "text-muted-foreground hover:text-foreground",
-                  )}
-                >
-                  {so.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-4 grid gap-3">
-            {shown.map((p) => (
-              <ClaimCard
-                key={p.id}
-                proposition={p}
-                stance={primaryStance(p)}
-                following={followedIds.has(p.id)}
-                myStance={stanceMap[p.id] ?? null}
-              />
-            ))}
-            {shown.length === 0 && (
-              <p className="rounded-lg border bg-card p-6 text-center text-sm text-ink-3">
-                No claims match this filter.
-              </p>
-            )}
-          </div>
+          <LedgerSortBar
+            items={claims.map((p) => ({
+              proposition: p,
+              stance: primaryStance(p),
+              commentCount: commentCounts[p.id] ?? 0,
+              following: followedIds.has(p.id),
+              myStance: stanceMap[p.id] ?? null,
+            }))}
+            showCategory={false}
+            initialSort={sort}
+            initialWindow={windowScope}
+            initialStatus={status}
+          />
         </main>
 
         {/* ----- sidebar: everything else ----- */}
@@ -271,35 +202,5 @@ export default async function TopicPage({
         </aside>
       </div>
     </div>
-  );
-}
-
-function FilterPill({
-  href,
-  active,
-  label,
-  count,
-  dot,
-}: {
-  href: string;
-  active: boolean;
-  label: string;
-  count: number;
-  dot?: ClaimStatus;
-}) {
-  return (
-    <Link
-      href={href}
-      className={cn(
-        "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium transition-colors",
-        active
-          ? "border-foreground bg-foreground text-background"
-          : "bg-card text-ink-2 hover:border-ink-3 hover:text-foreground",
-      )}
-    >
-      {dot && <StatusDot status={dot} className="size-2" />}
-      {label}
-      <span className="font-mono opacity-70">{count}</span>
-    </Link>
   );
 }
