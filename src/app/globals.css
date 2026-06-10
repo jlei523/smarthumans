@@ -1,0 +1,670 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-serif);
+  --font-serif: var(--font-serif);
+  /* meta text (dates, tags, eyebrows): mono in the paper skin,
+     sans in the broadsheet skin (mono is reserved for numerals there) */
+  --font-meta: var(--font-meta-active);
+
+  /* Claim status palette — colorblind-safe, always paired with icon +
+     label. -bg = pill fill, -tx = pill text. Values are skin-scoped
+     var() references so the .broadsheet skin can override them. */
+  --color-st-pending: var(--st-pending);
+  --color-st-pending-bg: var(--st-pending-bg);
+  --color-st-pending-tx: var(--st-pending-tx);
+  --color-st-true: var(--st-true);
+  --color-st-true-bg: var(--st-true-bg);
+  --color-st-true-tx: var(--st-true-tx);
+  --color-st-partly: var(--st-partly);
+  --color-st-partly-bg: var(--st-partly-bg);
+  --color-st-partly-tx: var(--st-partly-tx);
+  --color-st-false: var(--st-false);
+  --color-st-false-bg: var(--st-false-bg);
+  --color-st-false-tx: var(--st-false-tx);
+  --color-st-walked: var(--st-walked);
+  --color-st-walked-bg: var(--st-walked-bg);
+  --color-st-walked-tx: var(--st-walked-tx);
+  --color-st-unverifiable: var(--st-unverifiable);
+  --color-st-unverifiable-bg: var(--st-unverifiable-bg);
+  --color-st-unverifiable-tx: var(--st-unverifiable-tx);
+  --color-st-disputed: var(--st-disputed);
+  --color-st-disputed-bg: var(--st-disputed-bg);
+  --color-st-disputed-tx: var(--st-disputed-tx);
+
+  /* Surfaces */
+  --color-paper: var(--background);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-ink: var(--foreground);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-4: var(--ink-4);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  /* SmartHumans paper theme.
+     Labels/dates/tags are sans site-wide; mono is reserved for numerals. */
+  --font-meta-active: var(--font-sans);
+  --paper-2: #f4f2ec;
+  --paper-3: #efece4;
+  --ink-2: #56524b;
+  --ink-3: #8b8579;
+  --ink-4: #b4aea0;
+  --st-pending: #3d6294;
+  --st-pending-bg: #e7ecf4;
+  --st-pending-tx: #2f4d75;
+  --st-true: #1c7a4c;
+  --st-true-bg: #e6f1ea;
+  --st-true-tx: #155c39;
+  --st-partly: #9c6a11;
+  --st-partly-bg: #f6eed8;
+  --st-partly-tx: #7a520c;
+  --st-false: #b23a30;
+  --st-false-bg: #f7e4e1;
+  --st-false-tx: #8c2c24;
+  --st-walked: #6a548f;
+  --st-walked-bg: #ece6f3;
+  --st-walked-tx: #523f73;
+  --st-unverifiable: #79746a;
+  --st-unverifiable-bg: #eceae3;
+  --st-unverifiable-tx: #5e594f;
+  --st-disputed: #8a6a1f;
+  --st-disputed-bg: #f4eed9;
+  --st-disputed-tx: #6d531a;
+  --background: #faf9f6;
+  --foreground: #201e1b;
+  --card: #ffffff;
+  --card-foreground: #201e1b;
+  --popover: #ffffff;
+  --popover-foreground: #201e1b;
+  --primary: #201e1b;
+  --primary-foreground: #faf9f6;
+  --secondary: #f4f2ec;
+  --secondary-foreground: #201e1b;
+  --muted: #f4f2ec;
+  --muted-foreground: #8b8579;
+  --accent: #efece4;
+  --accent-foreground: #201e1b;
+  --destructive: #b23a30;
+  --border: #e6e2d8;
+  --input: #d6d1c4;
+  --ring: #b4aea0;
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+/* ============================================================
+   "Crisp broadsheet" skin — toggled via .broadsheet on <html>.
+   Same structure and components; only the visual skin changes.
+   ============================================================ */
+.broadsheet {
+  /* sans for all UI text; mono reserved for tabular numerals */
+  --font-meta-active: var(--font-sans);
+
+  /* pure paper-white, near-black ink, no warm tints */
+  --background: #fafafa;
+  --foreground: #111111;
+  --card: #ffffff;
+  --card-foreground: #111111;
+  --popover: #ffffff;
+  --popover-foreground: #111111;
+  --primary: #111111;
+  --primary-foreground: #ffffff;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #111111;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #f4f4f5;
+  --accent-foreground: #111111;
+  --border: #e4e4e7;   /* hairline rules */
+  --input: #d4d4d8;
+  --ring: #a1a1aa;
+
+  --paper-2: #f4f4f5;
+  --paper-3: #ececee;
+  --ink-2: #52525b;
+  --ink-3: #71717a;
+  --ink-4: #a1a1aa;
+
+  /* one saturated, decisive hue per status — the most confident
+     color on the page */
+  --st-pending: #2563eb;
+  --st-pending-bg: #e9effd;
+  --st-pending-tx: #1d4ed8;
+  --st-true: #16a34a;
+  --st-true-bg: #e7f6ec;
+  --st-true-tx: #15803d;
+  --st-partly: #d97706;
+  --st-partly-bg: #fcf0df;
+  --st-partly-tx: #b45309;
+  --st-false: #dc2626;
+  --st-false-bg: #fdeaea;
+  --st-false-tx: #b91c1c;
+  --st-walked: #7c3aed;
+  --st-walked-bg: #f2ebfd;
+  --st-walked-tx: #6d28d9;
+  --st-unverifiable: #64748b;
+  --st-unverifiable-bg: #eef1f4;
+  --st-unverifiable-tx: #475569;
+  --st-disputed: #475569;
+  --st-disputed-bg: #ffffff;
+  --st-disputed-tx: #334155;
+
+  /* paints itself when scoped to a wrapper (homepage skin switcher) */
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* disputed = solid outline, no stripes, no dashed olive */
+.broadsheet [data-status="disputed"] {
+  background-image: none !important;
+  border-style: solid !important;
+  border-color: var(--color-st-disputed) !important;
+}
+
+/* hairline rules + whitespace: flatten panel chrome; boxed cards
+   (claim cards render as <article>) keep a sharper 5px radius */
+.broadsheet article {
+  border-radius: 5px;
+  box-shadow: none;
+}
+.broadsheet :is(.rounded-\[14px\], .rounded-\[11px\], .rounded-xl) {
+  border-radius: 6px;
+}
+.broadsheet :is(.shadow-xs, .shadow-sm) {
+  box-shadow: none;
+}
+
+/* uniform, non-editorializing figure photos */
+.broadsheet img.person-photo {
+  filter: grayscale(1) contrast(1.04);
+}
+
+/* per-skin copy (hero tagline) */
+.broadsheet-only { display: none; }
+.broadsheet .broadsheet-only { display: inline; }
+.broadsheet .paper-only { display: none; }
+
+/* sparkline reads as a floating orphan in the flat skin — cut it */
+.broadsheet .spark-block { display: none; }
+
+/* ============================================================
+   HYBRID skin (homepage-only preview): broadsheet reading
+   surfaces — white, serif propositions, hairline rules — with
+   TERMINAL data surfaces: monospace numerals, market green/red
+   verdicts, dense tabular rows. Scoped to a wrapper, not <html>.
+   ============================================================ */
+.hybrid {
+  /* broadsheet base */
+  --font-meta-active: var(--font-sans);
+  --background: #ffffff;
+  --foreground: #111113;
+  --card: #ffffff;
+  --card-foreground: #111113;
+  --popover: #ffffff;
+  --popover-foreground: #111113;
+  --primary: #111113;
+  --primary-foreground: #ffffff;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #111113;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #f4f4f5;
+  --accent-foreground: #111113;
+  --border: #e4e4e7;
+  --input: #d4d4d8;
+  --ring: #a1a1aa;
+  --paper-2: #f7f7f8;
+  --paper-3: #efeff1;
+  --ink-2: #3f3f46;
+  --ink-3: #71717a;
+  --ink-4: #a1a1aa;
+
+  /* terminal verdict colors — market green / market red */
+  --st-true: #009e4f;
+  --st-true-bg: #e3f6ec;
+  --st-true-tx: #00803f;
+  --st-false: #e5484d;
+  --st-false-bg: #fdebec;
+  --st-false-tx: #ce2c31;
+  --st-pending: #2563eb;
+  --st-pending-bg: #e9effd;
+  --st-pending-tx: #1d4ed8;
+  --st-partly: #d97706;
+  --st-partly-bg: #fcf0df;
+  --st-partly-tx: #b45309;
+  --st-walked: #7c3aed;
+  --st-walked-bg: #f2ebfd;
+  --st-walked-tx: #6d28d9;
+  --st-unverifiable: #64748b;
+  --st-unverifiable-bg: #eef1f4;
+  --st-unverifiable-tx: #475569;
+  --st-disputed: #475569;
+  --st-disputed-bg: #ffffff;
+  --st-disputed-tx: #334155;
+
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* hairline rules, no card chrome */
+.hybrid article {
+  border-radius: 4px;
+  box-shadow: none;
+}
+.hybrid :is(.rounded-\[14px\], .rounded-\[11px\], .rounded-xl, .rounded-lg) {
+  border-radius: 5px;
+}
+.hybrid :is(.shadow-xs, .shadow-sm) {
+  box-shadow: none;
+}
+.hybrid [data-status="disputed"] {
+  background-image: none !important;
+  border-style: solid !important;
+  border-color: var(--st-disputed) !important;
+}
+.hybrid img.person-photo {
+  filter: grayscale(1) contrast(1.04);
+}
+.hybrid .paper-only { display: none; }
+.hybrid .broadsheet-only { display: inline; }
+
+/* terminal data surfaces */
+.hybrid .record-line {
+  font-family: var(--font-geist-mono);
+  font-size: 11px;
+  letter-spacing: -0.01em;
+}
+.hybrid .term-rows {
+  font-feature-settings: "tnum" 1;
+}
+.hybrid .term-rows a {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.hybrid .term-rows .text-sm {
+  font-size: 12.5px;
+}
+.hybrid .term-stats dd {
+  letter-spacing: -0.03em;
+}
+.hybrid .followbtn-count,
+.hybrid .term-num {
+  font-family: var(--font-geist-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   C — CLEAN PRODUCT (homepage-only): light neutral, white cards
+   with 12–16px radius, one indigo accent, sans everywhere,
+   pill badges, soft avatars, generous padding. Verdicts stay
+   saturated. Linear/Stripe energy.
+   ============================================================ */
+.clean {
+  --font-meta-active: var(--font-sans);
+  --font-serif: var(--font-sans); /* no serif anywhere */
+  --background: #f8f9fb;
+  --foreground: #18181b;
+  --card: #ffffff;
+  --card-foreground: #18181b;
+  --popover: #ffffff;
+  --popover-foreground: #18181b;
+  --primary: #4f46e5; /* the one indigo accent */
+  --primary-foreground: #ffffff;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #18181b;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #eef0ff;
+  --accent-foreground: #3730a3;
+  --border: #e6e7eb;
+  --input: #d4d4d8;
+  --ring: #4f46e5;
+  --paper-2: #f1f2f6;
+  --paper-3: #e9eaf0;
+  --ink-2: #3f3f46;
+  --ink-3: #71717a;
+  --ink-4: #a1a1aa;
+
+  /* saturated verdicts */
+  --st-true: #16a34a;  --st-true-bg: #e7f6ec;  --st-true-tx: #15803d;
+  --st-false: #dc2626; --st-false-bg: #fdeaea; --st-false-tx: #b91c1c;
+  --st-pending: #2563eb; --st-pending-bg: #e9effd; --st-pending-tx: #1d4ed8;
+  --st-partly: #d97706; --st-partly-bg: #fcf0df; --st-partly-tx: #b45309;
+  --st-walked: #7c3aed; --st-walked-bg: #f2ebfd; --st-walked-tx: #6d28d9;
+  --st-unverifiable: #64748b; --st-unverifiable-bg: #eef1f4; --st-unverifiable-tx: #475569;
+  --st-disputed: #475569; --st-disputed-bg: #ffffff; --st-disputed-tx: #334155;
+
+  background-color: var(--background);
+  color: var(--foreground);
+}
+.clean :is(article, .rounded-lg, .rounded-\[11px\], .rounded-\[14px\], .rounded-xl) {
+  border-radius: 14px;
+}
+.clean article {
+  padding: 20px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05), 0 1px 3px rgba(16, 24, 40, 0.06);
+}
+.clean .term-rows a { padding-top: 12px; padding-bottom: 12px; }
+.clean img.person-photo { border-radius: 9999px; filter: none; }
+/* the indigo accent carries the primary actions */
+.clean .bg-foreground { background-color: var(--primary); }
+.clean [data-status="disputed"] {
+  background-image: none !important;
+  border-style: solid !important;
+}
+.clean .paper-only { display: none; }
+.clean .broadsheet-only { display: inline; }
+
+/* ============================================================
+   D — BRUTALIST LEDGER (homepage-only): pure white, pure black,
+   2px solid borders, zero radius, monospace caps labels, solid
+   color blocks behind verdicts. No icons, no avatars, no
+   decoration — an official record typed onto paper.
+   ============================================================ */
+.brutal {
+  --font-meta-active: var(--font-geist-mono);
+  --font-serif: var(--font-geist-mono); /* typed onto paper */
+  --background: #ffffff;
+  --foreground: #000000;
+  --card: #ffffff;
+  --card-foreground: #000000;
+  --popover: #ffffff;
+  --popover-foreground: #000000;
+  --primary: #000000;
+  --primary-foreground: #ffffff;
+  --secondary: #ffffff;
+  --secondary-foreground: #000000;
+  --muted: #f2f2f2;
+  --muted-foreground: #444444;
+  --accent: #f2f2f2;
+  --accent-foreground: #000000;
+  --border: #000000;
+  --input: #000000;
+  --ring: #000000;
+  --paper-2: #f2f2f2;
+  --paper-3: #e8e8e8;
+  --ink-2: #222222;
+  --ink-3: #444444;
+  --ink-4: #777777;
+
+  --st-true: #008f3c;  --st-true-bg: #008f3c;  --st-true-tx: #ffffff;
+  --st-false: #d40000; --st-false-bg: #d40000; --st-false-tx: #ffffff;
+  --st-pending: #0044cc; --st-pending-bg: #0044cc; --st-pending-tx: #ffffff;
+  --st-partly: #c46a00; --st-partly-bg: #c46a00; --st-partly-tx: #ffffff;
+  --st-walked: #5b21b6; --st-walked-bg: #5b21b6; --st-walked-tx: #ffffff;
+  --st-unverifiable: #555555; --st-unverifiable-bg: #555555; --st-unverifiable-tx: #ffffff;
+  --st-disputed: #333333; --st-disputed-bg: #333333; --st-disputed-tx: #ffffff;
+
+  background-color: var(--background);
+  color: var(--foreground);
+}
+.brutal [class*="rounded"] { border-radius: 0 !important; }
+.brutal :is(.shadow-xs, .shadow-sm, .shadow-md, article) { box-shadow: none; }
+.brutal .border { border-width: 2px; }
+.brutal :is(.border-b, .border-t) { border-bottom-width: 2px; border-top-width: 2px; }
+.brutal .border-b { border-top-width: 0; }
+.brutal .border-t { border-bottom-width: 0; }
+.brutal .divide-y > :not(:first-child) { border-top-width: 2px; }
+.brutal .border-l-\[3px\] { border-left-width: 4px; }
+/* verdict = solid color block behind the text (vars above make the
+   badge bg solid and the text white); kill the icon */
+.brutal [data-status] {
+  border: 2px solid #000;
+  font-family: var(--font-geist-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.brutal [data-status] svg { display: none; }
+/* no icons, no avatars, no decoration */
+.brutal svg { display: none; }
+.brutal img { display: none; }
+.brutal .glyph-box { display: none; }
+/* monospace caps labels */
+.brutal .text-xs {
+  font-family: var(--font-geist-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.brutal .paper-only { display: none; }
+.brutal .broadsheet-only { display: inline; }
+
+/* ============================================================
+   B — TERMINAL (homepage-only): dark UI, light text, monospace
+   for all data surfaces, market green/red verdicts, dense rows,
+   tight spacing, thin borders. Claims read like positions on a
+   trading screen; leaderboards like market-movers tables.
+   ============================================================ */
+.terminal {
+  --font-meta-active: var(--font-geist-mono);
+  --font-serif: var(--font-sans); /* sans for prose; mono for numbers */
+  --background: #0d1117;
+  --foreground: #e6edf3;
+  --card: #161b22;
+  --card-foreground: #e6edf3;
+  --popover: #161b22;
+  --popover-foreground: #e6edf3;
+  --primary: #e6edf3;
+  --primary-foreground: #0d1117;
+  --secondary: #161b22;
+  --secondary-foreground: #e6edf3;
+  --muted: #161b22;
+  --muted-foreground: #8b949e;
+  --accent: #1f2630;
+  --accent-foreground: #e6edf3;
+  --border: #30363d;
+  --input: #30363d;
+  --ring: #58a6ff;
+  --paper-2: #161b22;
+  --paper-3: #1f2630;
+  --ink-2: #c9d1d9;
+  --ink-3: #8b949e;
+  --ink-4: #6e7681;
+
+  /* market colors on dark */
+  --st-true: #3fb950;  --st-true-bg: #14261c;  --st-true-tx: #3fb950;
+  --st-false: #f85149; --st-false-bg: #2d1618; --st-false-tx: #f85149;
+  --st-pending: #58a6ff; --st-pending-bg: #14202f; --st-pending-tx: #58a6ff;
+  --st-partly: #d29922; --st-partly-bg: #2a2210; --st-partly-tx: #d29922;
+  --st-walked: #bc8cff; --st-walked-bg: #231a33; --st-walked-tx: #bc8cff;
+  --st-unverifiable: #8b949e; --st-unverifiable-bg: #1c2128; --st-unverifiable-tx: #8b949e;
+  --st-disputed: #768390; --st-disputed-bg: #1c2128; --st-disputed-tx: #9ea7b3;
+
+  background-color: var(--background);
+  color: var(--foreground);
+}
+/* dense positions, thin rules, no card chrome */
+.terminal article {
+  padding: 10px 12px;
+  gap: 6px;
+  border-radius: 4px;
+  box-shadow: none;
+}
+.terminal :is(.rounded-\[14px\], .rounded-\[11px\], .rounded-xl, .rounded-lg) {
+  border-radius: 4px;
+}
+.terminal :is(.shadow-xs, .shadow-sm, .shadow-md) { box-shadow: none; }
+.terminal [data-status="disputed"] {
+  background-image: none !important;
+  border-style: solid !important;
+}
+/* data surfaces go mono; prose stays sans */
+.terminal article .text-xs,
+.terminal .record-line,
+.terminal .term-stats,
+.terminal .term-rows,
+.terminal [data-status] {
+  font-family: var(--font-geist-mono);
+  font-variant-numeric: tabular-nums;
+}
+.terminal .record-line { font-size: 10.5px; letter-spacing: -0.01em; }
+.terminal .term-rows a { padding-top: 4px; padding-bottom: 4px; }
+.terminal .term-rows .text-sm { font-size: 12.5px; }
+.terminal [data-status] {
+  font-size: 10.5px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.terminal .paper-only { display: none; }
+.terminal .broadsheet-only { display: inline; }
+
+/* ============================================================
+   SOFT (homepage-only): Default × Clean. The paper warmth and
+   serif editorial voice of the default skin, with Clean's
+   product comfort: 14px white cards, soft shadows, generous
+   padding, round avatars, and one indigo accent. Verdicts
+   saturated.
+   ============================================================ */
+.soft {
+  --font-meta-active: var(--font-sans);
+  --background: #faf9f6;
+  --foreground: #201e1b;
+  --card: #ffffff;
+  --card-foreground: #201e1b;
+  --popover: #ffffff;
+  --popover-foreground: #201e1b;
+  --primary: #4f46e5; /* the one indigo accent */
+  --primary-foreground: #ffffff;
+  --secondary: #f4f2ec;
+  --secondary-foreground: #201e1b;
+  --muted: #f4f2ec;
+  --muted-foreground: #8b8579;
+  --accent: #eef0fb;
+  --accent-foreground: #3730a3;
+  --border: #e8e4da;
+  --input: #d6d1c4;
+  --ring: #4f46e5;
+  --paper-2: #f4f2ec;
+  --paper-3: #efece4;
+  --ink-2: #56524b;
+  --ink-3: #8b8579;
+  --ink-4: #b4aea0;
+
+  /* saturated verdicts on warm paper */
+  --st-true: #16a34a;  --st-true-bg: #e7f6ec;  --st-true-tx: #15803d;
+  --st-false: #dc2626; --st-false-bg: #fdeaea; --st-false-tx: #b91c1c;
+  --st-pending: #2563eb; --st-pending-bg: #e9effd; --st-pending-tx: #1d4ed8;
+  --st-partly: #d97706; --st-partly-bg: #fcf0df; --st-partly-tx: #b45309;
+  --st-walked: #7c3aed; --st-walked-bg: #f2ebfd; --st-walked-tx: #6d28d9;
+  --st-unverifiable: #79746a; --st-unverifiable-bg: #eceae3; --st-unverifiable-tx: #5e594f;
+  --st-disputed: #6b6455; --st-disputed-bg: #ffffff; --st-disputed-tx: #56524b;
+
+  background-color: var(--background);
+  color: var(--foreground);
+}
+.soft :is(article, .rounded-lg, .rounded-\[11px\], .rounded-\[14px\], .rounded-xl) {
+  border-radius: 14px;
+}
+.soft article {
+  padding: 20px;
+  box-shadow: 0 1px 2px rgba(40, 35, 25, 0.04), 0 2px 6px rgba(40, 35, 25, 0.05);
+}
+.soft .term-rows a { padding-top: 10px; padding-bottom: 10px; }
+.soft img.person-photo { border-radius: 9999px; filter: none; }
+.soft .bg-foreground { background-color: var(--primary); }
+.soft [data-status="disputed"] {
+  background-image: none !important;
+  border-style: solid !important;
+}
