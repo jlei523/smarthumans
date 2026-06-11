@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Bell } from "lucide-react";
+import { Bell, Rss } from "lucide-react";
 import { SearchBar } from "@/components/search-bar";
 import { AuthMenu } from "@/components/auth-menu";
 import { BrandMark } from "@/components/brand-mark";
@@ -39,6 +39,13 @@ export function SiteHeader() {
             className="hidden sm:inline-flex items-center gap-1 rounded-md bg-foreground px-3 py-1.5 text-sm font-medium text-background hover:opacity-90 whitespace-nowrap"
           >
             <span className="font-mono">+</span> Submit
+          </Link>
+          <Link
+            href="/feed"
+            title="Your feed — stakes and submissions from members you follow"
+            className="hidden md:flex rounded-md p-1.5 text-ink-2 hover:bg-accent hover:text-foreground"
+          >
+            <Rss className="size-[19px]" strokeWidth={1.8} />
           </Link>
           <Link
             href="/notifications"

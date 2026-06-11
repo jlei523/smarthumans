@@ -1,0 +1,198 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "SmartHumans" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]:
+          - img [ref=e6]
+          - generic [ref=e10]: SmartHumans
+      - search [ref=e11]:
+        - img
+        - combobox "Search anyone or any claim…" [ref=e12]
+      - generic [ref=e13]:
+        - link "+ Submit" [ref=e14] [cursor=pointer]:
+          - /url: /submit
+          - generic [ref=e15]: +
+          - text: Submit
+        - link "Your feed — stakes and submissions from members you follow" [ref=e16] [cursor=pointer]:
+          - /url: /feed
+          - img [ref=e17]
+        - link "Notifications" [ref=e21] [cursor=pointer]:
+          - /url: /notifications
+          - img [ref=e22]
+  - navigation [ref=e27]:
+    - generic [ref=e28]:
+      - link "AI" [ref=e29] [cursor=pointer]:
+        - /url: /browse/ai
+      - link "Markets" [ref=e30] [cursor=pointer]:
+        - /url: /browse/markets
+      - link "Stocks" [ref=e31] [cursor=pointer]:
+        - /url: /browse/stocks
+      - link "Semiconductors" [ref=e32] [cursor=pointer]:
+        - /url: /browse/semiconductors
+      - link "Gold" [ref=e33] [cursor=pointer]:
+        - /url: /browse/gold
+      - link "Economy" [ref=e34] [cursor=pointer]:
+        - /url: /browse/economy
+      - link "Health" [ref=e35] [cursor=pointer]:
+        - /url: /browse/health
+      - link "Immigration" [ref=e36] [cursor=pointer]:
+        - /url: /browse/immigration
+      - link "Foreign Policy" [ref=e37] [cursor=pointer]:
+        - /url: /browse/foreign_policy
+      - link "NBA" [ref=e38] [cursor=pointer]:
+        - /url: /browse/nba
+      - link "MLB" [ref=e39] [cursor=pointer]:
+        - /url: /browse/mlb
+      - link "NFL" [ref=e40] [cursor=pointer]:
+        - /url: /browse/nfl
+      - link "F1" [ref=e41] [cursor=pointer]:
+        - /url: /browse/f1
+      - link "More →" [ref=e42] [cursor=pointer]:
+        - /url: /browse
+  - main [ref=e43]:
+    - generic [ref=e44]:
+      - heading "Leaderboards" [level=1] [ref=e45]
+      - paragraph [ref=e46]: Accuracy = correct calls (partly true counts half) over resolved claims, rankable by topic. Influence = accuracy × followers. Site-wide boards require 3 resolved claims; topic boards require one.
+      - generic [ref=e47]:
+        - link "By accuracy" [ref=e48] [cursor=pointer]:
+          - /url: /leaderboards
+        - link "By influence" [ref=e49] [cursor=pointer]:
+          - /url: /leaderboards?tab=influence
+        - link "Smartest users" [ref=e50] [cursor=pointer]:
+          - /url: /leaderboards?tab=users
+        - link "Top contributors" [ref=e51] [cursor=pointer]:
+          - /url: /leaderboards?tab=contributors
+      - table [ref=e53]:
+        - rowgroup [ref=e54]:
+          - row "# Contributor Reputation Accepted submissions Badges" [ref=e55]:
+            - columnheader "#" [ref=e56]
+            - columnheader "Contributor" [ref=e57]
+            - columnheader "Reputation" [ref=e58]
+            - columnheader "Accepted submissions" [ref=e59]
+            - columnheader "Badges" [ref=e60]
+        - rowgroup [ref=e61]:
+          - row "1 fa @factfinder 1,840 0 Called It Against the Crowd" [ref=e62]:
+            - cell "1" [ref=e63]
+            - cell "fa @factfinder" [ref=e64]:
+              - link "fa @factfinder" [ref=e65] [cursor=pointer]:
+                - /url: /u/u_factfinder
+                - generic [ref=e66]: fa
+                - text: "@factfinder"
+            - cell "1,840" [ref=e67]
+            - cell "0" [ref=e68]
+            - cell "Called It Against the Crowd" [ref=e69]:
+              - generic [ref=e70]:
+                - generic "Right on a claim with 5,000+ followers." [ref=e71]: Called It
+                - generic "Right when 20% or fewer agreed at stake time." [ref=e72]: Against the Crowd
+          - row "2 so @sourcehound 1,212 0 Called It" [ref=e73]:
+            - cell "2" [ref=e74]
+            - cell "so @sourcehound" [ref=e75]:
+              - link "so @sourcehound" [ref=e76] [cursor=pointer]:
+                - /url: /u/u_sourcehound
+                - generic [ref=e77]: so
+                - text: "@sourcehound"
+            - cell "1,212" [ref=e78]
+            - cell "0" [ref=e79]
+            - cell "Called It" [ref=e80]:
+              - generic "Right on a claim with 5,000+ followers." [ref=e82]: Called It
+          - row "3 qu @quietdata 968 0" [ref=e83]:
+            - cell "3" [ref=e84]
+            - cell "qu @quietdata" [ref=e85]:
+              - link "qu @quietdata" [ref=e86] [cursor=pointer]:
+                - /url: /u/u_quietdata
+                - generic [ref=e87]: qu
+                - text: "@quietdata"
+            - cell "968" [ref=e88]
+            - cell "0" [ref=e89]
+            - cell [ref=e90]
+          - row "4 ma @macrowatch 711 0" [ref=e91]:
+            - cell "4" [ref=e92]
+            - cell "ma @macrowatch" [ref=e93]:
+              - link "ma @macrowatch" [ref=e94] [cursor=pointer]:
+                - /url: /u/u_macrowatch
+                - generic [ref=e95]: ma
+                - text: "@macrowatch"
+            - cell "711" [ref=e96]
+            - cell "0" [ref=e97]
+            - cell [ref=e98]
+          - row "5 sk @skeptic22 405 0" [ref=e99]:
+            - cell "5" [ref=e100]
+            - cell "sk @skeptic22" [ref=e101]:
+              - link "sk @skeptic22" [ref=e102] [cursor=pointer]:
+                - /url: /u/u_skeptic22
+                - generic [ref=e103]: sk
+                - text: "@skeptic22"
+            - cell "405" [ref=e104]
+            - cell "0" [ref=e105]
+            - cell [ref=e106]
+          - row "6 te @testuser 35 2" [ref=e107]:
+            - cell "6" [ref=e108]
+            - cell "te @testuser" [ref=e109]:
+              - link "te @testuser" [ref=e110] [cursor=pointer]:
+                - /url: /u/Xnbpprc3pbQ1lLpcNOrkWJE9mrXClAba
+                - generic [ref=e111]: te
+                - text: "@testuser"
+            - cell "35" [ref=e112]
+            - cell "2" [ref=e113]
+            - cell [ref=e114]
+          - row "7 ne @newhere 12 0" [ref=e115]:
+            - cell "7" [ref=e116]
+            - cell "ne @newhere" [ref=e117]:
+              - link "ne @newhere" [ref=e118] [cursor=pointer]:
+                - /url: /u/u_newhere
+                - generic [ref=e119]: ne
+                - text: "@newhere"
+            - cell "12" [ref=e120]
+            - cell "0" [ref=e121]
+            - cell [ref=e122]
+  - contentinfo [ref=e123]:
+    - generic [ref=e124]:
+      - generic [ref=e125]:
+        - generic [ref=e126]:
+          - img [ref=e127]
+          - generic [ref=e131]: SmartHumans
+        - paragraph [ref=e132]: A permanent, sourced, community-verified record of what people predicted and promised — and whether it actually happened. Public figures garner the spotlight; everyone can build a record.
+        - paragraph [ref=e133]: AI proposes · humans verify
+      - generic [ref=e134]:
+        - paragraph [ref=e135]: Explore
+        - list [ref=e136]:
+          - listitem [ref=e137]:
+            - link "Browse by topic" [ref=e138] [cursor=pointer]:
+              - /url: /browse
+          - listitem [ref=e139]:
+            - link "Leaderboards" [ref=e140] [cursor=pointer]:
+              - /url: /leaderboards
+          - listitem [ref=e141]:
+            - link "Smartest users" [ref=e142] [cursor=pointer]:
+              - /url: /leaderboards?tab=users
+          - listitem [ref=e143]:
+            - link "Resolving soon" [ref=e144] [cursor=pointer]:
+              - /url: /resolving-soon
+          - listitem [ref=e145]:
+            - link "Notifications" [ref=e146] [cursor=pointer]:
+              - /url: /notifications
+          - listitem [ref=e147]:
+            - link "Submit a claim" [ref=e148] [cursor=pointer]:
+              - /url: /submit
+      - generic [ref=e149]:
+        - paragraph [ref=e150]: Trust
+        - list [ref=e151]:
+          - listitem [ref=e152]:
+            - link "Methodology" [ref=e153] [cursor=pointer]:
+              - /url: /methodology
+          - listitem [ref=e154]:
+            - link "Review queue" [ref=e155] [cursor=pointer]:
+              - /url: /review
+          - listitem [ref=e156]:
+            - link "How verdicts are reached" [ref=e157] [cursor=pointer]:
+              - /url: /methodology#resolution
+          - listitem [ref=e158]:
+            - link "Disputes & appeals" [ref=e159] [cursor=pointer]:
+              - /url: /methodology#appeals
+          - listitem [ref=e160]:
+            - link "AI & agent policy" [ref=e161] [cursor=pointer]:
+              - /url: /methodology#agents
+    - generic [ref=e163]: © 2026 SmartHumans — no primary source, no claim.
+  - button "Open Next.js Dev Tools" [ref=e169] [cursor=pointer]:
+    - img [ref=e170]

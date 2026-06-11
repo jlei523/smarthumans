@@ -89,14 +89,9 @@ export default async function NotificationsPage({
   return (
     <div className="mx-auto max-w-3xl px-4 py-9 pb-20">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <p className="font-meta text-[11px] uppercase tracking-[0.14em] text-ink-3">
-            Notifications
-          </p>
-          <h1 className="mt-2 font-serif text-3xl font-semibold tracking-tight">
-            Resolution alerts
-          </h1>
-        </div>
+        <h1 className="font-serif text-3xl font-bold tracking-tight">
+          Notifications
+        </h1>
         <Link
           href="/digest"
           className="rounded-md border px-3 py-1.5 text-sm font-medium hover:bg-accent"
@@ -192,10 +187,6 @@ export default async function NotificationsPage({
           </p>
         )}
       </div>
-      <p className="mt-3.5 text-[11px] italic text-ink-3">
-        You're notified the moment a claim you follow resolves, and before its
-        deadline.
-      </p>
     </div>
   );
 }

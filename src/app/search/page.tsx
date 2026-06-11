@@ -25,9 +25,10 @@ export default async function SearchPage({
     sort?: string;
     window?: string;
     status?: string;
+    type?: string;
   }>;
 }) {
-  const { q = "", sort, window: windowScope, status } = await searchParams;
+  const { q = "", sort, window: windowScope, status, type } = await searchParams;
   const session = await auth.api.getSession({ headers: await headers() });
   const [results, commentCounts, followedIds, stanceMap] = await Promise.all([
     q.trim() ? searchAll(q.trim()) : Promise.resolve(null),
@@ -75,6 +76,7 @@ export default async function SearchPage({
                 items={results.propositions.map((p) => ({
                   proposition: p,
                   stance: primaryStance(p),
+                  stances: p.stances,
                   commentCount: commentCounts[p.id] ?? 0,
                   following: followedIds.has(p.id),
                   myStance: stanceMap[p.id] ?? null,
@@ -83,6 +85,7 @@ export default async function SearchPage({
                 initialSort={sort}
                 initialWindow={windowScope}
                 initialStatus={status}
+                initialType={type}
               />
             </section>
           )}

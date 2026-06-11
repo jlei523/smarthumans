@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowLeftRight } from "lucide-react";
 import { PersonAvatar } from "@/components/person-chip";
-import { ScoreGauge, DistributionBar } from "@/components/charts";
+import { ScoreGauge, DistributionBar, SubtypeSplit } from "@/components/charts";
 import { getAllPeople, getPersonScore, type PersonScore } from "@/lib/queries";
 import { CATEGORY_LABEL, DOMAIN_LABEL } from "@/lib/status";
 import { pct } from "@/lib/format";
@@ -83,7 +83,7 @@ function PersonSelect({
 }
 
 function CompareCard({ score }: { score: PersonScore }) {
-  const { person, scorecard, categoryBreakdown } = score;
+  const { person, scorecard, subtypeBreakdown, categoryBreakdown } = score;
   return (
     <div className="rounded-lg border bg-card p-5">
       <Link href={`/p/${person.slug}`} className="flex items-center gap-3 group">
@@ -105,6 +105,7 @@ function CompareCard({ score }: { score: PersonScore }) {
         )}
       </div>
       <DistributionBar scorecard={scorecard} className="mt-3" />
+      <SubtypeSplit breakdown={subtypeBreakdown} className="mt-3" />
       <table className="mt-4 w-full text-sm">
         <tbody>
           {categoryBreakdown.slice(0, 6).map(({ category, scorecard: sc }) => (

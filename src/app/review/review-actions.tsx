@@ -3,26 +3,46 @@
 import { useState, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { attachClip, reviewSubmission } from "@/app/actions";
+import { SUBTYPE_LABEL } from "@/lib/status";
+import { FACTUAL_CLAIMS_V2 } from "@/lib/flags";
 import { cn } from "@/lib/utils";
+import type { ClaimSubtype } from "@/db/schema";
+
+const REVIEWABLE_SUBTYPES: ClaimSubtype[] = FACTUAL_CLAIMS_V2
+  ? ["prediction", "promise", "factual"]
+  : ["prediction", "promise"];
 
 export function ReviewActions({
   submissionId,
   isOwn,
   signedIn,
+  kind = "claim",
+  defaultSubtype,
 }: {
   submissionId: number;
   isOwn: boolean;
   signedIn: boolean;
+  kind?: "claim" | "stance";
+  /** the AI-inferred subtype, correctable before approval */
+  defaultSubtype?: ClaimSubtype;
 }) {
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
+  const [subtype, setSubtype] = useState<ClaimSubtype>(
+    defaultSubtype ?? "prediction",
+  );
   const pathname = usePathname();
   const router = useRouter();
 
   function review(approve: boolean) {
     setError(null);
     startTransition(async () => {
-      const res = await reviewSubmission(submissionId, approve, pathname);
+      const res = await reviewSubmission(
+        submissionId,
+        approve,
+        pathname,
+        kind === "claim" ? subtype : undefined,
+      );
       if (!res.ok && res.error === "sign-in-required") {
         router.push(`/sign-in?next=${encodeURIComponent(pathname)}`);
         return;
@@ -51,6 +71,25 @@ export function ReviewActions({
 
   return (
     <div className="flex flex-wrap items-center gap-2">
+      {kind === "claim" && signedIn && (
+        <label className="flex items-center gap-1.5 text-xs text-muted-foreground">
+          <span title="Inferred from the quote — correct it if the call is wrong (AI proposes, humans verify)">
+            Subtype<span className="text-ink-4"> · AI-inferred</span>
+          </span>
+          <select
+            value={subtype}
+            onChange={(e) => setSubtype(e.target.value as ClaimSubtype)}
+            disabled={pending}
+            className="rounded-md border bg-background px-2 py-1.5 text-sm text-foreground outline-none focus:border-foreground"
+          >
+            {REVIEWABLE_SUBTYPES.map((s) => (
+              <option key={s} value={s}>
+                {SUBTYPE_LABEL[s]}
+              </option>
+            ))}
+          </select>
+        </label>
+      )}
       <button
         disabled={pending}
         onClick={() => review(true)}

@@ -8,8 +8,9 @@ import { auth } from "@/lib/auth";
 import { Section } from "@/components/section";
 import { AttachClipForm, ReviewActions } from "./review-actions";
 import { fmtDate, timeAgo } from "@/lib/format";
-import { CATEGORY_LABEL, TYPE_LABEL } from "@/lib/status";
-import type { Category, ClaimType } from "@/db/schema";
+import { CATEGORY_LABEL } from "@/lib/status";
+import { inferSubtype, normalizeSubtype } from "@/lib/subtype";
+import type { Category } from "@/db/schema";
 
 export const metadata: Metadata = {
   title: "Review queue",
@@ -68,12 +69,17 @@ export default async function ReviewPage() {
           {pending.map((sub) => {
             const p = sub.payload as Record<string, string | number | null>;
             const isStance = p.kind === "stance";
+            const isCommunity = !isStance && !!p.communityClaim;
             return (
               <article key={sub.id} className="rounded-lg border bg-card p-4">
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <p className="text-xs uppercase tracking-[0.08em] text-muted-foreground">
-                    {isStance ? "New position" : "New claim"} · #{sub.id} ·{" "}
-                    {timeAgo(sub.createdAt)}
+                    {isStance
+                      ? "New position"
+                      : isCommunity
+                        ? "Community claim"
+                        : "New claim"}{" "}
+                    · #{sub.id} · {timeAgo(sub.createdAt)}
                   </p>
                 </div>
 
@@ -107,11 +113,12 @@ export default async function ReviewPage() {
                     <p className="mt-2 font-serif text-base font-semibold leading-snug">
                       {String(p.proposedStatement)}
                     </p>
-                    <blockquote className="mt-1.5 border-l-2 pl-3 font-serif text-sm italic text-ink-2">
-                      “{String(p.quote)}” — {String(p.speaker)}
-                    </blockquote>
+                    {!isCommunity && (
+                      <blockquote className="mt-1.5 border-l-2 pl-3 font-serif text-sm italic text-ink-2">
+                        “{String(p.quote)}” — {String(p.speaker)}
+                      </blockquote>
+                    )}
                     <p className="mt-2 text-xs text-muted-foreground">
-                      {TYPE_LABEL[p.claimType as ClaimType] ?? String(p.claimType)} ·{" "}
                       {CATEGORY_LABEL[p.category as Category] ?? String(p.category)} ·
                       deadline {p.deadline ? fmtDate(String(p.deadline)) : "on event"}
                     </p>
@@ -122,26 +129,42 @@ export default async function ReviewPage() {
                   </>
                 )}
 
-                <p className="mt-2 flex flex-wrap gap-x-3 text-xs">
-                  <span className="text-muted-foreground">
-                    stated {p.dateStated ? fmtDate(String(p.dateStated)) : "—"} ·{" "}
-                    {String(p.venue || "—")}
-                  </span>
-                  <a
-                    href={String(p.sourceUrl)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-foreground underline decoration-border underline-offset-2 hover:decoration-foreground"
-                  >
-                    Verify source ↗
-                  </a>
-                </p>
+                {isCommunity ? (
+                  <p className="mt-2 text-xs text-muted-foreground">
+                    User-authored — no quote to verify; check falsifiability,
+                    category, and the deadline.
+                  </p>
+                ) : (
+                  <p className="mt-2 flex flex-wrap gap-x-3 text-xs">
+                    <span className="text-muted-foreground">
+                      stated {p.dateStated ? fmtDate(String(p.dateStated)) : "—"} ·{" "}
+                      {String(p.venue || "—")}
+                    </span>
+                    <a
+                      href={String(p.sourceUrl)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-foreground underline decoration-border underline-offset-2 hover:decoration-foreground"
+                    >
+                      Verify source ↗
+                    </a>
+                  </p>
+                )}
 
                 <div className="mt-3 border-t pt-3">
                   <ReviewActions
                     submissionId={sub.id}
                     isOwn={sub.userId === session?.user?.id}
                     signedIn={!!session?.user}
+                    kind={isStance ? "stance" : "claim"}
+                    defaultSubtype={
+                      isStance
+                        ? undefined
+                        : (normalizeSubtype(p.claimType) ??
+                          inferSubtype(
+                            `${String(p.quote ?? "")} ${String(p.proposedStatement ?? "")}`,
+                          ))
+                    }
                   />
                 </div>
               </article>

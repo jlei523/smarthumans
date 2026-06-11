@@ -7,6 +7,7 @@ import { FilterBar, FilterPill, SegTabs } from "@/components/filters";
 import {
   getAllPersonScores,
   getSmartestUsers,
+  getTopContributors,
   type UserScore,
 } from "@/lib/queries";
 import { CATEGORY_LABEL, DOMAIN_LABEL, STATUS_META } from "@/lib/status";
@@ -36,6 +37,7 @@ export default async function LeaderboardsPage({
     getTopicsIndex(),
   ]);
   const users = tab === "users" ? await getSmartestUsers() : [];
+  const contributors = tab === "contributors" ? await getTopContributors() : [];
 
   // Topic-scoped scorecards: a person's record within the selected topic.
   const scoped = scores.map((s) => {
@@ -96,18 +98,22 @@ export default async function LeaderboardsPage({
         require one.
       </p>
 
-      {/* Figures | Users view tabs */}
+      {/* Figures | Users view tabs — two community ladders: being right
+          (Smartest users) and building the record (Top contributors) */}
       <SegTabs
         className="mt-5"
         tabs={[
           { key: "figures", label: "By accuracy", href: "/leaderboards", active: tab === "figures" },
           { key: "influence", label: "By influence", href: "/leaderboards?tab=influence", active: tab === "influence" },
           { key: "users", label: "Smartest users", href: "/leaderboards?tab=users", active: tab === "users" },
+          { key: "contributors", label: "Top contributors", href: "/leaderboards?tab=contributors", active: tab === "contributors" },
         ]}
       />
 
       {tab === "users" ? (
         <SmartestUsersTable users={users} />
+      ) : tab === "contributors" ? (
+        <TopContributorsTable users={contributors} />
       ) : (
         <>
       {/* Topic filter */}
@@ -240,6 +246,76 @@ export default async function LeaderboardsPage({
       </div>
         </>
       )}
+    </div>
+  );
+}
+
+/**
+ * The contributor ladder — reputation earned by sourcing, reviewing, and
+ * jury work. Deliberately separate from prediction accuracy: building the
+ * record and being right are different skills, scored apart.
+ */
+function TopContributorsTable({ users }: { users: UserScore[] }) {
+  return (
+    <div className="mt-6 overflow-x-auto rounded-[14px] border bg-card">
+      <table className="w-full text-[13px]">
+        <thead>
+          <tr className="border-b text-left text-[11px] uppercase tracking-[0.07em] text-ink-3">
+            <th className="w-11 px-3 py-2.5 font-semibold">#</th>
+            <th className="px-3 py-2.5 font-semibold">Contributor</th>
+            <th className="w-28 px-3 py-2.5 text-right font-semibold">Reputation</th>
+            <th className="w-40 px-3 py-2.5 text-right font-semibold">
+              Accepted submissions
+            </th>
+            <th className="hidden px-3 py-2.5 font-semibold sm:table-cell">Badges</th>
+          </tr>
+        </thead>
+        <tbody className="divide-y">
+          {users.map((u, i) => (
+            <tr key={u.id} className="hover:bg-paper-2">
+              <td className="px-3 py-2.5 font-mono text-ink-3">{i + 1}</td>
+              <td className="px-3 py-2.5">
+                <Link
+                  href={`/u/${u.id}`}
+                  className="flex items-center gap-2.5 font-semibold hover:underline underline-offset-2"
+                >
+                  <span className="flex size-7 items-center justify-center rounded-md border bg-accent font-meta text-[10px] uppercase text-ink-2">
+                    {u.name.slice(0, 2)}
+                  </span>
+                  @{u.name}
+                </Link>
+              </td>
+              <td className="px-3 py-2.5 text-right font-mono font-semibold tabular-nums">
+                {u.reputation.toLocaleString()}
+              </td>
+              <td className="px-3 py-2.5 text-right font-mono tabular-nums text-ink-2">
+                {u.approvedSubmissions.toLocaleString()}
+              </td>
+              <td className="hidden px-3 py-2.5 sm:table-cell">
+                <span className="flex flex-wrap gap-1.5">
+                  {u.badges.map((b) => (
+                    <span
+                      key={b}
+                      title={BADGES[b].desc}
+                      className="rounded-md border px-1.5 py-0.5 text-[10.5px] font-medium text-ink-2"
+                    >
+                      {BADGES[b].label}
+                    </span>
+                  ))}
+                </span>
+              </td>
+            </tr>
+          ))}
+          {users.length === 0 && (
+            <tr>
+              <td colSpan={5} className="px-3 py-8 text-center text-sm text-ink-3">
+                No contributor activity yet — accepted submissions and review
+                work build reputation.
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
     </div>
   );
 }

@@ -16,7 +16,9 @@ import { auth } from "@/lib/auth";
 import {
   getCommentCounts,
   getFollowedPropositionIds,
+  getFollowedTopics,
   getTopicData,
+  getTopicFollowerCount,
   getUserStanceMap,
   primaryStance,
 } from "@/lib/queries";
@@ -45,10 +47,10 @@ export default async function TopicPage({
   searchParams,
 }: {
   params: Promise<{ category: string }>;
-  searchParams: Promise<{ sort?: string; window?: string; status?: string }>;
+  searchParams: Promise<{ sort?: string; window?: string; status?: string; type?: string }>;
 }) {
   const { category } = await params;
-  const { sort, window: windowScope, status } = await searchParams;
+  const { sort, window: windowScope, status, type } = await searchParams;
   if (!categoryEnum.enumValues.includes(category as Category)) notFound();
   const cat = category as Category;
   const session = await auth.api.getSession({ headers: await headers() });
@@ -56,11 +58,15 @@ export default async function TopicPage({
     { claims, scorecard, topForecasters, mostFollowed },
     commentCounts,
     followedIds,
+    followedTopics,
+    topicFollowers,
     stanceMap,
   ] = await Promise.all([
     getTopicData(cat),
     getCommentCounts(),
     getFollowedPropositionIds(session?.user?.id),
+    getFollowedTopics(session?.user?.id),
+    getTopicFollowerCount(cat),
     getUserStanceMap(session?.user?.id),
   ]);
 
@@ -70,12 +76,20 @@ export default async function TopicPage({
       <p className="text-xs uppercase tracking-[0.08em] text-muted-foreground">
         <Link href="/browse" className="hover:text-foreground">Topic</Link>
       </p>
-      <h1 className="mt-1 font-serif text-3xl font-bold leading-tight tracking-tight">
-        {CATEGORY_LABEL[cat]}
-        <span className="ml-3 align-middle font-sans text-sm font-normal text-muted-foreground">
-          {scorecard.total} claims · {scorecard.resolved} resolved
-        </span>
-      </h1>
+      <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-2">
+        <h1 className="font-serif text-3xl font-bold leading-tight tracking-tight">
+          {CATEGORY_LABEL[cat]}
+          <span className="ml-3 align-middle font-sans text-sm font-normal text-muted-foreground">
+            {scorecard.total} claims · {scorecard.resolved} resolved
+          </span>
+        </h1>
+        <FollowButton
+          target="topic"
+          targetId={cat}
+          count={topicFollowers}
+          initialFollowing={followedTopics.includes(cat)}
+        />
+      </div>
 
       <div className="mt-6 grid gap-x-10 gap-y-8 lg:grid-cols-[minmax(0,1fr)_300px]">
         {/* ----- main: the claims behind the sort-led bar ----- */}
@@ -84,6 +98,7 @@ export default async function TopicPage({
             items={claims.map((p) => ({
               proposition: p,
               stance: primaryStance(p),
+              stances: p.stances,
               commentCount: commentCounts[p.id] ?? 0,
               following: followedIds.has(p.id),
               myStance: stanceMap[p.id] ?? null,
@@ -92,6 +107,7 @@ export default async function TopicPage({
             initialSort={sort}
             initialWindow={windowScope}
             initialStatus={status}
+            initialType={type}
           />
         </main>
 
@@ -102,7 +118,7 @@ export default async function TopicPage({
               About this topic
             </h2>
             <div className="mt-3 flex items-start gap-3">
-              <span className="glyph-box flex size-10 shrink-0 items-center justify-center rounded-lg border bg-paper-2 text-foreground">
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-lg border bg-paper-2 text-foreground">
                 <TopicGlyph category={cat} size={22} />
               </span>
               <p className="text-sm leading-relaxed text-ink-2">

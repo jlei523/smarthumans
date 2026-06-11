@@ -58,6 +58,17 @@ export function deadlineLabel(deadline: string | null): string {
   return `resolves in ${(days / 365).toFixed(1)} yr`;
 }
 
+/** Compact remainder for the pending badge ("7 mo", "51 d"); null = no clock. */
+export function deadlineCompact(deadline: string | null): string | null {
+  const days = daysUntil(deadline);
+  if (days === null) return null;
+  if (days < 0) return "overdue";
+  if (days === 0) return "today";
+  if (days < 60) return `${days} d`;
+  if (days < 720) return `${Math.round(days / 30)} mo`;
+  return `${(days / 365).toFixed(1)} yr`;
+}
+
 export function pct(x: number): string {
   return `${Math.round(x * 100)}%`;
 }

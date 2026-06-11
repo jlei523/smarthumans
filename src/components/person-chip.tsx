@@ -64,12 +64,12 @@ export function PersonChip({
   return (
     <Link
       href={`/p/${person.slug}`}
-      className="group inline-flex items-center gap-1.5 min-w-0"
+      className="group/chip inline-flex items-center gap-1.5 min-w-0"
     >
       <PersonAvatar person={person} size={size === "sm" ? "sm" : "md"} />
       <span
         className={cn(
-          "font-medium text-foreground group-hover:underline underline-offset-2 truncate",
+          "font-medium text-foreground group-hover/chip:underline underline-offset-2 truncate",
           size === "sm" ? "text-xs" : "text-sm",
         )}
       >

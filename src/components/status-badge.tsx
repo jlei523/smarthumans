@@ -1,57 +1,43 @@
-import {
-  Clock,
-  Check,
-  CircleCheck,
-  X,
-  Undo2,
-  CircleHelp,
-  Scale,
-} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { STATUS_META } from "@/lib/status";
 import type { ClaimStatus } from "@/db/schema";
 
-const ICONS = {
-  clock: Clock,
-  check: Check,
-  halfCheck: CircleCheck,
-  x: X,
-  undo: Undo2,
-  question: CircleHelp,
-  scale: Scale,
-} as const;
-
+/** Tinted label-only verdict pill — the tint never carries meaning alone. */
 export function StatusBadge({
   status,
   size = "md",
+  detail,
   className,
 }: {
   status: ClaimStatus;
   size?: "sm" | "md" | "lg";
+  /** countdown remainder rendered after a divider ("7 mo") */
+  detail?: string | null;
   className?: string;
 }) {
   const meta = STATUS_META[status];
-  const Icon = ICONS[meta.icon];
   return (
     <span
       data-status={status}
       className={cn(
-        "inline-flex items-center gap-1 rounded-full border font-medium whitespace-nowrap",
+        "inline-flex items-center rounded-md border font-semibold whitespace-nowrap",
         meta.badge,
         size === "sm" && "px-1.5 py-0 text-[11px]",
-        size === "md" && "px-2 py-0.5 text-xs",
+        size === "md" && "px-[9px] py-[5px] text-xs",
         size === "lg" && "px-3 py-1 text-sm",
+        detail != null && "gap-1.5",
         className,
       )}
     >
-      <Icon
-        className={cn(
-          size === "sm" ? "size-3" : size === "md" ? "size-3" : "size-4",
-        )}
-        strokeWidth={2.5}
-        aria-hidden
-      />
-      {meta.label}
+      {/* short label inside narrow @container cards; full label everywhere else */}
+      <span className="@max-[26rem]:hidden">{meta.label}</span>
+      <span className="hidden @max-[26rem]:inline">{meta.shortLabel}</span>
+      {detail != null && (
+        <>
+          <span aria-hidden className="h-3 w-px self-center bg-current opacity-25" />
+          <span className="font-mono font-medium opacity-70">{detail}</span>
+        </>
+      )}
     </span>
   );
 }

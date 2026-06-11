@@ -82,30 +82,30 @@ export function StanceButtons({
         )}
         title="Your call on this claim — scored on resolution, feeds your track record"
       >
-        <span className="pl-2 pr-0.5 text-[11px] text-ink-4 whitespace-nowrap">
-          Your call:
+        <span className="pl-2.5 pr-1 text-[11px] text-ink-3 whitespace-nowrap @max-[26rem]:hidden">
+          Your call
         </span>
         <button
           onClick={(e) => take("affirm", e)}
           disabled={pending}
           className={cn(
-            "px-2 py-0.5 transition-colors",
+            "px-3 py-[5px] text-xs font-semibold transition-colors",
             mine === "affirm"
-              ? "bg-st-true-bg font-semibold text-st-true-tx"
-              : "text-ink-3 hover:text-st-true-tx",
+              ? "bg-st-true-bg text-st-true-tx hover:bg-st-true-bg/70"
+              : "text-ink-3 hover:bg-paper-2 hover:text-st-true-tx",
           )}
         >
           {confirmSwitch === "affirm" ? "Sure?" : "Yes"}
         </button>
-        <span className="h-3.5 w-px bg-border" />
+        <span className="h-4 w-px bg-border" />
         <button
           onClick={(e) => take("deny", e)}
           disabled={pending}
           className={cn(
-            "px-2 py-0.5 transition-colors",
+            "px-3 py-[5px] text-xs font-semibold transition-colors",
             mine === "deny"
-              ? "bg-st-false-bg font-semibold text-st-false-tx"
-              : "text-ink-3 hover:text-st-false-tx",
+              ? "bg-st-false-bg text-st-false-tx hover:bg-st-false-bg/70"
+              : "text-ink-3 hover:bg-paper-2 hover:text-st-false-tx",
           )}
         >
           {confirmSwitch === "deny" ? "Sure?" : "No"}

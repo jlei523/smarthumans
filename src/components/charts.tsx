@@ -3,6 +3,7 @@ import { STATUS_META } from "@/lib/status";
 import { pct } from "@/lib/format";
 import type { Scorecard } from "@/lib/scoring";
 import { accuracyGrade } from "@/lib/scoring";
+import type { ClaimSubtype } from "@/db/schema";
 
 /**
  * The full record as a quiet text line (count + label per status, with a
@@ -37,7 +38,7 @@ export function DistributionBar({
     );
   }
   return (
-    <p className={cn("record-line text-xs leading-relaxed text-muted-foreground", className)}>
+    <p className={cn("text-xs leading-relaxed text-muted-foreground", className)}>
       {showLegend && <span className="font-medium text-foreground">Record: </span>}
       {segments
         .filter((s) => s.count > 0)
@@ -57,6 +58,58 @@ export function DistributionBar({
           </span>
         ))}
     </p>
+  );
+}
+
+const SUBTYPE_VERB: Record<ClaimSubtype, { plural: string; verb: string }> = {
+  prediction: { plural: "Predictions", verb: "came true" },
+  promise: { plural: "Promises", verb: "kept" },
+  factual: { plural: "Factual claims", verb: "accurate" },
+};
+
+/**
+ * Per-subtype split rows under a headline record — "Predictions: 64% came
+ * true · 41 resolved", "Promises: 38% kept · 29 resolved". The headline
+ * accuracy is never shown without this split beside it.
+ */
+export function SubtypeSplit({
+  breakdown,
+  className,
+}: {
+  breakdown: Array<{ subtype: ClaimSubtype; scorecard: Scorecard }>;
+  className?: string;
+}) {
+  if (breakdown.length === 0) return null;
+  return (
+    <dl className={cn("space-y-1", className)}>
+      {breakdown.map(({ subtype, scorecard: sc }) => (
+        <div
+          key={subtype}
+          className="flex flex-wrap items-baseline gap-x-1.5 text-[13px]"
+        >
+          <dt className="font-medium text-foreground">
+            {SUBTYPE_VERB[subtype].plural}:
+          </dt>
+          <dd className="text-muted-foreground">
+            {sc.resolved > 0 && sc.accuracy !== null ? (
+              <>
+                <span className="font-mono font-semibold tabular-nums text-foreground">
+                  {pct(sc.accuracy)}
+                </span>{" "}
+                {SUBTYPE_VERB[subtype].verb} ·{" "}
+                <span className="font-mono tabular-nums">{sc.resolved}</span>{" "}
+                resolved
+              </>
+            ) : (
+              <>
+                none resolved yet ·{" "}
+                <span className="font-mono tabular-nums">{sc.total}</span> open
+              </>
+            )}
+          </dd>
+        </div>
+      ))}
+    </dl>
   );
 }
 

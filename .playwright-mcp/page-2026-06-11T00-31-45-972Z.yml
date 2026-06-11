@@ -1,0 +1,222 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "SmartHumans" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]:
+          - img [ref=e6]
+          - generic [ref=e10]: SmartHumans
+      - search [ref=e11]:
+        - img
+        - combobox "Search anyone or any claim…" [ref=e12]
+      - generic [ref=e13]:
+        - link "+ Submit" [ref=e14] [cursor=pointer]:
+          - /url: /submit
+          - generic [ref=e15]: +
+          - text: Submit
+        - link "Your feed — stakes and submissions from members you follow" [ref=e16] [cursor=pointer]:
+          - /url: /feed
+          - img [ref=e17]
+        - link "Notifications" [ref=e21] [cursor=pointer]:
+          - /url: /notifications
+          - img [ref=e22]
+        - button "reviewer" [ref=e199]:
+          - img [ref=e200]
+          - generic [ref=e204]: reviewer
+  - navigation [ref=e27]:
+    - generic [ref=e28]:
+      - link "AI" [ref=e29] [cursor=pointer]:
+        - /url: /browse/ai
+      - link "Markets" [ref=e30] [cursor=pointer]:
+        - /url: /browse/markets
+      - link "Stocks" [ref=e31] [cursor=pointer]:
+        - /url: /browse/stocks
+      - link "Semiconductors" [ref=e32] [cursor=pointer]:
+        - /url: /browse/semiconductors
+      - link "Gold" [ref=e33] [cursor=pointer]:
+        - /url: /browse/gold
+      - link "Economy" [ref=e34] [cursor=pointer]:
+        - /url: /browse/economy
+      - link "Health" [ref=e35] [cursor=pointer]:
+        - /url: /browse/health
+      - link "Immigration" [ref=e36] [cursor=pointer]:
+        - /url: /browse/immigration
+      - link "Foreign Policy" [ref=e37] [cursor=pointer]:
+        - /url: /browse/foreign_policy
+      - link "NBA" [ref=e38] [cursor=pointer]:
+        - /url: /browse/nba
+      - link "MLB" [ref=e39] [cursor=pointer]:
+        - /url: /browse/mlb
+      - link "NFL" [ref=e40] [cursor=pointer]:
+        - /url: /browse/nfl
+      - link "F1" [ref=e41] [cursor=pointer]:
+        - /url: /browse/f1
+      - link "More →" [ref=e42] [cursor=pointer]:
+        - /url: /browse
+  - main [ref=e43]:
+    - generic [ref=e45]:
+      - generic [ref=e46]:
+        - generic [ref=e47]: FA
+        - generic [ref=e48]:
+          - paragraph [ref=e49]: Community member · joined 2026
+          - heading "@factfinder" [level=1] [ref=e50]
+          - generic [ref=e51]:
+            - button "Following 1" [ref=e205]:
+              - text: Following
+              - generic [ref=e54]: "1"
+            - generic "Prediction points — contrarian-weighted, earned only when calls resolve. Never governance weight." [ref=e55]: 283 pts
+            - generic [ref=e56]: Top 34% · Q2 2026
+            - generic "Reputation — governance weight from accepted submissions and resolution votes. Never game points." [ref=e57]: rep 1,840
+            - generic "Right on a claim with 5,000+ followers." [ref=e58]: ✓ Called It
+            - generic "Right when 20% or fewer agreed at stake time." [ref=e59]: ✓ Against the Crowd
+            - generic "Permanent end-of-season title" [ref=e60]: Top Forecaster, Economy — Q1 2026
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - generic [ref=e64]:
+              - img [ref=e65]:
+                - generic [ref=e67]: —
+                - generic [ref=e68]: not enough data
+              - paragraph [ref=e69]: based on 2 resolved claims
+            - generic [ref=e70]:
+              - paragraph [ref=e71]: Not enough data to score
+              - paragraph [ref=e72]: Only 2 stances resolved — needs at least 3.
+          - generic [ref=e73]:
+            - paragraph [ref=e74]: Stance record
+            - paragraph [ref=e75]:
+              - text: "Record:"
+              - generic [ref=e76]: 2 came true
+              - generic [ref=e78]:
+                - text: ·
+                - text: 2 pending
+            - generic [ref=e80]:
+              - generic [ref=e81]:
+                - term [ref=e82]: "Predictions:"
+                - definition [ref=e83]: 100% came true · 1 resolved
+              - generic [ref=e84]:
+                - term [ref=e85]: "Promises:"
+                - definition [ref=e86]: 100% kept · 1 resolved
+        - paragraph [ref=e87]: Same scorecard every figure gets. Based on 2 resolved of 4 total stances.
+      - generic [ref=e88]:
+        - paragraph [ref=e89]: Called it · biggest correct call
+        - paragraph [ref=e90]: Grocery prices come down substantially during Trump's second term, starting immediately.
+        - generic [ref=e91]:
+          - generic [ref=e92]: called No — and it didn't happen
+          - link "Open →" [ref=e93] [cursor=pointer]:
+            - /url: /claims/grocery-prices-come-down
+      - generic [ref=e94]:
+        - generic [ref=e95]:
+          - generic [ref=e96]:
+            - heading "Stances" [level=2] [ref=e97]
+            - paragraph [ref=e98]: 4 positions taken · scored on resolution
+          - generic [ref=e99]:
+            - link "All 4" [ref=e100] [cursor=pointer]:
+              - /url: /u/u_factfinder
+              - text: All
+              - generic [ref=e101]: "4"
+            - link "Correct 2" [ref=e102] [cursor=pointer]:
+              - /url: /u/u_factfinder?f=correct
+              - text: Correct
+              - generic [ref=e103]: "2"
+            - link "Wrong 0" [ref=e104] [cursor=pointer]:
+              - /url: /u/u_factfinder?f=wrong
+              - text: Wrong
+              - generic [ref=e105]: "0"
+            - link "Open 2" [ref=e106] [cursor=pointer]:
+              - /url: /u/u_factfinder?f=open
+              - text: Open
+              - generic [ref=e107]: "2"
+        - generic [ref=e108]:
+          - link "called No ✓ Called it +110 pts Grocery prices come down substantially during Trump's second term, starting immediately. Economy · staked Feb 1, 2025 · resolves in 40 d" [ref=e109] [cursor=pointer]:
+            - /url: /claims/grocery-prices-come-down
+            - generic [ref=e110]:
+              - generic [ref=e111]: called No
+              - generic [ref=e112]: ✓ Called it
+              - generic "50% agreed with you at stake time — contrarian calls pay more" [ref=e113]: +110 pts
+            - paragraph [ref=e114]: Grocery prices come down substantially during Trump's second term, starting immediately.
+            - generic [ref=e115]:
+              - generic [ref=e116]: Economy
+              - generic [ref=e117]: · staked Feb 1, 2025
+              - generic [ref=e118]: · resolves in 40 d
+          - link "called No Pending SpaceX launches an uncrewed Starship to Mars by the end of 2026. Other · staked Jan 20, 2025 · resolves in 7 mo" [ref=e119] [cursor=pointer]:
+            - /url: /claims/starship-uncrewed-mars-2026
+            - generic [ref=e120]:
+              - generic [ref=e121]: called No
+              - generic [ref=e123]: Pending
+            - paragraph [ref=e124]: SpaceX launches an uncrewed Starship to Mars by the end of 2026.
+            - generic [ref=e125]:
+              - generic [ref=e126]: Other
+              - generic [ref=e127]: · staked Jan 20, 2025
+              - generic [ref=e128]: · resolves in 7 mo
+          - link "called No ✓ Called it +173 pts The U.S. economy enters a recession by the end of 2023. Economy · staked Nov 4, 2022 · deadline passed Dec 31, 2023" [ref=e129] [cursor=pointer]:
+            - /url: /claims/us-recession-by-end-2023
+            - generic [ref=e130]:
+              - generic [ref=e131]: called No
+              - generic [ref=e132]: ✓ Called it
+              - generic "15% agreed with you at stake time — contrarian calls pay more" [ref=e133]: +173 pts
+            - paragraph [ref=e134]: The U.S. economy enters a recession by the end of 2023.
+            - generic [ref=e135]:
+              - generic [ref=e136]: Economy
+              - generic [ref=e137]: · staked Nov 4, 2022
+              - generic [ref=e138]: · deadline passed Dec 31, 2023
+          - link "called Yes Pending The 2025 tariff regime pushes U.S. CPI inflation above 4% by mid-2026. Economy · staked Aug 14, 2025 · resolves in 51 d" [ref=e139] [cursor=pointer]:
+            - /url: /claims/tariffs-push-inflation-above-4pct-2026
+            - generic [ref=e140]:
+              - generic [ref=e141]: called Yes
+              - generic [ref=e143]: Pending
+            - paragraph [ref=e144]: The 2025 tariff regime pushes U.S. CPI inflation above 4% by mid-2026.
+            - generic [ref=e145]:
+              - generic [ref=e146]: Economy
+              - generic [ref=e147]: · staked Aug 14, 2025
+              - generic [ref=e148]: · resolves in 51 d
+  - contentinfo [ref=e149]:
+    - generic [ref=e150]:
+      - generic [ref=e151]:
+        - generic [ref=e152]:
+          - img [ref=e153]
+          - generic [ref=e157]: SmartHumans
+        - paragraph [ref=e158]: A permanent, sourced, community-verified record of what people predicted and promised — and whether it actually happened. Public figures garner the spotlight; everyone can build a record.
+        - paragraph [ref=e159]: AI proposes · humans verify
+      - generic [ref=e160]:
+        - paragraph [ref=e161]: Explore
+        - list [ref=e162]:
+          - listitem [ref=e163]:
+            - link "Browse by topic" [ref=e164] [cursor=pointer]:
+              - /url: /browse
+          - listitem [ref=e165]:
+            - link "Leaderboards" [ref=e166] [cursor=pointer]:
+              - /url: /leaderboards
+          - listitem [ref=e167]:
+            - link "Smartest users" [ref=e168] [cursor=pointer]:
+              - /url: /leaderboards?tab=users
+          - listitem [ref=e169]:
+            - link "Resolving soon" [ref=e170] [cursor=pointer]:
+              - /url: /resolving-soon
+          - listitem [ref=e171]:
+            - link "Notifications" [ref=e172] [cursor=pointer]:
+              - /url: /notifications
+          - listitem [ref=e173]:
+            - link "Submit a claim" [ref=e174] [cursor=pointer]:
+              - /url: /submit
+      - generic [ref=e175]:
+        - paragraph [ref=e176]: Trust
+        - list [ref=e177]:
+          - listitem [ref=e178]:
+            - link "Methodology" [ref=e179] [cursor=pointer]:
+              - /url: /methodology
+          - listitem [ref=e180]:
+            - link "Review queue" [ref=e181] [cursor=pointer]:
+              - /url: /review
+          - listitem [ref=e182]:
+            - link "How verdicts are reached" [ref=e183] [cursor=pointer]:
+              - /url: /methodology#resolution
+          - listitem [ref=e184]:
+            - link "Disputes & appeals" [ref=e185] [cursor=pointer]:
+              - /url: /methodology#appeals
+          - listitem [ref=e186]:
+            - link "AI & agent policy" [ref=e187] [cursor=pointer]:
+              - /url: /methodology#agents
+    - generic [ref=e189]: © 2026 SmartHumans — no primary source, no claim.
+  - button "Open Next.js Dev Tools" [ref=e195] [cursor=pointer]:
+    - img [ref=e196]
+  - alert [ref=e206]

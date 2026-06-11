@@ -3,16 +3,20 @@ import {
   comments,
   people,
   propositions,
+  resolutionProposals,
   stances,
   submissions,
+  topicFollows,
   user,
+  userFollows,
   userStances,
   type Person,
   type Proposition,
   type Stance,
   type Category,
+  type ClaimSubtype,
 } from "@/db/schema";
-import { and, desc, asc, eq, gte, ilike, isNotNull, ne, or, sql } from "drizzle-orm";
+import { and, desc, asc, eq, gte, ilike, inArray, isNotNull, ne, or, sql } from "drizzle-orm";
 import {
   buildScorecard,
   stanceOutcome,
@@ -91,13 +95,48 @@ export async function getCommentCounts(): Promise<Record<number, number>> {
   return Object.fromEntries(rows.map((r) => [r.propositionId, r.n]));
 }
 
-/** One pooled claim list for the homepage wire — filtered client-side. */
-export async function getClaimWire(limit = 18) {
-  return db.query.propositions.findMany({
+export async function getFollowedTopics(userId?: string): Promise<Category[]> {
+  if (!userId) return [];
+  const rows = await db.query.topicFollows.findMany({
+    where: eq(topicFollows.userId, userId),
+  });
+  return rows.map((r) => r.category);
+}
+
+export async function getTopicFollowerCount(category: Category): Promise<number> {
+  const [row] = await db
+    .select({ n: sql<number>`count(*)::int` })
+    .from(topicFollows)
+    .where(eq(topicFollows.category, category));
+  return row?.n ?? 0;
+}
+
+/**
+ * The homepage wire. Personalized to followed topics and people when the
+ * user follows any; everyone else (and empty follow lists) gets the
+ * most-followed claims site-wide.
+ */
+export async function getClaimWire(limit = 18, userId?: string) {
+  const all = (await db.query.propositions.findMany({
     orderBy: desc(propositions.followerCount),
-    limit,
     with: { stances: { with: { person: true } } },
-  }) as Promise<PropositionWithStances[]>;
+  })) as PropositionWithStances[];
+  if (userId) {
+    const [topics, personIds] = await Promise.all([
+      getFollowedTopics(userId),
+      getFollowedPersonIds(userId),
+    ]);
+    if (topics.length > 0 || personIds.size > 0) {
+      const topicSet = new Set(topics);
+      const personal = all.filter(
+        (p) =>
+          topicSet.has(p.category) ||
+          p.stances.some((s) => personIds.has(s.personId)),
+      );
+      if (personal.length > 0) return personal.slice(0, limit);
+    }
+  }
+  return all.slice(0, limit);
 }
 
 export async function getResolvingSoon(limit = 20) {
@@ -121,9 +160,28 @@ export async function getAllPeople() {
 // Person scorecards
 // ---------------------------------------------------------------------------
 
+export type SubtypeSplitRow = { subtype: ClaimSubtype; scorecard: Scorecard };
+
+/** The headline number is never shown without this split beside it. */
+export function subtypeSplit(
+  entries: Array<{ subtype: ClaimSubtype; outcome: StanceOutcome }>,
+): SubtypeSplitRow[] {
+  const order: ClaimSubtype[] = ["prediction", "promise", "factual"];
+  return order
+    .map((subtype) => ({
+      subtype,
+      scorecard: buildScorecard(
+        entries.filter((e) => e.subtype === subtype).map((e) => e.outcome),
+      ),
+    }))
+    .filter((row) => row.scorecard.total > 0);
+}
+
 export type PersonScore = {
   person: Person;
   scorecard: Scorecard;
+  /** per-subtype records (predictions vs promises) */
+  subtypeBreakdown: SubtypeSplitRow[];
   ledger: LedgerEntry[];
   categoryBreakdown: Array<{
     category: Category;
@@ -161,6 +219,9 @@ async function buildPersonScore(person: Person): Promise<PersonScore> {
     );
 
   const scorecard = buildScorecard(ledger.map((l) => l.outcome));
+  const subtypeBreakdown = subtypeSplit(
+    ledger.map((l) => ({ subtype: l.proposition.subtype, outcome: l.outcome })),
+  );
 
   const byCategory = new Map<Category, StanceOutcome[]>();
   for (const l of ledger) {
@@ -209,6 +270,7 @@ async function buildPersonScore(person: Person): Promise<PersonScore> {
   return {
     person,
     scorecard,
+    subtypeBreakdown,
     ledger,
     categoryBreakdown,
     accuracySeries,
@@ -381,6 +443,7 @@ export type UserScore = {
   seasonPoints: number;
   joined: Date;
   scorecard: Scorecard;
+  subtypeBreakdown: SubtypeSplitRow[];
   badges: BadgeKey[];
   titles: Array<{ title: string; season: string }>;
   approvedSubmissions: number;
@@ -462,6 +525,12 @@ async function buildUserScore(u: {
     seasonPoints,
     joined: u.createdAt,
     scorecard: buildScorecard(entries.map((e) => e.outcome)),
+    subtypeBreakdown: subtypeSplit(
+      entries.map((e) => ({
+        subtype: e.proposition.subtype,
+        outcome: e.outcome,
+      })),
+    ),
     badges: earnedBadges({
       stakes: entries.map((e) => ({
         outcome: e.outcome,
@@ -639,10 +708,253 @@ export async function getFollowedPersonIds(
   return new Set(rows.map((r) => r.personId));
 }
 
-/** earliest stance = the originating quote shown on cards */
+/**
+ * Earliest *affirming* stance — the figure a card credits with the call.
+ * Cards pair portraits with the affirmative statement, so deniers must never
+ * lead one; a proposition with only deny stances gets no speaker at all.
+ */
 export function primaryStance(p: PropositionWithStances): StanceWithPerson | null {
-  if (!p.stances.length) return null;
-  return [...p.stances].sort(
+  const affirms = p.stances.filter((s) => s.position === "affirm");
+  if (!affirms.length) return null;
+  return [...affirms].sort(
     (a, b) => a.dateStated.localeCompare(b.dateStated),
   )[0];
+}
+
+// ---------------------------------------------------------------------------
+// Community visibility — contributors as visible as the figures they track
+// ---------------------------------------------------------------------------
+
+type UserRef = { id: string; name: string };
+
+async function userRef(id: string | null | undefined): Promise<UserRef | null> {
+  if (!id) return null;
+  const u = await db.query.user.findFirst({
+    where: eq(user.id, id),
+    columns: { id: true, name: true },
+  });
+  return u ?? null;
+}
+
+export type ClaimCredits = {
+  /** the member whose approved submission published this claim */
+  trackedBy: UserRef | null;
+  /** the member who attached the missing broadcast artifact */
+  clipBy: UserRef | null;
+  /** the author, when this is a community claim */
+  communityAuthor: UserRef | null;
+  /** the accepted resolution proposal — "resolved by jury #N" */
+  juryProposalId: number | null;
+};
+
+/** Byline data for a claim page: tracked by · clip sourced by · jury. */
+export async function getClaimCredits(p: Proposition): Promise<ClaimCredits> {
+  const sub = p.sourceSubmissionId
+    ? await db.query.submissions.findFirst({
+        where: eq(submissions.id, p.sourceSubmissionId),
+      })
+    : null;
+  const clipAttachedBy = (sub?.payload as Record<string, unknown> | undefined)
+    ?.clipAttachedBy;
+  const proposal =
+    p.status === "pending"
+      ? null
+      : await db.query.resolutionProposals.findFirst({
+          where: and(
+            eq(resolutionProposals.propositionId, p.id),
+            eq(resolutionProposals.state, "accepted"),
+          ),
+          orderBy: desc(resolutionProposals.decidedAt),
+          columns: { id: true },
+        });
+  const [trackedBy, clipBy, communityAuthor] = await Promise.all([
+    userRef(sub?.userId),
+    userRef(typeof clipAttachedBy === "string" ? clipAttachedBy : null),
+    userRef(p.communityAuthorId),
+  ]);
+  return {
+    trackedBy,
+    clipBy,
+    communityAuthor,
+    juryProposalId: proposal?.id ?? null,
+  };
+}
+
+export type ResolutionSpotlight = {
+  firstStake: (UserRef & { daysEarly: number }) | null;
+  /** correct staker with the smallest side share at stake time */
+  contrarian: (UserRef & { position: "affirm" | "deny"; sharePct: number }) | null;
+};
+
+/** The community layer of a resolution: earliest call + boldest correct one. */
+export async function getResolutionSpotlight(
+  p: Proposition,
+): Promise<ResolutionSpotlight | null> {
+  if (!p.resolvedAt) return null;
+  const rows = await db.query.userStances.findMany({
+    where: eq(userStances.propositionId, p.id),
+    with: { user: { columns: { id: true, name: true } } },
+  });
+  if (!rows.length) return null;
+
+  const first = [...rows].sort(
+    (a, b) => a.createdAt.getTime() - b.createdAt.getTime(),
+  )[0];
+  const daysEarly = Math.max(
+    0,
+    Math.round(
+      (p.resolvedAt.getTime() - first.createdAt.getTime()) / 86_400_000,
+    ),
+  );
+
+  const boldest = rows
+    .filter(
+      (r) =>
+        stanceOutcome(p.status, r.position) === "correct" &&
+        r.stakeSideSharePct !== null &&
+        r.stakeSideSharePct < 50,
+    )
+    .sort((a, b) => a.stakeSideSharePct! - b.stakeSideSharePct!)[0];
+
+  return {
+    firstStake: { id: first.user.id, name: first.user.name, daysEarly },
+    contrarian: boldest
+      ? {
+          id: boldest.user.id,
+          name: boldest.user.name,
+          position: boldest.position,
+          sharePct: boldest.stakeSideSharePct!,
+        }
+      : null,
+  };
+}
+
+export type CallOfTheWeek = UserRef & {
+  position: "affirm" | "deny";
+  sharePct: number;
+  pointsEarned: number | null;
+  proposition: Proposition;
+};
+
+/** The boldest correct community call on a recently resolved claim. */
+export async function getCallOfTheWeek(): Promise<CallOfTheWeek | null> {
+  const rows = await db.query.userStances.findMany({
+    with: { user: { columns: { id: true, name: true } }, proposition: true },
+  });
+  const pick = (windowMs: number) =>
+    rows
+      .filter(
+        (r) =>
+          r.proposition.resolvedAt &&
+          r.proposition.resolvedAt.getTime() >= Date.now() - windowMs &&
+          stanceOutcome(r.proposition.status, r.position) === "correct" &&
+          r.stakeSideSharePct !== null,
+      )
+      .sort((a, b) => a.stakeSideSharePct! - b.stakeSideSharePct!)[0];
+  // a quiet week falls back to the boldest call of the month
+  const win = pick(7 * 86_400_000) ?? pick(30 * 86_400_000);
+  if (!win) return null;
+  return {
+    id: win.user.id,
+    name: win.user.name,
+    position: win.position,
+    sharePct: win.stakeSideSharePct!,
+    pointsEarned: win.points,
+    proposition: win.proposition,
+  };
+}
+
+/** Users the signed-in member follows. */
+export async function getFollowedUserIds(
+  userId: string | undefined,
+): Promise<Set<string>> {
+  if (!userId) return new Set();
+  const rows = await db.query.userFollows.findMany({
+    where: eq(userFollows.followerId, userId),
+    columns: { followedId: true },
+  });
+  return new Set(rows.map((r) => r.followedId));
+}
+
+export async function getUserFollowerCount(userId: string): Promise<number> {
+  const [row] = await db
+    .select({ n: sql<number>`count(*)::int` })
+    .from(userFollows)
+    .where(eq(userFollows.followedId, userId));
+  return row?.n ?? 0;
+}
+
+export type FeedItem = {
+  kind: "stake" | "submission";
+  at: Date;
+  user: UserRef;
+  /** stake: the claim staked on */
+  proposition?: Proposition;
+  position?: "affirm" | "deny";
+  /** submission: what was submitted and where it stands */
+  title?: string;
+  submissionStatus?: string;
+};
+
+/** Stakes and submissions from followed users, newest first. */
+export async function getFollowedUsersFeed(userId: string): Promise<FeedItem[]> {
+  const ids = [...(await getFollowedUserIds(userId))];
+  if (!ids.length) return [];
+  const [stakes, subs] = await Promise.all([
+    db.query.userStances.findMany({
+      where: inArray(userStances.userId, ids),
+      with: { user: { columns: { id: true, name: true } }, proposition: true },
+      orderBy: desc(userStances.updatedAt),
+      limit: 30,
+    }),
+    db.query.submissions.findMany({
+      where: inArray(submissions.userId, ids),
+      orderBy: desc(submissions.createdAt),
+      limit: 15,
+    }),
+  ]);
+  const subUsers = new Map(
+    (
+      await db.query.user.findMany({
+        where: inArray(user.id, ids),
+        columns: { id: true, name: true },
+      })
+    ).map((u) => [u.id, u]),
+  );
+  const items: FeedItem[] = [
+    ...stakes.map((s) => ({
+      kind: "stake" as const,
+      at: s.updatedAt,
+      user: { id: s.user.id, name: s.user.name },
+      proposition: s.proposition as Proposition,
+      position: s.position,
+    })),
+    ...subs.flatMap((s) => {
+      const u = s.userId ? subUsers.get(s.userId) : undefined;
+      if (!u) return [];
+      const p = s.payload as Record<string, unknown>;
+      return [
+        {
+          kind: "submission" as const,
+          at: s.createdAt,
+          user: u,
+          title: String(p.proposedStatement ?? p.quote ?? "a claim"),
+          submissionStatus: s.status,
+        },
+      ];
+    }),
+  ];
+  return items.sort((a, b) => b.at.getTime() - a.at.getTime()).slice(0, 40);
+}
+
+/** The contributor ladder — reputation from sourcing, reviewing, jury work. */
+export async function getTopContributors(): Promise<UserScore[]> {
+  const scored = await getSmartestUsers();
+  return [...scored]
+    .filter((u) => u.reputation > 0 || u.approvedSubmissions > 0)
+    .sort(
+      (a, b) =>
+        b.reputation - a.reputation ||
+        b.approvedSubmissions - a.approvedSubmissions,
+    );
 }

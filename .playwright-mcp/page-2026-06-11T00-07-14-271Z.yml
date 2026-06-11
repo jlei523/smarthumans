@@ -1,0 +1,740 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "SmartHumans" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]:
+          - img [ref=e6]
+          - generic [ref=e10]: SmartHumans
+      - search [ref=e11]:
+        - img
+        - combobox "Search anyone or any claim…" [ref=e12]
+      - generic [ref=e13]:
+        - link "+ Submit" [ref=e14] [cursor=pointer]:
+          - /url: /submit
+          - generic [ref=e15]: +
+          - text: Submit
+        - link "Notifications" [ref=e16] [cursor=pointer]:
+          - /url: /notifications
+          - img [ref=e17]
+  - navigation [ref=e22]:
+    - generic [ref=e23]:
+      - link "AI" [ref=e24] [cursor=pointer]:
+        - /url: /browse/ai
+      - link "Markets" [ref=e25] [cursor=pointer]:
+        - /url: /browse/markets
+      - link "Stocks" [ref=e26] [cursor=pointer]:
+        - /url: /browse/stocks
+      - link "Semiconductors" [ref=e27] [cursor=pointer]:
+        - /url: /browse/semiconductors
+      - link "Gold" [ref=e28] [cursor=pointer]:
+        - /url: /browse/gold
+      - link "Economy" [ref=e29] [cursor=pointer]:
+        - /url: /browse/economy
+      - link "Health" [ref=e30] [cursor=pointer]:
+        - /url: /browse/health
+      - link "Immigration" [ref=e31] [cursor=pointer]:
+        - /url: /browse/immigration
+      - link "Foreign Policy" [ref=e32] [cursor=pointer]:
+        - /url: /browse/foreign_policy
+      - link "NBA" [ref=e33] [cursor=pointer]:
+        - /url: /browse/nba
+      - link "MLB" [ref=e34] [cursor=pointer]:
+        - /url: /browse/mlb
+      - link "NFL" [ref=e35] [cursor=pointer]:
+        - /url: /browse/nfl
+      - link "F1" [ref=e36] [cursor=pointer]:
+        - /url: /browse/f1
+      - link "More →" [ref=e37] [cursor=pointer]:
+        - /url: /browse
+  - main [ref=e38]:
+    - generic [ref=e39]:
+      - generic [ref=e40]:
+        - heading "Just resolved" [level=2] [ref=e42]
+        - generic [ref=e44]:
+          - article [ref=e45]:
+            - generic [ref=e46]:
+              - link "Donald Trump Donald Trump" [ref=e49] [cursor=pointer]:
+                - /url: /p/donald-trump
+                - img "Donald Trump" [ref=e51]
+                - generic [ref=e52]: Donald Trump
+              - generic [ref=e55]: Didn't
+            - paragraph [ref=e56]:
+              - link "Grocery prices come down substantially during Trump's second term, starting immediately." [ref=e57] [cursor=pointer]:
+                - /url: /claims/grocery-prices-come-down
+            - generic [ref=e59]: resolved 19h ago
+          - article [ref=e60]:
+            - generic [ref=e61]:
+              - link "Elon Musk Elon Musk" [ref=e64] [cursor=pointer]:
+                - /url: /p/elon-musk
+                - img "Elon Musk" [ref=e66]
+                - generic [ref=e67]: Elon Musk
+              - generic [ref=e70]: Didn't
+            - paragraph [ref=e71]:
+              - link "AI is smarter than any single human by the end of 2025." [ref=e72] [cursor=pointer]:
+                - /url: /claims/ai-smarter-than-any-human-2025
+            - generic [ref=e74]: resolved 5mo ago
+          - article [ref=e75]:
+            - generic [ref=e76]:
+              - link "Jim Cramer Jim Cramer" [ref=e79] [cursor=pointer]:
+                - /url: /p/jim-cramer
+                - img "Jim Cramer" [ref=e81]
+                - generic [ref=e82]: Jim Cramer
+              - generic [ref=e85]: "True"
+            - paragraph [ref=e86]:
+              - link "Nvidia remains the must-own AI stock — it goes higher from 2023 levels." [ref=e87] [cursor=pointer]:
+                - /url: /claims/nvidia-own-it-dont-trade-it
+            - generic [ref=e89]: resolved 5mo ago
+          - article [ref=e90]:
+            - generic [ref=e91]:
+              - link "Stephen A. Smith Stephen A. Smith" [ref=e94] [cursor=pointer]:
+                - /url: /p/stephen-a-smith
+                - img "Stephen A. Smith" [ref=e96]
+                - generic [ref=e97]: Stephen A. Smith
+              - generic [ref=e100]: Didn't
+            - paragraph [ref=e101]:
+              - link "Lewis Hamilton wins a Grand Prix in his first season with Ferrari (2025)." [ref=e102] [cursor=pointer]:
+                - /url: /claims/hamilton-wins-gp-first-ferrari-season
+            - generic [ref=e104]: resolved 6mo ago
+      - generic [ref=e105]:
+        - generic [ref=e106]:
+          - heading "Resolves soon" [level=2] [ref=e107]
+          - link "More →" [ref=e108] [cursor=pointer]:
+            - /url: /resolving-soon
+        - generic [ref=e110]:
+          - article [ref=e111]:
+            - generic [ref=e112]:
+              - link "Paul Krugman Paul Krugman" [ref=e115] [cursor=pointer]:
+                - /url: /p/paul-krugman
+                - img "Paul Krugman" [ref=e117]
+                - generic [ref=e118]: Paul Krugman
+              - generic [ref=e120]:
+                - img [ref=e121]
+                - generic [ref=e124]: 51 d
+            - paragraph [ref=e125]:
+              - link "The 2025 tariff regime pushes U.S. CPI inflation above 4% by mid-2026." [ref=e126] [cursor=pointer]:
+                - /url: /claims/tariffs-push-inflation-above-4pct-2026
+            - generic [ref=e127]:
+              - button "Follow 9.9k" [ref=e129]:
+                - generic [ref=e130]: +
+                - text: Follow
+                - generic [ref=e131]: 9.9k
+              - generic "Your call on this claim — scored on resolution, feeds your track record" [ref=e134]:
+                - button "Yes" [ref=e135]
+                - button "No" [ref=e137]
+          - article [ref=e138]:
+            - generic [ref=e139]:
+              - link "Peter Schiff Peter Schiff" [ref=e142] [cursor=pointer]:
+                - /url: /p/peter-schiff
+                - img "Peter Schiff" [ref=e144]
+                - generic [ref=e145]: Peter Schiff
+              - generic [ref=e147]:
+                - img [ref=e148]
+                - generic [ref=e151]: 7 mo
+            - paragraph [ref=e152]:
+              - link "Gold reaches $5,000/oz by the end of 2026." [ref=e153] [cursor=pointer]:
+                - /url: /claims/gold-hits-5000-by-end-2026
+            - generic [ref=e154]:
+              - button "Follow 5.3k" [ref=e156]:
+                - generic [ref=e157]: +
+                - text: Follow
+                - generic [ref=e158]: 5.3k
+              - generic "Your call on this claim — scored on resolution, feeds your track record" [ref=e161]:
+                - button "Yes" [ref=e162]
+                - button "No" [ref=e164]
+          - article [ref=e165]:
+            - generic [ref=e166]:
+              - link "Elon Musk Elon Musk" [ref=e169] [cursor=pointer]:
+                - /url: /p/elon-musk
+                - img "Elon Musk" [ref=e171]
+                - generic [ref=e172]: Elon Musk
+              - generic [ref=e174]:
+                - img [ref=e175]
+                - generic [ref=e178]: 7 mo
+            - paragraph [ref=e179]:
+              - link "Tesla Cybercab reaches volume production in 2026." [ref=e180] [cursor=pointer]:
+                - /url: /claims/cybercab-volume-production-2026
+            - generic [ref=e181]:
+              - button "Follow 7.5k" [ref=e183]:
+                - generic [ref=e184]: +
+                - text: Follow
+                - generic [ref=e185]: 7.5k
+              - generic "Your call on this claim — scored on resolution, feeds your track record" [ref=e188]:
+                - button "Yes" [ref=e189]
+                - button "No" [ref=e191]
+          - article [ref=e192]:
+            - generic [ref=e193]:
+              - link "Elon Musk Elon Musk" [ref=e196] [cursor=pointer]:
+                - /url: /p/elon-musk
+                - img "Elon Musk" [ref=e198]
+                - generic [ref=e199]: Elon Musk
+              - generic [ref=e201]:
+                - img [ref=e202]
+                - generic [ref=e205]: 7 mo
+            - paragraph [ref=e206]:
+              - link "SpaceX launches an uncrewed Starship to Mars by the end of 2026." [ref=e207] [cursor=pointer]:
+                - /url: /claims/starship-uncrewed-mars-2026
+            - generic [ref=e208]:
+              - button "Follow 14k" [ref=e210]:
+                - generic [ref=e211]: +
+                - text: Follow
+                - generic [ref=e212]: 14k
+              - generic "Your call on this claim — scored on resolution, feeds your track record" [ref=e215]:
+                - button "Yes" [ref=e216]
+                - button "No" [ref=e218]
+      - generic [ref=e219]:
+        - generic [ref=e221]:
+          - generic [ref=e222]:
+            - generic [ref=e223]:
+              - button "Trending" [ref=e225]:
+                - img [ref=e226]
+                - text: Trending
+                - img [ref=e228]
+              - button "All time" [ref=e231]:
+                - text: All time
+                - img [ref=e232]
+            - generic [ref=e234]:
+              - 'button "Status: All" [ref=e236]':
+                - generic [ref=e237]: "Status:"
+                - text: All
+                - img [ref=e238]
+              - 'button "Type: All" [ref=e241]':
+                - generic [ref=e242]: "Type:"
+                - text: All
+                - img [ref=e243]
+          - generic [ref=e245]:
+            - article [ref=e246]:
+              - generic [ref=e247]:
+                - generic [ref=e248]:
+                  - link "Donald Trump Donald Trump" [ref=e250] [cursor=pointer]:
+                    - /url: /p/donald-trump
+                    - img "Donald Trump" [ref=e252]
+                    - generic [ref=e253]: Donald Trump
+                  - generic [ref=e254]:
+                    - generic [ref=e255]: ·
+                    - generic [ref=e256]: Aug 15, 2024
+                - generic [ref=e259]: Didn't Come True
+              - paragraph [ref=e260]:
+                - link "Grocery prices come down substantially during Trump's second term, starting immediately." [ref=e261] [cursor=pointer]:
+                  - /url: /claims/grocery-prices-come-down
+              - generic [ref=e262]:
+                - button "Follow 22k" [ref=e264]:
+                  - generic [ref=e265]: +
+                  - text: Follow
+                  - generic [ref=e266]: 22k
+                - link "Economy" [ref=e268] [cursor=pointer]:
+                  - /url: /browse/economy
+            - article [ref=e269]:
+              - generic [ref=e270]:
+                - generic [ref=e271]:
+                  - link "Elon Musk Elon Musk" [ref=e273] [cursor=pointer]:
+                    - /url: /p/elon-musk
+                    - img "Elon Musk" [ref=e275]
+                    - generic [ref=e276]: Elon Musk
+                  - generic [ref=e277]:
+                    - generic [ref=e278]: ·
+                    - generic [ref=e279]: Oct 23, 2024
+                - generic [ref=e281]:
+                  - img [ref=e282]
+                  - generic [ref=e285]: Pending
+                  - generic [ref=e287]: 7 mo
+              - paragraph [ref=e288]:
+                - link "Tesla Cybercab reaches volume production in 2026." [ref=e289] [cursor=pointer]:
+                  - /url: /claims/cybercab-volume-production-2026
+              - generic [ref=e290]:
+                - button "Follow 7.5k" [ref=e292]:
+                  - generic [ref=e293]: +
+                  - text: Follow
+                  - generic [ref=e294]: 7.5k
+                - generic "Your call on this claim — scored on resolution, feeds your track record" [ref=e297]:
+                  - generic [ref=e298]: Your call
+                  - button "Yes" [ref=e299]
+                  - button "No" [ref=e301]
+                - link "AI" [ref=e303] [cursor=pointer]:
+                  - /url: /browse/ai
+            - article [ref=e304]:
+              - generic [ref=e305]:
+                - generic [ref=e306]:
+                  - generic [ref=e307]:
+                    - link "Jim Cramer Elon Musk Jim Cramer" [ref=e308] [cursor=pointer]:
+                      - /url: /p/jim-cramer
+                      - generic [ref=e309]:
+                        - img "Jim Cramer" [ref=e310]
+                        - img "Elon Musk" [ref=e311]
+                      - generic [ref=e312]: Jim Cramer
+                    - link "+1" [ref=e313] [cursor=pointer]:
+                      - /url: /claims/us-recession-by-end-2023#positions
+                  - generic [ref=e314]:
+                    - generic [ref=e315]: ·
+                    - generic [ref=e316]: Oct 17, 2022
+                - generic [ref=e319]: Didn't Come True
+              - paragraph [ref=e320]:
+                - link "The U.S. economy enters a recession by the end of 2023." [ref=e321] [cursor=pointer]:
+                  - /url: /claims/us-recession-by-end-2023
+              - generic [ref=e322]:
+                - button "Follow 11k" [ref=e324]:
+                  - generic [ref=e325]: +
+                  - text: Follow
+                  - generic [ref=e326]: 11k
+                - link "Economy" [ref=e328] [cursor=pointer]:
+                  - /url: /browse/economy
+            - article [ref=e329]:
+              - generic [ref=e330]:
+                - generic [ref=e331]:
+                  - link "Paul Krugman Paul Krugman" [ref=e333] [cursor=pointer]:
+                    - /url: /p/paul-krugman
+                    - img "Paul Krugman" [ref=e335]
+                    - generic [ref=e336]: Paul Krugman
+                  - generic [ref=e337]:
+                    - generic [ref=e338]: ·
+                    - generic [ref=e339]: Jul 2, 2025
+                - generic [ref=e341]:
+                  - img [ref=e342]
+                  - generic [ref=e345]: Pending
+                  - generic [ref=e347]: 51 d
+              - paragraph [ref=e348]:
+                - link "The 2025 tariff regime pushes U.S. CPI inflation above 4% by mid-2026." [ref=e349] [cursor=pointer]:
+                  - /url: /claims/tariffs-push-inflation-above-4pct-2026
+              - generic [ref=e350]:
+                - button "Follow 9.9k" [ref=e352]:
+                  - generic [ref=e353]: +
+                  - text: Follow
+                  - generic [ref=e354]: 9.9k
+                - generic "Your call on this claim — scored on resolution, feeds your track record" [ref=e357]:
+                  - generic [ref=e358]: Your call
+                  - button "Yes" [ref=e359]
+                  - button "No" [ref=e361]
+                - link "Economy" [ref=e363] [cursor=pointer]:
+                  - /url: /browse/economy
+            - article [ref=e364]:
+              - generic [ref=e365]:
+                - generic [ref=e366]:
+                  - link "Donald Trump Donald Trump" [ref=e368] [cursor=pointer]:
+                    - /url: /p/donald-trump
+                    - img "Donald Trump" [ref=e370]
+                    - generic [ref=e371]: Donald Trump
+                  - generic [ref=e372]:
+                    - generic [ref=e373]: ·
+                    - generic [ref=e374]: May 10, 2023
+                - generic [ref=e377]: Didn't Come True
+              - paragraph [ref=e378]:
+                - link "The Russia–Ukraine war is ended within 24 hours of Trump taking office." [ref=e379] [cursor=pointer]:
+                  - /url: /claims/ukraine-war-24-hours
+              - generic [ref=e380]:
+                - button "Follow 19k" [ref=e382]:
+                  - generic [ref=e383]: +
+                  - text: Follow
+                  - generic [ref=e384]: 19k
+                - link "Foreign Policy" [ref=e386] [cursor=pointer]:
+                  - /url: /browse/foreign_policy
+            - article [ref=e387]:
+              - generic [ref=e388]:
+                - generic [ref=e389]:
+                  - generic [ref=e390]:
+                    - link "Donald Trump Elon Musk Donald Trump" [ref=e391] [cursor=pointer]:
+                      - /url: /p/donald-trump
+                      - generic [ref=e392]:
+                        - img "Donald Trump" [ref=e393]
+                        - img "Elon Musk" [ref=e394]
+                      - generic [ref=e395]: Donald Trump
+                    - link "+1" [ref=e396] [cursor=pointer]:
+                      - /url: /claims/american-flag-on-mars-2029#positions
+                  - generic [ref=e397]:
+                    - generic [ref=e398]: ·
+                    - generic [ref=e399]: Jan 20, 2025
+                - generic [ref=e401]:
+                  - img [ref=e402]
+                  - generic [ref=e405]: Pending
+                  - generic [ref=e407]: 2.6 yr
+              - paragraph [ref=e408]:
+                - link "American astronauts plant the U.S. flag on Mars before the end of Trump's second term." [ref=e409] [cursor=pointer]:
+                  - /url: /claims/american-flag-on-mars-2029
+              - generic [ref=e410]:
+                - button "Follow 15k" [ref=e412]:
+                  - generic [ref=e413]: +
+                  - text: Follow
+                  - generic [ref=e414]: 15k
+                - generic "Your call on this claim — scored on resolution, feeds your track record" [ref=e417]:
+                  - generic [ref=e418]: Your call
+                  - button "Yes" [ref=e419]
+                  - button "No" [ref=e421]
+                - link "Other" [ref=e423] [cursor=pointer]:
+                  - /url: /browse/other
+            - article [ref=e424]:
+              - generic [ref=e425]:
+                - generic [ref=e426]:
+                  - link "Elon Musk Elon Musk" [ref=e428] [cursor=pointer]:
+                    - /url: /p/elon-musk
+                    - img "Elon Musk" [ref=e430]
+                    - generic [ref=e431]: Elon Musk
+                  - generic [ref=e432]:
+                    - generic [ref=e433]: ·
+                    - generic [ref=e434]: Sep 21, 2024
+                - generic [ref=e436]:
+                  - img [ref=e437]
+                  - generic [ref=e440]: Pending
+                  - generic [ref=e442]: 7 mo
+              - paragraph [ref=e443]:
+                - link "SpaceX launches an uncrewed Starship to Mars by the end of 2026." [ref=e444] [cursor=pointer]:
+                  - /url: /claims/starship-uncrewed-mars-2026
+              - generic [ref=e445]:
+                - button "Follow 14k" [ref=e447]:
+                  - generic [ref=e448]: +
+                  - text: Follow
+                  - generic [ref=e449]: 14k
+                - generic "Your call on this claim — scored on resolution, feeds your track record" [ref=e452]:
+                  - generic [ref=e453]: Your call
+                  - button "Yes" [ref=e454]
+                  - button "No" [ref=e456]
+                - link "Other" [ref=e458] [cursor=pointer]:
+                  - /url: /browse/other
+            - article [ref=e459]:
+              - generic [ref=e460]:
+                - generic [ref=e461]:
+                  - link "Donald Trump Donald Trump" [ref=e463] [cursor=pointer]:
+                    - /url: /p/donald-trump
+                    - img "Donald Trump" [ref=e465]
+                    - generic [ref=e466]: Donald Trump
+                  - generic [ref=e467]:
+                    - generic [ref=e468]: ·
+                    - generic [ref=e469]: Jun 16, 2015
+                - generic [ref=e472]: Partly True
+              - paragraph [ref=e473]:
+                - link "A wall is built along the U.S.–Mexico border during Trump's first term." [ref=e474] [cursor=pointer]:
+                  - /url: /claims/trump-border-wall
+              - generic [ref=e475]:
+                - button "Follow 12k" [ref=e477]:
+                  - generic [ref=e478]: +
+                  - text: Follow
+                  - generic [ref=e479]: 12k
+                - link "Immigration" [ref=e481] [cursor=pointer]:
+                  - /url: /browse/immigration
+            - article [ref=e482]:
+              - generic [ref=e483]:
+                - generic [ref=e484]:
+                  - link "Elon Musk Elon Musk" [ref=e486] [cursor=pointer]:
+                    - /url: /p/elon-musk
+                    - img "Elon Musk" [ref=e488]
+                    - generic [ref=e489]: Elon Musk
+                  - generic [ref=e490]:
+                    - generic [ref=e491]: ·
+                    - generic [ref=e492]: Apr 8, 2024
+                - generic [ref=e495]: Didn't Come True
+              - paragraph [ref=e496]:
+                - link "AI is smarter than any single human by the end of 2025." [ref=e497] [cursor=pointer]:
+                  - /url: /claims/ai-smarter-than-any-human-2025
+              - generic [ref=e498]:
+                - button "Follow 12k" [ref=e500]:
+                  - generic [ref=e501]: +
+                  - text: Follow
+                  - generic [ref=e502]: 12k
+                - link "AI" [ref=e504] [cursor=pointer]:
+                  - /url: /browse/ai
+            - article [ref=e505]:
+              - generic [ref=e506]:
+                - generic [ref=e507]:
+                  - link "Elon Musk Elon Musk" [ref=e509] [cursor=pointer]:
+                    - /url: /p/elon-musk
+                    - img "Elon Musk" [ref=e511]
+                    - generic [ref=e512]: Elon Musk
+                  - generic [ref=e513]:
+                    - generic [ref=e514]: ·
+                    - generic [ref=e515]: Apr 22, 2019
+                - generic [ref=e518]: Didn't Come True
+              - paragraph [ref=e519]:
+                - link "Tesla has one million robotaxis on the road by the end of 2020." [ref=e520] [cursor=pointer]:
+                  - /url: /claims/million-robotaxis-2020
+              - generic [ref=e521]:
+                - button "Follow 10k" [ref=e523]:
+                  - generic [ref=e524]: +
+                  - text: Follow
+                  - generic [ref=e525]: 10k
+                - link "AI" [ref=e527] [cursor=pointer]:
+                  - /url: /browse/ai
+            - article [ref=e528]:
+              - generic [ref=e529]:
+                - generic [ref=e530]:
+                  - link "Donald Trump Donald Trump" [ref=e532] [cursor=pointer]:
+                    - /url: /p/donald-trump
+                    - img "Donald Trump" [ref=e534]
+                    - generic [ref=e535]: Donald Trump
+                  - generic [ref=e536]:
+                    - generic [ref=e537]: ·
+                    - generic [ref=e538]: Sep 1, 2016
+                - generic [ref=e541]: Didn't Come True
+              - paragraph [ref=e542]:
+                - link "Mexico pays for the border wall." [ref=e543] [cursor=pointer]:
+                  - /url: /claims/mexico-pays-for-wall
+              - generic [ref=e544]:
+                - button "Follow 9.9k" [ref=e546]:
+                  - generic [ref=e547]: +
+                  - text: Follow
+                  - generic [ref=e548]: 9.9k
+                - link "Immigration" [ref=e550] [cursor=pointer]:
+                  - /url: /browse/immigration
+            - article [ref=e551]:
+              - generic [ref=e552]:
+                - generic [ref=e553]:
+                  - link "Donald Trump Donald Trump" [ref=e555] [cursor=pointer]:
+                    - /url: /p/donald-trump
+                    - img "Donald Trump" [ref=e557]
+                    - generic [ref=e558]: Donald Trump
+                  - generic [ref=e559]:
+                    - generic [ref=e560]: ·
+                    - generic [ref=e561]: Oct 19, 2016
+                - generic [ref=e564]: Came True
+              - paragraph [ref=e565]:
+                - link "Trump-appointed Supreme Court justices vote to overturn Roe v. Wade." [ref=e566] [cursor=pointer]:
+                  - /url: /claims/justices-overturn-roe
+              - generic [ref=e567]:
+                - button "Follow 8.9k" [ref=e569]:
+                  - generic [ref=e570]: +
+                  - text: Follow
+                  - generic [ref=e571]: 8.9k
+                - link "Other" [ref=e573] [cursor=pointer]:
+                  - /url: /browse/other
+            - article [ref=e574]:
+              - generic [ref=e575]:
+                - generic [ref=e576]:
+                  - link "Elon Musk Elon Musk" [ref=e578] [cursor=pointer]:
+                    - /url: /p/elon-musk
+                    - img "Elon Musk" [ref=e580]
+                    - generic [ref=e581]: Elon Musk
+                  - generic [ref=e582]:
+                    - generic [ref=e583]: ·
+                    - generic [ref=e584]: Oct 19, 2016
+                - generic [ref=e587]: Didn't Come True
+              - paragraph [ref=e588]:
+                - link "A Tesla drives coast-to-coast (LA to NYC) with no human input by the end of 2017." [ref=e589] [cursor=pointer]:
+                  - /url: /claims/tesla-coast-to-coast-fsd-2017
+              - generic [ref=e590]:
+                - button "Follow 8.1k" [ref=e592]:
+                  - generic [ref=e593]: +
+                  - text: Follow
+                  - generic [ref=e594]: 8.1k
+                - link "AI" [ref=e596] [cursor=pointer]:
+                  - /url: /browse/ai
+            - article [ref=e597]:
+              - generic [ref=e598]:
+                - generic [ref=e599]:
+                  - link "Donald Trump Donald Trump" [ref=e601] [cursor=pointer]:
+                    - /url: /p/donald-trump
+                    - img "Donald Trump" [ref=e603]
+                    - generic [ref=e604]: Donald Trump
+                  - generic [ref=e605]:
+                    - generic [ref=e606]: ·
+                    - generic [ref=e607]: Feb 27, 2020
+                - generic [ref=e610]: Didn't Come True
+              - paragraph [ref=e611]:
+                - link "The coronavirus will disappear on its own." [ref=e612] [cursor=pointer]:
+                  - /url: /claims/covid-will-disappear
+              - generic [ref=e613]:
+                - button "Follow 7.7k" [ref=e615]:
+                  - generic [ref=e616]: +
+                  - text: Follow
+                  - generic [ref=e617]: 7.7k
+                - link "Health" [ref=e619] [cursor=pointer]:
+                  - /url: /browse/health
+            - article [ref=e620]:
+              - generic [ref=e621]:
+                - generic [ref=e622]:
+                  - link "Paul Krugman Paul Krugman" [ref=e624] [cursor=pointer]:
+                    - /url: /p/paul-krugman
+                    - img "Paul Krugman" [ref=e626]
+                    - generic [ref=e627]: Paul Krugman
+                  - generic [ref=e628]:
+                    - generic [ref=e629]: ·
+                    - generic [ref=e630]: Aug 27, 2021
+                - generic [ref=e633]: Partly True
+              - paragraph [ref=e634]:
+                - link "Post-pandemic inflation is transitory and recedes without a major rise in unemployment." [ref=e635] [cursor=pointer]:
+                  - /url: /claims/inflation-transitory-2021
+              - generic [ref=e636]:
+                - button "Follow 6.7k" [ref=e638]:
+                  - generic [ref=e639]: +
+                  - text: Follow
+                  - generic [ref=e640]: 6.7k
+                - link "Economy" [ref=e642] [cursor=pointer]:
+                  - /url: /browse/economy
+            - article [ref=e643]:
+              - generic [ref=e644]:
+                - generic [ref=e645]:
+                  - link "Donald Trump Donald Trump" [ref=e647] [cursor=pointer]:
+                    - /url: /p/donald-trump
+                    - img "Donald Trump" [ref=e649]
+                    - generic [ref=e650]: Donald Trump
+                  - generic [ref=e651]:
+                    - generic [ref=e652]: ·
+                    - generic [ref=e653]: Oct 25, 2016
+                - generic [ref=e656]: Didn't Come True
+              - paragraph [ref=e657]:
+                - link "Obamacare is repealed and replaced during Trump's first term." [ref=e658] [cursor=pointer]:
+                  - /url: /claims/repeal-replace-obamacare
+              - generic [ref=e659]:
+                - button "Follow 6.3k" [ref=e661]:
+                  - generic [ref=e662]: +
+                  - text: Follow
+                  - generic [ref=e663]: 6.3k
+                - link "Health" [ref=e665] [cursor=pointer]:
+                  - /url: /browse/health
+            - article [ref=e666]:
+              - generic [ref=e667]:
+                - generic [ref=e668]:
+                  - link "Elon Musk Elon Musk" [ref=e670] [cursor=pointer]:
+                    - /url: /p/elon-musk
+                    - img "Elon Musk" [ref=e672]
+                    - generic [ref=e673]: Elon Musk
+                  - generic [ref=e674]:
+                    - generic [ref=e675]: ·
+                    - generic [ref=e676]: Aug 7, 2018
+                - generic [ref=e679]: Walked Back
+              - paragraph [ref=e680]:
+                - link "Tesla is taken private at $420 per share — funding secured." [ref=e681] [cursor=pointer]:
+                  - /url: /claims/tesla-private-420-funding-secured
+              - generic [ref=e682]:
+                - button "Follow 6.1k" [ref=e684]:
+                  - generic [ref=e685]: +
+                  - text: Follow
+                  - generic [ref=e686]: 6.1k
+                - link "Stocks" [ref=e688] [cursor=pointer]:
+                  - /url: /browse/stocks
+            - article [ref=e689]:
+              - generic [ref=e690]:
+                - generic [ref=e691]:
+                  - link "Donald Trump Donald Trump" [ref=e693] [cursor=pointer]:
+                    - /url: /p/donald-trump
+                    - img "Donald Trump" [ref=e695]
+                    - generic [ref=e696]: Donald Trump
+                  - generic [ref=e697]:
+                    - generic [ref=e698]: ·
+                    - generic [ref=e699]: Oct 22, 2020
+                - generic [ref=e702]: Didn't Come True
+              - paragraph [ref=e703]:
+                - link "The stock market crashes if Biden wins the 2020 election." [ref=e704] [cursor=pointer]:
+                  - /url: /claims/market-crash-if-biden-wins
+              - generic [ref=e705]:
+                - button "Follow 5.5k" [ref=e707]:
+                  - generic [ref=e708]: +
+                  - text: Follow
+                  - generic [ref=e709]: 5.5k
+                - link "Markets" [ref=e711] [cursor=pointer]:
+                  - /url: /browse/markets
+        - complementary [ref=e712]:
+          - generic [ref=e713]:
+            - generic [ref=e714]:
+              - heading "Best records" [level=2] [ref=e715]
+              - link "More →" [ref=e716] [cursor=pointer]:
+                - /url: /leaderboards
+            - list [ref=e718]:
+              - listitem [ref=e719]:
+                - link "1 Paul Krugman Paul Krugman Economist 37.5% 4 resolved" [ref=e720] [cursor=pointer]:
+                  - /url: /p/paul-krugman
+                  - generic [ref=e721]: "1"
+                  - img "Paul Krugman" [ref=e722]
+                  - generic [ref=e723]:
+                    - generic [ref=e724]: Paul Krugman
+                    - generic [ref=e725]: Economist
+                  - generic [ref=e726]:
+                    - generic [ref=e727]: 37.5%
+                    - generic [ref=e728]: 4 resolved
+              - listitem [ref=e729]:
+                - link "2 Donald Trump Donald Trump Politician 29.2% 12 resolved" [ref=e730] [cursor=pointer]:
+                  - /url: /p/donald-trump
+                  - generic [ref=e731]: "2"
+                  - img "Donald Trump" [ref=e732]
+                  - generic [ref=e733]:
+                    - generic [ref=e734]: Donald Trump
+                    - generic [ref=e735]: Politician
+                  - generic [ref=e736]:
+                    - generic [ref=e737]: 29.2%
+                    - generic [ref=e738]: 12 resolved
+              - listitem [ref=e739]:
+                - link "3 Jim Cramer Jim Cramer Pundit 25.0% 4 resolved" [ref=e740] [cursor=pointer]:
+                  - /url: /p/jim-cramer
+                  - generic [ref=e741]: "3"
+                  - img "Jim Cramer" [ref=e742]
+                  - generic [ref=e743]:
+                    - generic [ref=e744]: Jim Cramer
+                    - generic [ref=e745]: Pundit
+                  - generic [ref=e746]:
+                    - generic [ref=e747]: 25.0%
+                    - generic [ref=e748]: 4 resolved
+          - generic [ref=e749]:
+            - generic [ref=e750]:
+              - heading "Worst records" [level=2] [ref=e751]
+              - link "More →" [ref=e752] [cursor=pointer]:
+                - /url: /leaderboards
+            - list [ref=e754]:
+              - listitem [ref=e755]:
+                - link "1 Elon Musk Elon Musk Tech CEO 18.8% 8 resolved" [ref=e756] [cursor=pointer]:
+                  - /url: /p/elon-musk
+                  - generic [ref=e757]: "1"
+                  - img "Elon Musk" [ref=e758]
+                  - generic [ref=e759]:
+                    - generic [ref=e760]: Elon Musk
+                    - generic [ref=e761]: Tech CEO
+                  - generic [ref=e762]:
+                    - generic [ref=e763]: 18.8%
+                    - generic [ref=e764]: 8 resolved
+              - listitem [ref=e765]:
+                - link "2 Stephen A. Smith Stephen A. Smith Analyst 20.0% 5 resolved" [ref=e766] [cursor=pointer]:
+                  - /url: /p/stephen-a-smith
+                  - generic [ref=e767]: "2"
+                  - img "Stephen A. Smith" [ref=e768]
+                  - generic [ref=e769]:
+                    - generic [ref=e770]: Stephen A. Smith
+                    - generic [ref=e771]: Analyst
+                  - generic [ref=e772]:
+                    - generic [ref=e773]: 20.0%
+                    - generic [ref=e774]: 5 resolved
+          - paragraph [ref=e775]: Minimum 3 resolved claims to appear on a leaderboard.
+  - contentinfo [ref=e776]:
+    - generic [ref=e777]:
+      - generic [ref=e778]:
+        - generic [ref=e779]:
+          - img [ref=e780]
+          - generic [ref=e784]: SmartHumans
+        - paragraph [ref=e785]: A permanent, sourced, community-verified record of what people predicted and promised — and whether it actually happened. Public figures garner the spotlight; everyone can build a record.
+        - paragraph [ref=e786]: AI proposes · humans verify
+      - generic [ref=e787]:
+        - paragraph [ref=e788]: Explore
+        - list [ref=e789]:
+          - listitem [ref=e790]:
+            - link "Browse by topic" [ref=e791] [cursor=pointer]:
+              - /url: /browse
+          - listitem [ref=e792]:
+            - link "Leaderboards" [ref=e793] [cursor=pointer]:
+              - /url: /leaderboards
+          - listitem [ref=e794]:
+            - link "Smartest users" [ref=e795] [cursor=pointer]:
+              - /url: /leaderboards?tab=users
+          - listitem [ref=e796]:
+            - link "Resolving soon" [ref=e797] [cursor=pointer]:
+              - /url: /resolving-soon
+          - listitem [ref=e798]:
+            - link "Notifications" [ref=e799] [cursor=pointer]:
+              - /url: /notifications
+          - listitem [ref=e800]:
+            - link "Submit a claim" [ref=e801] [cursor=pointer]:
+              - /url: /submit
+      - generic [ref=e802]:
+        - paragraph [ref=e803]: Trust
+        - list [ref=e804]:
+          - listitem [ref=e805]:
+            - link "Methodology" [ref=e806] [cursor=pointer]:
+              - /url: /methodology
+          - listitem [ref=e807]:
+            - link "Review queue" [ref=e808] [cursor=pointer]:
+              - /url: /review
+          - listitem [ref=e809]:
+            - link "How verdicts are reached" [ref=e810] [cursor=pointer]:
+              - /url: /methodology#resolution
+          - listitem [ref=e811]:
+            - link "Disputes & appeals" [ref=e812] [cursor=pointer]:
+              - /url: /methodology#appeals
+          - listitem [ref=e813]:
+            - link "AI & agent policy" [ref=e814] [cursor=pointer]:
+              - /url: /methodology#agents
+    - generic [ref=e816]: © 2026 SmartHumans — no primary source, no claim.
+  - button "Open Next.js Dev Tools" [ref=e822] [cursor=pointer]:
+    - img [ref=e823]

@@ -1,4 +1,4 @@
-import type { ClaimStatus, ClaimType, Category } from "@/db/schema";
+import type { ClaimStatus, ClaimSubtype, Category } from "@/db/schema";
 
 export const STATUS_META: Record<
   ClaimStatus,
@@ -74,10 +74,12 @@ export const STATUS_ORDER: ClaimStatus[] = [
   "pending",
 ];
 
-export const TYPE_LABEL: Record<ClaimType, string> = {
+/** Everything is a "claim" in the UI; the subtype surfaces only in secondary
+    filters, the review queue, and scorecard split rows. */
+export const SUBTYPE_LABEL: Record<ClaimSubtype, string> = {
   prediction: "Prediction",
   promise: "Promise",
-  factual: "Factual claim",
+  factual: "Factual",
 };
 
 export const CATEGORY_LABEL: Record<Category, string> = {

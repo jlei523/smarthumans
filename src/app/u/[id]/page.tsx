@@ -2,10 +2,18 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { format } from "date-fns";
-import { getSmartestUsers, getUserScore } from "@/lib/queries";
+import { headers } from "next/headers";
+import { auth } from "@/lib/auth";
+import {
+  getFollowedUserIds,
+  getSmartestUsers,
+  getUserFollowerCount,
+  getUserScore,
+} from "@/lib/queries";
 import { BADGES, currentSeason, topPercent } from "@/lib/gamification";
-import { ScoreGauge, DistributionBar } from "@/components/charts";
+import { ScoreGauge, DistributionBar, SubtypeSplit } from "@/components/charts";
 import { FilterPill } from "@/components/filters";
+import { FollowButton } from "@/components/follow-button";
 import { StatusBadge } from "@/components/status-badge";
 
 import { MIN_RESOLVED_FOR_SCORE } from "@/lib/scoring";
@@ -34,11 +42,15 @@ export default async function UserProfilePage({
 }) {
   const { id } = await params;
   const { f = "all" } = await searchParams;
-  const [score, allUsers] = await Promise.all([
+  const session = await auth.api.getSession({ headers: await headers() });
+  const [score, allUsers, followerCount, followedUserIds] = await Promise.all([
     getUserScore(id),
     getSmartestUsers(),
+    getUserFollowerCount(id),
+    getFollowedUserIds(session?.user?.id),
   ]);
   if (!score) notFound();
+  const isSelf = session?.user?.id === id;
   const { scorecard } = score;
   const pctile = topPercent(
     score.seasonPoints,
@@ -74,6 +86,15 @@ export default async function UserProfilePage({
               @{score.name}
             </h1>
             <div className="mt-3.5 flex flex-wrap items-center gap-2">
+              {!isSelf && (
+                <FollowButton
+                  target="user"
+                  targetId={id}
+                  count={followerCount}
+                  initialFollowing={followedUserIds.has(id)}
+                  size="md"
+                />
+              )}
               <span
                 className="rounded-md bg-st-partly-bg px-2 py-0.5 font-mono text-[11.5px] font-semibold text-st-partly-tx tabular-nums"
                 title="Prediction points — contrarian-weighted, earned only when calls resolve. Never governance weight."
@@ -152,6 +173,7 @@ export default async function UserProfilePage({
                 Stance record
               </p>
               <DistributionBar scorecard={scorecard} />
+              <SubtypeSplit breakdown={score.subtypeBreakdown} className="mt-3" />
             </div>
           </div>
           <p className="mt-4 border-t pt-4 text-[11px] italic text-ink-3">

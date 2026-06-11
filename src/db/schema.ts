@@ -10,6 +10,7 @@ import {
   jsonb,
   uniqueIndex,
   index,
+  primaryKey,
   type AnyPgColumn,
 } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
@@ -28,7 +29,9 @@ export const claimStatusEnum = pgEnum("claim_status", [
   "disputed",
 ]);
 
-export const claimTypeEnum = pgEnum("claim_type", [
+/** One claim entity for all three; the subtype only changes the scorecard verb
+    ("came true" / "kept") and, for factual, the deadline rule. */
+export const claimSubtypeEnum = pgEnum("claim_subtype", [
   "prediction",
   "promise",
   "factual",
@@ -182,7 +185,7 @@ export const propositions = pgTable(
     // SEO question phrasing, e.g. "Did Trump build the wall?"
     question: text("question").notNull().default(""),
     resolutionCriteria: text("resolution_criteria").notNull(),
-    claimType: claimTypeEnum("claim_type").notNull(),
+    subtype: claimSubtypeEnum("subtype").notNull(),
     category: categoryEnum("category").notNull(),
     // null deadline = "resolves when event occurs"
     deadline: date("deadline"),
@@ -200,6 +203,17 @@ export const propositions = pgTable(
       (): AnyPgColumn => comments.id,
       { onDelete: "set null" },
     ),
+    /** credit seam: the approved submission this claim was published from —
+        powers the "Tracked by @user · clip sourced by @user" byline */
+    sourceSubmissionId: integer("source_submission_id").references(
+      (): AnyPgColumn => submissions.id,
+      { onDelete: "set null" },
+    ),
+    /** set when a user authored this claim directly, with no public figure
+        attached — renders the "Community claim" label and the author credit */
+    communityAuthorId: text("community_author_id").references(() => user.id, {
+      onDelete: "set null",
+    }),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
   },
@@ -283,6 +297,21 @@ export const propositionFollows = pgTable(
   (t) => [uniqueIndex("prop_follows_uq").on(t.userId, t.propositionId)],
 );
 
+/** Contributors are followable like the figures they track. */
+export const userFollows = pgTable(
+  "user_follows",
+  {
+    followerId: text("follower_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    followedId: text("followed_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [primaryKey({ columns: [t.followerId, t.followedId] })],
+);
+
 export const personFollows = pgTable(
   "person_follows",
   {
@@ -296,6 +325,19 @@ export const personFollows = pgTable(
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [uniqueIndex("person_follows_uq").on(t.userId, t.personId)],
+);
+
+export const topicFollows = pgTable(
+  "topic_follows",
+  {
+    id: serial("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    category: categoryEnum("category").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [uniqueIndex("topic_follows_uq").on(t.userId, t.category)],
 );
 
 export const userStances = pgTable(
@@ -520,5 +562,5 @@ export type Stance = typeof stances.$inferSelect;
 export type Evidence = typeof evidence.$inferSelect;
 export type AuditEntry = typeof auditTrail.$inferSelect;
 export type ClaimStatus = (typeof claimStatusEnum.enumValues)[number];
-export type ClaimType = (typeof claimTypeEnum.enumValues)[number];
+export type ClaimSubtype = (typeof claimSubtypeEnum.enumValues)[number];
 export type Category = (typeof categoryEnum.enumValues)[number];

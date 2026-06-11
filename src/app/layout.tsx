@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Source_Serif_4, IBM_Plex_Mono } from "next/font/google";
 import { SiteHeader } from "@/components/site-header";
+import { TopicStrip } from "@/components/topic-strip";
 import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
@@ -42,6 +43,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <SiteHeader />
+        <TopicStrip />
         <main className="flex-1">{children}</main>
         <SiteFooter />
       </body>

@@ -18,13 +18,20 @@ import { cn } from "@/lib/utils";
 import { ClaimCard } from "@/components/claim-card";
 import { StatusDot } from "@/components/status-badge";
 import { DATE_RANGES, inDateRange, type DateRange } from "@/components/filters";
-import { STATUS_META } from "@/lib/status";
-import { deadlineLabel, fmtCount } from "@/lib/format";
-import type { ClaimStatus, Person, Proposition, Stance } from "@/db/schema";
+import { STATUS_META, SUBTYPE_LABEL } from "@/lib/status";
+import type {
+  ClaimStatus,
+  ClaimSubtype,
+  Person,
+  Proposition,
+  Stance,
+} from "@/db/schema";
 
 export type LedgerItem = {
   proposition: Proposition;
   stance: (Stance & { person?: Person }) | null;
+  /** all stances — lets the card show a portrait stack when several figures weighed in */
+  stances?: (Stance & { person?: Person })[] | null;
   commentCount: number;
   following?: boolean;
   myStance?: "affirm" | "deny" | null;
@@ -56,6 +63,8 @@ const STATUS_MENU: ClaimStatus[] = [
 
 const isOpenStatus = (s: ClaimStatus) => s === "pending" || s === "disputed";
 
+const SUBTYPE_MENU: ClaimSubtype[] = ["prediction", "promise", "factual"];
+
 /**
  * LedgerSortBar — the sort-led filter header for every claim list.
  * Left cluster orders (Sort, then Date scope); right cluster scopes (Status).
@@ -70,6 +79,7 @@ export function LedgerSortBar({
   initialSort,
   initialWindow,
   initialStatus,
+  initialType,
 }: {
   items: LedgerItem[];
   showPerson?: boolean;
@@ -78,6 +88,7 @@ export function LedgerSortBar({
   initialSort?: string;
   initialWindow?: string;
   initialStatus?: string;
+  initialType?: string;
 }) {
   const [sort, setSort] = useState<LedgerSort>(
     SORTS.some((s) => s.key === initialSort)
@@ -98,9 +109,14 @@ export function LedgerSortBar({
       ? (initialStatus as ClaimStatus)
       : "all",
   );
-  const [openMenu, setOpenMenu] = useState<"sort" | "date" | "status" | null>(
-    null,
+  const [subtype, setSubtype] = useState<ClaimSubtype | "all">(
+    SUBTYPE_MENU.includes(initialType as ClaimSubtype)
+      ? (initialType as ClaimSubtype)
+      : "all",
   );
+  const [openMenu, setOpenMenu] = useState<
+    "sort" | "date" | "status" | "type" | null
+  >(null);
   // remember the scope while Closing soon hides it, restore on return
   const prevWindow = useRef<DateRange>(windowScope);
   const interacted = useRef(false);
@@ -113,22 +129,24 @@ export function LedgerSortBar({
     setSort(next);
   }
 
-  // persist to URL (?sort=top&window=week&status=pending) without navigation
+  // persist to URL (?sort=top&window=week&status=pending&type=promise)
+  // without navigation
   useEffect(() => {
     if (!interacted.current) return;
     const p = new URLSearchParams(window.location.search);
-    ["sort", "window", "status"].forEach((k) => p.delete(k));
+    ["sort", "window", "status", "type"].forEach((k) => p.delete(k));
     if (sort !== "trending") p.set("sort", sort);
     if (sort !== "closing" && windowScope !== "week")
       p.set("window", windowScope);
     if (status !== "all") p.set("status", status);
+    if (subtype !== "all") p.set("type", subtype);
     const qs = p.toString();
     window.history.replaceState(
       null,
       "",
       `${window.location.pathname}${qs ? `?${qs}` : ""}${window.location.hash}`,
     );
-  }, [sort, windowScope, status]);
+  }, [sort, windowScope, status, subtype]);
 
   const select = <T,>(setter: (v: T) => void) => (v: T) => {
     interacted.current = true;
@@ -154,15 +172,38 @@ export function LedgerSortBar({
     );
   }, [items, sort, windowScope]);
 
-  const statusCounts = useMemo(() => {
-    const c: Partial<Record<ClaimStatus, number>> = {};
+  // subtypes that exist in this list — the Type menu only renders when
+  // there is more than one to choose between
+  const subtypesPresent = useMemo(() => {
+    const present = new Set(items.map((it) => it.proposition.subtype));
+    return SUBTYPE_MENU.filter((s) => present.has(s));
+  }, [items]);
+
+  const subtypeCounts = useMemo(() => {
+    const c: Partial<Record<ClaimSubtype, number>> = {};
     for (const it of scoped)
-      c[it.proposition.status] = (c[it.proposition.status] ?? 0) + 1;
+      c[it.proposition.subtype] = (c[it.proposition.subtype] ?? 0) + 1;
     return c;
   }, [scoped]);
 
+  // type scope applies before status so the status counts reflect it
+  const typed = useMemo(
+    () =>
+      scoped.filter(
+        (it) => subtype === "all" || it.proposition.subtype === subtype,
+      ),
+    [scoped, subtype],
+  );
+
+  const statusCounts = useMemo(() => {
+    const c: Partial<Record<ClaimStatus, number>> = {};
+    for (const it of typed)
+      c[it.proposition.status] = (c[it.proposition.status] ?? 0) + 1;
+    return c;
+  }, [typed]);
+
   const shown = useMemo(() => {
-    const list = scoped.filter(
+    const list = typed.filter(
       (it) => status === "all" || it.proposition.status === status,
     );
     if (sort === "closing") return list; // already deadline asc
@@ -178,15 +219,7 @@ export function LedgerSortBar({
         b.proposition.followerCount - a.proposition.followerCount
       );
     });
-  }, [scoped, status, sort]);
-
-  // trailing row metric always matches the active sort
-  const metricFor = (it: LedgerItem): string => {
-    if (sort === "new") return it.stance?.dateStated.slice(0, 4) ?? "—";
-    if (sort === "top") return `${fmtCount(it.proposition.followerCount)} following`;
-    if (sort === "closing") return deadlineLabel(it.proposition.deadline);
-    return `${it.commentCount} comment${it.commentCount === 1 ? "" : "s"}`;
-  };
+  }, [typed, status, sort]);
 
   const activeSort = SORTS.find((s) => s.key === sort)!;
   const SortIcon = activeSort.icon;
@@ -260,7 +293,8 @@ export function LedgerSortBar({
           )}
         </div>
 
-        {/* right cluster — scoping */}
+        {/* right cluster — scoping; Type is the secondary scope */}
+        <div className="flex items-center gap-2 max-sm:w-full">
         <Menu
           id="status"
           open={openMenu === "status"}
@@ -289,7 +323,7 @@ export function LedgerSortBar({
                 status === "all" ? "" : "ml-auto",
               )}
             >
-              {scoped.length}
+              {typed.length}
             </span>
           </MenuItem>
           {STATUS_MENU.map((s) => (
@@ -314,6 +348,62 @@ export function LedgerSortBar({
             </MenuItem>
           ))}
         </Menu>
+
+        {subtypesPresent.length > 1 && (
+          <Menu
+            id="type"
+            open={openMenu === "type"}
+            setOpen={(o) => setOpenMenu(o ? "type" : null)}
+            width="w-[180px]"
+            align="right"
+            trigger={
+              <>
+                <span className="text-ink-3">Type:</span>
+                {subtype === "all" ? "All" : SUBTYPE_LABEL[subtype]}
+                <ChevronDown className="size-3 opacity-70" aria-hidden />
+              </>
+            }
+          >
+            <MenuItem
+              active={subtype === "all"}
+              onSelect={() => select(setSubtype)("all")}
+            >
+              All
+              {subtype === "all" && (
+                <Check className="ml-auto size-3.5" aria-hidden />
+              )}
+              <span
+                className={cn(
+                  "font-mono text-[11px] text-ink-4 tabular-nums",
+                  subtype === "all" ? "" : "ml-auto",
+                )}
+              >
+                {scoped.length}
+              </span>
+            </MenuItem>
+            {subtypesPresent.map((s) => (
+              <MenuItem
+                key={s}
+                active={subtype === s}
+                onSelect={() => select(setSubtype)(s)}
+              >
+                {SUBTYPE_LABEL[s]}
+                {subtype === s && (
+                  <Check className="ml-auto size-3.5" aria-hidden />
+                )}
+                <span
+                  className={cn(
+                    "font-mono text-[11px] text-ink-4 tabular-nums",
+                    subtype === s ? "" : "ml-auto",
+                  )}
+                >
+                  {subtypeCounts[s] ?? 0}
+                </span>
+              </MenuItem>
+            ))}
+          </Menu>
+        )}
+        </div>
       </div>
 
       {/* rows */}
@@ -329,11 +419,11 @@ export function LedgerSortBar({
             key={it.proposition.id}
             proposition={it.proposition}
             stance={it.stance}
+            stances={it.stances}
             showPerson={showPerson}
             showCategory={showCategory}
             following={it.following}
             myStance={it.myStance}
-            metric={metricFor(it)}
           />
         ))}
         {shown.length === 0 && (

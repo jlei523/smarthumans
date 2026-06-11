@@ -17,12 +17,17 @@ import {
   resolutionVotes,
   stances,
   submissions,
+  topicFollows,
   user as userTable,
+  userFollows,
   userStances,
+  categoryEnum,
+  type Category,
 } from "@/db/schema";
 import { auth } from "@/lib/auth";
 import { stakePoints } from "@/lib/gamification";
 import { stanceOutcome } from "@/lib/scoring";
+import { inferSubtype, normalizeSubtype } from "@/lib/subtype";
 
 async function requireUser() {
   const session = await auth.api.getSession({ headers: await headers() });
@@ -87,6 +92,28 @@ export async function toggleFollowPerson(personId: number, path: string) {
       .where(eq(people.id, personId));
   }
   revalidatePath(path);
+  return { ok: true, following: !existing };
+}
+
+export async function toggleFollowTopic(category: Category, path: string) {
+  const user = await requireUser();
+  if (!user) return { ok: false, error: "sign-in-required" as const };
+  if (!categoryEnum.enumValues.includes(category))
+    return { ok: false, error: "unknown-topic" as const };
+
+  const existing = await db.query.topicFollows.findFirst({
+    where: and(
+      eq(topicFollows.userId, user.id),
+      eq(topicFollows.category, category),
+    ),
+  });
+  if (existing) {
+    await db.delete(topicFollows).where(eq(topicFollows.id, existing.id));
+  } else {
+    await db.insert(topicFollows).values({ userId: user.id, category });
+  }
+  revalidatePath(path);
+  revalidatePath("/");
   return { ok: true, following: !existing };
 }
 
@@ -288,16 +315,53 @@ export async function voteOnResolution(
   return { ok: true };
 }
 
+/** Contributors are followable like the figures they track. */
+export async function toggleFollowUser(targetUserId: string, path: string) {
+  const user = await requireUser();
+  if (!user) return { ok: false, error: "sign-in-required" as const };
+  if (user.id === targetUserId)
+    return { ok: false, error: "own-profile" as const };
+
+  const existing = await db.query.userFollows.findFirst({
+    where: and(
+      eq(userFollows.followerId, user.id),
+      eq(userFollows.followedId, targetUserId),
+    ),
+  });
+  if (existing) {
+    await db
+      .delete(userFollows)
+      .where(
+        and(
+          eq(userFollows.followerId, user.id),
+          eq(userFollows.followedId, targetUserId),
+        ),
+      );
+  } else {
+    await db
+      .insert(userFollows)
+      .values({ followerId: user.id, followedId: targetUserId })
+      .onConflictDoNothing();
+  }
+  revalidatePath(path);
+  return { ok: true, following: !existing };
+}
+
 export type SubmissionPayload = {
   kind?: "claim";
+  /** user-authored proposition with no public figure attached — no quote or
+      source required; published with the "Community claim" label */
+  communityClaim?: boolean;
   /** forum seam: the discussion comment this claim was staked from */
   sourceCommentId?: number;
-  sourceUrl: string;
-  speaker: string;
-  quote: string;
-  dateStated: string;
-  venue: string;
-  claimType: string;
+  sourceUrl?: string;
+  speaker?: string;
+  quote?: string;
+  dateStated?: string;
+  venue?: string;
+  /** optional — agents may declare it; humans never pick it (inferred, then
+      corrected by reviewers in the queue) */
+  claimType?: string;
   category: string;
   deadline: string | null;
   proposedStatement: string;
@@ -315,10 +379,14 @@ export type SubmissionPayload = {
 
 export async function submitClaim(payload: SubmissionPayload) {
   const user = await requireUser();
+  // community claims carry no quote, so they need an accountable author
+  if (payload.communityClaim && !user) {
+    return { ok: false, error: "sign-in-required" as const, needsClip: false };
+  }
   // a structured broadcast citation without a verifiable artifact goes to
   // the queue flagged "needs clip" — it cannot publish until one is attached
   const needsClip =
-    payload.sourceType === "broadcast" && !payload.sourceUrl.trim();
+    payload.sourceType === "broadcast" && !payload.sourceUrl?.trim();
   await db.insert(submissions).values({
     userId: user?.id ?? null,
     payload: { ...payload, kind: "claim" },
@@ -597,6 +665,8 @@ export async function reviewSubmission(
   submissionId: number,
   approve: boolean,
   path: string,
+  /** reviewer's call on the claim subtype — overrides the inferred one */
+  subtypeOverride?: string,
 ) {
   const user = await requireUser();
   if (!user) return { ok: false, error: "sign-in-required" as const };
@@ -627,8 +697,10 @@ export async function reviewSubmission(
   const payload = sub.payload as Record<string, unknown>;
   const kind = (payload.kind as string) ?? "claim";
 
-  // no artifact, no publication — regardless of how structured the citation is
-  if (!String(payload.sourceUrl ?? "").trim() && !payload.quoteReported) {
+  const isCommunity = kind === "claim" && !!payload.communityClaim;
+  // no artifact, no publication — except community claims, which carry no
+  // quote to source; the signed-in author is the accountable party
+  if (!isCommunity && !String(payload.sourceUrl ?? "").trim() && !payload.quoteReported) {
     return { ok: false, error: "needs-artifact" as const };
   }
   // reported tier requires two independent reports
@@ -685,14 +757,21 @@ export async function reviewSubmission(
       })
       .onConflictDoNothing();
   } else {
-    const person = await findOrCreatePerson(String(payload.speaker));
     let slug = slugify(String(payload.proposedStatement));
     if (await db.query.propositions.findFirst({ where: eq(propositions.slug, slug) })) {
       slug = `${slug}-${Math.floor(Math.random() * 1000)}`;
     }
-    const claimType = ["prediction", "promise", "factual"].includes(String(payload.claimType))
-      ? (String(payload.claimType) as "prediction" | "promise" | "factual")
-      : "prediction";
+    // subtype precedence: reviewer's correction > explicit payload (agents) >
+    // inference from the quote + proposition (the AI-extractor seam)
+    const subtype =
+      normalizeSubtype(subtypeOverride) ??
+      normalizeSubtype(payload.claimType) ??
+      inferSubtype(
+        `${String(payload.quote ?? "")} ${String(payload.proposedStatement ?? "")}`,
+      );
+    const dateStated = String(
+      payload.dateStated || new Date().toISOString().slice(0, 10),
+    );
     const [prop] = await db
       .insert(propositions)
       .values({
@@ -700,37 +779,52 @@ export async function reviewSubmission(
         statement: String(payload.proposedStatement),
         question: "",
         resolutionCriteria: String(payload.resolutionCriteria),
-        claimType,
+        subtype,
         category: (payload.category as typeof propositions.$inferInsert.category) || "other",
-        deadline: payload.deadline ? String(payload.deadline) : null,
+        // factual claims resolve immediately on admission
+        deadline:
+          subtype === "factual"
+            ? dateStated
+            : payload.deadline
+              ? String(payload.deadline)
+              : null,
         status: "pending",
         sourceCommentId: payload.sourceCommentId
           ? Number(payload.sourceCommentId)
           : null,
+        // credit seam — powers the "Tracked by @user" byline
+        sourceSubmissionId: submissionId,
+        communityAuthorId: isCommunity ? sub.userId : null,
       })
       .returning();
-    await db.insert(stances).values({
-      propositionId: prop.id,
-      personId: person.id,
-      position: "affirm",
-      quote: String(payload.quote),
-      dateStated: String(payload.dateStated || new Date().toISOString().slice(0, 10)),
-      venue,
-      sourceUrl: String(payload.sourceUrl),
-      sourceArchiveUrl: archiveOf(String(payload.sourceUrl)),
-      sourceType,
-      videoTimestamp,
-      quoteReported: !!payload.quoteReported,
-      corroborationUrl: payload.corroborationUrl
-        ? String(payload.corroborationUrl)
-        : null,
-    });
+    // community claims have no public figure and therefore no stance
+    if (!isCommunity) {
+      const person = await findOrCreatePerson(String(payload.speaker));
+      await db.insert(stances).values({
+        propositionId: prop.id,
+        personId: person.id,
+        position: "affirm",
+        quote: String(payload.quote),
+        dateStated,
+        venue,
+        sourceUrl: String(payload.sourceUrl),
+        sourceArchiveUrl: archiveOf(String(payload.sourceUrl)),
+        sourceType,
+        videoTimestamp,
+        quoteReported: !!payload.quoteReported,
+        corroborationUrl: payload.corroborationUrl
+          ? String(payload.corroborationUrl)
+          : null,
+      });
+    }
     await db.insert(auditTrail).values({
       propositionId: prop.id,
       fromStatus: null,
       toStatus: "pending",
       actor: `community review (approved by ${user.name})`,
-      rationale: "Published after review: quote, sourcing, and falsifiability verified.",
+      rationale: isCommunity
+        ? "Community claim published after review: falsifiability and category verified."
+        : "Published after review: quote, sourcing, and falsifiability verified.",
     });
   }
 

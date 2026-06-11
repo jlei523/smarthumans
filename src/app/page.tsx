@@ -1,26 +1,27 @@
 import Link from "next/link";
 import { PersonAvatar } from "@/components/person-chip";
 import { accuracyTextClass } from "@/components/charts";
+import { ClaimCard } from "@/components/claim-card";
 import { Section } from "@/components/section";
-import { HomeSkin } from "@/components/home-hybrid";
 import { LedgerSortBar, type LedgerItem } from "@/components/ledger-sort-bar";
-import { TopicGlyph } from "@/components/topic-glyph";
-import { fmtCount, deadlineLabel } from "@/lib/format";
-import { CATEGORY_LABEL, DOMAIN_LABEL } from "@/lib/status";
+import { DOMAIN_LABEL } from "@/lib/status";
 import { cn } from "@/lib/utils";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import {
+  getCallOfTheWeek,
   getCommentCounts,
   getFollowedPropositionIds,
   getUserStanceMap,
   getClaimWire,
+  getRecentlyResolved,
   getResolvingSoon,
   getAllPersonScores,
-  getTopicsIndex,
+  getSmartestUsers,
   primaryStance,
   type PersonScore,
 } from "@/lib/queries";
+import { currentSeason } from "@/lib/gamification";
 
 export const dynamic = "force-dynamic";
 
@@ -29,20 +30,25 @@ export default async function HomePage() {
   const [
     wire,
     commentCounts,
+    justResolved,
     resolvingSoon,
     scores,
-    topics,
     followedIds,
     stanceMap,
+    smartestUsers,
+    callOfTheWeek,
   ] = await Promise.all([
-    getClaimWire(18),
+    getClaimWire(18, session?.user?.id),
     getCommentCounts(),
+    getRecentlyResolved(4),
     getResolvingSoon(4),
     getAllPersonScores(),
-    getTopicsIndex(),
     getFollowedPropositionIds(session?.user?.id),
     getUserStanceMap(session?.user?.id),
+    getSmartestUsers(),
+    getCallOfTheWeek(),
   ]);
+  const topForecasters = smartestUsers.slice(0, 3);
 
   const ranked = [...scores]
     .filter((s) => s.scorecard.hasEnoughData)
@@ -57,120 +63,147 @@ export default async function HomePage() {
   const feedItems: LedgerItem[] = wire.map((p) => ({
     proposition: p,
     stance: primaryStance(p),
+    stances: p.stances,
     commentCount: commentCounts[p.id] ?? 0,
     following: followedIds.has(p.id),
     myStance: stanceMap[p.id] ?? null,
   }));
 
   return (
-    <HomeSkin>
-      <div className="mx-auto max-w-6xl px-4 pb-4">
-        {/* Topics — the browse spine of the site */}
-        <Section
-          title="Topics"
-          sub="Aggregate track records by domain"
-          href="/browse"
-          linkLabel="All topics"
-          className="mt-10"
-        >
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-            {topics.map(({ category, scorecard }) => (
-              <Link
-                key={category}
-                href={`/browse/${category}`}
-                className="group rounded-lg border bg-card p-3.5 shadow-xs transition-shadow hover:shadow-md"
-              >
-                <span className="flex items-center justify-between gap-2">
-                  <span className="glyph-box flex size-8 items-center justify-center rounded-md bg-paper-2 text-foreground">
-                    <TopicGlyph category={category} size={18} />
-                  </span>
-                  <span
-                    className={cn(
-                      "font-mono text-sm font-semibold tabular-nums",
-                      accuracyTextClass(scorecard.accuracy),
-                    )}
-                  >
-                    {scorecard.accuracy === null
-                      ? "—"
-                      : `${Math.round(scorecard.accuracy * 100)}%`}
-                  </span>
-                </span>
-                <span className="mt-2.5 block font-serif text-[15px] font-semibold leading-tight group-hover:underline underline-offset-2">
-                  {CATEGORY_LABEL[category]}
-                </span>
-                <span className="mt-0.5 block text-xs text-ink-3">
-                  {scorecard.total} claims · {scorecard.resolved} resolved
-                </span>
-              </Link>
-            ))}
-          </div>
-        </Section>
-
-        {/* Resolves soon */}
-        <Section
-          title="Resolves soon"
-          sub="Deadlines approaching — the calls about to be settled"
-          href="/resolving-soon"
-          linkLabel="All deadlines"
-        >
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {resolvingSoon.map((p) => {
-              const first = primaryStance(p);
-              return (
-                <Link
-                  key={p.id}
-                  href={`/claims/${p.slug}`}
-                  className="group flex flex-col gap-2.5 rounded-lg border bg-card p-4 shadow-xs transition-shadow hover:shadow-md"
-                >
-                  <span className="flex items-center justify-between gap-2">
-                    {first ? (
-                      <span className="flex min-w-0 items-center gap-1.5">
-                        <PersonAvatar person={first.person} size="sm" />
-                        <span className="truncate text-xs font-medium">
-                          {first.person.name}
-                        </span>
-                      </span>
-                    ) : (
-                      <span />
-                    )}
-                    <span className="font-meta text-[11px] font-medium text-st-pending-tx whitespace-nowrap">
-                      {deadlineLabel(p.deadline)}
-                    </span>
-                  </span>
-                  <span className="font-serif text-[15px] font-semibold leading-snug group-hover:underline underline-offset-2">
-                    {p.statement}
-                  </span>
-                  <span className="mt-auto flex items-center gap-2 pt-1 text-xs text-ink-3">
-                    <span className="uppercase tracking-[0.08em]">
-                      {CATEGORY_LABEL[p.category]}
-                    </span>
-                    <span>· {fmtCount(p.followerCount)} following</span>
-                  </span>
-                </Link>
-              );
-            })}
-          </div>
-        </Section>
-
-        {/* The claim wire — same sort-led bar as every claim list + records sidebar */}
-        <div className="grid gap-x-10 lg:grid-cols-[1fr_300px]">
-          <section className="mt-12">
-            <LedgerSortBar items={feedItems} />
-          </section>
-          <aside>
-            <Section title="Best records" href="/leaderboards">
-              <RecordsList entries={best} />
-            </Section>
-            <Section title="Worst records" href="/leaderboards">
-              <RecordsList entries={worst} />
-            </Section>
-            <p className="mt-3 text-xs italic text-ink-3">
-              Minimum 3 resolved claims to appear on a leaderboard.
-            </p>
-          </aside>
+    <div className="mx-auto max-w-6xl px-4 pb-4">
+      {/* Just resolved — the payoff feed */}
+      <Section title="Just resolved" className="mt-8">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {justResolved.map((p) => (
+            <ClaimCard
+              key={p.id}
+              proposition={p}
+              stance={primaryStance(p)}
+              stances={p.stances}
+              showFollow={false}
+              myStance={stanceMap[p.id] ?? null}
+            />
+          ))}
         </div>
+      </Section>
+
+      {/* Resolves soon — the open questions nearest their deadline */}
+      <Section
+        title="Resolves soon"
+        href="/resolving-soon"
+        className="mt-10"
+      >
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {resolvingSoon.map((p) => (
+            <ClaimCard
+              key={p.id}
+              proposition={p}
+              stance={primaryStance(p)}
+              stances={p.stances}
+              following={followedIds.has(p.id)}
+              myStance={stanceMap[p.id] ?? null}
+            />
+          ))}
+        </div>
+      </Section>
+
+      {/* The claim wire — same sort-led bar as every claim list + records sidebar */}
+      <div className="grid gap-x-10 lg:grid-cols-[1fr_300px]">
+        <section className="mt-12">
+          <LedgerSortBar items={feedItems} />
+        </section>
+        <aside>
+          <Section title="Best records" href="/leaderboards">
+            <RecordsList entries={best} />
+          </Section>
+          <Section title="Worst records" href="/leaderboards">
+            <RecordsList entries={worst} />
+          </Section>
+          <p className="mt-3 text-xs italic text-ink-3">
+            Minimum 3 resolved claims to appear on a leaderboard.
+          </p>
+
+          {/* the community is on the same scoreboard as the famous */}
+          <Section
+            title="Top forecasters"
+            sub={currentSeason()}
+            href="/leaderboards?tab=users"
+          >
+            <ul className="term-rows divide-y">
+              {topForecasters.map((u, i) => (
+                <li key={u.id}>
+                  <Link
+                    href={`/u/${u.id}`}
+                    className="flex items-center gap-3 py-2.5 hover:bg-accent/40"
+                  >
+                    <span className="w-3 text-xs text-ink-3 tabular-nums">
+                      {i + 1}
+                    </span>
+                    <span className="flex size-7 shrink-0 items-center justify-center rounded-md border bg-accent font-mono text-[10px] font-medium uppercase text-ink-2">
+                      {u.name.slice(0, 2)}
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block truncate text-sm font-medium">
+                        @{u.name}
+                      </span>
+                      <span className="block text-xs text-ink-3">
+                        {u.scorecard.resolved} resolved · rep{" "}
+                        {u.reputation.toLocaleString()}
+                      </span>
+                    </span>
+                    <span className="font-mono text-sm font-semibold tabular-nums">
+                      {u.seasonPoints.toLocaleString()} pts
+                    </span>
+                  </Link>
+                </li>
+              ))}
+              {topForecasters.length === 0 && (
+                <li className="py-2.5 text-sm text-ink-3">
+                  No community calls resolved yet this season.
+                </li>
+              )}
+            </ul>
+          </Section>
+
+          {callOfTheWeek && (
+            <Section title="Call of the week">
+              <div className="rounded-xl border border-l-[3px] border-l-st-true bg-card p-4 shadow-xs">
+                <p className="text-sm leading-relaxed">
+                  <Link
+                    href={`/u/${callOfTheWeek.id}`}
+                    className="font-semibold hover:underline underline-offset-2"
+                  >
+                    @{callOfTheWeek.name}
+                  </Link>{" "}
+                  staked{" "}
+                  <span className="font-semibold">
+                    {callOfTheWeek.position === "affirm" ? "Yes" : "No"}
+                  </span>{" "}
+                  when {callOfTheWeek.sharePct < 50 ? "only " : ""}
+                  <span className="font-mono tabular-nums">
+                    {callOfTheWeek.sharePct}%
+                  </span>{" "}
+                  agreed — and was right.
+                </p>
+                <p className="mt-2 font-serif text-sm leading-snug text-ink-2">
+                  <Link
+                    href={`/claims/${callOfTheWeek.proposition.slug}`}
+                    className="hover:underline underline-offset-2"
+                  >
+                    {callOfTheWeek.proposition.statement}
+                  </Link>
+                </p>
+                {callOfTheWeek.pointsEarned !== null && (
+                  <p className="mt-2 font-mono text-xs font-semibold text-st-true-tx">
+                    +{callOfTheWeek.pointsEarned.toLocaleString()} pts
+                  </p>
+                )}
+              </div>
+            </Section>
+          )}
+        </aside>
       </div>
-    </HomeSkin>
+    </div>
   );
 }
 

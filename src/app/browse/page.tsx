@@ -17,16 +17,7 @@ export default async function BrowsePage() {
   const topics = await getTopicsIndex();
   return (
     <div className="mx-auto max-w-6xl px-4 py-9 pb-20">
-      <p className="font-meta text-[11px] uppercase tracking-[0.14em] text-ink-3">
-        Browse by topic
-      </p>
-      <h1 className="mt-2 font-serif text-4xl font-semibold tracking-tight">
-        Every claim, by domain
-      </h1>
-      <p className="mt-2 max-w-xl text-[15px] text-ink-3">
-        Aggregate track records across all tracked figures. Accuracy is the
-        resolved-true rate for every claim filed under a topic.
-      </p>
+      <h1 className="font-serif text-3xl font-bold tracking-tight">Topics</h1>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {topics.map(({ category, scorecard }) => (

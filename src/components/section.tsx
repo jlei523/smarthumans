@@ -9,7 +9,7 @@ export function Section({
   title,
   sub,
   href,
-  linkLabel = "All",
+  linkLabel = "More",
   aside,
   className = "mt-12",
   children,

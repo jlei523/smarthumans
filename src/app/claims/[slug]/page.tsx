@@ -12,9 +12,11 @@ import { CommentsSection, type CommentView } from "@/components/comments-section
 import {
   getAllPeople,
   getClaim,
+  getClaimCredits,
   getDomainRecords,
   getFollowedPropositionIds,
   getRelatedClaims,
+  getResolutionSpotlight,
   getStakedFromComments,
   primaryStance,
   type StanceWithPerson,
@@ -26,7 +28,7 @@ import {
 } from "@/components/contribute-forms";
 import type { ClaimStatus, Stance } from "@/db/schema";
 import { stanceOutcome, type StanceOutcome } from "@/lib/scoring";
-import { STATUS_META, TYPE_LABEL, CATEGORY_LABEL } from "@/lib/status";
+import { STATUS_META, CATEGORY_LABEL } from "@/lib/status";
 import { fmtCount, fmtDate, deadlineLabel } from "@/lib/format";
 import { auth } from "@/lib/auth";
 import { cn } from "@/lib/utils";
@@ -144,6 +146,18 @@ function SrcLink({ stance, label = "Source" }: { stance: Stance; label?: string 
   );
 }
 
+/** Contributor credit — same link treatment wherever a member is named. */
+function CreditLink({ user }: { user: { id: string; name: string } }) {
+  return (
+    <Link
+      href={`/u/${user.id}`}
+      className="font-medium text-ink-2 hover:text-foreground hover:underline underline-offset-2"
+    >
+      @{user.name}
+    </Link>
+  );
+}
+
 export default async function ClaimPage({
   params,
 }: {
@@ -154,13 +168,15 @@ export default async function ClaimPage({
   if (!claim) notFound();
 
   const session = await auth.api.getSession({ headers: await headers() });
-  const [related, followedIds, allPeople, domainRecords, stakedFrom] =
+  const [related, followedIds, allPeople, domainRecords, stakedFrom, credits, spotlight] =
     await Promise.all([
       getRelatedClaims(claim),
       getFollowedPropositionIds(session?.user?.id),
       getAllPeople(),
       getDomainRecords(claim.category),
       getStakedFromComments(claim.comments.map((c) => c.id)),
+      getClaimCredits(claim),
+      getResolutionSpotlight(claim),
     ]);
   const stakedByComment = new Map(
     stakedFrom.map((p) => [p.sourceCommentId!, p]),
@@ -314,13 +330,13 @@ export default async function ClaimPage({
 
       <div className="grid gap-12 pb-16 pt-2 lg:grid-cols-[minmax(0,1fr)_300px]">
         <main className="min-w-0">
-          {/* ----- question → answer → receipt ----- */}
+          {/* ----- statement → verdict → receipt ----- */}
           <p className="text-xs uppercase tracking-[0.08em] text-muted-foreground">
-            {TYPE_LABEL[claim.claimType]}
+            {claim.communityAuthorId ? "Community claim" : "Claim"}
             {claim.aiDrafted && <> · AI-drafted, human-verified</>}
           </p>
           <h1 className="mt-2 font-serif text-3xl font-bold leading-tight tracking-tight">
-            {claim.question || claim.statement}
+            {claim.statement}
           </h1>
 
           {/* the answer block — verdict first, above the fold */}
@@ -340,24 +356,54 @@ export default async function ClaimPage({
           </p>
           <details className="mt-2 max-w-2xl">
             <summary className="cursor-pointer text-xs font-medium text-muted-foreground underline decoration-border underline-offset-2 hover:text-foreground">
-              {claim.question ? "Proposition & resolution criteria" : "Resolution criteria"}
+              Resolution criteria
             </summary>
-            {claim.question && (
-              <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
-                <span className="font-medium text-foreground">Proposition:</span>{" "}
-                {claim.statement}
-              </p>
-            )}
             <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
               {claim.resolutionCriteria}
             </p>
           </details>
+
+          {/* contributor byline — the people who built this record */}
+          {(credits.communityAuthor ||
+            credits.trackedBy ||
+            credits.clipBy ||
+            credits.juryProposalId) && (
+            <p className="mt-3 text-xs text-ink-3">
+              {credits.communityAuthor ? (
+                <>
+                  Authored by <CreditLink user={credits.communityAuthor} />
+                </>
+              ) : (
+                credits.trackedBy && (
+                  <>
+                    Tracked by <CreditLink user={credits.trackedBy} />
+                  </>
+                )
+              )}
+              {credits.clipBy && (
+                <>
+                  {(credits.communityAuthor || credits.trackedBy) && " · "}
+                  clip sourced by <CreditLink user={credits.clipBy} />
+                </>
+              )}
+              {credits.juryProposalId && (
+                <>
+                  {(credits.communityAuthor ||
+                    credits.trackedBy ||
+                    credits.clipBy) &&
+                    " · "}
+                  resolved by jury #{credits.juryProposalId}
+                </>
+              )}
+            </p>
+          )}
 
 
           {/* action panel inline on small screens */}
           <div className="mt-8 lg:hidden">{actionPanel}</div>
 
           {/* ----- positions: figures + community, side by side ----- */}
+          <div id="positions" className="scroll-mt-20">
           <Section title={isResolved ? "Who was right" : "Positions"}>
             <div className="grid gap-x-10 gap-y-6 md:grid-cols-2">
               <PositionList
@@ -387,7 +433,34 @@ export default async function ClaimPage({
                 }))}
               />
             </div>
+
+            {/* community layer of the resolution — first call, boldest call */}
+            {isResolved && spotlight && (
+              <p className="mt-5 border-t pt-3.5 text-xs leading-relaxed text-ink-3">
+                <span className="font-semibold uppercase tracking-[0.08em]">
+                  Community calls
+                </span>
+                {spotlight.firstStake && (
+                  <>
+                    {" — "}First to stake:{" "}
+                    <CreditLink user={spotlight.firstStake} />
+                    {spotlight.firstStake.daysEarly > 0 && (
+                      <> ({spotlight.firstStake.daysEarly} days early)</>
+                    )}
+                  </>
+                )}
+                {spotlight.contrarian && (
+                  <>
+                    {" · "}Most contrarian correct:{" "}
+                    <CreditLink user={spotlight.contrarian} /> (staked{" "}
+                    {spotlight.contrarian.position === "affirm" ? "Yes" : "No"}{" "}
+                    when {spotlight.contrarian.sharePct}% agreed)
+                  </>
+                )}
+              </p>
+            )}
           </Section>
+          </div>
 
           {/* ----- evidence ----- */}
           <Section title="Evidence">

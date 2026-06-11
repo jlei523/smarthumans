@@ -2,13 +2,15 @@
 
 import { useState, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { Check, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { fmtCount } from "@/lib/format";
 import {
   toggleFollowPerson,
   toggleFollowProposition,
+  toggleFollowTopic,
+  toggleFollowUser,
 } from "@/app/actions";
+import type { Category } from "@/db/schema";
 
 export function FollowButton({
   target,
@@ -18,8 +20,9 @@ export function FollowButton({
   size = "md",
   className,
 }: {
-  target: "proposition" | "person";
-  targetId: number;
+  target: "proposition" | "person" | "topic" | "user";
+  /** numeric id for propositions/people, category key for topics, user id for users */
+  targetId: number | Category | string;
   count: number;
   /** server-known follow state for the signed-in user */
   initialFollowing?: boolean;
@@ -36,9 +39,14 @@ export function FollowButton({
     e.preventDefault();
     e.stopPropagation();
     startTransition(async () => {
-      const fn =
-        target === "proposition" ? toggleFollowProposition : toggleFollowPerson;
-      const res = await fn(targetId, pathname);
+      const res =
+        target === "topic"
+          ? await toggleFollowTopic(targetId as Category, pathname)
+          : target === "proposition"
+            ? await toggleFollowProposition(targetId as number, pathname)
+            : target === "user"
+              ? await toggleFollowUser(String(targetId), pathname)
+              : await toggleFollowPerson(targetId as number, pathname);
       if (!res.ok && res.error === "sign-in-required") {
         router.push(`/sign-in?next=${encodeURIComponent(pathname)}`);
         return;
@@ -50,7 +58,6 @@ export function FollowButton({
     });
   }
 
-  const Icon = following ? Check : Plus;
   return (
     <button
       onClick={onClick}
@@ -58,23 +65,29 @@ export function FollowButton({
       title={
         target === "proposition"
           ? "Follow — get notified when this resolves"
-          : "Follow this person"
+          : target === "topic"
+            ? "Follow this topic — its claims lead your homepage"
+            : target === "user"
+              ? "Follow this member — their stakes and submissions in your feed"
+              : "Follow this person"
       }
       className={cn(
-        "inline-flex items-center gap-1.5 rounded-full border bg-card font-medium shadow-xs transition-colors tabular-nums",
+        "inline-flex items-center gap-1.5 rounded-full border border-input bg-card font-semibold shadow-xs transition-colors tabular-nums",
         following
-          ? "border-foreground bg-foreground text-background"
+          ? "border-foreground bg-foreground text-background hover:border-ink-2 hover:bg-ink-2"
           : "text-ink-2 hover:border-ink-3 hover:text-foreground",
         size === "sm" && "px-2 py-0.5 text-xs",
-        size === "md" && "px-3 py-1 text-xs",
+        size === "md" && "px-[11px] py-[5px] text-xs",
         size === "lg" && "px-4 py-1.5 text-sm",
         pending && "opacity-60",
         className,
       )}
     >
-      <Icon className={size === "lg" ? "size-4" : "size-3.5"} strokeWidth={2.5} />
+      {!following && <span aria-hidden>+</span>}
       {size !== "sm" && (following ? "Following" : "Follow")}
-      <span className="font-mono">{fmtCount(optimisticCount)}</span>
+      <span className="font-mono text-[11.5px] opacity-75">
+        {fmtCount(optimisticCount)}
+      </span>
     </button>
   );
 }

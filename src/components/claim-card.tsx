@@ -10,11 +10,11 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { StatusBadge } from "@/components/status-badge";
-import { PersonChip } from "@/components/person-chip";
+import { PersonAvatar } from "@/components/person-chip";
 import { FollowButton } from "@/components/follow-button";
 import { StanceButtons } from "@/components/stance-buttons";
-import { TYPE_LABEL, CATEGORY_LABEL } from "@/lib/status";
-import { fmtDate, deadlineLabel, daysUntil } from "@/lib/format";
+import { CATEGORY_LABEL } from "@/lib/status";
+import { fmtDate, deadlineCompact, daysUntil, timeAgo } from "@/lib/format";
 import type { Person, Proposition, Stance } from "@/db/schema";
 
 const SOURCE_ICONS: Record<string, typeof Video> = {
@@ -28,15 +28,7 @@ const SOURCE_ICONS: Record<string, typeof Video> = {
   other: FileText,
 };
 
-export function TypeChip({ type }: { type: Proposition["claimType"] }) {
-  return (
-    <span className="text-xs uppercase tracking-[0.08em] text-ink-3 whitespace-nowrap">
-      {TYPE_LABEL[type]}
-    </span>
-  );
-}
-
-/** Category as a plain small-caps link to its topic page. */
+/** Topic as an outlined pill linking to its topic page. */
 export function CategoryChip({
   category,
 }: {
@@ -45,42 +37,64 @@ export function CategoryChip({
   return (
     <Link
       href={`/browse/${category}`}
-      className="relative z-10 text-xs uppercase tracking-[0.08em] text-ink-3 hover:text-foreground whitespace-nowrap"
+      className="relative z-10 inline-flex items-center rounded-full border border-input px-2.5 py-[2.5px] text-[11.5px] font-medium text-ink-2 whitespace-nowrap transition-colors hover:border-ink-3 hover:bg-paper-2 hover:text-foreground"
     >
       {CATEGORY_LABEL[category]}
     </Link>
   );
 }
 
+/** Cut at a sentence boundary — never a mid-clause ellipsis. */
+function truncateQuote(s: string, max = 180): string {
+  if (s.length <= max) return s;
+  const head = s.slice(0, max);
+  const sentenceEnd = Math.max(
+    head.lastIndexOf(". "),
+    head.lastIndexOf("! "),
+    head.lastIndexOf("? "),
+  );
+  if (sentenceEnd > 40) return s.slice(0, sentenceEnd + 1);
+  const word = head.lastIndexOf(" ");
+  return head.slice(0, word > 0 ? word : max).trimEnd() + "…";
+}
+
 export function ClaimCard({
   proposition,
   stance,
+  stances,
   person,
   showPerson = true,
   showCategory = true,
-  accent = false,
+  showFollow = true,
   following = false,
   myStance = null,
-  metric,
   className,
 }: {
   proposition: Proposition;
   stance: (Stance & { person?: Person }) | null;
+  /** all stances on the proposition — affirming figures render as a portrait stack */
+  stances?: (Stance & { person?: Person })[] | null;
   person?: Person | null;
   showPerson?: boolean;
   /** hide the topic link when the surrounding page already is that topic */
   showCategory?: boolean;
-  /** left status-colored accent border (used in pending/most-followed lists) */
-  accent?: boolean;
+  /** swap the follow button for "resolved x ago" — for just-resolved rails */
+  showFollow?: boolean;
   /** signed-in user already follows this proposition */
   following?: boolean;
   /** signed-in user's one-tap stance on this proposition */
   myStance?: "affirm" | "deny" | null;
-  /** trailing metric set by the active sort (comments, year, following…) */
-  metric?: string;
   className?: string;
 }) {
   const speaker = person ?? stance?.person ?? null;
+  // only figures who said it would happen — the card's statement is affirmative,
+  // so a denier's portrait next to it would misattribute the call
+  const figures: Person[] = speaker ? [speaker] : [];
+  for (const s of stances ?? []) {
+    if (s.position !== "affirm") continue;
+    const sp = s.person;
+    if (sp && !figures.some((f) => f.id === sp.id)) figures.push(sp);
+  }
   const isOpen =
     proposition.status === "pending" || proposition.status === "disputed";
   const days = daysUntil(proposition.deadline);
@@ -90,95 +104,103 @@ export function ClaimCard({
   return (
     <article
       className={cn(
-        "group relative flex flex-col gap-2.5 rounded-lg border bg-card p-4 shadow-xs transition-shadow hover:shadow-md",
-        accent &&
-          "border-l-[3px] border-l-st-pending rounded-l-md",
+        // @container: the card adapts to its own width — in narrow rail
+        // grids it sheds the date, topic chip, and "Your call" label
+        "@container group relative flex flex-col gap-[14px] rounded-xl border bg-card shadow-xs transition-colors hover:border-input",
         className,
       )}
     >
-      {/* Kicker: person, status right */}
-      <div className="flex items-center justify-between gap-2">
+      {/* Row 1 — identity + verdict */}
+      <div className="flex items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-2">
-          {showPerson && speaker ? (
-            <PersonChip person={speaker} size="md" />
-          ) : (
-            <TypeChip type={proposition.claimType} />
+          {showPerson && speaker && (
+            <span className="relative z-10 flex min-w-0 items-center gap-2">
+              <Link
+                href={`/p/${speaker.slug}`}
+                className="group/who flex min-w-0 items-center gap-2"
+              >
+                <span className="flex shrink-0 -space-x-1.5">
+                  {figures.slice(0, 3).map((f) => (
+                    <PersonAvatar
+                      key={f.id}
+                      person={f}
+                      size="sm"
+                      className="size-6 rounded-full ring-2 ring-card"
+                    />
+                  ))}
+                </span>
+                <span className="truncate text-[13px] font-semibold underline-offset-[3px] group-hover/who:underline">
+                  {speaker.name}
+                </span>
+              </Link>
+              {figures.length > 1 && (
+                <Link
+                  href={`/claims/${proposition.slug}#positions`}
+                  className="shrink-0 text-[11.5px] font-medium text-ink-3 underline-offset-[3px] hover:text-foreground hover:underline"
+                >
+                  +{figures.length - 1}
+                </Link>
+              )}
+            </span>
+          )}
+          {stance && (
+            <span className="flex items-center gap-x-2 text-[11.5px] text-ink-3 whitespace-nowrap @max-[26rem]:hidden">
+              {showPerson && speaker && <span className="text-ink-4">·</span>}
+              <span>{fmtDate(stance.dateStated)}</span>
+            </span>
           )}
         </div>
-        <StatusBadge status={proposition.status} size="sm" />
+        <div className="flex shrink-0 items-center gap-[9px]">
+          <StatusBadge
+            status={proposition.status}
+            size="md"
+            detail={isOpen ? deadlineCompact(proposition.deadline) : null}
+          />
+        </div>
       </div>
 
-      {/* The quote is the artifact */}
-      <p className="font-serif text-[15px] leading-snug text-foreground">
+      {/* Row 2 — the canonical proposition; the verbatim quote lives on the detail page */}
+      <p className="font-serif text-[16px] leading-[1.42] text-foreground [text-wrap:pretty]">
         <Link
           href={`/claims/${proposition.slug}`}
           className="after:absolute after:inset-0"
         >
-          {stance ? (
-            <>“{truncate(stance.quote, 160)}”</>
-          ) : (
-            proposition.statement
-          )}
+          {truncateQuote(proposition.statement)}
         </Link>
       </p>
 
-      {/* One quiet metadata line — actions lead from the left */}
-      <div className="mt-auto flex flex-wrap items-center gap-x-1.5 gap-y-2 pt-0.5 text-xs text-ink-3">
-        <span className="relative z-10">
-          <FollowButton
-            target="proposition"
-            targetId={proposition.id}
-            count={proposition.followerCount}
-            initialFollowing={following}
-            size="sm"
-          />
-        </span>
+      {/* Row 3 — actions, topic chip last */}
+      <div className="mt-auto flex flex-wrap items-center gap-2.5">
+        {showFollow ? (
+          <span className="relative z-10">
+            <FollowButton
+              target="proposition"
+              targetId={proposition.id}
+              count={proposition.followerCount}
+              initialFollowing={following}
+              size="md"
+            />
+          </span>
+        ) : (
+          proposition.resolvedAt && (
+            <span className="text-[11.5px] text-ink-3">
+              resolved {timeAgo(proposition.resolvedAt)}
+            </span>
+          )
+        )}
         {callsOpen && (
           <span className="relative z-10">
             <StanceButtons propositionId={proposition.id} initial={myStance} />
           </span>
         )}
-        {isOpen && !callsOpen && (
-          <span className="text-xs text-ink-3 whitespace-nowrap" title="The deadline passed — calls are closed while resolution is pending">
-            calls closed
-          </span>
-        )}
-        {((showPerson && speaker) || showCategory || stance) && (
-          <span className="text-ink-4">·</span>
-        )}
-        {showPerson && speaker && <TypeChip type={proposition.claimType} />}
         {showCategory && (
-          <>
-            {showPerson && speaker && <span className="text-ink-4">·</span>}
+          <span className="@max-[26rem]:hidden">
             <CategoryChip category={proposition.category} />
-          </>
-        )}
-        {stance && (
-          <>
-            {((showPerson && speaker) || showCategory) && (
-              <span className="text-ink-4">·</span>
-            )}
-            <span className="whitespace-nowrap">{fmtDate(stance.dateStated)}</span>
-          </>
-        )}
-        {metric !== undefined ? (
-          <span className="ml-auto font-meta text-[11.5px] text-ink-3 whitespace-nowrap tabular-nums">
-            {metric}
           </span>
-        ) : (
-          isOpen && (
-            <span className="ml-auto font-medium text-st-pending-tx whitespace-nowrap">
-              {deadlineLabel(proposition.deadline)}
-            </span>
-          )
         )}
       </div>
     </article>
   );
-}
-
-function truncate(s: string, n: number) {
-  return s.length > n ? s.slice(0, n - 1).trimEnd() + "…" : s;
 }
 
 export function SourceLink({

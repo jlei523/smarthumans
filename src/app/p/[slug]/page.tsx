@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { ArrowLeftRight, Share2, TrendingDown, TrendingUp } from "lucide-react";
 import { PersonAvatar } from "@/components/person-chip";
 import { FollowButton } from "@/components/follow-button";
-import { ScoreGauge, DistributionBar, Sparkline } from "@/components/charts";
+import { ScoreGauge, DistributionBar, Sparkline, SubtypeSplit } from "@/components/charts";
 import { LedgerSortBar } from "@/components/ledger-sort-bar";
 import { StatusBadge } from "@/components/status-badge";
 import { headers } from "next/headers";
@@ -47,10 +47,10 @@ export default async function PersonPage({
   searchParams,
 }: {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ sort?: string; window?: string; status?: string }>;
+  searchParams: Promise<{ sort?: string; window?: string; status?: string; type?: string }>;
 }) {
   const { slug } = await params;
-  const { sort, window: windowScope, status } = await searchParams;
+  const { sort, window: windowScope, status, type } = await searchParams;
   const session = await auth.api.getSession({ headers: await headers() });
   const [score, commentCounts, followedProps, followedPeople, stanceMap] =
     await Promise.all([
@@ -68,6 +68,7 @@ export default async function PersonPage({
   const {
     person,
     scorecard,
+    subtypeBreakdown,
     ledger,
     categoryBreakdown,
     accuracySeries,
@@ -159,7 +160,8 @@ export default async function PersonPage({
             </span>
           </p>
           <DistributionBar scorecard={scorecard} className="mt-2" />
-          <div className="spark-block mt-4">
+          <SubtypeSplit breakdown={subtypeBreakdown} className="mt-3" />
+          <div className="mt-4">
             <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">Accuracy over time</p>
             <Sparkline series={accuracySeries} className="mt-1.5" />
           </div>
@@ -287,6 +289,7 @@ export default async function PersonPage({
           initialSort={sort}
           initialWindow={windowScope}
           initialStatus={status}
+          initialType={type}
         />
       </section>
     </div>
