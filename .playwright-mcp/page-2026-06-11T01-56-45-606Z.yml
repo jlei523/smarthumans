@@ -1,0 +1,378 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "SmartHumans" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]:
+          - img [ref=e6]
+          - generic [ref=e10]: SmartHumans
+      - generic [ref=e12]:
+        - link "Search" [ref=e13] [cursor=pointer]:
+          - /url: /search
+          - img [ref=e14]
+        - button "Menu" [ref=e17]:
+          - img [ref=e18]
+  - navigation [ref=e20]:
+    - generic [ref=e21]:
+      - link "AI" [ref=e22] [cursor=pointer]:
+        - /url: /browse/ai
+      - link "Markets" [ref=e23] [cursor=pointer]:
+        - /url: /browse/markets
+      - link "Stocks" [ref=e24] [cursor=pointer]:
+        - /url: /browse/stocks
+      - link "Semiconductors" [ref=e25] [cursor=pointer]:
+        - /url: /browse/semiconductors
+      - link "Gold" [ref=e26] [cursor=pointer]:
+        - /url: /browse/gold
+      - link "Economy" [ref=e27] [cursor=pointer]:
+        - /url: /browse/economy
+      - link "Health" [ref=e28] [cursor=pointer]:
+        - /url: /browse/health
+      - link "Immigration" [ref=e29] [cursor=pointer]:
+        - /url: /browse/immigration
+      - link "Foreign Policy" [ref=e30] [cursor=pointer]:
+        - /url: /browse/foreign_policy
+      - link "NBA" [ref=e31] [cursor=pointer]:
+        - /url: /browse/nba
+      - link "MLB" [ref=e32] [cursor=pointer]:
+        - /url: /browse/mlb
+      - link "NFL" [ref=e33] [cursor=pointer]:
+        - /url: /browse/nfl
+      - link "F1" [ref=e34] [cursor=pointer]:
+        - /url: /browse/f1
+      - link "More →" [ref=e35] [cursor=pointer]:
+        - /url: /browse
+  - main [ref=e36]:
+    - generic [ref=e37]:
+      - navigation [ref=e38]:
+        - link "Home" [ref=e39] [cursor=pointer]:
+          - /url: /
+        - text: /
+        - link "People" [ref=e40] [cursor=pointer]:
+          - /url: /leaderboards
+        - text: / Donald Trump
+      - generic [ref=e41]:
+        - img "Donald Trump" [ref=e42]
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - heading "Donald Trump" [level=1] [ref=e45]
+            - generic [ref=e46]: Politician
+          - paragraph [ref=e47]: 47th President of the United States
+          - paragraph [ref=e48]: Businessman and politician. President of the United States 2017–2021 and again since January 2025. One of the most extensively tracked public figures on record.
+          - generic [ref=e49]:
+            - button "Follow 48k" [ref=e50]:
+              - generic [ref=e51]: +
+              - text: Follow
+              - generic [ref=e52]: 48k
+            - link "Share scorecard" [ref=e53] [cursor=pointer]:
+              - /url: /api/og/person/donald-trump
+              - img [ref=e54]
+              - text: Share scorecard
+            - link "Compare" [ref=e60] [cursor=pointer]:
+              - /url: /compare?a=donald-trump&b=elon-musk
+              - img [ref=e61]
+              - text: Compare
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]:
+            - generic [ref=e70]: 29%
+            - generic [ref=e71]: accuracy · grade D
+          - paragraph [ref=e72]: based on 12 resolved claims
+        - generic [ref=e73]:
+          - paragraph [ref=e74]:
+            - text: Full record
+            - generic [ref=e75]: (15 claims tracked)
+          - paragraph [ref=e76]:
+            - text: "Record:"
+            - generic [ref=e77]: 3 came true
+            - generic [ref=e79]:
+              - text: ·
+              - text: 1 partly
+            - generic [ref=e81]:
+              - text: ·
+              - text: 7 didn't
+            - generic [ref=e83]:
+              - text: ·
+              - text: 1 walked back
+            - generic [ref=e85]:
+              - text: ·
+              - text: 1 unverifiable
+            - generic [ref=e87]:
+              - text: ·
+              - text: 2 pending
+          - generic [ref=e89]:
+            - generic [ref=e90]:
+              - term [ref=e91]: "Predictions:"
+              - definition [ref=e92]: 33% came true · 3 resolved
+            - generic [ref=e93]:
+              - term [ref=e94]: "Promises:"
+              - definition [ref=e95]: 28% kept · 9 resolved
+          - generic [ref=e96]:
+            - paragraph [ref=e97]: Accuracy over time
+            - generic [ref=e98]:
+              - img [ref=e99]
+              - generic [ref=e102]:
+                - generic [ref=e103]: 29%
+                - generic [ref=e104]: 2018–2026
+        - generic [ref=e105]:
+          - paragraph [ref=e106]: By category
+          - table [ref=e107]:
+            - rowgroup [ref=e108]:
+              - row "Economy 2 resolved 0%" [ref=e109]:
+                - cell "Economy" [ref=e110]
+                - cell "2 resolved" [ref=e111]
+                - cell "0%" [ref=e112]
+              - row "Foreign Policy 3 resolved 67%" [ref=e113]:
+                - cell "Foreign Policy" [ref=e114]
+                - cell "3 resolved" [ref=e115]
+                - cell "67%" [ref=e116]
+              - row "Other 2 resolved 50%" [ref=e117]:
+                - cell "Other" [ref=e118]
+                - cell "2 resolved" [ref=e119]
+                - cell "50%" [ref=e120]
+              - row "Immigration 2 resolved 25%" [ref=e121]:
+                - cell "Immigration" [ref=e122]
+                - cell "2 resolved" [ref=e123]
+                - cell "25%" [ref=e124]
+              - row "Health 2 resolved 0%" [ref=e125]:
+                - cell "Health" [ref=e126]
+                - cell "2 resolved" [ref=e127]
+                - cell "0%" [ref=e128]
+              - row "Markets 1 resolved 0%" [ref=e129]:
+                - cell "Markets" [ref=e130]
+                - cell "1 resolved" [ref=e131]
+                - cell "0%" [ref=e132]
+      - generic [ref=e133]:
+        - link "Biggest correct call Trump-appointed Supreme Court justices vote to overturn Roe v. Wade. Came True" [ref=e134] [cursor=pointer]:
+          - /url: /claims/justices-overturn-roe
+          - paragraph [ref=e135]:
+            - img [ref=e136]
+            - text: Biggest correct call
+          - paragraph [ref=e139]: Trump-appointed Supreme Court justices vote to overturn Roe v. Wade.
+          - generic [ref=e142]: Came True
+        - link "Biggest miss Grocery prices come down substantially during Trump's second term, starting immediately. Didn't Come True" [ref=e143] [cursor=pointer]:
+          - /url: /claims/grocery-prices-come-down
+          - paragraph [ref=e144]:
+            - img [ref=e145]
+            - text: Biggest miss
+          - paragraph [ref=e148]: Grocery prices come down substantially during Trump's second term, starting immediately.
+          - generic [ref=e151]: Didn't Come True
+      - generic [ref=e152]:
+        - heading "Claim ledger" [level=2] [ref=e153]
+        - generic [ref=e154]:
+          - generic [ref=e155]:
+            - generic [ref=e156]:
+              - button "Trending" [ref=e158]:
+                - img [ref=e159]
+                - text: Trending
+                - img [ref=e161]
+              - button "All time" [ref=e164]:
+                - text: All time
+                - img [ref=e165]
+            - generic [ref=e167]:
+              - 'button "Status: All" [ref=e169]':
+                - generic [ref=e170]: "Status:"
+                - text: All
+                - img [ref=e171]
+              - 'button "Type: All" [ref=e174]':
+                - generic [ref=e175]: "Type:"
+                - text: All
+                - img [ref=e176]
+          - generic [ref=e178]:
+            - article [ref=e179]:
+              - generic [ref=e183]: Didn't
+              - paragraph [ref=e184]:
+                - link "Grocery prices come down substantially during Trump's second term, starting immediately." [ref=e185] [cursor=pointer]:
+                  - /url: /claims/grocery-prices-come-down
+              - button "Follow 22k" [ref=e188]:
+                - generic [ref=e189]: +
+                - text: Follow
+                - generic [ref=e190]: 22k
+            - article [ref=e191]:
+              - generic [ref=e194]:
+                - generic [ref=e195]: Pending
+                - generic [ref=e197]: 51 d
+              - paragraph [ref=e198]:
+                - link "The 2025 tariff regime pushes U.S. CPI inflation above 4% by mid-2026." [ref=e199] [cursor=pointer]:
+                  - /url: /claims/tariffs-push-inflation-above-4pct-2026
+              - generic [ref=e200]:
+                - button "Follow 9.9k" [ref=e202]:
+                  - generic [ref=e203]: +
+                  - text: Follow
+                  - generic [ref=e204]: 9.9k
+                - generic "Your call on this claim — scored on resolution, feeds your track record" [ref=e207]:
+                  - button "Yes" [ref=e208]
+                  - button "No" [ref=e210]
+            - article [ref=e211]:
+              - generic [ref=e215]: Didn't
+              - paragraph [ref=e216]:
+                - link "The Russia–Ukraine war is ended within 24 hours of Trump taking office." [ref=e217] [cursor=pointer]:
+                  - /url: /claims/ukraine-war-24-hours
+              - button "Follow 19k" [ref=e220]:
+                - generic [ref=e221]: +
+                - text: Follow
+                - generic [ref=e222]: 19k
+            - article [ref=e223]:
+              - generic [ref=e226]:
+                - generic [ref=e227]: Pending
+                - generic [ref=e229]: 2.6 yr
+              - paragraph [ref=e230]:
+                - link "American astronauts plant the U.S. flag on Mars before the end of Trump's second term." [ref=e231] [cursor=pointer]:
+                  - /url: /claims/american-flag-on-mars-2029
+              - generic [ref=e232]:
+                - button "Follow 15k" [ref=e234]:
+                  - generic [ref=e235]: +
+                  - text: Follow
+                  - generic [ref=e236]: 15k
+                - generic "Your call on this claim — scored on resolution, feeds your track record" [ref=e239]:
+                  - button "Yes" [ref=e240]
+                  - button "No" [ref=e242]
+            - article [ref=e243]:
+              - generic [ref=e247]: Partly
+              - paragraph [ref=e248]:
+                - link "A wall is built along the U.S.–Mexico border during Trump's first term." [ref=e249] [cursor=pointer]:
+                  - /url: /claims/trump-border-wall
+              - button "Follow 12k" [ref=e252]:
+                - generic [ref=e253]: +
+                - text: Follow
+                - generic [ref=e254]: 12k
+            - article [ref=e255]:
+              - generic [ref=e259]: Didn't
+              - paragraph [ref=e260]:
+                - link "Mexico pays for the border wall." [ref=e261] [cursor=pointer]:
+                  - /url: /claims/mexico-pays-for-wall
+              - button "Follow 9.9k" [ref=e264]:
+                - generic [ref=e265]: +
+                - text: Follow
+                - generic [ref=e266]: 9.9k
+            - article [ref=e267]:
+              - generic [ref=e271]: "True"
+              - paragraph [ref=e272]:
+                - link "Trump-appointed Supreme Court justices vote to overturn Roe v. Wade." [ref=e273] [cursor=pointer]:
+                  - /url: /claims/justices-overturn-roe
+              - button "Follow 8.9k" [ref=e276]:
+                - generic [ref=e277]: +
+                - text: Follow
+                - generic [ref=e278]: 8.9k
+            - article [ref=e279]:
+              - generic [ref=e283]: Didn't
+              - paragraph [ref=e284]:
+                - link "The coronavirus will disappear on its own." [ref=e285] [cursor=pointer]:
+                  - /url: /claims/covid-will-disappear
+              - button "Follow 7.7k" [ref=e288]:
+                - generic [ref=e289]: +
+                - text: Follow
+                - generic [ref=e290]: 7.7k
+            - article [ref=e291]:
+              - generic [ref=e295]: Didn't
+              - paragraph [ref=e296]:
+                - link "Obamacare is repealed and replaced during Trump's first term." [ref=e297] [cursor=pointer]:
+                  - /url: /claims/repeal-replace-obamacare
+              - button "Follow 6.3k" [ref=e300]:
+                - generic [ref=e301]: +
+                - text: Follow
+                - generic [ref=e302]: 6.3k
+            - article [ref=e303]:
+              - generic [ref=e307]: Didn't
+              - paragraph [ref=e308]:
+                - link "The stock market crashes if Biden wins the 2020 election." [ref=e309] [cursor=pointer]:
+                  - /url: /claims/market-crash-if-biden-wins
+              - button "Follow 5.5k" [ref=e312]:
+                - generic [ref=e313]: +
+                - text: Follow
+                - generic [ref=e314]: 5.5k
+            - article [ref=e315]:
+              - generic [ref=e319]: Didn't
+              - paragraph [ref=e320]:
+                - link "The U.S. national debt (~$19T in 2016) is eliminated within eight years." [ref=e321] [cursor=pointer]:
+                  - /url: /claims/eliminate-national-debt-8-years
+              - button "Follow 4.2k" [ref=e324]:
+                - generic [ref=e325]: +
+                - text: Follow
+                - generic [ref=e326]: 4.2k
+            - article [ref=e327]:
+              - generic [ref=e331]: Walked Back
+              - paragraph [ref=e332]:
+                - link "Trump releases his tax returns." [ref=e333] [cursor=pointer]:
+                  - /url: /claims/release-tax-returns
+              - button "Follow 3.6k" [ref=e336]:
+                - generic [ref=e337]: +
+                - text: Follow
+                - generic [ref=e338]: 3.6k
+            - article [ref=e339]:
+              - generic [ref=e343]: "True"
+              - paragraph [ref=e344]:
+                - link "The U.S. withdraws from the Paris climate agreement." [ref=e345] [cursor=pointer]:
+                  - /url: /claims/withdraw-paris-accord
+              - button "Follow 3.1k" [ref=e348]:
+                - generic [ref=e349]: +
+                - text: Follow
+                - generic [ref=e350]: 3.1k
+            - article [ref=e351]:
+              - generic [ref=e355]: "True"
+              - paragraph [ref=e356]:
+                - link "The U.S. embassy in Israel is moved to Jerusalem." [ref=e357] [cursor=pointer]:
+                  - /url: /claims/move-embassy-jerusalem
+              - button "Follow 2.2k" [ref=e360]:
+                - generic [ref=e361]: +
+                - text: Follow
+                - generic [ref=e362]: 2.2k
+            - article [ref=e363]:
+              - generic [ref=e367]: Unverifiable
+              - paragraph [ref=e368]:
+                - link "Trade wars are good, and easy to win." [ref=e369] [cursor=pointer]:
+                  - /url: /claims/trade-wars-easy-to-win
+              - button "Follow 1.4k" [ref=e372]:
+                - generic [ref=e373]: +
+                - text: Follow
+                - generic [ref=e374]: 1.4k
+  - contentinfo [ref=e375]:
+    - generic [ref=e376]:
+      - generic [ref=e377]:
+        - generic [ref=e378]:
+          - img [ref=e379]
+          - generic [ref=e383]: SmartHumans
+        - paragraph [ref=e384]: A permanent, sourced, community-verified record of what people predicted and promised — and whether it actually happened. Public figures garner the spotlight; everyone can build a record.
+        - paragraph [ref=e385]: AI proposes · humans verify
+      - generic [ref=e386]:
+        - paragraph [ref=e387]: Explore
+        - list [ref=e388]:
+          - listitem [ref=e389]:
+            - link "Browse by topic" [ref=e390] [cursor=pointer]:
+              - /url: /browse
+          - listitem [ref=e391]:
+            - link "Leaderboards" [ref=e392] [cursor=pointer]:
+              - /url: /leaderboards
+          - listitem [ref=e393]:
+            - link "Smartest users" [ref=e394] [cursor=pointer]:
+              - /url: /leaderboards?tab=users
+          - listitem [ref=e395]:
+            - link "Resolving soon" [ref=e396] [cursor=pointer]:
+              - /url: /resolving-soon
+          - listitem [ref=e397]:
+            - link "Notifications" [ref=e398] [cursor=pointer]:
+              - /url: /notifications
+          - listitem [ref=e399]:
+            - link "Submit a claim" [ref=e400] [cursor=pointer]:
+              - /url: /submit
+      - generic [ref=e401]:
+        - paragraph [ref=e402]: Trust
+        - list [ref=e403]:
+          - listitem [ref=e404]:
+            - link "Methodology" [ref=e405] [cursor=pointer]:
+              - /url: /methodology
+          - listitem [ref=e406]:
+            - link "Review queue" [ref=e407] [cursor=pointer]:
+              - /url: /review
+          - listitem [ref=e408]:
+            - link "How verdicts are reached" [ref=e409] [cursor=pointer]:
+              - /url: /methodology#resolution
+          - listitem [ref=e410]:
+            - link "Disputes & appeals" [ref=e411] [cursor=pointer]:
+              - /url: /methodology#appeals
+          - listitem [ref=e412]:
+            - link "AI & agent policy" [ref=e413] [cursor=pointer]:
+              - /url: /methodology#agents
+    - generic [ref=e415]: © 2026 SmartHumans — no primary source, no claim.
+  - button "Open Next.js Dev Tools" [ref=e421] [cursor=pointer]:
+    - img [ref=e422]

@@ -94,7 +94,7 @@ export async function GET(
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <div style={{ display: "flex", fontSize: 30, color: "#8b8579" }}>vs</div>
+            <div style={{ display: "flex", fontSize: 30, color: "#6c675c" }}>vs</div>
             <div style={{ display: "flex", marginTop: 10, fontSize: 22, color: "#56524b", textAlign: "center" }}>
               right on {h2h.shared} shared calls
             </div>
@@ -141,7 +141,7 @@ export async function GET(
           </div>
         </div>
 
-        <div style={{ display: "flex", justifyContent: "center", fontSize: 22, color: "#8b8579" }}>
+        <div style={{ display: "flex", justifyContent: "center", fontSize: 22, color: "#6c675c" }}>
           Every call sourced and scored at resolution · smarthumans.ai
         </div>
       </div>

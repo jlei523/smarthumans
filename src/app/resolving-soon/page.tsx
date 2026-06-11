@@ -3,6 +3,7 @@ import { ClaimCard } from "@/components/claim-card";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth";
 import {
+  getCommentCounts,
   getFollowedPropositionIds,
   getResolvingSoon,
   getUserStanceMap,
@@ -18,8 +19,9 @@ export const dynamic = "force-dynamic";
 
 export default async function ResolvingSoonPage() {
   const session = await auth.api.getSession({ headers: await headers() });
-  const [claims, followedIds, stanceMap] = await Promise.all([
+  const [claims, commentCounts, followedIds, stanceMap] = await Promise.all([
     getResolvingSoon(30),
+    getCommentCounts(),
     getFollowedPropositionIds(session?.user?.id),
     getUserStanceMap(session?.user?.id),
   ]);
@@ -37,6 +39,7 @@ export default async function ResolvingSoonPage() {
             stances={p.stances}
             following={followedIds.has(p.id)}
             myStance={stanceMap[p.id] ?? null}
+            commentCount={commentCounts[p.id] ?? 0}
           />
         ))}
         {claims.length === 0 && (

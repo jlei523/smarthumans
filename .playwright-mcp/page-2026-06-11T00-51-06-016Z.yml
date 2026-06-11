@@ -1,0 +1,233 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "SmartHumans" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]:
+          - img [ref=e6]
+          - generic [ref=e10]: SmartHumans
+      - search [ref=e11]:
+        - img
+        - combobox "Search anyone or any claim…" [ref=e12]
+      - generic [ref=e13]:
+        - link "+ Submit" [ref=e14] [cursor=pointer]:
+          - /url: /submit
+          - generic [ref=e15]: +
+          - text: Submit
+        - link "Your feed — stakes and submissions from members you follow" [ref=e16] [cursor=pointer]:
+          - /url: /feed
+          - img [ref=e17]
+        - link "Notifications" [ref=e21] [cursor=pointer]:
+          - /url: /notifications
+          - img [ref=e22]
+  - navigation [ref=e27]:
+    - generic [ref=e28]:
+      - link "AI" [ref=e29] [cursor=pointer]:
+        - /url: /browse/ai
+      - link "Markets" [ref=e30] [cursor=pointer]:
+        - /url: /browse/markets
+      - link "Stocks" [ref=e31] [cursor=pointer]:
+        - /url: /browse/stocks
+      - link "Semiconductors" [ref=e32] [cursor=pointer]:
+        - /url: /browse/semiconductors
+      - link "Gold" [ref=e33] [cursor=pointer]:
+        - /url: /browse/gold
+      - link "Economy" [ref=e34] [cursor=pointer]:
+        - /url: /browse/economy
+      - link "Health" [ref=e35] [cursor=pointer]:
+        - /url: /browse/health
+      - link "Immigration" [ref=e36] [cursor=pointer]:
+        - /url: /browse/immigration
+      - link "Foreign Policy" [ref=e37] [cursor=pointer]:
+        - /url: /browse/foreign_policy
+      - link "NBA" [ref=e38] [cursor=pointer]:
+        - /url: /browse/nba
+      - link "MLB" [ref=e39] [cursor=pointer]:
+        - /url: /browse/mlb
+      - link "NFL" [ref=e40] [cursor=pointer]:
+        - /url: /browse/nfl
+      - link "F1" [ref=e41] [cursor=pointer]:
+        - /url: /browse/f1
+      - link "More →" [ref=e42] [cursor=pointer]:
+        - /url: /browse
+  - main [ref=e43]:
+    - generic [ref=e44]:
+      - navigation [ref=e45]:
+        - link "Home" [ref=e46] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e47]: /
+        - link "Immigration" [ref=e48] [cursor=pointer]:
+          - /url: /browse/immigration
+      - generic [ref=e49]:
+        - main [ref=e50]:
+          - paragraph [ref=e51]: Claim
+          - heading "A wall is built along the U.S.–Mexico border during Trump's first term." [level=1] [ref=e52]
+          - generic [ref=e53]:
+            - generic [ref=e55]: Partly True
+            - generic [ref=e56]: resolved Feb 2, 2021
+          - paragraph [ref=e57]: CBP reports 452 miles of border wall system constructed by Jan 2021; roughly 80 miles were built where no barrier existed before — most replaced existing structures. A substantial barrier was built, but not the promised wall across the border.
+          - group [ref=e58]:
+            - generic "Resolution criteria" [ref=e59] [cursor=pointer]
+          - generic [ref=e61]:
+            - heading "Who was right" [level=2] [ref=e63]
+            - generic [ref=e64]:
+              - generic [ref=e65]:
+                - generic [ref=e66]:
+                  - paragraph [ref=e67]: Said it would happen
+                  - list [ref=e68]:
+                    - listitem [ref=e69]:
+                      - generic [ref=e70]:
+                        - link "Donald Trump Donald Trump" [ref=e71] [cursor=pointer]:
+                          - /url: /p/donald-trump
+                          - img "Donald Trump" [ref=e72]
+                          - generic [ref=e73]: Donald Trump
+                        - generic [ref=e74]: ◐ Partly
+                      - blockquote [ref=e75]: “I will build a great wall — and nobody builds walls better than me, believe me — and I'll build them very inexpensively. I will build a great, great wall on our southern border.”
+                      - paragraph [ref=e76]:
+                        - generic [ref=e77]: Jun 16, 2015
+                        - generic [ref=e78]: · Presidential campaign announcement, Trump Tower, New York
+                        - generic [ref=e79]: ·
+                        - link "Source @31:42 ↗" [ref=e80] [cursor=pointer]:
+                          - /url: https://www.c-span.org/video/?326473-1/donald-trump-presidential-campaign-announcement
+                - generic [ref=e81]:
+                  - paragraph [ref=e82]: Said it wouldn't
+                  - list [ref=e83]:
+                    - listitem [ref=e84]: No recorded stances on this side yet.
+              - button "+ Add a position — on the record" [ref=e87]
+          - generic [ref=e88]:
+            - heading "Evidence" [level=2] [ref=e90]
+            - generic [ref=e91]:
+              - generic [ref=e92]:
+                - generic [ref=e93]:
+                  - paragraph [ref=e94]: That it came true
+                  - list [ref=e95]:
+                    - listitem [ref=e96]:
+                      - 'link "CBP: 452 miles of border wall system constructed as of January 2021 ↗" [ref=e97] [cursor=pointer]':
+                        - /url: https://www.cbp.gov/border-security/along-us-borders/border-wall-system
+                      - paragraph [ref=e98]: U.S. Customs and Border Protection
+                    - listitem [ref=e99]:
+                      - link "DHS status report on border barrier construction, Jan 2021 ↗" [ref=e100] [cursor=pointer]:
+                        - /url: https://www.dhs.gov/news/2021/01/border-wall-status
+                      - paragraph [ref=e101]: Dept. of Homeland Security
+                - generic [ref=e102]:
+                  - paragraph [ref=e103]: That it didn't
+                  - list [ref=e104]:
+                    - listitem [ref=e105]:
+                      - 'link "Analysis: most new construction replaced existing barriers ↗" [ref=e106] [cursor=pointer]':
+                        - /url: https://www.bbc.com/news/world-us-canada-46824649
+                      - paragraph [ref=e107]: BBC News
+                    - listitem [ref=e108]:
+                      - link "~1,500 miles of border remained without barrier at end of term ↗" [ref=e109] [cursor=pointer]:
+                        - /url: https://www.texastribune.org/2021/01/14/donald-trump-border-wall-texas/
+                      - paragraph [ref=e110]: Texas Tribune
+              - button "+ Add evidence — a sourced citation" [ref=e113]
+          - generic [ref=e114]:
+            - heading "Audit trail" [level=2] [ref=e116]
+            - list [ref=e118]:
+              - listitem [ref=e119]:
+                - paragraph [ref=e120]: Mar 1, 2023 · system
+                - paragraph [ref=e121]:
+                  - text: Pending
+                  - generic [ref=e122]: — Published after community review (14 approvals).
+              - listitem [ref=e123]:
+                - paragraph [ref=e124]: "Mar 18, 2023 · jury #281 (9 members)"
+                - paragraph [ref=e125]:
+                  - text: Pending → Partly True
+                  - generic [ref=e126]: — 452 miles built, majority replacement; criteria for Came True not met, substantial construction documented.
+          - generic [ref=e128]:
+            - generic [ref=e129]:
+              - heading "Discussion (0)" [level=2] [ref=e130]
+              - generic [ref=e131]:
+                - generic [ref=e132]:
+                  - button "All 0" [ref=e133]:
+                    - text: All
+                    - generic [ref=e134]: "0"
+                  - button "Said Yes 0" [ref=e135]:
+                    - text: Said Yes
+                    - generic [ref=e136]: "0"
+                  - button "Said No 0" [ref=e137]:
+                    - text: Said No
+                    - generic [ref=e138]: "0"
+                - generic [ref=e139]:
+                  - button "Best" [ref=e140]
+                  - button "Record" [ref=e141]
+                  - button "New" [ref=e142]
+            - generic [ref=e143]:
+              - textbox "Join the conversation — cite sources where you can…" [ref=e144]
+              - button "Sign in to comment" [ref=e146]
+            - paragraph [ref=e148]: No comments yet. Be the first.
+        - complementary [ref=e149]:
+          - generic [ref=e151]:
+            - button "Follow 12k" [ref=e152]:
+              - generic [ref=e153]: +
+              - text: Follow
+              - generic [ref=e154]: 12k
+            - paragraph [ref=e155]: 12k following — get notified when this resolves
+            - separator [ref=e156]
+            - generic [ref=e157]:
+              - paragraph [ref=e158]: Where users stood
+              - paragraph [ref=e159]: No user stances were registered before this resolved.
+            - separator [ref=e160]
+            - generic [ref=e161]:
+              - link "Shareable verdict card ↗" [ref=e162] [cursor=pointer]:
+                - /url: /api/og/claim/trump-border-wall
+              - link "Resolution-day scoreboard →" [ref=e163] [cursor=pointer]:
+                - /url: /scoreboard/trump-border-wall
+          - generic [ref=e164]:
+            - heading "Related claims" [level=2] [ref=e165]
+            - list [ref=e166]:
+              - listitem [ref=e167]:
+                - link "“And who's going to pay for the wall? Mexico. One hundred percent. They don't know it yet, but they're going to pay for it.” Didn't Come True · Donald Trump" [ref=e168] [cursor=pointer]:
+                  - /url: /claims/mexico-pays-for-wall
+                  - paragraph [ref=e169]: “And who's going to pay for the wall? Mexico. One hundred percent. They don't know it yet, but they're going to pay for it.”
+                  - paragraph [ref=e170]: Didn't Come True · Donald Trump
+  - contentinfo [ref=e171]:
+    - generic [ref=e172]:
+      - generic [ref=e173]:
+        - generic [ref=e174]:
+          - img [ref=e175]
+          - generic [ref=e179]: SmartHumans
+        - paragraph [ref=e180]: A permanent, sourced, community-verified record of what people predicted and promised — and whether it actually happened. Public figures garner the spotlight; everyone can build a record.
+        - paragraph [ref=e181]: AI proposes · humans verify
+      - generic [ref=e182]:
+        - paragraph [ref=e183]: Explore
+        - list [ref=e184]:
+          - listitem [ref=e185]:
+            - link "Browse by topic" [ref=e186] [cursor=pointer]:
+              - /url: /browse
+          - listitem [ref=e187]:
+            - link "Leaderboards" [ref=e188] [cursor=pointer]:
+              - /url: /leaderboards
+          - listitem [ref=e189]:
+            - link "Smartest users" [ref=e190] [cursor=pointer]:
+              - /url: /leaderboards?tab=users
+          - listitem [ref=e191]:
+            - link "Resolving soon" [ref=e192] [cursor=pointer]:
+              - /url: /resolving-soon
+          - listitem [ref=e193]:
+            - link "Notifications" [ref=e194] [cursor=pointer]:
+              - /url: /notifications
+          - listitem [ref=e195]:
+            - link "Submit a claim" [ref=e196] [cursor=pointer]:
+              - /url: /submit
+      - generic [ref=e197]:
+        - paragraph [ref=e198]: Trust
+        - list [ref=e199]:
+          - listitem [ref=e200]:
+            - link "Methodology" [ref=e201] [cursor=pointer]:
+              - /url: /methodology
+          - listitem [ref=e202]:
+            - link "Review queue" [ref=e203] [cursor=pointer]:
+              - /url: /review
+          - listitem [ref=e204]:
+            - link "How verdicts are reached" [ref=e205] [cursor=pointer]:
+              - /url: /methodology#resolution
+          - listitem [ref=e206]:
+            - link "Disputes & appeals" [ref=e207] [cursor=pointer]:
+              - /url: /methodology#appeals
+          - listitem [ref=e208]:
+            - link "AI & agent policy" [ref=e209] [cursor=pointer]:
+              - /url: /methodology#agents
+    - generic [ref=e211]: © 2026 SmartHumans — no primary source, no claim.
+  - button "Open Next.js Dev Tools" [ref=e217] [cursor=pointer]:
+    - img [ref=e218]

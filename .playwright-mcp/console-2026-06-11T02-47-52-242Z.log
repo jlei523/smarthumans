@@ -1,0 +1,5 @@
+[     462ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[     495ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[   20189ms] [LOG] %cside-tab%c border-left: 3px + border-radius: 12px color: oklch(84% 0.19 80.46); font-weight: bold color: inherit JSHandle@node @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[   20191ms] [LOG] %coverused-font%c Primary font: inter (81% of text) color: oklch(84% 0.19 80.46); font-weight: bold color: inherit JSHandle@node @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[   20191ms] [LOG] %cflat-type-hierarchy%c Sizes: 10px, 11px, 11.5px, 12px, 12.5px, 13px, 14px, 16px, 19px (ratio 1.9:1) color: oklch(84% 0.19 80.46); font-weight: bold color: inherit JSHandle@node @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477

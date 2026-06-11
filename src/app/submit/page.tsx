@@ -66,7 +66,7 @@ export default async function SubmitPage({
         Add a prediction or promise to the public record. Every submission goes
         through community review before publication.
       </p>
-      <div className="mt-5 border-l-2 border-foreground pl-4 text-sm">
+      <div className="mt-5 rounded-md border bg-card p-3 text-sm">
         <p className="font-semibold">No primary source, no claim.</p>
         <p className="mt-0.5 text-muted-foreground">
           Every quote must link to video, an archived post, an official
@@ -74,7 +74,7 @@ export default async function SubmitPage({
         </p>
       </div>
       {staked && (
-        <div className="mt-5 border-l-2 border-st-pending pl-4 text-sm">
+        <div className="mt-5 rounded-md border bg-st-pending-bg p-3 text-sm">
           <p className="font-semibold">
             Staking u/{staked.author}&apos;s assertion from a discussion.
           </p>

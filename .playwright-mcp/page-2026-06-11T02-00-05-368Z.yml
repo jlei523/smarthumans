@@ -1,0 +1,316 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "SmartHumans" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]:
+          - img [ref=e6]
+          - generic [ref=e10]: SmartHumans
+      - search [ref=e11]:
+        - img
+        - combobox "Search anyone or any claim…" [ref=e12]
+      - generic [ref=e13]:
+        - link "+ Submit" [ref=e14] [cursor=pointer]:
+          - /url: /submit
+          - generic [ref=e15]: +
+          - text: Submit
+        - link "Your feed — stakes and submissions from members you follow" [ref=e16] [cursor=pointer]:
+          - /url: /feed
+          - img [ref=e17]
+        - link "Notifications" [ref=e21] [cursor=pointer]:
+          - /url: /notifications
+          - img [ref=e22]
+  - navigation [ref=e27]:
+    - generic [ref=e28]:
+      - link "AI" [ref=e29] [cursor=pointer]:
+        - /url: /browse/ai
+      - link "Markets" [ref=e30] [cursor=pointer]:
+        - /url: /browse/markets
+      - link "Stocks" [ref=e31] [cursor=pointer]:
+        - /url: /browse/stocks
+      - link "Semiconductors" [ref=e32] [cursor=pointer]:
+        - /url: /browse/semiconductors
+      - link "Gold" [ref=e33] [cursor=pointer]:
+        - /url: /browse/gold
+      - link "Economy" [ref=e34] [cursor=pointer]:
+        - /url: /browse/economy
+      - link "Health" [ref=e35] [cursor=pointer]:
+        - /url: /browse/health
+      - link "Immigration" [ref=e36] [cursor=pointer]:
+        - /url: /browse/immigration
+      - link "Foreign Policy" [ref=e37] [cursor=pointer]:
+        - /url: /browse/foreign_policy
+      - link "NBA" [ref=e38] [cursor=pointer]:
+        - /url: /browse/nba
+      - link "MLB" [ref=e39] [cursor=pointer]:
+        - /url: /browse/mlb
+      - link "NFL" [ref=e40] [cursor=pointer]:
+        - /url: /browse/nfl
+      - link "F1" [ref=e41] [cursor=pointer]:
+        - /url: /browse/f1
+      - link "More →" [ref=e42] [cursor=pointer]:
+        - /url: /browse
+  - main [ref=e43]:
+    - generic [ref=e44]:
+      - heading "Leaderboards" [level=1] [ref=e45]
+      - paragraph [ref=e46]: Accuracy = correct calls (partly true counts half) over resolved claims, rankable by topic. Influence = accuracy × followers. Site-wide boards require 3 resolved claims; topic boards require one.
+      - generic [ref=e47]:
+        - link "By accuracy" [ref=e48] [cursor=pointer]:
+          - /url: /leaderboards
+        - link "By influence" [ref=e49] [cursor=pointer]:
+          - /url: /leaderboards?tab=influence
+        - link "Smartest users" [ref=e50] [cursor=pointer]:
+          - /url: /leaderboards?tab=users
+        - link "Top contributors" [ref=e51] [cursor=pointer]:
+          - /url: /leaderboards?tab=contributors
+      - generic [ref=e53]:
+        - link "All topics 39" [ref=e54] [cursor=pointer]:
+          - /url: /leaderboards
+          - text: All topics
+          - generic [ref=e55]: "39"
+        - link "Economy 7" [ref=e56] [cursor=pointer]:
+          - /url: /leaderboards?topic=economy
+          - text: Economy
+          - generic [ref=e57]: "7"
+        - link "Other 5" [ref=e58] [cursor=pointer]:
+          - /url: /leaderboards?topic=other
+          - text: Other
+          - generic [ref=e59]: "5"
+        - link "AI 4" [ref=e60] [cursor=pointer]:
+          - /url: /leaderboards?topic=ai
+          - text: AI
+          - generic [ref=e61]: "4"
+        - link "Stocks 4" [ref=e62] [cursor=pointer]:
+          - /url: /leaderboards?topic=stocks
+          - text: Stocks
+          - generic [ref=e63]: "4"
+        - link "Gold 3" [ref=e64] [cursor=pointer]:
+          - /url: /leaderboards?topic=gold
+          - text: Gold
+          - generic [ref=e65]: "3"
+        - link "Health 3" [ref=e66] [cursor=pointer]:
+          - /url: /leaderboards?topic=health
+          - text: Health
+          - generic [ref=e67]: "3"
+        - link "Foreign Policy 3" [ref=e68] [cursor=pointer]:
+          - /url: /leaderboards?topic=foreign_policy
+          - text: Foreign Policy
+          - generic [ref=e69]: "3"
+        - link "Immigration 2" [ref=e70] [cursor=pointer]:
+          - /url: /leaderboards?topic=immigration
+          - text: Immigration
+          - generic [ref=e71]: "2"
+        - link "Markets 2" [ref=e72] [cursor=pointer]:
+          - /url: /leaderboards?topic=markets
+          - text: Markets
+          - generic [ref=e73]: "2"
+        - link "NBA 2" [ref=e74] [cursor=pointer]:
+          - /url: /leaderboards?topic=nba
+          - text: NBA
+          - generic [ref=e75]: "2"
+        - link "Semiconductors 1" [ref=e76] [cursor=pointer]:
+          - /url: /leaderboards?topic=semiconductors
+          - text: Semiconductors
+          - generic [ref=e77]: "1"
+        - link "F1 1" [ref=e78] [cursor=pointer]:
+          - /url: /leaderboards?topic=f1
+          - text: F1
+          - generic [ref=e79]: "1"
+        - link "MLB 1" [ref=e80] [cursor=pointer]:
+          - /url: /leaderboards?topic=mlb
+          - text: MLB
+          - generic [ref=e81]: "1"
+        - link "NFL 1" [ref=e82] [cursor=pointer]:
+          - /url: /leaderboards?topic=nfl
+          - text: NFL
+          - generic [ref=e83]: "1"
+      - table [ref=e85]:
+        - rowgroup [ref=e86]:
+          - row "# Person Accuracy Resolved Record" [ref=e87]:
+            - columnheader "#" [ref=e88]
+            - columnheader "Person" [ref=e89]
+            - columnheader "Accuracy" [ref=e90]
+            - columnheader "Resolved" [ref=e91]
+            - columnheader "Record" [ref=e92]
+        - rowgroup [ref=e93]:
+          - row "1 Paul Krugman Paul KrugmanEconomist 38% 4 1 came true · 1 partly · 1 didn't · 1 walked back · 2 pending" [ref=e94]:
+            - cell "1" [ref=e95]
+            - cell "Paul Krugman Paul KrugmanEconomist" [ref=e96]:
+              - link "Paul Krugman Paul KrugmanEconomist" [ref=e97] [cursor=pointer]:
+                - /url: /p/paul-krugman
+                - img "Paul Krugman" [ref=e98]
+                - generic [ref=e99]: Paul KrugmanEconomist
+            - cell "38%" [ref=e100]
+            - cell "4" [ref=e101]
+            - cell "1 came true · 1 partly · 1 didn't · 1 walked back · 2 pending" [ref=e102]:
+              - paragraph [ref=e103]:
+                - generic [ref=e104]: 1 came true
+                - generic [ref=e106]:
+                  - text: ·
+                  - text: 1 partly
+                - generic [ref=e108]:
+                  - text: ·
+                  - text: 1 didn't
+                - generic [ref=e110]:
+                  - text: ·
+                  - text: 1 walked back
+                - generic [ref=e112]:
+                  - text: ·
+                  - text: 2 pending
+          - row "2 Donald Trump Donald TrumpPolitician 29% 12 3 came true · 1 partly · 7 didn't · 1 walked back · 1 unverifiable · 2 pending" [ref=e114]:
+            - cell "2" [ref=e115]
+            - cell "Donald Trump Donald TrumpPolitician" [ref=e116]:
+              - link "Donald Trump Donald TrumpPolitician" [ref=e117] [cursor=pointer]:
+                - /url: /p/donald-trump
+                - img "Donald Trump" [ref=e118]
+                - generic [ref=e119]: Donald TrumpPolitician
+            - cell "29%" [ref=e120]
+            - cell "12" [ref=e121]
+            - cell "3 came true · 1 partly · 7 didn't · 1 walked back · 1 unverifiable · 2 pending" [ref=e122]:
+              - paragraph [ref=e123]:
+                - generic [ref=e124]: 3 came true
+                - generic [ref=e126]:
+                  - text: ·
+                  - text: 1 partly
+                - generic [ref=e128]:
+                  - text: ·
+                  - text: 7 didn't
+                - generic [ref=e130]:
+                  - text: ·
+                  - text: 1 walked back
+                - generic [ref=e132]:
+                  - text: ·
+                  - text: 1 unverifiable
+                - generic [ref=e134]:
+                  - text: ·
+                  - text: 2 pending
+          - row "3 Jim Cramer Jim CramerPundit 25% 4 1 came true · 3 didn't · 2 pending" [ref=e136]:
+            - cell "3" [ref=e137]
+            - cell "Jim Cramer Jim CramerPundit" [ref=e138]:
+              - link "Jim Cramer Jim CramerPundit" [ref=e139] [cursor=pointer]:
+                - /url: /p/jim-cramer
+                - img "Jim Cramer" [ref=e140]
+                - generic [ref=e141]: Jim CramerPundit
+            - cell "25%" [ref=e142]
+            - cell "4" [ref=e143]
+            - cell "1 came true · 3 didn't · 2 pending" [ref=e144]:
+              - paragraph [ref=e145]:
+                - generic [ref=e146]: 1 came true
+                - generic [ref=e148]:
+                  - text: ·
+                  - text: 3 didn't
+                - generic [ref=e150]:
+                  - text: ·
+                  - text: 2 pending
+          - row "4 Stephen A. Smith Stephen A. SmithAnalyst 20% 5 1 came true · 4 didn't" [ref=e152]:
+            - cell "4" [ref=e153]
+            - cell "Stephen A. Smith Stephen A. SmithAnalyst" [ref=e154]:
+              - link "Stephen A. Smith Stephen A. SmithAnalyst" [ref=e155] [cursor=pointer]:
+                - /url: /p/stephen-a-smith
+                - img "Stephen A. Smith" [ref=e156]
+                - generic [ref=e157]: Stephen A. SmithAnalyst
+            - cell "20%" [ref=e158]
+            - cell "5" [ref=e159]
+            - cell "1 came true · 4 didn't" [ref=e160]:
+              - paragraph [ref=e161]:
+                - generic [ref=e162]: 1 came true
+                - generic [ref=e164]:
+                  - text: ·
+                  - text: 4 didn't
+          - row "5 Elon Musk Elon MuskTech CEO 19% 8 1 came true · 1 partly · 5 didn't · 1 walked back · 3 pending" [ref=e166]:
+            - cell "5" [ref=e167]
+            - cell "Elon Musk Elon MuskTech CEO" [ref=e168]:
+              - link "Elon Musk Elon MuskTech CEO" [ref=e169] [cursor=pointer]:
+                - /url: /p/elon-musk
+                - img "Elon Musk" [ref=e170]
+                - generic [ref=e171]: Elon MuskTech CEO
+            - cell "19%" [ref=e172]
+            - cell "8" [ref=e173]
+            - cell "1 came true · 1 partly · 5 didn't · 1 walked back · 3 pending" [ref=e174]:
+              - paragraph [ref=e175]:
+                - generic [ref=e176]: 1 came true
+                - generic [ref=e178]:
+                  - text: ·
+                  - text: 1 partly
+                - generic [ref=e180]:
+                  - text: ·
+                  - text: 5 didn't
+                - generic [ref=e182]:
+                  - text: ·
+                  - text: 1 walked back
+                - generic [ref=e184]:
+                  - text: ·
+                  - text: 3 pending
+      - paragraph [ref=e186]:
+        - text: "Not yet scoreable (fewer than 3 resolved):"
+        - link "Peter Schiff" [ref=e188] [cursor=pointer]:
+          - /url: /p/peter-schiff
+      - generic [ref=e189]:
+        - link "Best call · Paul Krugman ✓ Called it — said it wouldn't happen; resolved Didn't Come True." [ref=e190] [cursor=pointer]:
+          - /url: /claims/us-recession-by-end-2023
+          - paragraph [ref=e191]:
+            - img [ref=e192]
+            - text: Best call · Paul Krugman
+          - blockquote [ref=e198]: “A recession isn't necessary to get inflation down. The data increasingly point toward a soft landing — immaculate disinflation, if you like.”
+          - paragraph [ref=e199]:
+            - text: ✓ Called it
+            - generic [ref=e200]: — said it wouldn't happen; resolved Didn't Come True.
+        - link "Worst miss · Donald Trump ✗ Missed — said it would happen; resolved Didn't Come True." [ref=e201] [cursor=pointer]:
+          - /url: /claims/grocery-prices-come-down
+          - paragraph [ref=e202]:
+            - img [ref=e203]
+            - text: Worst miss · Donald Trump
+          - blockquote [ref=e206]: “Prices will come down. You just watch — they'll come down, and they'll come down fast. Groceries, cars, everything. Starting on day one.”
+          - paragraph [ref=e207]:
+            - text: ✗ Missed
+            - generic [ref=e208]: — said it would happen; resolved Didn't Come True.
+  - contentinfo [ref=e209]:
+    - generic [ref=e210]:
+      - generic [ref=e211]:
+        - generic [ref=e212]:
+          - img [ref=e213]
+          - generic [ref=e217]: SmartHumans
+        - paragraph [ref=e218]: A permanent, sourced, community-verified record of what people predicted and promised — and whether it actually happened. Public figures garner the spotlight; everyone can build a record.
+        - paragraph [ref=e219]: AI proposes · humans verify
+      - generic [ref=e220]:
+        - paragraph [ref=e221]: Explore
+        - list [ref=e222]:
+          - listitem [ref=e223]:
+            - link "Browse by topic" [ref=e224] [cursor=pointer]:
+              - /url: /browse
+          - listitem [ref=e225]:
+            - link "Leaderboards" [ref=e226] [cursor=pointer]:
+              - /url: /leaderboards
+          - listitem [ref=e227]:
+            - link "Smartest users" [ref=e228] [cursor=pointer]:
+              - /url: /leaderboards?tab=users
+          - listitem [ref=e229]:
+            - link "Resolving soon" [ref=e230] [cursor=pointer]:
+              - /url: /resolving-soon
+          - listitem [ref=e231]:
+            - link "Notifications" [ref=e232] [cursor=pointer]:
+              - /url: /notifications
+          - listitem [ref=e233]:
+            - link "Submit a claim" [ref=e234] [cursor=pointer]:
+              - /url: /submit
+      - generic [ref=e235]:
+        - paragraph [ref=e236]: Trust
+        - list [ref=e237]:
+          - listitem [ref=e238]:
+            - link "Methodology" [ref=e239] [cursor=pointer]:
+              - /url: /methodology
+          - listitem [ref=e240]:
+            - link "Review queue" [ref=e241] [cursor=pointer]:
+              - /url: /review
+          - listitem [ref=e242]:
+            - link "How verdicts are reached" [ref=e243] [cursor=pointer]:
+              - /url: /methodology#resolution
+          - listitem [ref=e244]:
+            - link "Disputes & appeals" [ref=e245] [cursor=pointer]:
+              - /url: /methodology#appeals
+          - listitem [ref=e246]:
+            - link "AI & agent policy" [ref=e247] [cursor=pointer]:
+              - /url: /methodology#agents
+    - generic [ref=e249]: © 2026 SmartHumans — no primary source, no claim.
+  - button "Open Next.js Dev Tools" [ref=e255] [cursor=pointer]:
+    - img [ref=e256]

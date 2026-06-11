@@ -40,10 +40,27 @@ export async function GET(
           flexDirection: "column",
           backgroundColor: "#faf9f6",
           color: "#201e1b",
-          padding: 56,
           fontFamily: "Georgia, serif",
         }}
       >
+        {/* verdict bar — the status color owns the top edge */}
+        <div
+          style={{
+            display: "flex",
+            width: "100%",
+            height: 16,
+            backgroundColor: colors.fg,
+            flexShrink: 0,
+          }}
+        />
+        <div
+          style={{
+            display: "flex",
+            flex: 1,
+            flexDirection: "column",
+            padding: "48px 56px 56px",
+          }}
+        >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <div style={{ display: "flex", fontSize: 28, fontWeight: 700 }}>
             <span
@@ -94,8 +111,6 @@ export async function GET(
                 fontSize: first.quote.length > 140 ? 34 : 42,
                 fontStyle: "italic",
                 lineHeight: 1.3,
-                borderLeft: "8px solid #111",
-                paddingLeft: 32,
               }}
             >
               “{first.quote.length > 220 ? first.quote.slice(0, 217) + "…" : first.quote}”
@@ -108,7 +123,6 @@ export async function GET(
                 alignItems: "center",
                 gap: 16,
                 marginTop: 28,
-                paddingLeft: 40,
                 fontSize: 26,
                 color: "#555",
               }}
@@ -138,7 +152,7 @@ export async function GET(
             display: "flex",
             justifyContent: "space-between",
             fontSize: 22,
-            color: "#777",
+            color: "#6c675c",
           }}
         >
           <div style={{ display: "flex" }}>
@@ -147,6 +161,7 @@ export async function GET(
           <div style={{ display: "flex" }}>
             {claim.followerCount.toLocaleString()} following
           </div>
+        </div>
         </div>
       </div>
     ),

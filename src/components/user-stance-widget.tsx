@@ -124,8 +124,7 @@ export function UserStanceWidget({
       )}
       {!resolved && !frozen && confirmSwitch !== null && (
         <p className="mt-2 text-xs text-st-partly-tx">
-          Switching resets your contrarian baseline to today's split and is
-          counted on your record. Tap again to confirm.
+          {"Switching resets your contrarian baseline to today's split and is counted on your record. Tap again to confirm."}
         </p>
       )}
 
@@ -133,9 +132,10 @@ export function UserStanceWidget({
       {resolved || committed ? (
         total > 0 ? (
           <div className="mt-3">
+            {/* percentages read as false precision under n=10 — show counts */}
             <p className="text-xs text-muted-foreground">
               <span className="font-mono text-xl font-semibold text-foreground tabular-nums">
-                {pct(affirmCount / total)}
+                {total >= 10 ? pct(affirmCount / total) : affirmCount}
               </span>{" "}
               of {fmtCount(total)} users {resolved ? "said" : "say"} Yes
             </p>
@@ -165,7 +165,9 @@ export function UserStanceWidget({
       )}
       {!resolved && committed && (
         <p className="mt-2 text-xs text-muted-foreground">
-          Scored at resolution — contrarian calls that land pay more.
+          {signedIn
+            ? "Scored at resolution — contrarian calls that land pay more."
+            : "Kept on this device — it joins your record when you sign in."}
         </p>
       )}
     </div>

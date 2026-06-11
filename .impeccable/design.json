@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-10T18:00:00Z",
+  "title": "Design System: SmartHumans",
+  "extensions": {
+    "colorMeta": {
+      "press-ink": { "role": "primary", "displayName": "Press Ink", "canonical": "#201e1b", "tonalRamp": ["oklch(0.15 0.005 85)", "oklch(0.235 0.005 85)", "oklch(0.34 0.006 85)", "oklch(0.44 0.008 85)", "oklch(0.55 0.01 85)", "oklch(0.68 0.01 85)", "oklch(0.82 0.008 85)", "oklch(0.96 0.004 85)"] },
+      "newsprint": { "role": "neutral", "displayName": "Newsprint", "canonical": "#faf9f6", "tonalRamp": ["oklch(0.30 0.006 90)", "oklch(0.45 0.008 90)", "oklch(0.60 0.01 90)", "oklch(0.72 0.012 90)", "oklch(0.82 0.012 90)", "oklch(0.90 0.008 90)", "oklch(0.95 0.005 90)", "oklch(0.98 0.003 90)"] },
+      "archive-cream": { "role": "neutral", "displayName": "Archive Cream", "canonical": "#f4f2ec", "tonalRamp": ["oklch(0.28 0.008 95)", "oklch(0.42 0.01 95)", "oklch(0.56 0.012 95)", "oklch(0.68 0.014 95)", "oklch(0.79 0.013 95)", "oklch(0.88 0.01 95)", "oklch(0.93 0.008 95)", "oklch(0.96 0.007 95)"] },
+      "open-blue": { "role": "tertiary", "displayName": "Open Blue (Pending)", "canonical": "#2563eb", "tonalRamp": ["oklch(0.18 0.08 263)", "oklch(0.28 0.12 263)", "oklch(0.38 0.16 263)", "oklch(0.47 0.19 263)", "oklch(0.55 0.21 263)", "oklch(0.66 0.17 263)", "oklch(0.80 0.10 263)", "oklch(0.94 0.03 263)"] },
+      "verdict-green": { "role": "tertiary", "displayName": "Verdict Green (Came True)", "canonical": "#16a34a", "tonalRamp": ["oklch(0.18 0.06 152)", "oklch(0.30 0.09 152)", "oklch(0.40 0.11 152)", "oklch(0.50 0.13 152)", "oklch(0.63 0.155 152)", "oklch(0.72 0.14 152)", "oklch(0.84 0.09 152)", "oklch(0.95 0.03 152)"] },
+      "caution-amber": { "role": "tertiary", "displayName": "Caution Amber (Partly True)", "canonical": "#d97706", "tonalRamp": ["oklch(0.20 0.05 60)", "oklch(0.32 0.08 60)", "oklch(0.44 0.11 60)", "oklch(0.55 0.13 60)", "oklch(0.67 0.155 60)", "oklch(0.76 0.13 60)", "oklch(0.86 0.08 60)", "oklch(0.96 0.03 60)"] },
+      "refuted-red": { "role": "tertiary", "displayName": "Refuted Red (Didn't Come True)", "canonical": "#dc2626", "tonalRamp": ["oklch(0.18 0.08 28)", "oklch(0.30 0.12 28)", "oklch(0.40 0.16 28)", "oklch(0.50 0.19 28)", "oklch(0.58 0.22 28)", "oklch(0.68 0.17 28)", "oklch(0.82 0.10 28)", "oklch(0.95 0.03 28)"] },
+      "retraction-purple": { "role": "tertiary", "displayName": "Retraction Purple (Walked Back)", "canonical": "#7c3aed", "tonalRamp": ["oklch(0.18 0.09 294)", "oklch(0.28 0.13 294)", "oklch(0.38 0.17 294)", "oklch(0.46 0.21 294)", "oklch(0.54 0.245 294)", "oklch(0.65 0.19 294)", "oklch(0.80 0.11 294)", "oklch(0.94 0.03 294)"] },
+      "unverifiable-stone": { "role": "tertiary", "displayName": "Unverifiable Stone", "canonical": "#79746a", "tonalRamp": ["oklch(0.16 0.008 85)", "oklch(0.26 0.01 85)", "oklch(0.36 0.012 85)", "oklch(0.46 0.014 85)", "oklch(0.55 0.015 85)", "oklch(0.68 0.014 85)", "oklch(0.82 0.012 85)", "oklch(0.95 0.008 85)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Person and claim page H1s. Plain nouns, serif, never slogans." },
+      "headline": { "displayName": "Headline", "purpose": "Standard page H1s (Search, Topics, Leaderboards)." },
+      "title": { "displayName": "Section Title", "purpose": "The one site-wide section-header pattern: small-caps sans over a hairline rule. Sits AS the heading, never above another heading." },
+      "body": { "displayName": "Proposition Body", "purpose": "Claim statements on cards, serif, sentence-boundary truncation, text-wrap: pretty." },
+      "label": { "displayName": "UI Label", "purpose": "Names, buttons, filters — always Inter; metadata steps down to 11.5px/500." },
+      "data": { "displayName": "Data", "purpose": "Counts, countdowns, percentages — tabular IBM Plex Mono wherever numbers align." }
+    },
+    "shadows": [
+      { "name": "paper-lift", "value": "0 1px 2px rgba(40,35,25,0.04), 0 2px 6px rgba(40,35,25,0.05)", "purpose": "Claim/figure cards at rest. Warm-tinted ambient lift; never structural." },
+      { "name": "control-xs", "value": "0 1px 2px rgba(40,35,25,0.05)", "purpose": "Pills and small controls (follow button)." },
+      { "name": "overlay", "value": "0 4px 12px rgba(40,35,25,0.10)", "purpose": "Dropdowns, popovers, dialogs — the only step-up, because they are genuinely above the page." }
+    ],
+    "motion": [
+      { "name": "menu-pop", "value": "opacity 0→1 + translateY(-4px)→0, 140ms ease", "purpose": "Dropdown/menu entrance; disabled entirely under prefers-reduced-motion." },
+      { "name": "state-transition", "value": "transition-colors 150ms ease", "purpose": "Hover/focus color shifts on cards, chips, buttons. Motion conveys state, nothing else." },
+      { "name": "press", "value": "translateY(1px) on :active", "purpose": "Button press feedback." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "container", "value": "1152px (max-w-6xl page column)" },
+      { "name": "card-narrow", "value": "26rem @container — claim cards shed date, topic chip, and long labels below this" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Press Ink fill, used for the header Submit action and form primaries.",
+      "html": "<button class=\"ds-btn-primary\"><span class=\"ds-btn-primary-plus\">+</span> Submit</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; background: var(--primary, #201e1b); color: var(--primary-foreground, #faf9f6); font-family: Inter, system-ui, sans-serif; font-size: 14px; font-weight: 500; border: 1px solid transparent; border-radius: 10px; cursor: pointer; transition: background-color 150ms ease, opacity 150ms ease; } .ds-btn-primary:hover { opacity: 0.9; } .ds-btn-primary:focus-visible { outline: none; border-color: #8b8579; box-shadow: 0 0 0 3px rgba(139,133,121,0.5); } .ds-btn-primary:active { transform: translateY(1px); } .ds-btn-primary-plus { font-family: 'IBM Plex Mono', ui-monospace, monospace; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Hairline-bordered secondary action; hover tints toward Archive Cream.",
+      "html": "<button class=\"ds-btn-outline\">Compare</button>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 10px; background: var(--background, #faf9f6); color: var(--foreground, #201e1b); font-family: Inter, system-ui, sans-serif; font-size: 14px; font-weight: 500; border: 1px solid var(--border, #e8e4da); border-radius: 10px; cursor: pointer; transition: background-color 150ms ease, border-color 150ms ease; } .ds-btn-outline:hover { background: var(--muted, #f4f2ec); } .ds-btn-outline:focus-visible { outline: none; border-color: #8b8579; box-shadow: 0 0 0 3px rgba(139,133,121,0.5); } .ds-btn-outline:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Status Pills",
+      "kind": "chip",
+      "refersTo": "status-pill-true",
+      "description": "The verdict vocabulary: pale tinted fill, darkened text, label always present. Disputed is hatched + dashed so it reads without color.",
+      "html": "<div class=\"ds-pill-row\"><span class=\"ds-pill ds-pill-pending\">Pending<span class=\"ds-pill-div\"></span><span class=\"ds-pill-detail\">7 mo</span></span><span class=\"ds-pill ds-pill-true\">Came True</span><span class=\"ds-pill ds-pill-partly\">Partly True</span><span class=\"ds-pill ds-pill-false\">Didn't Come True</span><span class=\"ds-pill ds-pill-walked\">Walked Back</span><span class=\"ds-pill ds-pill-disputed\">Disputed</span></div>",
+      "css": ".ds-pill-row { display: flex; flex-wrap: wrap; gap: 8px; } .ds-pill { display: inline-flex; align-items: center; padding: 5px 9px; border: 1px solid transparent; border-radius: 8px; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-weight: 600; white-space: nowrap; } .ds-pill-pending { background: var(--st-pending-bg, #e9effd); color: var(--st-pending-tx, #1d4ed8); } .ds-pill-true { background: var(--st-true-bg, #e7f6ec); color: var(--st-true-tx, #136e37); } .ds-pill-partly { background: var(--st-partly-bg, #fcf0df); color: var(--st-partly-tx, #a04a08); } .ds-pill-false { background: var(--st-false-bg, #fdeaea); color: var(--st-false-tx, #b91c1c); } .ds-pill-walked { background: var(--st-walked-bg, #f2ebfd); color: var(--st-walked-tx, #6d28d9); } .ds-pill-disputed { background: #ffffff; color: var(--st-disputed-tx, #56524b); border: 1px dashed var(--st-disputed, #6b6455); background-image: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(138,106,31,0.10) 4px, rgba(138,106,31,0.10) 8px); } .ds-pill-div { width: 1px; height: 12px; background: currentColor; opacity: 0.25; margin: 0 6px; } .ds-pill-detail { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 500; opacity: 0.7; }"
+    },
+    {
+      "name": "Follow Pill",
+      "kind": "chip",
+      "refersTo": "follow-pill",
+      "description": "Follow = importance. Round pill with mono count; following inverts to solid Press Ink.",
+      "html": "<div class=\"ds-follow-row\"><button class=\"ds-follow\"><span aria-hidden=\"true\">+</span> Follow <span class=\"ds-follow-count\">12.4k</span></button><button class=\"ds-follow ds-follow-active\">Following <span class=\"ds-follow-count\">12.4k</span></button></div>",
+      "css": ".ds-follow-row { display: flex; gap: 10px; } .ds-follow { display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; background: var(--card, #ffffff); color: var(--ink-2, #56524b); font-family: Inter, system-ui, sans-serif; font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; border: 1px solid var(--input, #d6d1c4); border-radius: 9999px; box-shadow: 0 1px 2px rgba(40,35,25,0.05); cursor: pointer; transition: color 150ms ease, border-color 150ms ease, background-color 150ms ease; } .ds-follow:hover { border-color: var(--ink-3, #6c675c); color: var(--foreground, #201e1b); } .ds-follow:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(139,133,121,0.5); } .ds-follow-active { background: var(--foreground, #201e1b); color: var(--background, #faf9f6); border-color: var(--foreground, #201e1b); } .ds-follow-active:hover { background: var(--ink-2, #56524b); border-color: var(--ink-2, #56524b); color: var(--background, #faf9f6); } .ds-follow-count { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11.5px; opacity: 0.75; }"
+    },
+    {
+      "name": "Category Chip",
+      "kind": "chip",
+      "refersTo": "category-chip",
+      "description": "Outlined topic pill linking to its topic page.",
+      "html": "<a class=\"ds-chip\" href=\"#\">Economy</a>",
+      "css": ".ds-chip { display: inline-flex; align-items: center; padding: 2.5px 10px; background: transparent; color: var(--ink-2, #56524b); font-family: Inter, system-ui, sans-serif; font-size: 11.5px; font-weight: 500; text-decoration: none; white-space: nowrap; border: 1px solid var(--input, #d6d1c4); border-radius: 9999px; transition: color 150ms ease, border-color 150ms ease, background-color 150ms ease; } .ds-chip:hover { border-color: var(--ink-3, #6c675c); background: var(--paper-2, #f4f2ec); color: var(--foreground, #201e1b); }"
+    },
+    {
+      "name": "Search Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Transparent field with Input Stroke border and the shared 3px focus ring.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Search anyone or any claim…\" />",
+      "css": ".ds-input { width: 100%; min-width: 240px; height: 32px; padding: 4px 10px; background: transparent; color: var(--foreground, #201e1b); font-family: Inter, system-ui, sans-serif; font-size: 14px; border: 1px solid var(--input, #d6d1c4); border-radius: 10px; transition: border-color 150ms ease, box-shadow 150ms ease; } .ds-input::placeholder { color: var(--muted-foreground, #6c675c); } .ds-input:focus-visible { outline: none; border-color: var(--ring, #8b8579); box-shadow: 0 0 0 3px rgba(139,133,121,0.5); }"
+    },
+    {
+      "name": "Section Header",
+      "kind": "nav",
+      "description": "The one section-header pattern site-wide: small-caps sans over a hairline rule, content on the page ground — never boxed.",
+      "html": "<div class=\"ds-section\"><h2 class=\"ds-section-title\">Recently resolved<span class=\"ds-section-sub\">this week</span></h2><a class=\"ds-section-more\" href=\"#\">More →</a></div>",
+      "css": ".ds-section { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border, #e8e4da); min-width: 320px; } .ds-section-title { margin: 0; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted-foreground, #6c675c); } .ds-section-sub { margin-left: 8px; font-weight: 400; text-transform: none; letter-spacing: normal; } .ds-section-more { font-family: Inter, system-ui, sans-serif; font-size: 12px; color: var(--muted-foreground, #6c675c); text-decoration: none; white-space: nowrap; } .ds-section-more:hover { color: var(--foreground, #201e1b); }"
+    },
+    {
+      "name": "Claim Card",
+      "kind": "card",
+      "refersTo": "claim-card",
+      "description": "The site's atom: identity row + verdict, serif proposition, action row. Identical anatomy for every claim and every person.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-top\"><span class=\"ds-card-who\"><span class=\"ds-card-avatar\">DT</span><span class=\"ds-card-name\">Donald Trump</span><span class=\"ds-card-date\">· Mar 2025</span></span><span class=\"ds-card-pill\">Pending<span class=\"ds-card-pill-div\"></span><span class=\"ds-card-pill-detail\">7 mo</span></span></div><p class=\"ds-card-statement\">Inflation falls below 2% before the end of 2026.</p><div class=\"ds-card-actions\"><span class=\"ds-card-follow\"><span aria-hidden=\"true\">+</span> Follow <span class=\"ds-card-count\">2.1k</span></span><span class=\"ds-card-chip\">Economy</span></div></article>",
+      "css": ".ds-card { display: flex; flex-direction: column; gap: 14px; max-width: 420px; padding: 18px 20px; background: var(--card, #ffffff); border: 1px solid var(--border, #e8e4da); border-radius: 12px; box-shadow: 0 1px 2px rgba(40,35,25,0.04), 0 2px 6px rgba(40,35,25,0.05); font-family: Inter, system-ui, sans-serif; transition: border-color 150ms ease; cursor: pointer; } .ds-card:hover { border-color: var(--input, #d6d1c4); } .ds-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; } .ds-card-who { display: flex; align-items: center; gap: 8px; min-width: 0; } .ds-card-avatar { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 9999px; background: var(--paper-3, #efece4); color: var(--ink-2, #56524b); font-size: 9px; font-weight: 600; } .ds-card-name { font-size: 13px; font-weight: 600; color: var(--foreground, #201e1b); } .ds-card-date { font-size: 11.5px; color: var(--ink-3, #6c675c); } .ds-card-pill { display: inline-flex; align-items: center; padding: 5px 9px; border-radius: 8px; background: var(--st-pending-bg, #e9effd); color: var(--st-pending-tx, #1d4ed8); font-size: 12px; font-weight: 600; white-space: nowrap; } .ds-card-pill-div { width: 1px; height: 12px; background: currentColor; opacity: 0.25; margin: 0 6px; } .ds-card-pill-detail { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-weight: 500; opacity: 0.7; } .ds-card-statement { margin: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.42; color: var(--foreground, #201e1b); text-wrap: pretty; } .ds-card-actions { display: flex; align-items: center; gap: 10px; } .ds-card-follow { display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; background: var(--card, #ffffff); color: var(--ink-2, #56524b); font-size: 12px; font-weight: 600; border: 1px solid var(--input, #d6d1c4); border-radius: 9999px; box-shadow: 0 1px 2px rgba(40,35,25,0.05); } .ds-card-count { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 11.5px; opacity: 0.75; } .ds-card-chip { display: inline-flex; align-items: center; padding: 2.5px 10px; color: var(--ink-2, #56524b); font-size: 11.5px; font-weight: 500; border: 1px solid var(--input, #d6d1c4); border-radius: 9999px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Public Record",
+    "overview": "SmartHumans looks like a permanent, sourced civic ledger — newsprint calm with archival weight. Warm paper surfaces, near-black press ink, hairline rules, and tabular numerals carry the entire interface; the seven verdict colors are the only thing on any screen allowed to speak loudly, and even they speak through pale tinted pills with darkened text, never through saturated fills. The register is product: dense, fast, identical from person to person. Quotes and propositions are content artifacts set in serif; everything that operates the site — labels, buttons, filters, dates — is quiet sans.\n\nThe system explicitly rejects partisan or editorial styling that implies judgment, marketing copy (plain noun H1s; no kickers, taglines, or blurbs), gamified loudness, chartjunk, and engagement-bait. Nothing flashes, pulses, or celebrates. The data delivers the verdict; the design's job is to be believed.",
+    "keyCharacteristics": [
+      "Warm paper ground (#faf9f6) with white cards and hairline borders — structure from rules and tints, not shadows",
+      "Verdict color appears only as status: pale pill + darkened text + label, never decoration",
+      "Serif = content (propositions, quotes, page titles); Inter = UI; IBM Plex Mono = numerals only",
+      "Newspaper-grade density inside a max-w-6xl (1152px) column",
+      "Every number is tabular; every source link is a first-class visual citizen"
+    ],
+    "rules": [
+      { "name": "The One Loud Voice Rule", "body": "Verdict colors appear only where they state a verdict: status pills, status dots, distribution bars, chart marks. Never as decoration, button color, heading color, or background mood. Everything else on the page is paper and ink.", "section": "colors" },
+      { "name": "The Label Rule", "body": "Tint never carries meaning alone. Every status surface pairs its color with a text label (or an icon plus accessible name at dot size).", "section": "colors" },
+      { "name": "The Serif-Is-Content Rule", "body": "Source Serif 4 appears only on content artifacts: propositions, quotes, page titles, the logotype. UI labels, buttons, navigation, and form text are always Inter; numerals in stat positions are always mono.", "section": "typography" },
+      { "name": "The Plain Noun Rule", "body": "H1s are plain nouns ('Topics', a person's name, the proposition). No kickers, taglines, or marketing blurbs anywhere on product pages.", "section": "typography" },
+      { "name": "The Whisper Rule", "body": "If a shadow is noticeable, it is too strong. Structure must survive with shadows deleted; a screenshot with shadows off should still read perfectly.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do pair every status color with its text label — tint never carries meaning alone (The Label Rule).",
+      "Do keep verdict colors exclusively for verdicts: pills, dots, distribution bars, chart marks (The One Loud Voice Rule).",
+      "Do set propositions and quotes in Source Serif 4 and every number in tabular IBM Plex Mono.",
+      "Do use plain noun H1s ('Topics', 'Donald Trump') and let pages explain themselves.",
+      "Do keep motion to state changes: 140–200ms, ease-out, with a prefers-reduced-motion: reduce alternative for every animation (the menu-pop pattern).",
+      "Do give every interactive control the shared focus vocabulary: 3px ring at 50%, border shift.",
+      "Do keep identical templates for every person — same scorecard, same ledger, same card anatomy."
+    ],
+    "donts": [
+      "Don't use partisan or editorial styling that implies judgment — no per-person color moods, no mocking or celebratory treatments. The status colors are the only verdict.",
+      "Don't write marketing copy: no kickers, taglines, or self-promotional blurbs on product pages (per PRODUCT.md).",
+      "Don't add gamified loudness — no confetti, streaks, pulse animations, or casino energy. Follower counts and countdowns inform; they never flash or pressure.",
+      "Don't ship chartjunk: no 3D, no gradient fills, no decorative dashboards. Distribution bars, sparklines, and dot timelines only.",
+      "Don't use saturated verdict color as fill on large surfaces, buttons, or headings — pale pill + darkened text is the ceiling.",
+      "Don't use border-left/border-right stripes as status accents, gradient text, or glassmorphism (header blur is the one earned exception).",
+      "Don't color form errors Refuted Red — destructive UI is Error Brick (#b23a30) so it can never be mistaken for a claim verdict.",
+      "Don't set UI labels, buttons, or navigation in the serif, and don't let Ink Ghost (#8b8579) carry readable text.",
+      "Don't nest cards or box every section — section headers sit on the page ground; boxes are for claim/figure cards and active widgets only."
+    ]
+  }
+}

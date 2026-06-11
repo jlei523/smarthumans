@@ -43,6 +43,7 @@ export function SiteHeader() {
           <Link
             href="/feed"
             title="Your feed — stakes and submissions from members you follow"
+            aria-label="Your feed"
             className="hidden md:flex rounded-md p-1.5 text-ink-2 hover:bg-accent hover:text-foreground"
           >
             <Rss className="size-[19px]" strokeWidth={1.8} />
@@ -50,10 +51,10 @@ export function SiteHeader() {
           <Link
             href="/notifications"
             title="Notifications"
-            className="relative hidden md:flex rounded-md p-1.5 text-ink-2 hover:bg-accent hover:text-foreground"
+            aria-label="Notifications"
+            className="hidden md:flex rounded-md p-1.5 text-ink-2 hover:bg-accent hover:text-foreground"
           >
             <Bell className="size-[19px]" strokeWidth={1.8} />
-            <span className="absolute top-1 right-1 size-[7px] rounded-full bg-st-false ring-[1.5px] ring-background" />
           </Link>
           <MobileNav />
           <AuthMenu />

@@ -91,17 +91,17 @@
   --paper-2: #f4f2ec;
   --paper-3: #efece4;
   --ink-2: #56524b;
-  --ink-3: #8b8579;
+  --ink-3: #6c675c;
   --ink-4: #b4aea0;
   --st-pending: #2563eb;
   --st-pending-bg: #e9effd;
   --st-pending-tx: #1d4ed8;
   --st-true: #16a34a;
   --st-true-bg: #e7f6ec;
-  --st-true-tx: #15803d;
+  --st-true-tx: #136e37;
   --st-partly: #d97706;
   --st-partly-bg: #fcf0df;
-  --st-partly-tx: #b45309;
+  --st-partly-tx: #a04a08;
   --st-false: #dc2626;
   --st-false-bg: #fdeaea;
   --st-false-tx: #b91c1c;
@@ -125,13 +125,14 @@
   --secondary: #f4f2ec;
   --secondary-foreground: #201e1b;
   --muted: #f4f2ec;
-  --muted-foreground: #8b8579;
+  --muted-foreground: #6c675c;
   --accent: #efece4;
   --accent-foreground: #201e1b;
   --destructive: #b23a30;
   --border: #e8e4da;
   --input: #d6d1c4;
-  --ring: #b4aea0;
+  /* focus ring — old value (#b4aea0) sat at 2.1:1 against paper */
+  --ring: #8b8579;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);

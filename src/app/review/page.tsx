@@ -191,7 +191,7 @@ export default async function ReviewPage() {
               return (
                 <article
                   key={sub.id}
-                  className="rounded-lg border border-l-[3px] border-l-st-partly bg-card p-4"
+                  className="rounded-lg border bg-st-partly-bg p-4"
                 >
                   <p className="text-xs uppercase tracking-[0.08em] text-muted-foreground">
                     Broadcast citation · #{sub.id} · {timeAgo(sub.createdAt)} ·{" "}

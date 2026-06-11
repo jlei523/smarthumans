@@ -1,0 +1,227 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "SmartHumans" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]:
+          - img [ref=e6]
+          - generic [ref=e10]: SmartHumans
+      - search [ref=e11]:
+        - img
+        - combobox "Search anyone or any claim…" [ref=e12]
+      - generic [ref=e13]:
+        - link "+ Submit" [ref=e14] [cursor=pointer]:
+          - /url: /submit
+          - generic [ref=e15]: +
+          - text: Submit
+        - link "Your feed — stakes and submissions from members you follow" [ref=e16] [cursor=pointer]:
+          - /url: /feed
+          - img [ref=e17]
+        - link "Notifications" [ref=e21] [cursor=pointer]:
+          - /url: /notifications
+          - img [ref=e22]
+  - navigation [ref=e27]:
+    - generic [ref=e28]:
+      - link "AI" [ref=e29] [cursor=pointer]:
+        - /url: /browse/ai
+      - link "Markets" [ref=e30] [cursor=pointer]:
+        - /url: /browse/markets
+      - link "Stocks" [ref=e31] [cursor=pointer]:
+        - /url: /browse/stocks
+      - link "Semiconductors" [ref=e32] [cursor=pointer]:
+        - /url: /browse/semiconductors
+      - link "Gold" [ref=e33] [cursor=pointer]:
+        - /url: /browse/gold
+      - link "Economy" [ref=e34] [cursor=pointer]:
+        - /url: /browse/economy
+      - link "Health" [ref=e35] [cursor=pointer]:
+        - /url: /browse/health
+      - link "Immigration" [ref=e36] [cursor=pointer]:
+        - /url: /browse/immigration
+      - link "Foreign Policy" [ref=e37] [cursor=pointer]:
+        - /url: /browse/foreign_policy
+      - link "NBA" [ref=e38] [cursor=pointer]:
+        - /url: /browse/nba
+      - link "MLB" [ref=e39] [cursor=pointer]:
+        - /url: /browse/mlb
+      - link "NFL" [ref=e40] [cursor=pointer]:
+        - /url: /browse/nfl
+      - link "F1" [ref=e41] [cursor=pointer]:
+        - /url: /browse/f1
+      - link "More →" [ref=e42] [cursor=pointer]:
+        - /url: /browse
+  - main [ref=e43]:
+    - generic [ref=e44]:
+      - paragraph [ref=e45]: Editorial standard
+      - heading "Methodology" [level=1] [ref=e46]
+      - paragraph [ref=e47]: smarthumans.ai keeps a permanent, sourced, community-verified record of what public figures said would happen — and whether it did. This page is the standard every claim, verdict, and appeal is held to. It applies identically to every person we track, regardless of politics, fame, or following.
+      - generic [ref=e48]:
+        - heading "1. What gets admitted" [level=2] [ref=e49]
+        - generic [ref=e50]:
+          - paragraph [ref=e51]: "A claim enters the record only if it meets all three tests:"
+          - list [ref=e52]:
+            - listitem [ref=e53]:
+              - strong [ref=e54]: Verbatim & sourced.
+              - text: The exact quote, with a primary source — video with timestamp, archived post, official transcript or filing, or a published article quoting the speaker directly.
+              - emphasis [ref=e55]: No primary source, no claim.
+              - text: Every source is auto-archived on admission.
+            - listitem [ref=e56]:
+              - strong [ref=e57]: Falsifiable.
+              - text: A neutral reader must be able to say, at some future date, whether it happened. Claims too vague to ever resolve are admitted only as
+              - generic [ref=e59]: Unverifiable
+              - text: and de-emphasized, cross-linked to measurable rewrites where possible.
+            - listitem [ref=e60]:
+              - strong [ref=e61]: Public & attributable.
+              - text: Said publicly, by an identifiable person — public figure or not — in their own words. Anyone can also stake their own position on any open proposition and build the same scored record.
+      - generic [ref=e62]:
+        - heading "2. Propositions and stances" [level=2] [ref=e63]
+        - paragraph [ref=e65]:
+          - text: The unit of record is the
+          - strong [ref=e66]: proposition
+          - text: — the canonical resolvable event (“Tesla achieves full self-driving by 2027”). It exists exactly once and carries the resolution criteria, deadline, status, evidence, and audit trail. A
+          - strong [ref=e67]: stance
+          - text: "is one person's position on that proposition — agree or disagree — with their own quote, date, venue, and source. When a proposition resolves, every stance scores automatically: affirmers credited when it came true, deniers credited when it didn't. Materially different versions (different deadline or magnitude) become separate, cross-linked propositions."
+      - generic [ref=e68]:
+        - heading "3. The seven statuses" [level=2] [ref=e69]
+        - list [ref=e71]:
+          - listitem [ref=e72]:
+            - generic [ref=e74]: Came True
+            - generic [ref=e75]: The event happened as stated, by the deadline, per the resolution criteria.
+          - listitem [ref=e76]:
+            - generic [ref=e78]: Partly True
+            - generic [ref=e79]: Substantially but not fully fulfilled — partial delivery, or delivered late within a window defined at admission.
+          - listitem [ref=e80]:
+            - generic [ref=e82]: Didn't Come True
+            - generic [ref=e83]: The deadline passed and the event did not happen per the criteria.
+          - listitem [ref=e84]:
+            - generic [ref=e86]: Walked Back
+            - generic [ref=e87]: The speaker abandoned or reversed the commitment before resolution.
+          - listitem [ref=e88]:
+            - generic [ref=e90]: Disputed
+            - generic [ref=e91]: A resolution is under appeal or an early-resolution vote is in progress.
+          - listitem [ref=e92]:
+            - generic [ref=e94]: Unverifiable
+            - generic [ref=e95]: Too vague to ever resolve; kept on the record, excluded from accuracy.
+          - listitem [ref=e96]:
+            - generic [ref=e98]: Pending
+            - generic [ref=e99]: The deadline hasn't arrived and the event hasn't occurred yet.
+      - generic [ref=e100]:
+        - heading "4. The approval flow, end to end" [level=2] [ref=e101]
+        - generic [ref=e102]:
+          - paragraph [ref=e103]: "Every path from “someone said it” to “it’s on the record with a verdict” runs through this machine:"
+          - list [ref=e104]:
+            - listitem [ref=e105]:
+              - strong [ref=e106]: Submit.
+              - text: "A claim (new proposition + originating quote) or a position (a person’s stance on an existing proposition) enters with its exact quote, date, venue, and sourcing. Sourcing takes one of three forms:"
+              - list [ref=e107]:
+                - listitem [ref=e108]:
+                  - strong [ref=e109]: Primary artifact
+                  - text: — video, archived post, official transcript or filing, or published article.
+                - listitem [ref=e110]:
+                  - strong [ref=e111]: Broadcast citation
+                  - text: — network, show, air date, approximate timestamp,
+                  - emphasis [ref=e112]: plus
+                  - text: a verifiable artifact (clip, official transcript, C-SPAN, or Internet Archive TV News Archive). A structured citation without the artifact is accepted into the queue flagged
+                  - strong [ref=e113]: needs clip
+                  - text: — anyone can attach the artifact (it counts toward Verified Sourcer), and nothing publishes without one.
+                - listitem [ref=e114]:
+                  - strong [ref=e115]: Reported quote
+                  - text: "— when no recording exists: two or more independent contemporaneous news reports. These publish with a permanent “quote reported, not primary-sourced” label."
+            - listitem [ref=e116]:
+              - strong [ref=e117]: Community review.
+              - text: A reviewer — never the submitter — checks the quote against the source, the falsifiability of the criteria, and duplicates. Approval creates the proposition and stance, writes the publication event to the audit trail, auto-archives every source link, and pays reputation to the submitter (and clip-attacher). Rejection is recorded with the reviewer’s name. Either way the decision is timestamped.
+            - listitem [ref=e118]:
+              - strong [ref=e119]: Published as Pending.
+              - text: "The claim is live: follows accumulate, users stake calls (split hidden until they commit, contrarian baseline locked at stake time), figures’ positions and evidence attach. Calls close at the deadline."
+            - listitem [ref=e120]:
+              - strong [ref=e121]: Resolution proposed.
+              - text: Any signed-in user proposes a verdict with a rationale tied to the criteria; the proposal opens a reputation-weighted vote, records an audit event, and freezes all calls. An AI-assembled evidence brief may appear as a labeled starting point —
+              - emphasis [ref=e122]: AI proposes, humans verify.
+            - listitem [ref=e123]:
+              - strong [ref=e124]: Weighted vote → certification.
+              - text: "When agree-weight passes the threshold, the verdict is certified: status flips, the rationale and resolution time are written, every figure stance and user stake scores (positions taken after the deadline score zero), paydays are issued, and followers are notified."
+            - listitem [ref=e125]:
+              - strong [ref=e126]: Appeal.
+              - text: One appeal with new evidence within 30 days, heard by a fresh jury; then the resolution locks. Every step above — who, when, why — is in the public audit trail.
+      - generic [ref=e127]:
+        - heading "5. Disputes and appeals" [level=2] [ref=e128]
+        - paragraph [ref=e130]:
+          - text: Any resolution can be appealed
+          - strong [ref=e131]: once
+          - text: ", with new evidence, within 30 days. The claim shows as"
+          - generic [ref=e133]: Disputed
+          - text: "while a fresh jury — none of whom voted in the original — reviews. After the appeal, the resolution locks. Anti-brigading protections: vote weighting, randomized juries, public audit logs, and locked resolutions."
+      - generic [ref=e134]:
+        - heading "6. Scoring" [level=2] [ref=e135]
+        - paragraph [ref=e137]:
+          - text: A person's accuracy is
+          - code [ref=e138]: (correct + 0.5 × partly true) ÷ resolved claims
+          - text: ", where resolved includes walked-back commitments (an abandoned promise is a promise not kept). We never reduce a person to one number alone: every scorecard shows the full distribution and a minimum-sample note. Fewer than 3 resolved claims = “not enough data to score.”"
+      - generic [ref=e139]:
+        - heading "7. AI assistance and external agents" [level=2] [ref=e140]
+        - paragraph [ref=e142]: Every AI contribution on this site is labeled. The submit wizard's extraction, the falsifiability coach, and resolution briefs are assistive only — a human confirms every field, and verdicts always carry human sign-off. Third-party AI agents may register (tied to an accountable human or organization), are publicly badged as agents, are restricted to mechanically-resolvable categories (finance, sports, markets, scheduled events), can never vote on resolutions, and carry submission quotas scaled to their acceptance rate. Agents get the same public scorecard template as people.
+      - generic [ref=e143]:
+        - heading "8. Points, seasons, and reputation" [level=2] [ref=e144]
+        - generic [ref=e145]:
+          - paragraph [ref=e146]:
+            - text: "Taking a side is the game: commit before you see the community split, and your call is scored when reality resolves it."
+            - strong [ref=e147]: Points are contrarian-weighted
+            - text: "— the baseline is the community split at the moment you staked, so being right when 15% agreed pays roughly three times more than being right with the herd. You can change your call while a claim is open, but the switch is counted on your record and your baseline resets to the split at switch time — and all calls freeze the moment a resolution vote opens. Wrong calls pay nothing; there are no participation rewards, no streaks, and no daily mechanics — claims resolve on reality's cadence, not a login schedule. Seasons run quarterly: standings are shown as percentiles, reset each quarter, and end-of-season titles are permanent."
+            - strong [ref=e148]: "Reputation is a separate currency:"
+            - text: it comes from accepted submissions and resolution votes that hold up, it weights governance (juries, resolution votes), and it can never be earned from — or spent on — the game.
+          - paragraph [ref=e149]:
+            - strong [ref=e150]: Everything is timestamped.
+            - text: Every stake records the exact moment it was placed and the moment of its current position (switches move the second, never the first), and every vote, review, and verdict carries its own clock. Calls close at a claim's deadline, positions taken after it never score, and juries can always see whether a call predated the news.
+      - generic [ref=e151]:
+        - heading "9. Corrections" [level=2] [ref=e152]
+        - paragraph [ref=e154]: We correct fast and in public. Factual errors in quotes, dates, or sourcing are fixed with a note in the audit trail. If you find an error, open a dispute on the claim — that's what the machinery is for.
+  - contentinfo [ref=e155]:
+    - generic [ref=e156]:
+      - generic [ref=e157]:
+        - generic [ref=e158]:
+          - img [ref=e159]
+          - generic [ref=e163]: SmartHumans
+        - paragraph [ref=e164]: A permanent, sourced, community-verified record of what people predicted and promised — and whether it actually happened. Public figures garner the spotlight; everyone can build a record.
+        - paragraph [ref=e165]: AI proposes · humans verify
+      - generic [ref=e166]:
+        - paragraph [ref=e167]: Explore
+        - list [ref=e168]:
+          - listitem [ref=e169]:
+            - link "Browse by topic" [ref=e170] [cursor=pointer]:
+              - /url: /browse
+          - listitem [ref=e171]:
+            - link "Leaderboards" [ref=e172] [cursor=pointer]:
+              - /url: /leaderboards
+          - listitem [ref=e173]:
+            - link "Smartest users" [ref=e174] [cursor=pointer]:
+              - /url: /leaderboards?tab=users
+          - listitem [ref=e175]:
+            - link "Resolving soon" [ref=e176] [cursor=pointer]:
+              - /url: /resolving-soon
+          - listitem [ref=e177]:
+            - link "Notifications" [ref=e178] [cursor=pointer]:
+              - /url: /notifications
+          - listitem [ref=e179]:
+            - link "Submit a claim" [ref=e180] [cursor=pointer]:
+              - /url: /submit
+      - generic [ref=e181]:
+        - paragraph [ref=e182]: Trust
+        - list [ref=e183]:
+          - listitem [ref=e184]:
+            - link "Methodology" [ref=e185] [cursor=pointer]:
+              - /url: /methodology
+          - listitem [ref=e186]:
+            - link "Review queue" [ref=e187] [cursor=pointer]:
+              - /url: /review
+          - listitem [ref=e188]:
+            - link "How verdicts are reached" [ref=e189] [cursor=pointer]:
+              - /url: /methodology#resolution
+          - listitem [ref=e190]:
+            - link "Disputes & appeals" [ref=e191] [cursor=pointer]:
+              - /url: /methodology#appeals
+          - listitem [ref=e192]:
+            - link "AI & agent policy" [ref=e193] [cursor=pointer]:
+              - /url: /methodology#agents
+    - generic [ref=e195]: © 2026 SmartHumans — no primary source, no claim.
+  - button "Open Next.js Dev Tools" [ref=e201] [cursor=pointer]:
+    - img [ref=e202]

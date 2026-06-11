@@ -1,6 +1,7 @@
 import Link from "next/link";
 import {
   ExternalLink,
+  MessageSquare,
   Video,
   FileText,
   MessageSquareQuote,
@@ -68,6 +69,7 @@ export function ClaimCard({
   showFollow = true,
   following = false,
   myStance = null,
+  commentCount,
   className,
 }: {
   proposition: Proposition;
@@ -84,6 +86,8 @@ export function ClaimCard({
   following?: boolean;
   /** signed-in user's one-tap stance on this proposition */
   myStance?: "affirm" | "deny" | null;
+  /** discussion comment count — omit to hide the button entirely */
+  commentCount?: number;
   className?: string;
 }) {
   const speaker = person ?? stance?.person ?? null;
@@ -188,15 +192,24 @@ export function ClaimCard({
             </span>
           )
         )}
+        {commentCount !== undefined && (
+          <span className="relative z-10">
+            <Link
+              href={`/claims/${proposition.slug}#discussion`}
+              className="inline-flex items-center gap-1 rounded-full border border-input px-2.5 py-[2.5px] text-[11.5px] font-medium text-ink-2 whitespace-nowrap transition-colors hover:border-ink-3 hover:bg-paper-2 hover:text-foreground"
+            >
+              <MessageSquare className="size-3 shrink-0" aria-hidden />
+              <span className="font-mono tabular-nums">{commentCount}</span>
+            </Link>
+          </span>
+        )}
         {callsOpen && (
           <span className="relative z-10">
             <StanceButtons propositionId={proposition.id} initial={myStance} />
           </span>
         )}
         {showCategory && (
-          <span className="@max-[26rem]:hidden">
-            <CategoryChip category={proposition.category} />
-          </span>
+          <CategoryChip category={proposition.category} />
         )}
       </div>
     </article>

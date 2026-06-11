@@ -85,7 +85,7 @@ export function FollowButton({
     >
       {!following && <span aria-hidden>+</span>}
       {size !== "sm" && (following ? "Following" : "Follow")}
-      <span className="font-mono text-[11.5px] opacity-75">
+      <span className="font-mono text-[11.5px]">
         {fmtCount(optimisticCount)}
       </span>
     </button>

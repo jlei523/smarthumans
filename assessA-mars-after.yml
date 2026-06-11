@@ -1,0 +1,259 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "SmartHumans" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]:
+          - img [ref=e6]
+          - generic [ref=e10]: SmartHumans
+      - search [ref=e11]:
+        - img
+        - combobox "Search anyone or any claim…" [ref=e12]
+      - generic [ref=e13]:
+        - link "+ Submit" [ref=e14] [cursor=pointer]:
+          - /url: /submit
+          - generic [ref=e15]: +
+          - text: Submit
+        - link "Your feed — stakes and submissions from members you follow" [ref=e16] [cursor=pointer]:
+          - /url: /feed
+          - img [ref=e17]
+        - link "Notifications" [ref=e21] [cursor=pointer]:
+          - /url: /notifications
+          - img [ref=e22]
+        - link "Sign in" [ref=e247] [cursor=pointer]:
+          - /url: /sign-in
+  - navigation [ref=e27]:
+    - generic [ref=e28]:
+      - link "AI" [ref=e29] [cursor=pointer]:
+        - /url: /browse/ai
+      - link "Markets" [ref=e30] [cursor=pointer]:
+        - /url: /browse/markets
+      - link "Stocks" [ref=e31] [cursor=pointer]:
+        - /url: /browse/stocks
+      - link "Semiconductors" [ref=e32] [cursor=pointer]:
+        - /url: /browse/semiconductors
+      - link "Gold" [ref=e33] [cursor=pointer]:
+        - /url: /browse/gold
+      - link "Economy" [ref=e34] [cursor=pointer]:
+        - /url: /browse/economy
+      - link "Health" [ref=e35] [cursor=pointer]:
+        - /url: /browse/health
+      - link "Immigration" [ref=e36] [cursor=pointer]:
+        - /url: /browse/immigration
+      - link "Foreign Policy" [ref=e37] [cursor=pointer]:
+        - /url: /browse/foreign_policy
+      - link "NBA" [ref=e38] [cursor=pointer]:
+        - /url: /browse/nba
+      - link "MLB" [ref=e39] [cursor=pointer]:
+        - /url: /browse/mlb
+      - link "NFL" [ref=e40] [cursor=pointer]:
+        - /url: /browse/nfl
+      - link "F1" [ref=e41] [cursor=pointer]:
+        - /url: /browse/f1
+      - link "More →" [ref=e42] [cursor=pointer]:
+        - /url: /browse
+  - main [ref=e43]:
+    - generic [ref=e44]:
+      - navigation [ref=e45]:
+        - link "Home" [ref=e46] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e47]: /
+        - link "Other" [ref=e48] [cursor=pointer]:
+          - /url: /browse/other
+      - generic [ref=e49]:
+        - main [ref=e50]:
+          - paragraph [ref=e51]: Claim
+          - heading "American astronauts plant the U.S. flag on Mars before the end of Trump's second term." [level=1] [ref=e52]
+          - generic [ref=e53]:
+            - generic [ref=e55]: Pending
+            - generic [ref=e56]: resolves in 2.6 yr · deadline Jan 20, 2029
+          - paragraph [ref=e57]: This claim has not resolved yet. It will be scored against the resolution criteria.
+          - group [ref=e58]:
+            - generic "Resolution criteria" [ref=e59] [cursor=pointer]
+          - generic [ref=e61]:
+            - heading "Positions" [level=2] [ref=e63]
+            - generic [ref=e64]:
+              - generic [ref=e65]:
+                - generic [ref=e66]:
+                  - paragraph [ref=e67]: Said it would happen
+                  - list [ref=e68]:
+                    - listitem [ref=e69]:
+                      - link "Donald Trump Donald Trump" [ref=e71] [cursor=pointer]:
+                        - /url: /p/donald-trump
+                        - img "Donald Trump" [ref=e72]
+                        - generic [ref=e73]: Donald Trump
+                      - blockquote [ref=e74]: “We will pursue our manifest destiny into the stars, launching American astronauts to plant the Stars and Stripes on the planet Mars.”
+                      - paragraph [ref=e75]:
+                        - generic [ref=e76]: Jan 20, 2025
+                        - generic [ref=e77]: · Second inaugural address, U.S. Capitol
+                        - generic [ref=e78]: ·
+                        - link "Source @21:40 ↗" [ref=e79] [cursor=pointer]:
+                          - /url: https://www.c-span.org/video/?second-inaugural-address-2025
+                    - listitem [ref=e80]:
+                      - link "Elon Musk Elon Musk" [ref=e82] [cursor=pointer]:
+                        - /url: /p/elon-musk
+                        - img "Elon Musk" [ref=e83]
+                        - generic [ref=e84]: Elon Musk
+                      - blockquote [ref=e85]: “Starship will carry humans to Mars within four years. I'd say 2028 is achievable — that's what we're aiming for.”
+                      - paragraph [ref=e86]:
+                        - generic [ref=e87]: Mar 8, 2025
+                        - generic [ref=e88]: · Interview, X Spaces
+                        - generic [ref=e89]: ·
+                        - link "Source ↗" [ref=e90] [cursor=pointer]:
+                          - /url: https://x.com/elonmusk/status/1898400000000000000
+                    - listitem [ref=e91]:
+                      - paragraph [ref=e93]:
+                        - link "u/testuser" [ref=e94] [cursor=pointer]:
+                          - /url: /u/Xnbpprc3pbQ1lLpcNOrkWJE9mrXClAba
+                        - text: · rep 35 · staked Jun 9, 2026
+                    - listitem [ref=e95]:
+                      - paragraph [ref=e97]:
+                        - link "u/Joe" [ref=e98] [cursor=pointer]:
+                          - /url: /u/RhHbeHb0bbUXXCZ6ln0CsHMVbrtP26HP
+                        - text: · rep 0 · staked Jun 9, 2026
+                - generic [ref=e99]:
+                  - paragraph [ref=e100]: Said it wouldn't
+                  - list [ref=e101]:
+                    - listitem [ref=e102]: No recorded stances on this side yet.
+              - button "+ Add a position — on the record" [ref=e105]
+          - generic [ref=e106]:
+            - heading "Evidence" [level=2] [ref=e108]
+            - generic [ref=e109]:
+              - generic [ref=e110]:
+                - generic [ref=e111]:
+                  - paragraph [ref=e112]: That it came true
+                  - list [ref=e113]:
+                    - listitem [ref=e114]: Nothing submitted yet.
+                - generic [ref=e115]:
+                  - paragraph [ref=e116]: That it didn't
+                  - list [ref=e117]:
+                    - listitem [ref=e118]:
+                      - 'link "NASA OIG: crewed Mars mission infeasible before early 2030s ↗" [ref=e119] [cursor=pointer]':
+                        - /url: https://oig.nasa.gov/reports/mars-readiness-2025
+                      - paragraph [ref=e120]: NASA Office of Inspector General
+              - button "+ Add evidence — a sourced citation" [ref=e123]
+          - generic [ref=e124]:
+            - heading "Resolution" [level=2] [ref=e126]
+            - button "+ Propose a resolution — open the community vote" [ref=e129]
+          - generic [ref=e130]:
+            - heading "Audit trail" [level=2] [ref=e132]
+            - list [ref=e134]:
+              - listitem [ref=e135]:
+                - paragraph [ref=e136]: Jun 9, 2026 · system
+                - paragraph [ref=e137]:
+                  - text: Pending
+                  - generic [ref=e138]: "— Published after community review: quote, sourcing, and falsifiability verified."
+          - generic [ref=e140]:
+            - generic [ref=e141]:
+              - heading "Discussion (0)" [level=2] [ref=e142]
+              - generic [ref=e143]:
+                - generic [ref=e144]:
+                  - button "All 0" [ref=e145]:
+                    - text: All
+                    - generic [ref=e146]: "0"
+                  - button "Said Yes 0" [ref=e147]:
+                    - text: Said Yes
+                    - generic [ref=e148]: "0"
+                  - button "Said No 0" [ref=e149]:
+                    - text: Said No
+                    - generic [ref=e150]: "0"
+                - generic [ref=e151]:
+                  - button "Best" [ref=e152]
+                  - button "Record" [ref=e153]
+                  - button "New" [ref=e154]
+            - generic [ref=e155]:
+              - textbox "Join the conversation — cite sources where you can…" [ref=e156]
+              - button "Sign in to comment" [ref=e158]
+            - paragraph [ref=e160]: No comments yet. Be the first.
+        - complementary [ref=e161]:
+          - generic [ref=e163]:
+            - button "Follow 15k" [ref=e164]:
+              - generic [ref=e165]: +
+              - text: Follow
+              - generic [ref=e166]: 15k
+            - paragraph [ref=e167]: 15k following — get notified when this resolves
+            - separator [ref=e168]
+            - generic [ref=e169]:
+              - paragraph [ref=e170]: Make your call
+              - generic [ref=e171]:
+                - button "Yes" [ref=e172]
+                - button "No" [ref=e173]
+              - paragraph [ref=e249]: 100% of 2 users say Yes
+              - paragraph [ref=e250]: Scored at resolution — contrarian calls that land pay more.
+            - separator [ref=e175]
+            - link "Shareable verdict card ↗" [ref=e177] [cursor=pointer]:
+              - /url: /api/og/claim/american-flag-on-mars-2029
+          - generic [ref=e178]:
+            - heading "Related claims" [level=2] [ref=e179]
+            - list [ref=e180]:
+              - listitem [ref=e181]:
+                - link "“The first Starships to Mars will launch in the next Earth-Mars transfer window — uncrewed, carrying Optimus. If those land safely, crewed flights follow in four years.” Pending · Elon Musk" [ref=e182] [cursor=pointer]:
+                  - /url: /claims/starship-uncrewed-mars-2026
+                  - paragraph [ref=e183]: “The first Starships to Mars will launch in the next Earth-Mars transfer window — uncrewed, carrying Optimus. If those land safely, crewed flights follow in four years.”
+                  - paragraph [ref=e184]: Pending · Elon Musk
+              - listitem [ref=e185]:
+                - link "“If we put another two or perhaps three justices on, that will happen — and that'll happen automatically, in my opinion, because I am putting pro-life justices on the court.” Came True · Donald Trump" [ref=e186] [cursor=pointer]:
+                  - /url: /claims/justices-overturn-roe
+                  - paragraph [ref=e187]: “If we put another two or perhaps three justices on, that will happen — and that'll happen automatically, in my opinion, because I am putting pro-life justices on the court.”
+                  - paragraph [ref=e188]: Came True · Donald Trump
+              - listitem [ref=e189]:
+                - link "“I'm under a routine audit and it'll be released, and as soon as the audit is finished it will be released.” Walked Back · Donald Trump" [ref=e190] [cursor=pointer]:
+                  - /url: /claims/release-tax-returns
+                  - paragraph [ref=e191]: “I'm under a routine audit and it'll be released, and as soon as the audit is finished it will be released.”
+                  - paragraph [ref=e192]: Walked Back · Donald Trump
+              - listitem [ref=e193]:
+                - link "“I'm fairly confident we can land and re-fly a booster. Rapid and complete reusability is the holy grail — and we're going to do it.” Came True · Elon Musk" [ref=e194] [cursor=pointer]:
+                  - /url: /claims/spacex-reuse-orbital-booster
+                  - paragraph [ref=e195]: “I'm fairly confident we can land and re-fly a booster. Rapid and complete reusability is the holy grail — and we're going to do it.”
+                  - paragraph [ref=e196]: Came True · Elon Musk
+  - contentinfo [ref=e197]:
+    - generic [ref=e198]:
+      - generic [ref=e199]:
+        - generic [ref=e200]:
+          - img [ref=e201]
+          - generic [ref=e205]: SmartHumans
+        - paragraph [ref=e206]: A permanent, sourced, community-verified record of what people predicted and promised — and whether it actually happened. Public figures garner the spotlight; everyone can build a record.
+        - paragraph [ref=e207]: AI proposes · humans verify
+      - generic [ref=e208]:
+        - paragraph [ref=e209]: Explore
+        - list [ref=e210]:
+          - listitem [ref=e211]:
+            - link "Browse by topic" [ref=e212] [cursor=pointer]:
+              - /url: /browse
+          - listitem [ref=e213]:
+            - link "Leaderboards" [ref=e214] [cursor=pointer]:
+              - /url: /leaderboards
+          - listitem [ref=e215]:
+            - link "Smartest users" [ref=e216] [cursor=pointer]:
+              - /url: /leaderboards?tab=users
+          - listitem [ref=e217]:
+            - link "Resolving soon" [ref=e218] [cursor=pointer]:
+              - /url: /resolving-soon
+          - listitem [ref=e219]:
+            - link "Notifications" [ref=e220] [cursor=pointer]:
+              - /url: /notifications
+          - listitem [ref=e221]:
+            - link "Submit a claim" [ref=e222] [cursor=pointer]:
+              - /url: /submit
+      - generic [ref=e223]:
+        - paragraph [ref=e224]: Trust
+        - list [ref=e225]:
+          - listitem [ref=e226]:
+            - link "Methodology" [ref=e227] [cursor=pointer]:
+              - /url: /methodology
+          - listitem [ref=e228]:
+            - link "Review queue" [ref=e229] [cursor=pointer]:
+              - /url: /review
+          - listitem [ref=e230]:
+            - link "How verdicts are reached" [ref=e231] [cursor=pointer]:
+              - /url: /methodology#resolution
+          - listitem [ref=e232]:
+            - link "Disputes & appeals" [ref=e233] [cursor=pointer]:
+              - /url: /methodology#appeals
+          - listitem [ref=e234]:
+            - link "AI & agent policy" [ref=e235] [cursor=pointer]:
+              - /url: /methodology#agents
+    - generic [ref=e237]: © 2026 SmartHumans — no primary source, no claim.
+  - button "Open Next.js Dev Tools" [ref=e243] [cursor=pointer]:
+    - img [ref=e244]
+  - alert [ref=e251]

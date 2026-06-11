@@ -1,0 +1,158 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "SmartHumans" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]:
+          - img [ref=e6]
+          - generic [ref=e10]: SmartHumans
+      - search [ref=e11]:
+        - img
+        - combobox "Search anyone or any claim…" [ref=e12]
+      - generic [ref=e13]:
+        - link "+ Submit" [ref=e14] [cursor=pointer]:
+          - /url: /submit
+          - generic [ref=e15]: +
+          - text: Submit
+        - link "Your feed — stakes and submissions from members you follow" [ref=e16] [cursor=pointer]:
+          - /url: /feed
+          - img [ref=e17]
+        - link "Notifications" [ref=e21] [cursor=pointer]:
+          - /url: /notifications
+          - img [ref=e22]
+        - link "Sign in" [ref=e26] [cursor=pointer]:
+          - /url: /sign-in
+  - navigation [ref=e27]:
+    - generic [ref=e28]:
+      - link "AI" [ref=e29] [cursor=pointer]:
+        - /url: /browse/ai
+      - link "Markets" [ref=e30] [cursor=pointer]:
+        - /url: /browse/markets
+      - link "Stocks" [ref=e31] [cursor=pointer]:
+        - /url: /browse/stocks
+      - link "Semiconductors" [ref=e32] [cursor=pointer]:
+        - /url: /browse/semiconductors
+      - link "Gold" [ref=e33] [cursor=pointer]:
+        - /url: /browse/gold
+      - link "Economy" [ref=e34] [cursor=pointer]:
+        - /url: /browse/economy
+      - link "Health" [ref=e35] [cursor=pointer]:
+        - /url: /browse/health
+      - link "Immigration" [ref=e36] [cursor=pointer]:
+        - /url: /browse/immigration
+      - link "Foreign Policy" [ref=e37] [cursor=pointer]:
+        - /url: /browse/foreign_policy
+      - link "NBA" [ref=e38] [cursor=pointer]:
+        - /url: /browse/nba
+      - link "MLB" [ref=e39] [cursor=pointer]:
+        - /url: /browse/mlb
+      - link "NFL" [ref=e40] [cursor=pointer]:
+        - /url: /browse/nfl
+      - link "F1" [ref=e41] [cursor=pointer]:
+        - /url: /browse/f1
+      - link "More →" [ref=e42] [cursor=pointer]:
+        - /url: /browse
+  - main [ref=e43]:
+    - generic [ref=e44]:
+      - heading "Submit a claim" [level=1] [ref=e45]
+      - paragraph [ref=e46]: Add a prediction or promise to the public record. Every submission goes through community review before publication.
+      - generic [ref=e47]:
+        - paragraph [ref=e48]: No primary source, no claim.
+        - paragraph [ref=e49]: Every quote must link to video, an archived post, an official filing, or a published article.
+      - generic [ref=e50]:
+        - generic [ref=e52]:
+          - button "A public figure said it" [ref=e53]
+          - button "Community question" [ref=e54]
+        - generic [ref=e55]:
+          - paragraph [ref=e56]:
+            - img [ref=e57]
+            - text: Start with the primary source
+          - paragraph [ref=e60]: Paste the video, article, or archived post first — it's required, and it carries through the whole form. (AI extraction of quote, speaker, and date is coming; until then you confirm each field.)
+          - generic [ref=e61]:
+            - textbox "https://…" [ref=e62]
+            - button "Use this source" [disabled] [ref=e63]
+          - paragraph [ref=e64]: Or fill in the form manually below.
+        - list [ref=e65]:
+          - listitem [ref=e66]:
+            - generic [ref=e68]: 1. Who said it
+          - listitem [ref=e69]:
+            - generic [ref=e71]: 2. Quote & source
+          - listitem [ref=e72]:
+            - generic [ref=e74]: 3. When & where
+          - listitem [ref=e75]:
+            - generic [ref=e77]: 4. Claim & deadline
+          - listitem [ref=e78]:
+            - generic [ref=e80]: 5. Review
+        - generic [ref=e81]:
+          - generic [ref=e82]:
+            - generic [ref=e83]: Who said it? *
+            - paragraph [ref=e84]: Public figure or anyone on the record.
+            - generic [ref=e86]:
+              - combobox "e.g. Donald Trump" [expanded] [active] [ref=e87]: Donald Tru
+              - list [ref=e143]:
+                - listitem [ref=e144]:
+                  - button "Donald Trump Donald Trump Politician" [ref=e145]:
+                    - img "Donald Trump" [ref=e146]
+                    - generic [ref=e147]: Donald Trump
+                    - generic [ref=e148]: Politician
+                - listitem [ref=e174]:
+                  - button "+ Add “Donald Tru” — new to the record" [ref=e175]:
+                    - generic [ref=e176]: +
+                    - generic [ref=e177]:
+                      - text: Add
+                      - generic [ref=e178]: “Donald Tru”
+                      - generic [ref=e179]: — new to the record
+          - generic [ref=e88]:
+            - button "Back" [disabled] [ref=e89]
+            - button "Continue" [ref=e90]
+  - contentinfo [ref=e91]:
+    - generic [ref=e92]:
+      - generic [ref=e93]:
+        - generic [ref=e94]:
+          - img [ref=e95]
+          - generic [ref=e99]: SmartHumans
+        - paragraph [ref=e100]: A permanent, sourced, community-verified record of what people predicted and promised — and whether it actually happened. Public figures garner the spotlight; everyone can build a record.
+        - paragraph [ref=e101]: AI proposes · humans verify
+      - generic [ref=e102]:
+        - paragraph [ref=e103]: Explore
+        - list [ref=e104]:
+          - listitem [ref=e105]:
+            - link "Browse by topic" [ref=e106] [cursor=pointer]:
+              - /url: /browse
+          - listitem [ref=e107]:
+            - link "Leaderboards" [ref=e108] [cursor=pointer]:
+              - /url: /leaderboards
+          - listitem [ref=e109]:
+            - link "Smartest users" [ref=e110] [cursor=pointer]:
+              - /url: /leaderboards?tab=users
+          - listitem [ref=e111]:
+            - link "Resolving soon" [ref=e112] [cursor=pointer]:
+              - /url: /resolving-soon
+          - listitem [ref=e113]:
+            - link "Notifications" [ref=e114] [cursor=pointer]:
+              - /url: /notifications
+          - listitem [ref=e115]:
+            - link "Submit a claim" [ref=e116] [cursor=pointer]:
+              - /url: /submit
+      - generic [ref=e117]:
+        - paragraph [ref=e118]: Trust
+        - list [ref=e119]:
+          - listitem [ref=e120]:
+            - link "Methodology" [ref=e121] [cursor=pointer]:
+              - /url: /methodology
+          - listitem [ref=e122]:
+            - link "Review queue" [ref=e123] [cursor=pointer]:
+              - /url: /review
+          - listitem [ref=e124]:
+            - link "How verdicts are reached" [ref=e125] [cursor=pointer]:
+              - /url: /methodology#resolution
+          - listitem [ref=e126]:
+            - link "Disputes & appeals" [ref=e127] [cursor=pointer]:
+              - /url: /methodology#appeals
+          - listitem [ref=e128]:
+            - link "AI & agent policy" [ref=e129] [cursor=pointer]:
+              - /url: /methodology#agents
+    - generic [ref=e131]: © 2026 SmartHumans — no primary source, no claim.
+  - button "Open Next.js Dev Tools" [ref=e137] [cursor=pointer]:
+    - img [ref=e138]
+  - alert [ref=e141]

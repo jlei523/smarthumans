@@ -1,0 +1,312 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "SmartHumans" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]:
+          - img [ref=e6]
+          - generic [ref=e10]: SmartHumans
+      - search [ref=e11]:
+        - img
+        - combobox "Search anyone or any claim…" [ref=e12]
+      - generic [ref=e13]:
+        - link "+ Submit" [ref=e14] [cursor=pointer]:
+          - /url: /submit
+          - generic [ref=e15]: +
+          - text: Submit
+        - link "Your feed" [ref=e16] [cursor=pointer]:
+          - /url: /feed
+          - img [ref=e17]
+        - link "Notifications" [ref=e21] [cursor=pointer]:
+          - /url: /notifications
+          - img [ref=e22]
+  - navigation [ref=e26]:
+    - generic [ref=e27]:
+      - link "AI" [ref=e28] [cursor=pointer]:
+        - /url: /browse/ai
+      - link "Markets" [ref=e29] [cursor=pointer]:
+        - /url: /browse/markets
+      - link "Stocks" [ref=e30] [cursor=pointer]:
+        - /url: /browse/stocks
+      - link "Semiconductors" [ref=e31] [cursor=pointer]:
+        - /url: /browse/semiconductors
+      - link "Gold" [ref=e32] [cursor=pointer]:
+        - /url: /browse/gold
+      - link "Economy" [ref=e33] [cursor=pointer]:
+        - /url: /browse/economy
+      - link "Health" [ref=e34] [cursor=pointer]:
+        - /url: /browse/health
+      - link "Immigration" [ref=e35] [cursor=pointer]:
+        - /url: /browse/immigration
+      - link "Foreign Policy" [ref=e36] [cursor=pointer]:
+        - /url: /browse/foreign_policy
+      - link "NBA" [ref=e37] [cursor=pointer]:
+        - /url: /browse/nba
+      - link "MLB" [ref=e38] [cursor=pointer]:
+        - /url: /browse/mlb
+      - link "NFL" [ref=e39] [cursor=pointer]:
+        - /url: /browse/nfl
+      - link "F1" [ref=e40] [cursor=pointer]:
+        - /url: /browse/f1
+      - link "More →" [ref=e41] [cursor=pointer]:
+        - /url: /browse
+  - main [ref=e42]:
+    - generic [ref=e43]:
+      - navigation [ref=e44]:
+        - link "Home" [ref=e45] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e46]: /
+        - link "Economy" [ref=e47] [cursor=pointer]:
+          - /url: /browse/economy
+      - generic [ref=e48]:
+        - main [ref=e49]:
+          - paragraph [ref=e50]: Claim
+          - heading "The 2025 tariff regime pushes U.S. CPI inflation above 4% by mid-2026." [level=1] [ref=e51]
+          - generic [ref=e52]:
+            - generic [ref=e54]: Pending
+            - generic [ref=e55]: resolves in 51 d · deadline Jul 31, 2026
+          - paragraph [ref=e56]: This claim has not resolved yet. It will be scored against the resolution criteria.
+          - group [ref=e57]:
+            - generic "Resolution criteria" [ref=e58] [cursor=pointer]
+          - generic [ref=e60]:
+            - heading "Positions" [level=2] [ref=e62]
+            - generic [ref=e63]:
+              - generic [ref=e64]:
+                - generic [ref=e65]:
+                  - paragraph [ref=e66]: Said it would happen
+                  - list [ref=e67]:
+                    - listitem [ref=e68]:
+                      - link "Paul Krugman Paul Krugman" [ref=e70] [cursor=pointer]:
+                        - /url: /p/paul-krugman
+                        - img "Paul Krugman" [ref=e71]
+                        - generic [ref=e72]: Paul Krugman
+                      - blockquote [ref=e73]: “Tariffs at this scale are a supply shock. I'd be surprised if we don't see headline inflation back above 4 percent by the middle of next year.”
+                      - paragraph [ref=e74]:
+                        - generic [ref=e75]: Jul 2, 2025
+                        - generic [ref=e76]: · Substack newsletter
+                        - generic [ref=e77]: ·
+                        - link "Source ↗" [ref=e78] [cursor=pointer]:
+                          - /url: https://paulkrugman.substack.com/p/tariff-inflation-outlook
+                    - listitem [ref=e79]:
+                      - paragraph [ref=e81]:
+                        - link "u/macrowatch" [ref=e82] [cursor=pointer]:
+                          - /url: /u/u_macrowatch
+                        - text: · rep 711 · staked Sep 2, 2025
+                      - paragraph [ref=e83]:
+                        - text: April print was 3.6% and rising ~0.2/month. Two prints left before the deadline. This one is genuinely live.
+                        - link "— in discussion ↓" [ref=e84] [cursor=pointer]:
+                          - /url: "#discussion"
+                    - listitem [ref=e85]:
+                      - paragraph [ref=e87]:
+                        - link "u/factfinder" [ref=e88] [cursor=pointer]:
+                          - /url: /u/u_factfinder
+                        - text: · rep 1.8k · staked Aug 14, 2025
+                    - listitem [ref=e89]:
+                      - paragraph [ref=e91]:
+                        - link "u/sourcehound" [ref=e92] [cursor=pointer]:
+                          - /url: /u/u_sourcehound
+                        - text: · rep 1.2k · staked Aug 15, 2025
+                    - listitem [ref=e93]:
+                      - paragraph [ref=e95]:
+                        - link "u/testuser" [ref=e96] [cursor=pointer]:
+                          - /url: /u/Xnbpprc3pbQ1lLpcNOrkWJE9mrXClAba
+                        - text: · rep 35 · staked Jun 9, 2026
+                    - listitem [ref=e97]:
+                      - paragraph [ref=e99]:
+                        - link "u/Joe" [ref=e100] [cursor=pointer]:
+                          - /url: /u/RhHbeHb0bbUXXCZ6ln0CsHMVbrtP26HP
+                        - text: · rep 0 · staked Jun 10, 2026 · switched ×1
+                - generic [ref=e101]:
+                  - paragraph [ref=e102]: Said it wouldn't
+                  - list [ref=e103]:
+                    - listitem [ref=e104]:
+                      - link "Donald Trump Donald Trump" [ref=e106] [cursor=pointer]:
+                        - /url: /p/donald-trump
+                        - img "Donald Trump" [ref=e107]
+                        - generic [ref=e108]: Donald Trump
+                      - blockquote [ref=e109]: “There is no inflation from tariffs. The tariffs are bringing in billions and prices are coming down. Anyone who says otherwise is a loser who's been wrong for years.”
+                      - paragraph [ref=e110]:
+                        - generic [ref=e111]: Aug 11, 2025
+                        - generic [ref=e112]: · Truth Social post
+                        - generic [ref=e113]: ·
+                        - link "Source ↗" [ref=e114] [cursor=pointer]:
+                          - /url: https://truthsocial.com/@realDonaldTrump/posts/114980000000000000
+                    - listitem [ref=e115]:
+                      - paragraph [ref=e117]:
+                        - link "u/quietdata" [ref=e118] [cursor=pointer]:
+                          - /url: /u/u_quietdata
+                        - text: · rep 968 · staked Aug 20, 2025
+                    - listitem [ref=e119]:
+                      - paragraph [ref=e121]:
+                        - link "u/skeptic22" [ref=e122] [cursor=pointer]:
+                          - /url: /u/u_skeptic22
+                        - text: · rep 405 · staked Sep 10, 2025
+              - button "+ Add a position — on the record" [ref=e125]
+          - generic [ref=e126]:
+            - heading "Evidence" [level=2] [ref=e128]
+            - generic [ref=e129]:
+              - generic [ref=e130]:
+                - generic [ref=e131]:
+                  - paragraph [ref=e132]: That it came true
+                  - list [ref=e133]:
+                    - listitem [ref=e134]:
+                      - 'link "BLS: CPI YoY at 3.6% in April 2026, up from 2.9% a year earlier ↗" [ref=e135] [cursor=pointer]':
+                        - /url: https://www.bls.gov/news.release/cpi.nr0.htm
+                      - paragraph [ref=e136]: Bureau of Labor Statistics
+                - generic [ref=e137]:
+                  - paragraph [ref=e138]: That it didn't
+                  - list [ref=e139]:
+                    - listitem [ref=e140]:
+                      - link "Goods-price passthrough slowing per May 2026 Fed minutes ↗" [ref=e141] [cursor=pointer]:
+                        - /url: https://www.federalreserve.gov/monetarypolicy/fomcminutes2026.htm
+                      - paragraph [ref=e142]: Federal Reserve
+              - button "+ Add evidence — a sourced citation" [ref=e145]
+          - generic [ref=e146]:
+            - heading "Resolution" [level=2] [ref=e148]
+            - button "+ Propose a resolution — open the community vote" [ref=e151]
+          - generic [ref=e152]:
+            - heading "Audit trail" [level=2] [ref=e154]
+            - list [ref=e156]:
+              - listitem [ref=e157]:
+                - paragraph [ref=e158]: Jun 9, 2026 · system
+                - paragraph [ref=e159]:
+                  - text: Pending
+                  - generic [ref=e160]: "— Published after community review: quote, sourcing, and falsifiability verified."
+          - generic [ref=e162]:
+            - generic [ref=e163]:
+              - heading "Discussion (1)" [level=2] [ref=e164]
+              - generic [ref=e165]:
+                - generic [ref=e166]:
+                  - button "All 1" [ref=e167]:
+                    - text: All
+                    - generic [ref=e168]: "1"
+                  - button "Said Yes 1" [ref=e169]:
+                    - text: Said Yes
+                    - generic [ref=e170]: "1"
+                  - button "Said No 0" [ref=e171]:
+                    - text: Said No
+                    - generic [ref=e172]: "0"
+                - generic [ref=e173]:
+                  - button "Best" [ref=e174]
+                  - button "Record" [ref=e175]
+                  - button "New" [ref=e176]
+            - generic [ref=e177]:
+              - textbox "Join the conversation — cite sources where you can…" [ref=e178]
+              - button "Sign in to comment" [ref=e180]
+            - generic [ref=e182]:
+              - generic [ref=e183]:
+                - link "MA" [ref=e184] [cursor=pointer]:
+                  - /url: /u/u_macrowatch
+                - button "Collapse thread" [ref=e185]
+              - generic [ref=e187]:
+                - generic [ref=e188]:
+                  - link "u/macrowatch" [ref=e189] [cursor=pointer]:
+                    - /url: /u/u_macrowatch
+                  - generic [ref=e190]: rep 711
+                  - generic [ref=e191]: called Yes
+                  - generic [ref=e192]: ·
+                  - link "9d ago" [ref=e193] [cursor=pointer]:
+                    - /url: /comments/25
+                - paragraph [ref=e194]: April print was 3.6% and rising ~0.2/month. Two prints left before the deadline. This one is genuinely live.
+                - generic [ref=e195]:
+                  - generic [ref=e196]:
+                    - button "Upvote" [ref=e197]:
+                      - img [ref=e198]
+                    - generic [ref=e200]: "13"
+                    - button "Downvote" [ref=e201]:
+                      - img [ref=e202]
+                  - button "Reply" [ref=e204]:
+                    - img [ref=e205]
+                    - text: Reply
+                  - link "Stake it" [ref=e207] [cursor=pointer]:
+                    - /url: /submit?stake=25
+        - complementary [ref=e208]:
+          - generic [ref=e210]:
+            - button "Follow 9.9k" [ref=e211]:
+              - generic [ref=e212]: +
+              - text: Follow
+              - generic [ref=e213]: 9.9k
+            - paragraph [ref=e214]: 9.9k following — get notified when this resolves
+            - separator [ref=e215]
+            - generic [ref=e216]:
+              - paragraph [ref=e217]: Make your call
+              - generic [ref=e218]:
+                - button "Yes" [ref=e219]
+                - button "No" [ref=e220]
+              - paragraph [ref=e221]: Commit to see where the community stands.
+            - separator [ref=e222]
+            - link "Shareable verdict card ↗" [ref=e224] [cursor=pointer]:
+              - /url: /api/og/claim/tariffs-push-inflation-above-4pct-2026
+          - generic [ref=e225]:
+            - heading "Related claims" [level=2] [ref=e226]
+            - list [ref=e227]:
+              - listitem [ref=e228]:
+                - link "“Prices will come down. You just watch — they'll come down, and they'll come down fast. Groceries, cars, everything. Starting on day one.” Didn't Come True · Donald Trump" [ref=e229] [cursor=pointer]:
+                  - /url: /claims/grocery-prices-come-down
+                  - paragraph [ref=e230]: “Prices will come down. You just watch — they'll come down, and they'll come down fast. Groceries, cars, everything. Starting on day one.”
+                  - paragraph [ref=e231]: Didn't Come True · Donald Trump
+              - listitem [ref=e232]:
+                - link "“I think we get a recession in 2023 — the Fed has made that decision for us. Brace yourself.” Didn't Come True · Jim Cramer" [ref=e233] [cursor=pointer]:
+                  - /url: /claims/us-recession-by-end-2023
+                  - paragraph [ref=e234]: “I think we get a recession in 2023 — the Fed has made that decision for us. Brace yourself.”
+                  - paragraph [ref=e235]: Didn't Come True · Jim Cramer
+              - listitem [ref=e236]:
+                - link "“Those of us on Team Transitory think this inflation is mainly bottlenecks and base effects — it will subside without the Fed having to engineer a recession.” Partly True · Paul Krugman" [ref=e237] [cursor=pointer]:
+                  - /url: /claims/inflation-transitory-2021
+                  - paragraph [ref=e238]: “Those of us on Team Transitory think this inflation is mainly bottlenecks and base effects — it will subside without the Fed having to engineer a recession.”
+                  - paragraph [ref=e239]: Partly True · Paul Krugman
+              - listitem [ref=e240]:
+                - link "“By 2005 or so, it will become clear that the Internet's impact on the economy has been no greater than the fax machine's.” Didn't Come True · Paul Krugman" [ref=e241] [cursor=pointer]:
+                  - /url: /claims/internet-no-greater-than-fax
+                  - paragraph [ref=e242]: “By 2005 or so, it will become clear that the Internet's impact on the economy has been no greater than the fax machine's.”
+                  - paragraph [ref=e243]: Didn't Come True · Paul Krugman
+  - contentinfo [ref=e244]:
+    - generic [ref=e245]:
+      - generic [ref=e246]:
+        - generic [ref=e247]:
+          - img [ref=e248]
+          - generic [ref=e252]: SmartHumans
+        - paragraph [ref=e253]: A permanent, sourced, community-verified record of what people predicted and promised — and whether it actually happened. Public figures garner the spotlight; everyone can build a record.
+        - paragraph [ref=e254]: AI proposes · humans verify
+      - generic [ref=e255]:
+        - paragraph [ref=e256]: Explore
+        - list [ref=e257]:
+          - listitem [ref=e258]:
+            - link "Browse by topic" [ref=e259] [cursor=pointer]:
+              - /url: /browse
+          - listitem [ref=e260]:
+            - link "Leaderboards" [ref=e261] [cursor=pointer]:
+              - /url: /leaderboards
+          - listitem [ref=e262]:
+            - link "Smartest users" [ref=e263] [cursor=pointer]:
+              - /url: /leaderboards?tab=users
+          - listitem [ref=e264]:
+            - link "Resolving soon" [ref=e265] [cursor=pointer]:
+              - /url: /resolving-soon
+          - listitem [ref=e266]:
+            - link "Notifications" [ref=e267] [cursor=pointer]:
+              - /url: /notifications
+          - listitem [ref=e268]:
+            - link "Submit a claim" [ref=e269] [cursor=pointer]:
+              - /url: /submit
+      - generic [ref=e270]:
+        - paragraph [ref=e271]: Trust
+        - list [ref=e272]:
+          - listitem [ref=e273]:
+            - link "Methodology" [ref=e274] [cursor=pointer]:
+              - /url: /methodology
+          - listitem [ref=e275]:
+            - link "Review queue" [ref=e276] [cursor=pointer]:
+              - /url: /review
+          - listitem [ref=e277]:
+            - link "How verdicts are reached" [ref=e278] [cursor=pointer]:
+              - /url: /methodology#resolution
+          - listitem [ref=e279]:
+            - link "Disputes & appeals" [ref=e280] [cursor=pointer]:
+              - /url: /methodology#appeals
+          - listitem [ref=e281]:
+            - link "AI & agent policy" [ref=e282] [cursor=pointer]:
+              - /url: /methodology#agents
+    - generic [ref=e284]: © 2026 SmartHumans — no primary source, no claim.
+  - button "Open Next.js Dev Tools" [ref=e290] [cursor=pointer]:
+    - img [ref=e291]

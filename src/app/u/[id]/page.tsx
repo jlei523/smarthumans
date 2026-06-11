@@ -184,15 +184,15 @@ export default async function UserProfilePage({
 
         {/* called-it highlight */}
         {calledIt && (
-          <div className="rounded-[14px] border border-l-[3px] border-l-st-true bg-card p-5">
-            <p className="mb-2.5 font-meta text-[11px] uppercase tracking-[0.14em] text-st-true">
+          <div className="rounded-[14px] border bg-st-true-bg p-5">
+            <p className="mb-2.5 font-meta text-[11px] uppercase tracking-[0.14em] text-st-true-tx">
               Called it · biggest correct call
             </p>
             <p className="font-serif text-[17px] leading-snug">
               {calledIt.proposition.statement}
             </p>
             <div className="mt-3 flex items-center justify-between gap-2.5">
-              <span className="rounded-[5px] bg-st-true-bg px-2 py-0.5 text-xs font-semibold text-st-true-tx">
+              <span className="rounded-[5px] bg-card px-2 py-0.5 text-xs font-semibold text-st-true-tx">
                 called {calledIt.position === "affirm" ? "Yes" : "No"} — and{" "}
                 {calledIt.position === "affirm" ? "it came true" : "it didn't happen"}
               </span>

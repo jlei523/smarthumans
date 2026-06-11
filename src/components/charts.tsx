@@ -37,26 +37,25 @@ export function DistributionBar({
       </div>
     );
   }
+  const active = segments.filter((s) => s.count > 0);
   return (
-    <p className={cn("text-xs leading-relaxed text-muted-foreground", className)}>
-      {showLegend && <span className="font-medium text-foreground">Record: </span>}
-      {segments
-        .filter((s) => s.count > 0)
-        .map((s, i) => (
-          <span key={s.key} className="whitespace-nowrap">
-            {i > 0 && " · "}
-            <span
-              className={cn(
-                "mr-1 inline-block size-2 rounded-full align-baseline",
-                STATUS_META[s.key].dot,
-              )}
-            />
-            <span className="font-medium text-foreground tabular-nums">
-              {s.count}
-            </span>{" "}
-            {s.label}
-          </span>
-        ))}
+    <p className={cn("flex flex-wrap gap-y-0.5 text-xs leading-relaxed text-muted-foreground", className)}>
+      {showLegend && <span className="mr-1 font-medium text-foreground whitespace-nowrap">Record:</span>}
+      {active.map((s, i) => (
+        <span key={s.key} className="whitespace-nowrap">
+          {i > 0 && <span className="mx-1 text-ink-4">·</span>}
+          <span
+            className={cn(
+              "mr-1 inline-block size-2 rounded-full align-baseline",
+              STATUS_META[s.key].dot,
+            )}
+          />
+          <span className="font-medium text-foreground tabular-nums">
+            {s.count}
+          </span>{" "}
+          {s.label}
+        </span>
+      ))}
     </p>
   );
 }
@@ -263,8 +262,12 @@ export function Sparkline({
   const points = xs.map((x, i) => `${x},${ys[i]}`).join(" ");
   const last = series[series.length - 1];
   return (
-    <div className={cn("flex items-end gap-2", className)}>
-      <svg width={width} height={height}>
+    <div className={cn("flex items-end gap-2 min-w-0", className)}>
+      <svg
+        viewBox={`0 0 ${width} ${height}`}
+        style={{ width: "100%", maxWidth: width, height: "auto" }}
+        className="min-w-0 flex-1"
+      >
         <line
           x1={pad}
           x2={width - pad}

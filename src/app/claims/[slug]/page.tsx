@@ -2,7 +2,7 @@ import Link from "next/link";
 import { headers } from "next/headers";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { StatusBadge } from "@/components/status-badge";
+import { StatusBadge, StatusDot } from "@/components/status-badge";
 import { PersonAvatar } from "@/components/person-chip";
 import { Section } from "@/components/section";
 import { FollowButton } from "@/components/follow-button";
@@ -274,8 +274,9 @@ export default async function ClaimPage({
         className="w-full justify-center"
       />
       <p className="mt-2 text-center text-xs text-muted-foreground">
-        {fmtCount(claim.followerCount)} following — get notified when this
-        resolves
+        {claim.status === "pending" || claim.status === "disputed"
+          ? `${fmtCount(claim.followerCount)} following — get notified when this resolves`
+          : `${fmtCount(claim.followerCount)} followed this to resolution`}
       </p>
 
       <hr className="my-4 border-border" />
@@ -560,26 +561,48 @@ export default async function ClaimPage({
               <h2 className="border-b pb-2 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">
                 Related claims
               </h2>
-              <ul className="divide-y">
-                {related.map((p) => {
-                  const ps = primaryStance(p);
-                  return (
-                    <li key={p.id}>
-                      <Link href={`/claims/${p.slug}`} className="group block py-3">
-                        <p className="text-sm leading-snug line-clamp-2 group-hover:underline underline-offset-2">
-                          {ps ? `“${ps.quote}”` : p.statement}
-                        </p>
-                        <p className="mt-1 text-xs text-muted-foreground">
-                          <span className={cn("font-semibold", STATUS_TEXT[p.status])}>
-                            {STATUS_META[p.status].label}
-                          </span>
-                          {ps && <> · {ps.person.name}</>}
-                        </p>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
+              <div className="mt-4">
+                <ul className="divide-y">
+                  {related.map((p) => {
+                    const ps = primaryStance(p);
+                    return (
+                      <li
+                        key={p.id}
+                        className="group relative -mx-2 rounded-sm px-2 transition-colors hover:bg-paper-2"
+                      >
+                        <div className="py-3">
+                          {/* full-row tap target via pseudo-overlay */}
+                          <Link
+                            href={`/claims/${p.slug}`}
+                            className="after:absolute after:inset-0"
+                          >
+                            <p className="text-sm leading-snug line-clamp-2 group-hover:underline underline-offset-2">
+                              {p.statement}
+                            </p>
+                          </Link>
+                          <p className="mt-1.5 relative z-10 flex items-center gap-1.5 text-xs text-muted-foreground">
+                            <StatusDot status={p.status} />
+                            <span className={cn("font-semibold", STATUS_TEXT[p.status])}>
+                              {STATUS_META[p.status].label}
+                            </span>
+                            {ps && (
+                              <>
+                                <span aria-hidden>·</span>
+                                <Link
+                                  href={`/p/${ps.person.slug}`}
+                                  className="hover:text-foreground hover:underline underline-offset-2"
+                                >
+                                  {ps.person.name}
+                                </Link>
+                              </>
+                            )}
+                          </p>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             </section>
           )}
         </aside>
@@ -634,7 +657,7 @@ function PositionList({
                 )}
               </div>
               <blockquote className="mt-1 font-serif text-sm italic leading-relaxed text-ink-2">
-                “{s.quote}”
+                "{s.quote}"
               </blockquote>
               <p className="mt-1.5 flex flex-wrap gap-x-2 gap-y-0.5 text-xs text-muted-foreground">
                 <span>{fmtDate(s.dateStated)}</span>

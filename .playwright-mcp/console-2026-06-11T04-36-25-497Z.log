@@ -1,0 +1,189 @@
+[     603ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[     640ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  227583ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  227653ms] [LOG] [Fast Refresh] done in 145ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  355348ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  355375ms] [LOG] [Fast Refresh] done in 128ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  365854ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  365896ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  368950ms] [WARNING] The resource http://localhost:3000/_next/static/media/99e609270109b47d-s.p.40sczeszzbjw1.woff2 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ http://localhost:3000/claims/tariffs-push-inflation-above-4pct-2026:0
+[  379420ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  379433ms] [ERROR] ./Dropbox (Maestral)/smarthumans.ai/src/app/claims/[slug]/page.tsx:560:32
+Unexpected character '”'
+  558 |
+  559 |           {related.length > 0 && (
+> 560 |             <section className=”mt-10”>
+      |                                ^
+  561 |               <h2 className=”border-b pb-2 text-xs font-semibold uppercase tracking-[0.12...
+  562 |                 Related claims
+  563 |               </h2>
+
+Parsing ecmascript source code failed @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:3318
+[  379525ms] [ERROR] ./Dropbox (Maestral)/smarthumans.ai/src/app/claims/[slug]/page.tsx:560:32
+Unexpected character '”'
+  558 |
+  559 |           {related.length > 0 && (
+> 560 |             <section className=”mt-10”>
+      |                                ^
+  561 |               <h2 className=”border-b pb-2 text-xs font-semibold uppercase tracking-[0.12...
+  562 |                 Related claims
+  563 |               </h2>
+
+Parsing ecmascript source code failed @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:3318
+[  379526ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/claims/tariffs-push-inflation-above-4pct-2026?_rsc=zGRvZpGKYGQqrG6g:0
+[  379624ms] [ERROR] ./Dropbox (Maestral)/smarthumans.ai/src/app/claims/[slug]/page.tsx:560:32
+Unexpected character '”'
+  558 |
+  559 |           {related.length > 0 && (
+> 560 |             <section className=”mt-10”>
+      |                                ^
+  561 |               <h2 className=”border-b pb-2 text-xs font-semibold uppercase tracking-[0.12...
+  562 |                 Related claims
+  563 |               </h2>
+
+Parsing ecmascript source code failed @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:3318
+[  379642ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/claims/tariffs-push-inflation-above-4pct-2026:0
+[  379777ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_react-dom_0juj_l_._.js:15305
+[  379816ms] Error: ./Dropbox (Maestral)/smarthumans.ai/src/app/claims/[slug]/page.tsx:560:32
+Unexpected character '”'
+  558 |
+  559 |           {related.length > 0 && (
+> 560 |             <section className=”mt-10”>
+      |                                ^
+  561 |               <h2 className=”border-b pb-2 text-xs font-semibold uppercase tracking-[0.12...
+  562 |                 Related claims
+  563 |               </h2>
+
+Parsing ecmascript source code failed
+
+
+    at <unknown> (Error: ./Dropbox (Maestral)/smarthumans.ai/src/app/claims/[slug]/page.tsx:560:32)
+    at Object.getCompilationErrors (file:///Users/joelei/Dropbox (Maestral)/smarthumans.ai/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:1186:59)
+    at DevBundlerService.getCompilationError (file:///Users/joelei/Dropbox (Maestral)/smarthumans.ai/node_modules/next/dist/server/lib/dev-bundler-service.js:44:55)
+    at DevServer.getCompilationError (file:///Users/joelei/Dropbox (Maestral)/smarthumans.ai/node_modules/next/dist/server/dev/next-dev-server.js:720:42)
+    at DevServer.findPageComponents (file:///Users/joelei/Dropbox (Maestral)/smarthumans.ai/node_modules/next/dist/server/dev/next-dev-server.js:690:43)
+    at async DevServer.renderErrorToResponseImpl (file:///Users/joelei/Dropbox (Maestral)/smarthumans.ai/node_modules/next/dist/server/base-server.js:1753:26)
+[  379816ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_0sxpgfl._.js:1226
+[  379818ms] [ERROR] ./Dropbox (Maestral)/smarthumans.ai/src/app/claims/[slug]/page.tsx:560:32
+Unexpected character '”'
+  558 |
+  559 |           {related.length > 0 && (
+> 560 |             <section className=”mt-10”>
+      |                                ^
+  561 |               <h2 className=”border-b pb-2 text-xs font-semibold uppercase tracking-[0.12...
+  562 |                 Related claims
+  563 |               </h2>
+
+Parsing ecmascript source code failed @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_0sxpgfl._.js:1945
+[  379874ms] [ERROR] ./Dropbox (Maestral)/smarthumans.ai/src/app/claims/[slug]/page.tsx:560:32
+Unexpected character '”'
+  558 |
+  559 |           {related.length > 0 && (
+> 560 |             <section className=”mt-10”>
+      |                                ^
+  561 |               <h2 className=”border-b pb-2 text-xs font-semibold uppercase tracking-[0.12...
+  562 |                 Related claims
+  563 |               </h2>
+
+Parsing ecmascript source code failed @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_0sxpgfl._.js:1945
+[  379896ms] [ERROR] ./Dropbox (Maestral)/smarthumans.ai/src/app/claims/[slug]/page.tsx:560:32
+Unexpected character '”'
+  558 |
+  559 |           {related.length > 0 && (
+> 560 |             <section className=”mt-10”>
+      |                                ^
+  561 |               <h2 className=”border-b pb-2 text-xs font-semibold uppercase tracking-[0.12...
+  562 |                 Related claims
+  563 |               </h2>
+
+Parsing ecmascript source code failed @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_0sxpgfl._.js:1945
+[  379976ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_0sxpgfl._.js:1226
+[  422622ms] [ERROR] ./Dropbox (Maestral)/smarthumans.ai/src/app/claims/[slug]/page.tsx:560:32
+Unexpected character '”'
+  558 |
+  559 |           {related.length > 0 && (
+> 560 |             <section className=”mt-10”>
+      |                                ^
+  561 |               <h2 className=”border-b pb-2 text-xs font-semibold uppercase tracking-[0.12...
+  562 |                 Related claims
+  563 |               </h2>
+
+Parsing ecmascript source code failed @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_0sxpgfl._.js:1945
+[  422643ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_0sxpgfl._.js:1226
+[  480736ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_0sxpgfl._.js:1226
+[  481981ms] [LOG] [Fast Refresh] done in 1345ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_0sxpgfl._.js:1226
+[  482450ms] [WARNING] [Fast Refresh] performing full reload because your application had an unrecoverable error @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_0sxpgfl._.js:1226
+[  482900ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_0sxpgfl._.js:1226
+[  483181ms] [LOG] [Fast Refresh] done in 382ms @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_0sxpgfl._.js:1226
+[  485217ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  485253ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:2477
+[  485809ms] [ERROR] ./Dropbox (Maestral)/smarthumans.ai/src/app/claims/[slug]/page.tsx:560:32
+Unexpected character '”'
+  558 |
+  559 |           {related.length > 0 && (
+> 560 |             <section className=”mt-10”>
+      |                                ^
+  561 |               <h2 className=”border-b pb-2 text-xs font-semibold uppercase tracking-[0.12...
+  562 |                 Related claims
+  563 |               </h2>
+
+Parsing ecmascript source code failed @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:3318
+[  485872ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/api/auth/get-session:0
+[  485882ms] [ERROR] ./Dropbox (Maestral)/smarthumans.ai/src/app/claims/[slug]/page.tsx:560:32
+Unexpected character '”'
+  558 |
+  559 |           {related.length > 0 && (
+> 560 |             <section className=”mt-10”>
+      |                                ^
+  561 |               <h2 className=”border-b pb-2 text-xs font-semibold uppercase tracking-[0.12...
+  562 |                 Related claims
+  563 |               </h2>
+
+Parsing ecmascript source code failed @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_1hdtlhn._.js:3318
+[  485885ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/claims/tariffs-push-inflation-above-4pct-2026?_rsc=zGRvZpGKYGQqrG6g:0
+[  485907ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/claims/tariffs-push-inflation-above-4pct-2026?_rsc=zGRvZpGKYGQqrG6g:0
+[  485938ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/claims/tariffs-push-inflation-above-4pct-2026:0
+[  485987ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/1l_l_react-dom_0juj_l_._.js:15305
+[  485996ms] Error: ./Dropbox (Maestral)/smarthumans.ai/src/app/claims/[slug]/page.tsx:560:32
+Unexpected character '”'
+  558 |
+  559 |           {related.length > 0 && (
+> 560 |             <section className=”mt-10”>
+      |                                ^
+  561 |               <h2 className=”border-b pb-2 text-xs font-semibold uppercase tracking-[0.12...
+  562 |                 Related claims
+  563 |               </h2>
+
+Parsing ecmascript source code failed
+
+
+    at <unknown> (Error: ./Dropbox (Maestral)/smarthumans.ai/src/app/claims/[slug]/page.tsx:560:32)
+    at Object.getCompilationErrors (file:///Users/joelei/Dropbox (Maestral)/smarthumans.ai/node_modules/next/dist/server/dev/hot-reloader-turbopack.js:1186:59)
+    at DevBundlerService.getCompilationError (file:///Users/joelei/Dropbox (Maestral)/smarthumans.ai/node_modules/next/dist/server/lib/dev-bundler-service.js:44:55)
+    at DevServer.getCompilationError (file:///Users/joelei/Dropbox (Maestral)/smarthumans.ai/node_modules/next/dist/server/dev/next-dev-server.js:720:42)
+    at DevServer.findPageComponents (file:///Users/joelei/Dropbox (Maestral)/smarthumans.ai/node_modules/next/dist/server/dev/next-dev-server.js:690:43)
+    at async DevServer.renderErrorToResponseImpl (file:///Users/joelei/Dropbox (Maestral)/smarthumans.ai/node_modules/next/dist/server/base-server.js:1753:26)
+[  485995ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_0sxpgfl._.js:1226
+[  486000ms] [ERROR] ./Dropbox (Maestral)/smarthumans.ai/src/app/claims/[slug]/page.tsx:560:32
+Unexpected character '”'
+  558 |
+  559 |           {related.length > 0 && (
+> 560 |             <section className=”mt-10”>
+      |                                ^
+  561 |               <h2 className=”border-b pb-2 text-xs font-semibold uppercase tracking-[0.12...
+  562 |                 Related claims
+  563 |               </h2>
+
+Parsing ecmascript source code failed @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_0sxpgfl._.js:1945
+[  486054ms] [ERROR] ./Dropbox (Maestral)/smarthumans.ai/src/app/claims/[slug]/page.tsx:560:32
+Unexpected character '”'
+  558 |
+  559 |           {related.length > 0 && (
+> 560 |             <section className=”mt-10”>
+      |                                ^
+  561 |               <h2 className=”border-b pb-2 text-xs font-semibold uppercase tracking-[0.12...
+  562 |                 Related claims
+  563 |               </h2>
+
+Parsing ecmascript source code failed @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_0sxpgfl._.js:1945
+[  486100ms] [LOG] [Fast Refresh] rebuilding @ http://localhost:3000/_next/static/chunks/1l_l_next_dist_0sxpgfl._.js:1226

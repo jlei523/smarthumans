@@ -1,0 +1,159 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "SmartHumans" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]:
+          - img [ref=e6]
+          - generic [ref=e10]: SmartHumans
+      - search [ref=e11]:
+        - img
+        - combobox "Search anyone or any claim…" [ref=e12]
+      - generic [ref=e13]:
+        - link "+ Submit" [ref=e14] [cursor=pointer]:
+          - /url: /submit
+          - generic [ref=e15]: +
+          - text: Submit
+        - link "Your feed — stakes and submissions from members you follow" [ref=e16] [cursor=pointer]:
+          - /url: /feed
+          - img [ref=e17]
+        - link "Notifications" [ref=e21] [cursor=pointer]:
+          - /url: /notifications
+          - img [ref=e22]
+  - navigation [ref=e27]:
+    - generic [ref=e28]:
+      - link "AI" [ref=e29] [cursor=pointer]:
+        - /url: /browse/ai
+      - link "Markets" [ref=e30] [cursor=pointer]:
+        - /url: /browse/markets
+      - link "Stocks" [ref=e31] [cursor=pointer]:
+        - /url: /browse/stocks
+      - link "Semiconductors" [ref=e32] [cursor=pointer]:
+        - /url: /browse/semiconductors
+      - link "Gold" [ref=e33] [cursor=pointer]:
+        - /url: /browse/gold
+      - link "Economy" [ref=e34] [cursor=pointer]:
+        - /url: /browse/economy
+      - link "Health" [ref=e35] [cursor=pointer]:
+        - /url: /browse/health
+      - link "Immigration" [ref=e36] [cursor=pointer]:
+        - /url: /browse/immigration
+      - link "Foreign Policy" [ref=e37] [cursor=pointer]:
+        - /url: /browse/foreign_policy
+      - link "NBA" [ref=e38] [cursor=pointer]:
+        - /url: /browse/nba
+      - link "MLB" [ref=e39] [cursor=pointer]:
+        - /url: /browse/mlb
+      - link "NFL" [ref=e40] [cursor=pointer]:
+        - /url: /browse/nfl
+      - link "F1" [ref=e41] [cursor=pointer]:
+        - /url: /browse/f1
+      - link "More →" [ref=e42] [cursor=pointer]:
+        - /url: /browse
+  - main [ref=e43]:
+    - generic [ref=e44]:
+      - heading "Search" [level=1] [ref=e45]
+      - search [ref=e46]:
+        - img
+        - combobox "Search anyone or any claim…" [ref=e47]
+      - generic [ref=e48]:
+        - heading "Claims (2)" [level=2] [ref=e49]
+        - generic [ref=e50]:
+          - generic [ref=e51]:
+            - generic [ref=e52]:
+              - button "Trending" [ref=e54]:
+                - img [ref=e55]
+                - text: Trending
+                - img [ref=e57]
+              - button "All time" [ref=e60]:
+                - text: All time
+                - img [ref=e61]
+            - 'button "Status: All" [ref=e65]':
+              - generic [ref=e66]: "Status:"
+              - text: All
+              - img [ref=e67]
+          - generic [ref=e69]:
+            - article [ref=e70]:
+              - generic [ref=e71]:
+                - link "Paul Krugman Paul Krugman" [ref=e74] [cursor=pointer]:
+                  - /url: /p/paul-krugman
+                  - img "Paul Krugman" [ref=e76]
+                  - generic [ref=e77]: Paul Krugman
+                - generic [ref=e79]:
+                  - generic [ref=e80]: Pending
+                  - generic [ref=e82]: 51 d
+              - paragraph [ref=e83]:
+                - link "The 2025 tariff regime pushes U.S. CPI inflation above 4% by mid-2026." [ref=e84] [cursor=pointer]:
+                  - /url: /claims/tariffs-push-inflation-above-4pct-2026
+              - generic [ref=e85]:
+                - button "Follow 9.9k" [ref=e87]:
+                  - generic [ref=e88]: +
+                  - text: Follow
+                  - generic [ref=e89]: 9.9k
+                - generic "Your call on this claim — scored on resolution, feeds your track record" [ref=e92]:
+                  - button "Yes" [ref=e93]
+                  - button "No" [ref=e95]
+            - article [ref=e96]:
+              - generic [ref=e97]:
+                - link "Paul Krugman Paul Krugman" [ref=e100] [cursor=pointer]:
+                  - /url: /p/paul-krugman
+                  - img "Paul Krugman" [ref=e102]
+                  - generic [ref=e103]: Paul Krugman
+                - generic [ref=e106]: Partly
+              - paragraph [ref=e107]:
+                - link "Post-pandemic inflation is transitory and recedes without a major rise in unemployment." [ref=e108] [cursor=pointer]:
+                  - /url: /claims/inflation-transitory-2021
+              - button "Follow 6.7k" [ref=e111]:
+                - generic [ref=e112]: +
+                - text: Follow
+                - generic [ref=e113]: 6.7k
+  - contentinfo [ref=e114]:
+    - generic [ref=e115]:
+      - generic [ref=e116]:
+        - generic [ref=e117]:
+          - img [ref=e118]
+          - generic [ref=e122]: SmartHumans
+        - paragraph [ref=e123]: A permanent, sourced, community-verified record of what people predicted and promised — and whether it actually happened. Public figures garner the spotlight; everyone can build a record.
+        - paragraph [ref=e124]: AI proposes · humans verify
+      - generic [ref=e125]:
+        - paragraph [ref=e126]: Explore
+        - list [ref=e127]:
+          - listitem [ref=e128]:
+            - link "Browse by topic" [ref=e129] [cursor=pointer]:
+              - /url: /browse
+          - listitem [ref=e130]:
+            - link "Leaderboards" [ref=e131] [cursor=pointer]:
+              - /url: /leaderboards
+          - listitem [ref=e132]:
+            - link "Smartest users" [ref=e133] [cursor=pointer]:
+              - /url: /leaderboards?tab=users
+          - listitem [ref=e134]:
+            - link "Resolving soon" [ref=e135] [cursor=pointer]:
+              - /url: /resolving-soon
+          - listitem [ref=e136]:
+            - link "Notifications" [ref=e137] [cursor=pointer]:
+              - /url: /notifications
+          - listitem [ref=e138]:
+            - link "Submit a claim" [ref=e139] [cursor=pointer]:
+              - /url: /submit
+      - generic [ref=e140]:
+        - paragraph [ref=e141]: Trust
+        - list [ref=e142]:
+          - listitem [ref=e143]:
+            - link "Methodology" [ref=e144] [cursor=pointer]:
+              - /url: /methodology
+          - listitem [ref=e145]:
+            - link "Review queue" [ref=e146] [cursor=pointer]:
+              - /url: /review
+          - listitem [ref=e147]:
+            - link "How verdicts are reached" [ref=e148] [cursor=pointer]:
+              - /url: /methodology#resolution
+          - listitem [ref=e149]:
+            - link "Disputes & appeals" [ref=e150] [cursor=pointer]:
+              - /url: /methodology#appeals
+          - listitem [ref=e151]:
+            - link "AI & agent policy" [ref=e152] [cursor=pointer]:
+              - /url: /methodology#agents
+    - generic [ref=e154]: © 2026 SmartHumans — no primary source, no claim.
+  - button "Open Next.js Dev Tools" [ref=e160] [cursor=pointer]:
+    - img [ref=e161]

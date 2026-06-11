@@ -35,7 +35,7 @@ export function StatusBadge({
       {detail != null && (
         <>
           <span aria-hidden className="h-3 w-px self-center bg-current opacity-25" />
-          <span className="font-mono font-medium opacity-70">{detail}</span>
+          <span className="font-mono font-medium">{detail}</span>
         </>
       )}
     </span>

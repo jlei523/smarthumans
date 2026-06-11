@@ -1,0 +1,113 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "SmartHumans" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]:
+          - img [ref=e6]
+          - generic [ref=e10]: SmartHumans
+      - search [ref=e11]:
+        - img
+        - combobox "Search anyone or any claim…" [ref=e12]
+      - generic [ref=e13]:
+        - link "+ Submit" [ref=e14] [cursor=pointer]:
+          - /url: /submit
+          - generic [ref=e15]: +
+          - text: Submit
+        - link "Your feed — stakes and submissions from members you follow" [ref=e16] [cursor=pointer]:
+          - /url: /feed
+          - img [ref=e17]
+        - link "Notifications" [ref=e21] [cursor=pointer]:
+          - /url: /notifications
+          - img [ref=e22]
+  - navigation [ref=e27]:
+    - generic [ref=e28]:
+      - link "AI" [ref=e29] [cursor=pointer]:
+        - /url: /browse/ai
+      - link "Markets" [ref=e30] [cursor=pointer]:
+        - /url: /browse/markets
+      - link "Stocks" [ref=e31] [cursor=pointer]:
+        - /url: /browse/stocks
+      - link "Semiconductors" [ref=e32] [cursor=pointer]:
+        - /url: /browse/semiconductors
+      - link "Gold" [ref=e33] [cursor=pointer]:
+        - /url: /browse/gold
+      - link "Economy" [ref=e34] [cursor=pointer]:
+        - /url: /browse/economy
+      - link "Health" [ref=e35] [cursor=pointer]:
+        - /url: /browse/health
+      - link "Immigration" [ref=e36] [cursor=pointer]:
+        - /url: /browse/immigration
+      - link "Foreign Policy" [ref=e37] [cursor=pointer]:
+        - /url: /browse/foreign_policy
+      - link "NBA" [ref=e38] [cursor=pointer]:
+        - /url: /browse/nba
+      - link "MLB" [ref=e39] [cursor=pointer]:
+        - /url: /browse/mlb
+      - link "NFL" [ref=e40] [cursor=pointer]:
+        - /url: /browse/nfl
+      - link "F1" [ref=e41] [cursor=pointer]:
+        - /url: /browse/f1
+      - link "More →" [ref=e42] [cursor=pointer]:
+        - /url: /browse
+  - main [ref=e43]:
+    - generic [ref=e44]:
+      - heading "Search" [level=1] [ref=e45]
+      - search [ref=e46]:
+        - img
+        - combobox "Search anyone or any claim…" [ref=e47]
+      - generic [ref=e48]:
+        - paragraph [ref=e49]: No results for “zzzqqq”
+        - paragraph [ref=e50]: We may not track this person yet.
+        - link "Request this person — submit their first claim" [ref=e51] [cursor=pointer]:
+          - /url: /submit
+  - contentinfo [ref=e52]:
+    - generic [ref=e53]:
+      - generic [ref=e54]:
+        - generic [ref=e55]:
+          - img [ref=e56]
+          - generic [ref=e60]: SmartHumans
+        - paragraph [ref=e61]: A permanent, sourced, community-verified record of what people predicted and promised — and whether it actually happened. Public figures garner the spotlight; everyone can build a record.
+        - paragraph [ref=e62]: AI proposes · humans verify
+      - generic [ref=e63]:
+        - paragraph [ref=e64]: Explore
+        - list [ref=e65]:
+          - listitem [ref=e66]:
+            - link "Browse by topic" [ref=e67] [cursor=pointer]:
+              - /url: /browse
+          - listitem [ref=e68]:
+            - link "Leaderboards" [ref=e69] [cursor=pointer]:
+              - /url: /leaderboards
+          - listitem [ref=e70]:
+            - link "Smartest users" [ref=e71] [cursor=pointer]:
+              - /url: /leaderboards?tab=users
+          - listitem [ref=e72]:
+            - link "Resolving soon" [ref=e73] [cursor=pointer]:
+              - /url: /resolving-soon
+          - listitem [ref=e74]:
+            - link "Notifications" [ref=e75] [cursor=pointer]:
+              - /url: /notifications
+          - listitem [ref=e76]:
+            - link "Submit a claim" [ref=e77] [cursor=pointer]:
+              - /url: /submit
+      - generic [ref=e78]:
+        - paragraph [ref=e79]: Trust
+        - list [ref=e80]:
+          - listitem [ref=e81]:
+            - link "Methodology" [ref=e82] [cursor=pointer]:
+              - /url: /methodology
+          - listitem [ref=e83]:
+            - link "Review queue" [ref=e84] [cursor=pointer]:
+              - /url: /review
+          - listitem [ref=e85]:
+            - link "How verdicts are reached" [ref=e86] [cursor=pointer]:
+              - /url: /methodology#resolution
+          - listitem [ref=e87]:
+            - link "Disputes & appeals" [ref=e88] [cursor=pointer]:
+              - /url: /methodology#appeals
+          - listitem [ref=e89]:
+            - link "AI & agent policy" [ref=e90] [cursor=pointer]:
+              - /url: /methodology#agents
+    - generic [ref=e92]: © 2026 SmartHumans — no primary source, no claim.
+  - button "Open Next.js Dev Tools" [ref=e98] [cursor=pointer]:
+    - img [ref=e99]

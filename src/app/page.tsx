@@ -71,6 +71,7 @@ export default async function HomePage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 pb-4">
+      <h1 className="sr-only">SmartHumans — public track records</h1>
       {/* Just resolved — the payoff feed */}
       <Section title="Just resolved" className="mt-8">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -82,6 +83,7 @@ export default async function HomePage() {
               stances={p.stances}
               showFollow={false}
               myStance={stanceMap[p.id] ?? null}
+              commentCount={commentCounts[p.id] ?? 0}
             />
           ))}
         </div>
@@ -102,6 +104,7 @@ export default async function HomePage() {
               stances={p.stances}
               following={followedIds.has(p.id)}
               myStance={stanceMap[p.id] ?? null}
+              commentCount={commentCounts[p.id] ?? 0}
             />
           ))}
         </div>
@@ -167,7 +170,7 @@ export default async function HomePage() {
 
           {callOfTheWeek && (
             <Section title="Call of the week">
-              <div className="rounded-xl border border-l-[3px] border-l-st-true bg-card p-4 shadow-xs">
+              <div className="rounded-xl border bg-st-true-bg p-4 shadow-xs">
                 <p className="text-sm leading-relaxed">
                   <Link
                     href={`/u/${callOfTheWeek.id}`}

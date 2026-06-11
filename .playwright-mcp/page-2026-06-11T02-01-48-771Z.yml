@@ -1,0 +1,235 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "SmartHumans" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e5]:
+          - img [ref=e6]
+          - generic [ref=e10]: SmartHumans
+      - search [ref=e11]:
+        - img
+        - combobox "Search anyone or any claim…" [ref=e12]
+      - generic [ref=e13]:
+        - link "+ Submit" [ref=e14] [cursor=pointer]:
+          - /url: /submit
+          - generic [ref=e15]: +
+          - text: Submit
+        - link "Your feed — stakes and submissions from members you follow" [ref=e16] [cursor=pointer]:
+          - /url: /feed
+          - img [ref=e17]
+        - link "Notifications" [ref=e21] [cursor=pointer]:
+          - /url: /notifications
+          - img [ref=e22]
+  - navigation [ref=e27]:
+    - generic [ref=e28]:
+      - link "AI" [ref=e29] [cursor=pointer]:
+        - /url: /browse/ai
+      - link "Markets" [ref=e30] [cursor=pointer]:
+        - /url: /browse/markets
+      - link "Stocks" [ref=e31] [cursor=pointer]:
+        - /url: /browse/stocks
+      - link "Semiconductors" [ref=e32] [cursor=pointer]:
+        - /url: /browse/semiconductors
+      - link "Gold" [ref=e33] [cursor=pointer]:
+        - /url: /browse/gold
+      - link "Economy" [ref=e34] [cursor=pointer]:
+        - /url: /browse/economy
+      - link "Health" [ref=e35] [cursor=pointer]:
+        - /url: /browse/health
+      - link "Immigration" [ref=e36] [cursor=pointer]:
+        - /url: /browse/immigration
+      - link "Foreign Policy" [ref=e37] [cursor=pointer]:
+        - /url: /browse/foreign_policy
+      - link "NBA" [ref=e38] [cursor=pointer]:
+        - /url: /browse/nba
+      - link "MLB" [ref=e39] [cursor=pointer]:
+        - /url: /browse/mlb
+      - link "NFL" [ref=e40] [cursor=pointer]:
+        - /url: /browse/nfl
+      - link "F1" [ref=e41] [cursor=pointer]:
+        - /url: /browse/f1
+      - link "More →" [ref=e42] [cursor=pointer]:
+        - /url: /browse
+  - main [ref=e43]:
+    - generic [ref=e44]:
+      - heading "Compare" [level=1] [ref=e45]:
+        - img [ref=e46]
+        - text: Compare
+      - paragraph [ref=e49]: Side-by-side scorecards. Same template for everyone — the data delivers the verdict.
+      - generic [ref=e50]:
+        - combobox [ref=e51]:
+          - option "Donald Trump" [selected]
+          - option "Elon Musk"
+          - option "Paul Krugman"
+          - option "Jim Cramer"
+          - option "Stephen A. Smith"
+          - option "Peter Schiff"
+        - generic [ref=e52]: vs
+        - combobox [ref=e53]:
+          - option "Donald Trump"
+          - option "Elon Musk" [selected]
+          - option "Paul Krugman"
+          - option "Jim Cramer"
+          - option "Stephen A. Smith"
+          - option "Peter Schiff"
+        - button "Compare" [ref=e54]
+      - generic [ref=e55]:
+        - generic [ref=e56]:
+          - link "Donald Trump Donald Trump Politician" [ref=e57] [cursor=pointer]:
+            - /url: /p/donald-trump
+            - img "Donald Trump" [ref=e58]
+            - generic [ref=e59]:
+              - paragraph [ref=e60]: Donald Trump
+              - paragraph [ref=e61]: Politician
+          - generic [ref=e63]:
+            - img [ref=e64]:
+              - generic [ref=e67]: 29%
+              - generic [ref=e68]: accuracy · grade D
+            - paragraph [ref=e69]: based on 12 resolved claims
+          - paragraph [ref=e70]:
+            - text: "Record:"
+            - generic [ref=e71]: 3 came true
+            - generic [ref=e73]:
+              - text: ·
+              - text: 1 partly
+            - generic [ref=e75]:
+              - text: ·
+              - text: 7 didn't
+            - generic [ref=e77]:
+              - text: ·
+              - text: 1 walked back
+            - generic [ref=e79]:
+              - text: ·
+              - text: 1 unverifiable
+            - generic [ref=e81]:
+              - text: ·
+              - text: 2 pending
+          - generic [ref=e83]:
+            - generic [ref=e84]:
+              - term [ref=e85]: "Predictions:"
+              - definition [ref=e86]: 33% came true · 3 resolved
+            - generic [ref=e87]:
+              - term [ref=e88]: "Promises:"
+              - definition [ref=e89]: 28% kept · 9 resolved
+          - table [ref=e90]:
+            - rowgroup [ref=e91]:
+              - row "Economy 0%" [ref=e92]:
+                - cell "Economy" [ref=e93]
+                - cell "0%" [ref=e94]
+              - row "Foreign Policy 67%" [ref=e95]:
+                - cell "Foreign Policy" [ref=e96]
+                - cell "67%" [ref=e97]
+              - row "Other 50%" [ref=e98]:
+                - cell "Other" [ref=e99]
+                - cell "50%" [ref=e100]
+              - row "Immigration 25%" [ref=e101]:
+                - cell "Immigration" [ref=e102]
+                - cell "25%" [ref=e103]
+              - row "Health 0%" [ref=e104]:
+                - cell "Health" [ref=e105]
+                - cell "0%" [ref=e106]
+              - row "Markets 0%" [ref=e107]:
+                - cell "Markets" [ref=e108]
+                - cell "0%" [ref=e109]
+        - generic [ref=e110]:
+          - link "Elon Musk Elon Musk Tech CEO" [ref=e111] [cursor=pointer]:
+            - /url: /p/elon-musk
+            - img "Elon Musk" [ref=e112]
+            - generic [ref=e113]:
+              - paragraph [ref=e114]: Elon Musk
+              - paragraph [ref=e115]: Tech CEO
+          - generic [ref=e117]:
+            - img [ref=e118]:
+              - generic [ref=e121]: 19%
+              - generic [ref=e122]: accuracy · grade F
+            - paragraph [ref=e123]: based on 8 resolved claims
+          - paragraph [ref=e124]:
+            - text: "Record:"
+            - generic [ref=e125]: 1 came true
+            - generic [ref=e127]:
+              - text: ·
+              - text: 1 partly
+            - generic [ref=e129]:
+              - text: ·
+              - text: 5 didn't
+            - generic [ref=e131]:
+              - text: ·
+              - text: 1 walked back
+            - generic [ref=e133]:
+              - text: ·
+              - text: 3 pending
+          - generic [ref=e135]:
+            - generic [ref=e136]:
+              - term [ref=e137]: "Predictions:"
+              - definition [ref=e138]: 17% came true · 6 resolved
+            - generic [ref=e139]:
+              - term [ref=e140]: "Promises:"
+              - definition [ref=e141]: 25% kept · 2 resolved
+          - table [ref=e142]:
+            - rowgroup [ref=e143]:
+              - row "AI 0%" [ref=e144]:
+                - cell "AI" [ref=e145]
+                - cell "0%" [ref=e146]
+              - row "Other 100%" [ref=e147]:
+                - cell "Other" [ref=e148]
+                - cell "100%" [ref=e149]
+              - row "Stocks 25%" [ref=e150]:
+                - cell "Stocks" [ref=e151]
+                - cell "25%" [ref=e152]
+              - row "Economy 0%" [ref=e153]:
+                - cell "Economy" [ref=e154]
+                - cell "0%" [ref=e155]
+              - row "Health 0%" [ref=e156]:
+                - cell "Health" [ref=e157]
+                - cell "0%" [ref=e158]
+  - contentinfo [ref=e159]:
+    - generic [ref=e160]:
+      - generic [ref=e161]:
+        - generic [ref=e162]:
+          - img [ref=e163]
+          - generic [ref=e167]: SmartHumans
+        - paragraph [ref=e168]: A permanent, sourced, community-verified record of what people predicted and promised — and whether it actually happened. Public figures garner the spotlight; everyone can build a record.
+        - paragraph [ref=e169]: AI proposes · humans verify
+      - generic [ref=e170]:
+        - paragraph [ref=e171]: Explore
+        - list [ref=e172]:
+          - listitem [ref=e173]:
+            - link "Browse by topic" [ref=e174] [cursor=pointer]:
+              - /url: /browse
+          - listitem [ref=e175]:
+            - link "Leaderboards" [ref=e176] [cursor=pointer]:
+              - /url: /leaderboards
+          - listitem [ref=e177]:
+            - link "Smartest users" [ref=e178] [cursor=pointer]:
+              - /url: /leaderboards?tab=users
+          - listitem [ref=e179]:
+            - link "Resolving soon" [ref=e180] [cursor=pointer]:
+              - /url: /resolving-soon
+          - listitem [ref=e181]:
+            - link "Notifications" [ref=e182] [cursor=pointer]:
+              - /url: /notifications
+          - listitem [ref=e183]:
+            - link "Submit a claim" [ref=e184] [cursor=pointer]:
+              - /url: /submit
+      - generic [ref=e185]:
+        - paragraph [ref=e186]: Trust
+        - list [ref=e187]:
+          - listitem [ref=e188]:
+            - link "Methodology" [ref=e189] [cursor=pointer]:
+              - /url: /methodology
+          - listitem [ref=e190]:
+            - link "Review queue" [ref=e191] [cursor=pointer]:
+              - /url: /review
+          - listitem [ref=e192]:
+            - link "How verdicts are reached" [ref=e193] [cursor=pointer]:
+              - /url: /methodology#resolution
+          - listitem [ref=e194]:
+            - link "Disputes & appeals" [ref=e195] [cursor=pointer]:
+              - /url: /methodology#appeals
+          - listitem [ref=e196]:
+            - link "AI & agent policy" [ref=e197] [cursor=pointer]:
+              - /url: /methodology#agents
+    - generic [ref=e199]: © 2026 SmartHumans — no primary source, no claim.
+  - button "Open Next.js Dev Tools" [ref=e205] [cursor=pointer]:
+    - img [ref=e206]
+  - alert [ref=e209]

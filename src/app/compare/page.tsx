@@ -6,9 +6,28 @@ import { ScoreGauge, DistributionBar, SubtypeSplit } from "@/components/charts";
 import { getAllPeople, getPersonScore, type PersonScore } from "@/lib/queries";
 import { CATEGORY_LABEL, DOMAIN_LABEL } from "@/lib/status";
 import { pct } from "@/lib/format";
+import type { Category } from "@/db/schema";
 
 export const metadata: Metadata = { title: "Compare track records" };
 export const dynamic = "force-dynamic";
+
+// Canonical display order — matches the schema enum order
+const CATEGORY_ORDER: Category[] = [
+  "ai",
+  "markets",
+  "stocks",
+  "semiconductors",
+  "gold",
+  "economy",
+  "health",
+  "immigration",
+  "foreign_policy",
+  "nba",
+  "mlb",
+  "nfl",
+  "f1",
+  "other",
+];
 
 export default async function ComparePage({
   searchParams,
@@ -24,15 +43,16 @@ export default async function ComparePage({
     slugB ? getPersonScore(slugB) : null,
   ]);
 
+  // Build a union category list in canonical order so both cards' rows align
+  const catSetA = new Set(scoreA?.categoryBreakdown.map((c) => c.category) ?? []);
+  const catSetB = new Set(scoreB?.categoryBreakdown.map((c) => c.category) ?? []);
+  const allCategories = CATEGORY_ORDER.filter((k) => catSetA.has(k) || catSetB.has(k));
+
   return (
     <div className="mx-auto max-w-5xl px-4 py-8">
       <h1 className="flex items-center gap-2 font-serif text-3xl font-bold tracking-tight">
         <ArrowLeftRight className="size-7" /> Compare
       </h1>
-      <p className="mt-1 text-sm text-muted-foreground">
-        Side-by-side scorecards. Same template for everyone — the data delivers
-        the verdict.
-      </p>
 
       <form className="mt-5 flex flex-wrap items-center gap-2" action="/compare">
         <PersonSelect name="a" people={all} value={slugA} />
@@ -46,7 +66,7 @@ export default async function ComparePage({
       <div className="mt-8 grid gap-4 md:grid-cols-2">
         {[scoreA, scoreB].map((s, i) =>
           s ? (
-            <CompareCard key={s.person.id} score={s} />
+            <CompareCard key={s.person.id} score={s} allCategories={allCategories} />
           ) : (
             <div key={i} className="rounded-lg border border-dashed p-10 text-center text-sm text-muted-foreground">
               Pick a person to compare.
@@ -82,8 +102,16 @@ function PersonSelect({
   );
 }
 
-function CompareCard({ score }: { score: PersonScore }) {
+function CompareCard({
+  score,
+  allCategories,
+}: {
+  score: PersonScore;
+  allCategories: Category[];
+}) {
   const { person, scorecard, subtypeBreakdown, categoryBreakdown } = score;
+  const catMap = new Map(categoryBreakdown.map((c) => [c.category, c.scorecard]));
+
   return (
     <div className="rounded-lg border bg-card p-5">
       <Link href={`/p/${person.slug}`} className="flex items-center gap-3 group">
@@ -106,20 +134,34 @@ function CompareCard({ score }: { score: PersonScore }) {
       </div>
       <DistributionBar scorecard={scorecard} className="mt-3" />
       <SubtypeSplit breakdown={subtypeBreakdown} className="mt-3" />
-      <table className="mt-4 w-full text-sm">
-        <tbody>
-          {categoryBreakdown.slice(0, 6).map(({ category, scorecard: sc }) => (
-            <tr key={category} className="border-b last:border-0">
-              <td className="py-1.5 text-muted-foreground">
-                {CATEGORY_LABEL[category]}
-              </td>
-              <td className="py-1.5 text-right font-mono font-medium tabular-nums">
-                {sc.accuracy === null ? "—" : pct(sc.accuracy)}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {allCategories.length > 0 && (
+        <table className="mt-4 w-full text-sm">
+          <tbody>
+            {allCategories.map((cat) => {
+              const sc = catMap.get(cat);
+              return (
+                <tr key={cat} className="border-b last:border-0">
+                  <td className="py-1.5 text-muted-foreground">
+                    {CATEGORY_LABEL[cat]}
+                  </td>
+                  <td className="py-1.5 text-right tabular-nums">
+                    {sc == null ? (
+                      <span className="text-ink-4">—</span>
+                    ) : sc.accuracy === null ? (
+                      <span className="font-mono text-muted-foreground">—</span>
+                    ) : (
+                      <>
+                        <span className="font-mono font-medium">{pct(sc.accuracy)}</span>
+                        <span className="ml-1 font-mono text-[11px] text-ink-3">n={sc.resolved}</span>
+                      </>
+                    )}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }

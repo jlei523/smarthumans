@@ -80,7 +80,11 @@ export function StanceButtons({
           "inline-flex items-center overflow-hidden rounded-full border bg-card text-xs font-medium shadow-xs",
           pending && "opacity-60",
         )}
-        title="Your call on this claim — scored on resolution, feeds your track record"
+        title={
+          signedIn
+            ? "Your call on this claim — scored on resolution, feeds your track record"
+            : "Your call on this claim — kept on this device; it joins your record when you sign in"
+        }
       >
         <span className="pl-2.5 pr-1 text-[11px] text-ink-3 whitespace-nowrap @max-[26rem]:hidden">
           Your call
